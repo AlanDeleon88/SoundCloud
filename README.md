@@ -820,8 +820,8 @@ Returns all the comments that belong to a song specified by id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /songs/:songId/comments //a bit iffy, should i make a comments router?
   * Body: none
 
 * Successful Response
@@ -868,8 +868,8 @@ Create and return a new comment for a song specified by id.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /songs/:songId/comments
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -933,8 +933,8 @@ Update and return an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT / PATCH
+  * URL: /comments/:commentId  //? not sure if i need to add the song router stuff
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -998,8 +998,8 @@ Delete an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: /comments/:commentId
   * Body: none
 
 * Successful Response
@@ -1034,8 +1034,8 @@ Returns the details of an artist specified by their id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /artists/:artistId
   * Body: none
 
 * Successful Response
@@ -1073,7 +1073,7 @@ Returns all the songs created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
+  * Method: /artists/:artistId/songs
   * URL: ?
   * Body: none
 
@@ -1120,8 +1120,8 @@ Returns all the albums created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /artists/:artistId/albums
   * Body: none
 
 * Successful Response
@@ -1165,8 +1165,8 @@ Returns all the playlists created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /artists/:artistId/playlists
   * Body: none
 
 * Successful Response
@@ -1209,8 +1209,8 @@ Creates and returns a new playlist.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /playlists
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1262,8 +1262,8 @@ Add a song to a playlist specified by the playlist's id.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: /playlists/:playlistId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1320,8 +1320,8 @@ Returns the details of a playlist specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /playlists/:playlistId
   * Body: none
 
 * Successful Response
@@ -1374,8 +1374,8 @@ Updates and returns an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT/PATCH
+  * URL: /playlist/:playlistId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1440,8 +1440,8 @@ Deletes an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: /playlist/:playlistId
   * Body: none
 
 * Successful Response
@@ -1476,8 +1476,8 @@ Returns all the playlists created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /users/:userId/playlists
   * Body: none
 
 * Successful Response
@@ -1507,8 +1507,8 @@ Return songs filtered by query parameters.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /songs?page=&size=&title=%createdAt=
   * Query Parameters
     * page: integer, minimum: 0, maximum: 10, default: 0
     * size: integer, minimum: 0, maximum: 20, default: 20
