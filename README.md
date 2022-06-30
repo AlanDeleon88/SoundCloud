@@ -53,7 +53,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId
+  * URL: /me
   * Body: none
 
 * Successful Response
@@ -147,7 +147,7 @@ user's information.
 * Require Authentication: false
 * Request
   * Method: POST
-  * URL: /signUp
+  * URL: /signup
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -271,7 +271,7 @@ Returns all the songs created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /user/:userId/songs //maybe come back to this one.. not sure what a good url would be.
+  * URL: /user/:userId/songs
   * Body: none
 
 * Successful Response
@@ -430,7 +430,7 @@ Updates and returns an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: PUT / or PATCH ?
+  * Method: PUT
   * URL: /songs/:songId
   * Headers:
     * Content-Type: application/json
@@ -571,7 +571,7 @@ Returns all the Albums created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: users/:userId/albums
+  * URL: me/albums
   * Body: none
 
 * Successful Response
@@ -716,7 +716,7 @@ Updates and returns an existing album.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: PUT / PATCH
+  * Method: PUT
   * URL: /albums/:albumId
   * Headers:
     * Content-Type: application/json
@@ -821,7 +821,7 @@ Returns all the comments that belong to a song specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /songs/:songId/comments //a bit iffy, should i make a comments router?
+  * URL: /songs/:songId/comments
   * Body: none
 
 * Successful Response
@@ -933,8 +933,8 @@ Update and return an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: PUT / PATCH
-  * URL: /comments/:commentId  //? not sure if i need to add the song router stuff
+  * Method: PUT
+  * URL: /comments/:commentId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1374,7 +1374,7 @@ Updates and returns an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: PUT/PATCH
+  * Method: PUT
   * URL: /playlist/:playlistId
   * Headers:
     * Content-Type: application/json
@@ -1477,7 +1477,7 @@ Returns all the playlists created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId/playlists
+  * URL: me/playlists
   * Body: none
 
 * Successful Response
@@ -1508,7 +1508,7 @@ Return songs filtered by query parameters.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /songs?page=&size=&title=%createdAt=
+  * URL: /songs
   * Query Parameters
     * page: integer, minimum: 0, maximum: 10, default: 0
     * size: integer, minimum: 0, maximum: 20, default: 20
