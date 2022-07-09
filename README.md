@@ -1073,8 +1073,8 @@ Returns all the songs created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: /artists/:artistId/songs
-  * URL: ?
+  * Method: GET
+  * URL: /artists/:artistId/songs
   * Body: none
 
 * Successful Response
