@@ -46,6 +46,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    defaultScope :{ //! default scope to prevent sensitive information being queryed for.
+      attributes : {
+        exclude : ["hashedPassword", "email", "createdAt", "updatedAt"]
+      }
+    },
+    scopes : {
+      currentUser : { //! exclude password for querys for current user.
+        attributes : {exclude : ["hashedPassword"]}
+      },
+      loginUser : { //! only used to verify credentials of a user attempting to log in.
+        attributes : {}
+      }
+    }
   });
   return User;
 };
