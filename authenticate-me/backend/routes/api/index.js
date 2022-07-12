@@ -8,7 +8,7 @@ const { requireAuth } = require('../../utils/auth.js');
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const { route } = require('./session.js');
+
 
 router.use('/session', sessionRouter);
 
