@@ -4,7 +4,7 @@ const router = express.Router();
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
-router.post(
+router.post( //? login route grants user a token
     '/',
     async (req, res, next) => {
         const { credential, password } = req.body;
@@ -26,7 +26,7 @@ router.post(
     }
     );
 
-router.delete(
+router.delete( //? logout route, deletes the token cookie.
     '/',
     (_req, res) => {
         res.clearCookie('token');
