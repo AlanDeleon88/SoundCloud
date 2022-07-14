@@ -1,0 +1,23 @@
+//executable script for starting app
+//import env variables
+require('dotenv').config();
+
+const { port } = require('../config');
+
+const app = require('../app');
+const db = require('../db/models');
+
+db.sequelize
+    .authenticate()
+    .then(()=>{
+        console.log('Database connection success! Sequelize is ready to use...');
+
+        //start listening for connections
+        app.listen(port, () => console.log(`listening on port ${port}`));
+    })
+    .catch((err) => {
+        console.log('Database connection faailure.');
+        console.error(err);
+    });
+    //starting express app only after authenticating the database connection.
+    
