@@ -3,16 +3,22 @@ const  bcrypt = require('bcryptjs');
 
 let sampleUsers = [
   {
+    firstName:'Ashante',
+    lastName:'Gungbubui',
     email : 'demo@user.io',
     username : 'Demo-lition',
     hashedPassword : bcrypt.hashSync('password')
   },
   {
+    firstName: 'David',
+    lastName: 'You',
     email : 'user1@user.io',
     username : 'FakeUser1',
     hashedPassword : bcrypt.hashSync('password2')
   },
   {
+    firstName: 'cookee',
+    lastName: 'loui',
     email : 'user2@user.io',
     username : 'FakeUser2',
     hashedPassword : bcrypt.hashSync('password3')
