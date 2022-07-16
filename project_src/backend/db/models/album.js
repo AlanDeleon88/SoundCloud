@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         len : [1, 150]
       }
     },
-    previewImg:{
+    previewImage:{
       type: DataTypes.STRING,
       allowNull : true
 
