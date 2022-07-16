@@ -53,7 +53,7 @@ router.get(
     }
 )
 
-app.use((err, _req, res, _next) => {
+router.use((err, _req, res, _next) => {
     res.status(err.status || 500);
     console.error(err);
     res.json({
