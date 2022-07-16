@@ -33,7 +33,13 @@ module.exports = (sequelize, DataTypes) => {
         // isAlpha : true,
         len : [1, 50]
       }
-
+    },
+    description:{
+      type : DataTypes.STRING,
+      allowNull : true,
+      validate: {
+        len : [1, 150]
+      }
     },
     previewImg:{
       type: DataTypes.STRING,
