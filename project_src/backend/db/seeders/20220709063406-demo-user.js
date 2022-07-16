@@ -6,6 +6,7 @@ let sampleUsers = [
     firstName:'Ashante',
     lastName:'Gungbubui',
     email : 'demo@user.io',
+    previewImg: 'img-url',
     username : 'Demo-lition',
     hashedPassword : bcrypt.hashSync('password')
   },
@@ -13,6 +14,7 @@ let sampleUsers = [
     firstName: 'David',
     lastName: 'You',
     email : 'user1@user.io',
+    previewImg: 'img-url',
     username : 'FakeUser1',
     hashedPassword : bcrypt.hashSync('password2')
   },
@@ -20,6 +22,7 @@ let sampleUsers = [
     firstName: 'cookee',
     lastName: 'loui',
     email : 'user2@user.io',
+    previewImg: 'img-url',
     username : 'FakeUser2',
     hashedPassword : bcrypt.hashSync('password3')
   }

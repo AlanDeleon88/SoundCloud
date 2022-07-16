@@ -34,10 +34,11 @@ router.post( //? login route grants user a token
             return next(err);
         }
 
-        await setTokenCookie(res, user);
+         let token = await setTokenCookie(res, user);
 
         return res.json({
-            user
+            user,
+            "token" : `${token}`
         })
     }
     );
