@@ -11,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
      static associate(models) {
-      //add association with album table later.
+      User.hasMany(
+        models.Album,
+      {
+        foreignKey : 'userId', onDelete : 'CASCADE', hooks : true
+      }
+      );
     }
     toSafeObject() {
       const {id, username, email} = this; //!context of User instance.

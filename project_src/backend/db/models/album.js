@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       //Add associaion with User table later
+      Album.belongsTo(
+        models.User,
+        {
+          foreignKey : 'userId',
+          onDelete : 'cascade',
+          hooks : true
+        }
+      )
     }
   }
   Album.init({
@@ -22,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       allowNull : false,
       validate : {
-        isAlphanumeric : true,
+        // isAlpha : true,
         len : [1, 50]
       }
 

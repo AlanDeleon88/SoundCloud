@@ -67,4 +67,17 @@ router.get(
     }
 );
 
+router.get( //! route to get all albums from current user.
+    '/albums',
+    restoreUser,
+    async (req, res) =>{
+        const { user } = req;
+        let userAlbums = await user.getAlbums();
+
+        res.status = 200;
+        res.json({userAlbums})
+
+    }
+)
+
 module.exports = router;
