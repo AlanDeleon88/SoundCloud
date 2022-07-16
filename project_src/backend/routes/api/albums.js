@@ -25,21 +25,22 @@ router.get(
 
 router.get(
     '/:id',
-    async (req, rex, next) =>{
+    async (req, res, next) =>{
         let albumId = req.params.id;
         let album = await Album.findByPk(albumId);
+        console.log(album);
         if(!album){
             let err = new Error("Couldn't find an Album with the specified id");
-            let errors = [err];
+            // let errors = [err.message];
             err.title = 'Album not found';
-            err.errors = errors;
+            // err.errors = errors;
             err.status = 404;
             next(err);
         }
         //find album's songs here.
         //let songs = await album.getSongs()
         let artist = await User.findOne({
-            where : {id : userID},
+            where : {id : album.userId},
             attributes: ['id','username','previewImage']
         })
         let songs = [];
@@ -47,6 +48,7 @@ router.get(
         res.json(
         {
             album,
+            "Artist": artist,
             "Songs" : songs
 
         })
@@ -57,10 +59,11 @@ router.use((err, _req, res, _next) => {
     res.status(err.status || 500);
     console.error(err);
     res.json({
-        title : err.title || 'Server Error',
+
         message : err.message,
-        errors : err.errors,
-        stack : isProduction ? null : err.stack
+        statusCode : err.status
+
+        // stack : isProduction ? null : err.stack
     });
 });
 module.exports = router;
