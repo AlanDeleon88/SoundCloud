@@ -57,7 +57,7 @@ router.get(
     (req, res) =>{
         const { user } = req;
         if(user){
-            res.status = 200;
+            res.statusCode = 200;
             return res.json({
                 user : user.toSafeObject()
             });
@@ -75,7 +75,7 @@ router.get( //! route to get all albums from current user.
         const { user } = req;
         let userAlbums = await user.getAlbums();
 
-        res.status = 200;
+        res.statusCode = 200;
         res.json({userAlbums})
 
     }
