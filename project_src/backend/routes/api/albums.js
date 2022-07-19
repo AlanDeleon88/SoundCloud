@@ -94,7 +94,7 @@ router.post(
             }
         )
         user.addAlbums([newAlbum]);
-        res.statusCodeCode = 201;
+        res.statusCode = 201;
         res.json(newAlbum);
 
     }
@@ -127,7 +127,7 @@ router.delete(
             res.statusCode = 200;
             return res.json({
                 "message" : "Successfully deleted",
-                "statusCode" : res.statusCodeCode
+                "statusCode" : res.statusCode
             })
         }
         else{
