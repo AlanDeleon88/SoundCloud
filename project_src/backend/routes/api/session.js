@@ -73,7 +73,7 @@ router.get( //! route to get all albums from current user.
     restoreUser,
     async (req, res) =>{
         const { user } = req;
-        let userAlbums = await user.getAlbums();
+        let userAlbums = await user.getAlbums(); //!might need to change the name of this array later
 
         res.statusCode = 200;
         res.json({userAlbums})
