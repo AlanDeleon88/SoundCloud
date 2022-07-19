@@ -10,7 +10,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const e = require('express');
 
 const validateAlbum = [
-    check('title')
+    check('title') //!maybe add length restrictions later?
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Please provide a title'),
@@ -35,12 +35,13 @@ router.get( //? get all albums endpoint
         console.log('whatt');
         if(!albums){
             let err = new Error('no albums could be found');
+            err.status = 404
             return next(err);
         }
         res.status = 200;
         res.json({"Albums" : albums});
     }
-)
+);
 
 router.get( //? get albums by id endpoint
     '/:id',
@@ -72,7 +73,7 @@ router.get( //? get albums by id endpoint
 
         })
     }
-)
+);
 
 router.post(
     '/', //post a new album
@@ -97,7 +98,7 @@ router.post(
         res.json(newAlbum);
 
     }
-)
+);
 
 router.delete(
     '/:id',
@@ -131,13 +132,45 @@ router.delete(
         }
         else{
             const err = new Error("Album does not belong to the current user!");
+            err.status = 401;
+            err.title = 'Unauthorized delete';
+            return next(err);
+        }
+    }
+);
+
+router.put(
+    '/:id',
+    [requireAuth, validateAlbum],
+    async (req, res, next) => {
+        const {id} = req.params;
+        const album = await Album.findByPk(id);
+        const {title, description, previewImage} = req.body;
+        const currentUserId = req.user.id;
+        if(!album){
+            const err = new Error("Album couldn't be found");
+            err.title = 'Album not Found';
             err.status = 404;
+            return next(err);
+        }
+        if(album.userId === currentUserId){
+            await album.update({
+                title,
+                description : description || 'N/A',
+                previewImage : previewImage || 'N/A'
+            })
+            res.status = 200;
+            res.json(album);
+
+        }
+        else{
+            const err = new Error("Album does not belong to the current user!");
+            err.status = 401;
             err.title = 'Unauthorized delete';
             return next(err);
         }
     }
 )
-
 // router.use((err, _req, res, _next) => { //! intercepts the regular error handler for validationError Handler
 
 //     res.status(err.status || 500);

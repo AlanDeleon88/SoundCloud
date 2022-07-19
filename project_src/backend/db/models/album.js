@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       allowNull : false,
       validate : {
-        // isAlpha : true,
+        // isAlphanumeric : true,
         len : [1, 50]
       }
     },
