@@ -38,7 +38,7 @@ router.get( //? get all albums endpoint
             err.status = 404
             return next(err);
         }
-        res.status = 200;
+        res.statusCode = 200;
         res.json({"Albums" : albums});
     }
 );
@@ -64,7 +64,7 @@ router.get( //? get albums by id endpoint
             attributes: ['id','username','previewImage']
         })
         let songs = [];
-        res.status = 200;
+        res.statusCode = 200;
         res.json(
         {
             album,
@@ -94,7 +94,7 @@ router.post(
             }
         )
         user.addAlbums([newAlbum]);
-        res.status = 201;
+        res.statusCodeCode = 201;
         res.json(newAlbum);
 
     }
@@ -124,10 +124,10 @@ router.delete(
             });
             // console.log(album);
 
-            res.status = 200;
+            res.statusCode = 200;
             return res.json({
                 "message" : "Successfully deleted",
-                "statusCode" : res.status
+                "statusCode" : res.statusCodeCode
             })
         }
         else{
@@ -159,7 +159,7 @@ router.put(
                 description : description || 'N/A',
                 previewImage : previewImage || 'N/A'
             })
-            res.status = 200;
+            res.statusCode = 200;
             res.json(album);
 
         }
@@ -173,7 +173,7 @@ router.put(
 )
 // router.use((err, _req, res, _next) => { //! intercepts the regular error handler for validationError Handler
 
-//     res.status(err.status || 500);
+//     res.statusCode(err.status || 500);
 //     // console.error(err);
 //     res.json({
 
