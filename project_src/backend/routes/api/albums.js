@@ -7,6 +7,7 @@ const { User, Album } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const e = require('express');
 
 const validateAlbum = [
     check('title')
@@ -98,10 +99,49 @@ router.post(
     }
 )
 
+router.delete(
+    '/:id',
+    requireAuth,
+    async (req, res, next) => {
+        const {id} = req.params;
+        const album = await Album.findByPk(id);
+        const currentUserId = req.user.id;
+        if(!album){
+            const err = new Error("Album couldn't be found");
+            err.title = 'Album not Found';
+            err.status = 404;
+            return next(err); //! ask question about getting the correct error message from the docs.
+            //! errors go to the main error handler that is formatted for other errors,
+            //! i need to be able to have route specific error handlers maybe?
+        }
+        // console.log(album.userId, currentUserId);
+        if(album.userId === currentUserId){
+            await Album.destroy({
+                where: {
+                    id : id
+                }
+            });
+            // console.log(album);
+
+            res.status = 200;
+            return res.json({
+                "message" : "Successfully deleted",
+                "statusCode" : res.status
+            })
+        }
+        else{
+            const err = new Error("Album does not belong to the current user!");
+            err.status = 404;
+            err.title = 'Unauthorized delete';
+            return next(err);
+        }
+    }
+)
+
 // router.use((err, _req, res, _next) => { //! intercepts the regular error handler for validationError Handler
 
 //     res.status(err.status || 500);
-//     console.error(err);
+//     // console.error(err);
 //     res.json({
 
 //         message : err.message,
@@ -109,5 +149,6 @@ router.post(
 
 //         // stack : isProduction ? null : err.stack
 //     });
+//     next(err);
 // });
 module.exports = router;
