@@ -3,15 +3,15 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Album extends Model {
+  class Song extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      //Add associaion with User table later
-      Album.belongsTo(
+      //? association to user
+      Song.belongsTo(
         models.User,
         {
           foreignKey : 'userId',
@@ -19,45 +19,61 @@ module.exports = (sequelize, DataTypes) => {
           hooks : true
         }
       )
-      //? association to songs
-      Album.hasMany(
-        models.Song,
+
+      //? association to album
+      Song.belongsTo(
+        models.Album,
         {
           foreignKey : 'albumId',
           onDelete : 'cascade',
           hooks : true
         }
       )
+    //TODO add association to comments songs has many comments.
+    //TODO add association to playlist through join table songs belong to many playlists.
+
     }
   }
-  Album.init({
+  Song.init({
     userId:{
+      type: DataTypes.INTEGER,
+      allowNull : false
+
+    },
+    albumId: {
       type: DataTypes.INTEGER,
       allowNull : false
     },
     title: {
-      type : DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull : false,
       validate : {
         // isAlphanumeric : true,
         len : [1, 50]
       }
+
     },
-    description:{
-      type : DataTypes.STRING,
+    description: {
+      type: DataTypes.STRING,
       allowNull : true,
       validate: {
         len : [1, 150]
       }
+
     },
-    previewImage:{
+    url: {
+      type: DataTypes.STRING,
+      allowNull : false
+
+    },
+    previewImage: {
       type: DataTypes.STRING,
       allowNull : true
 
-    },
+    }
   }, {
     sequelize,
-    modelName: 'Album',
+    modelName: 'Song',
   });
-  return Album;
+  return Song;
 };
