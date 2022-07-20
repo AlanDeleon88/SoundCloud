@@ -40,7 +40,7 @@ app.use(
 );
 
 //set csrf token and create req.csrf method
-app.use(
+app.use( //! need to ask about how this works. not sure if its supposed to reject request without the xsrf token.
     csurf({
         cookie : {
             secure : isProduction,

@@ -81,4 +81,24 @@ router.get( //! route to get all albums from current user. maybe change to album
     }
 )
 
+router.get(
+    '/songs',
+    restoreUser,
+    async (req, res, next) =>{
+        const {user} = req;
+        if(!user){
+            const err = new Error('no user is logged in.')
+            err.title = 'No user can be found';
+            err.status = 404;
+
+            next(err);
+
+        }
+        let userSongs = await user.getSongs();
+
+        res.statusCode = 200;
+        res.json({"Songs" : userSongs});
+    }
+)
+
 module.exports = router;
