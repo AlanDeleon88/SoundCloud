@@ -17,7 +17,7 @@ const validateAlbum = [
     handleValidationErrors
 ];
 
-const validateSong = [
+const validateSong = [ //! maybe make a new util js file for these validate arrays?
     check('title')
     .exists({ checkFalsy : true })
     .notEmpty()
