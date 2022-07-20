@@ -68,7 +68,7 @@ router.get(
     }
 );
 
-router.get( //! route to get all albums from current user.
+router.get( //! route to get all albums from current user. maybe change to albums route?
     '/albums',
     restoreUser,
     async (req, res) =>{
