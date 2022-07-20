@@ -23,7 +23,7 @@ router.get(
             "Songs" : songs,
         })
     }
-)
+);
 
 router.get(
     '/:id',
@@ -60,6 +60,6 @@ router.get(
 
         });
     }
-)
+);
 
 module.exports = router;
