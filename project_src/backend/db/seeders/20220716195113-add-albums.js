@@ -30,6 +30,12 @@ const sampleAlbums =
     description: 'A long description of how i forgot to add this column in the first place boooooo',
     previewImage : 'img-url'
   },
+  {
+    userId : 4,
+    title: 'hermit purpleeeee',
+    description: 'A long description of how i forgot to add this column in the first place boooooo',
+    previewImage : 'img-url'
+  },
 ]
 module.exports = {
   async up (queryInterface, Sequelize) {

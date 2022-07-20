@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album } = require('../../db/models');
+const { User, Album, Song } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -15,18 +15,20 @@ const validateAlbum = [
     .notEmpty()
     .withMessage('Please provide a title'),
     handleValidationErrors
-]
+];
 
-// const validateLogin = [
-//     check('credential')
-//     .exists({ checkFalsy: true })
-//     .notEmpty()
-//     .withMessage('Please provide a valid email or username'),
-//     check('password')
-//     .exists({ checkFalsy: true })
-//     .withMessage('Please provide a password'),
-//     handleValidationErrors
-// ];
+const validateSong = [ //! maybe make a new util js file for these validate arrays?
+    check('title')
+    .exists({ checkFalsy : true })
+    .notEmpty()
+    .withMessage('Song title is required'),
+    check('url')
+    .exists( { checkFalsy : true})
+    .notEmpty()
+    .withMessage('Audio is required'),
+    handleValidationErrors
+];
+
 
 router.get( //? get all albums endpoint
     '/',
@@ -48,7 +50,8 @@ router.get( //? get albums by id endpoint
     async (req, res, next) =>{
         let albumId = req.params.id;
         let album = await Album.findByPk(albumId);
-        console.log(album);
+        // console.log(album);
+
         if(!album){
             let err = new Error("Couldn't find an Album with the specified id");
             // let errors = [err.message];
@@ -57,13 +60,13 @@ router.get( //? get albums by id endpoint
             err.status = 404;
             next(err);
         }
-        //find album's songs here.
-        //let songs = await album.getSongs()
+        //!find album's songs here.
+        let songs = await album.getSongs()
         let artist = await User.findOne({
             where : {id : album.userId},
             attributes: ['id','username','previewImage']
         })
-        let songs = [];
+        // let songs = [];
         res.statusCode = 200;
         res.json(
         {
@@ -76,12 +79,12 @@ router.get( //? get albums by id endpoint
 );
 
 router.post(
-    '/', //post a new album
+    '/', //* post a new album
     [validateAlbum, requireAuth], //!validate req body
    //! check if there is a session user
     async (req, res, next) =>{
         const {title, description, previewImage} = req.body;
-        console.log('test', title);
+        // console.log('test', title);
         const { user } = req;
         const  userId = req.user.id;
         console.log(userId);
@@ -100,7 +103,50 @@ router.post(
     }
 );
 
-router.delete(
+router.post( //* create a song for an album of the id.
+    '/:id/songs',
+    [validateSong, requireAuth],
+    async (req, res, next) =>{
+        const albumId = req.params.id;
+        const { title, description, url, previewImage} = req.body;
+        const userId = req.user.id;
+
+        const album = await Album.findByPk(albumId);
+
+        if(!album){
+            const err = new Error("Album couldn't be found")
+            err.title = 'Album not found';
+            err.status = 404;
+
+            return next(err);
+        }
+
+        if(userId !== album.userId){
+            const err = new Error("Album does not belong to current user")
+            err.title = 'Unauthorized add';
+            err.status = 401;
+            console.log(userId, album.userId);
+            return next(err);
+        }
+
+        const newSong = await Song.create({
+            userId : userId,
+            albumId : album.id,
+            title: title,
+            description: description || 'N/A',
+            url: url,
+            previewImage : previewImage || 'N/A'
+        })
+
+        album.addSongs([newSong]);
+        res.statusCode = 201;
+        res.json({
+            newSong
+        })
+    }
+);
+
+router.delete( //*delete album by id
     '/:id',
     requireAuth,
     async (req, res, next) => {
@@ -111,9 +157,7 @@ router.delete(
             const err = new Error("Album couldn't be found");
             err.title = 'Album not Found';
             err.status = 404;
-            return next(err); //! ask question about getting the correct error message from the docs.
-            //! errors go to the main error handler that is formatted for other errors,
-            //! i need to be able to have route specific error handlers maybe?
+            return next(err);
         }
         // console.log(album.userId, currentUserId);
         if(album.userId === currentUserId){
@@ -139,7 +183,7 @@ router.delete(
     }
 );
 
-router.put(
+router.put( //* edit album by id
     '/:id',
     [requireAuth, validateAlbum],
     async (req, res, next) => {

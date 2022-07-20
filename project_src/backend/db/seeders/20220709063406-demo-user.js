@@ -25,6 +25,14 @@ let sampleUsers = [
     previewImage: 'img-url',
     username : 'FakeUser2',
     hashedPassword : bcrypt.hashSync('password3')
+  },
+  {
+    firstName: 'NEW',
+    lastName: 'user',
+    email : 'user2342@user.io',
+    previewImage: 'img-url',
+    username : 'originGamesSux',
+    hashedPassword : bcrypt.hashSync('password343')
   }
 ]
 
