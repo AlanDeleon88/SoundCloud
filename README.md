@@ -431,7 +431,7 @@ Updates and returns an existing song.
 * Require proper authorization: Song must belong to the current user
 * Request
   * Method: PUT
-  * URL: /songs/:songId
+  * URL: api/songs/:songId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -503,7 +503,7 @@ Deletes an existing song.
 * Require proper authorization: Song must belong to the current user
 * Request
   * Method: DELETE
-  * URL: songs/:songId
+  * URL: api/songs/:songId
   * Body: none
 
 * Successful Response
