@@ -1,5 +1,7 @@
 'use strict';
 const {Model, Validator } = require('sequelize');
+const { buildError } = require('../../utils/errorBuild.js');
+
 
 
 const bcrypt = require('bcryptjs');
@@ -51,14 +53,42 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope('currentUser').findByPk(user.id);
       }
     }
-    static async signup({username, email, password}){
+    static async signup({firstName, lastName, username, email, password}){
+      const {Op} = require('sequelize');
       const hashedPassword = bcrypt.hashSync(password);
-      const user = await User.create({
-        username,
-        email,
-        hashedPassword
-      });
-      return await User.scope('currentUser').findByPk(user.id);
+      const checkUnique = await User.scope('loginUser').findAll({
+        where: {
+          [Op.or]:[
+            {email : email},
+            {username : username}
+          ]
+        }
+      })
+      // console.log('--------------',checkUnique);
+      if(checkUnique){
+        for(let i = 0; i < checkUnique.length; i++){
+          let el = checkUnique[i];
+          if(el.dataValues.email === email){
+            const err = buildError('There is already an account registered with that email','Email already registered', 403);
+            return err;
+          }
+          if(el.dataValues.username === username){
+            const err = buildError('There is already an account registered with that username','Username already registered', 403);
+            return err;
+          }
+        }
+      }
+
+        const user = await User.create({
+          firstName,
+          lastName,
+          username,
+          email,
+          hashedPassword
+        });
+        return await User.scope('currentUser').findByPk(user.id);
+
+
     }
   }
   User.init({

@@ -40,15 +40,21 @@ const validateSignup = [
 router.post(
     '/',
     validateSignup,
-    async (req, res) =>{
+    async (req, res, next) =>{
         const { firstName,lastName,email, password, username} = req.body;
-        let newUser = await User.signup({
-            firstName,
-            lastName,
+        console.log(firstName, lastName);
+        let newUser = await User.signup({ //TODO add an error handler that gives correct error when a user tries to sign up with email that already exists.
+            firstName : firstName,
+            lastName : lastName,
             email,
             username,
             password
         })
+        console.log(newUser);
+        if(newUser instanceof Error){
+            // console.log('TEST-------------->');
+            return next(newUser);
+        }
         await setTokenCookie(res, newUser);
 
         return res.json({
