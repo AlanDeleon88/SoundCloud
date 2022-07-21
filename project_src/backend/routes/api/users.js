@@ -50,7 +50,7 @@ router.post(
             username,
             password
         })
-        console.log(newUser);
+        // console.log(newUser);
         if(newUser instanceof Error){
             // console.log('TEST-------------->');
             return next(newUser);
