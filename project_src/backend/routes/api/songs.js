@@ -27,9 +27,7 @@ router.get(
     async (req,res) =>{
         const songs = await Song.findAll();
         if(!songs){
-            const err = new Error('No songs found!');
-            err.title = 'No songs';
-            err.status = 404;
+            const err = buildError('No songs found!', 'No songs', 404)
             return next(err);
         }
         res.statusCode = 200;
@@ -45,9 +43,8 @@ router.get(
         const { id } = req.params;
         const song = await Song.findByPk(id);
         if(!song){
-            const err = new Error("Song couldn't be found");
-            err.title = 'Song not found';
-            err.status = 404;
+            const err = buildError("Song couldn't be found", 'Song not found', 404)
+
             return next(err);
         }
         //!lazy loading?
@@ -120,15 +117,13 @@ router.delete(
         const song = await Song.findByPk(id);
 
         if(!song){
-            const err = new Error("Song couldn't be found"); //TODO maybe create a method to build these error handlers
-            err.title = 'Song not Found';
-            err.status = 404;
+            const err = buildError("Song couldn't be found", 'Song not Found', 404)
+
             return next(err);
         }
         if(user.id !== song.userId){
-            const err = new Error("Song does not belong to current user"); //! maybe create a method to build these error handlers
-            err.title = 'Unauthorized delete';
-            err.status = 401;
+            const err = buildError("Song does not belong to current user", 'Unauthorized delete', 401)
+
             return next(err);
         }
 
