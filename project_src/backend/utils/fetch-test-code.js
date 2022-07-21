@@ -31,6 +31,8 @@ fetch('/api/session', {
       "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
     },
     body: JSON.stringify({
+      firstName : 'firstName here',
+      lastName: 'lastName Here',
       email: 'email here',
       username: 'username here',
       password: 'password here'
