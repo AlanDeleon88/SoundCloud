@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
           onDelete : 'cascade',
           hooks : true
         }
-      )
+      );
 
       //? association to album
       Song.belongsTo(
@@ -28,8 +28,16 @@ module.exports = (sequelize, DataTypes) => {
           onDelete : 'cascade',
           hooks : true
         }
-      )
+      );
     //TODO add association to comments songs has many comments.
+    Song.hasMany(
+      models.Comment,
+      {
+        foreignKey : 'songId',
+        onDelete : 'cascade',
+        hooks : true
+      }
+    )
     //TODO add association to playlist through join table songs belong to many playlists.
 
     }

@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album, Song } = require('../../db/models');
+const { User, Album, Song, Comment } = require('../../db/models');
 
 const { buildError } = require('../../utils/errorBuild.js');
 
@@ -22,14 +22,20 @@ const validateSong = [
     handleValidationErrors
 ];
 
+const validateComment = [
+    check('body')
+    .exists( { checkFalsy : true})
+    .notEmpty()
+    .withMessage('Body text required'),
+    handleValidationErrors
+]
+
 router.get(
     '/',
     async (req,res) =>{
         const songs = await Song.findAll();
         if(!songs){
-            const err = new Error('No songs found!');
-            err.title = 'No songs';
-            err.status = 404;
+            const err = buildError('No songs found!', 'No songs', 404)
             return next(err);
         }
         res.statusCode = 200;
@@ -45,14 +51,13 @@ router.get(
         const { id } = req.params;
         const song = await Song.findByPk(id);
         if(!song){
-            const err = new Error("Song couldn't be found");
-            err.title = 'Song not found';
-            err.status = 404;
+            const err = buildError("Song couldn't be found", 'Song not found', 404)
+
             return next(err);
         }
         //!lazy loading?
 
-        const artist = await User.findOne({
+        const artist = await User.findOne({ //! refactor later! try using a better query, look at comments route!
             where: {
                 id : song.userId
             },
@@ -65,16 +70,70 @@ router.get(
             },
             attributes: ['id', 'title', 'previewImage']
         })
-
+        song.dataValues.artist = artist
         res.statusCode = 200;
         res.json({
             song,
-            artist,
             album
 
         });
     }
 );
+
+router.get(
+    '/:id/comments',
+    async (req, res, next) => {
+        const {id} = req.params;
+        // const song = await Song.findByPk(id);
+        const song = await Song.findByPk(id, { //* much more effecient way for querying for associations.
+            include : {
+                    model : Comment,
+                    include : {
+                            model : User,
+                            attributes : ['id', 'username']
+                         }
+                        },
+            attributes : []
+        })
+        if(!song){
+            const err = buildError('Song could not be found', 'Song not found', 404);
+            return next(err);
+        }
+        // let comments = await song.getComments(); //! could revise this later to do a query that grabs the user too.
+        // console.log(song);
+
+        res.statusCode = 200;
+        res.json({"comments" : song});
+    }
+);
+
+router.post(
+    '/:id/comments',
+    [requireAuth, validateComment],
+    async (req,res, next) =>{
+        const {id} = req.params;
+        const { user } = req;
+        const { body } = req.body;
+        const song = await Song.findByPk(id);
+        if(!song){
+            const err = buildError('Song not found', 'No song', 404);
+            return next(err);
+        }
+        // if(!user){
+        //     const err = buildError('Must be logged in to comment.', 'Not logged in', 401);
+        //     return next(err);
+        // }
+        let comment = await Comment.create({
+            songId : id,
+            userId : user.id,
+            body: body
+        })
+        res.statusCode = 201;
+        res.json({
+            comment
+        })
+    }
+)
 
 router.put(
     '/:id',
@@ -120,15 +179,13 @@ router.delete(
         const song = await Song.findByPk(id);
 
         if(!song){
-            const err = new Error("Song couldn't be found"); //TODO maybe create a method to build these error handlers
-            err.title = 'Song not Found';
-            err.status = 404;
+            const err = buildError("Song couldn't be found", 'Song not Found', 404)
+
             return next(err);
         }
         if(user.id !== song.userId){
-            const err = new Error("Song does not belong to current user"); //! maybe create a method to build these error handlers
-            err.title = 'Unauthorized delete';
-            err.status = 401;
+            const err = buildError("Song does not belong to current user", 'Unauthorized delete', 401)
+
             return next(err);
         }
 

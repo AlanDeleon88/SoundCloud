@@ -7,7 +7,7 @@ const { User, Album, Song } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const e = require('express');
+const { buildError } = require('../../utils/errorBuild.js');
 
 const validateAlbum = [
     check('title') //!maybe add length restrictions later?
@@ -36,8 +36,7 @@ router.get( //? get all albums endpoint
         const albums = await Album.findAll();
         console.log('whatt');
         if(!albums){
-            let err = new Error('no albums could be found');
-            err.status = 404
+            const err = buildError('No albums could be found', 'No albums', 404)
             return next(err);
         }
         res.statusCode = 200;
@@ -53,25 +52,21 @@ router.get( //? get albums by id endpoint
         // console.log(album);
 
         if(!album){
-            let err = new Error("Couldn't find an Album with the specified id");
-            // let errors = [err.message];
-            err.title = 'Album not found';
-            // err.errors = errors;
-            err.status = 404;
+            const err = buildError("Couldn't find an Album with the specified id", 'Album not found', 404);
             next(err);
         }
         //!find album's songs here.
-        let songs = await album.getSongs()
-        let artist = await User.findOne({
+        let songs = await album.getSongs() //! could refactor this to get all songs and artist in one query.
+        let artist = await User.findOne({ //! check comments route for an example.
             where : {id : album.userId},
             attributes: ['id','username','previewImage']
         })
         // let songs = [];
+        album.dataValues.artist = artist;
         res.statusCode = 200;
         res.json(
         {
             album,
-            "Artist": artist,
             "Songs" : songs
 
         })
@@ -114,18 +109,12 @@ router.post( //* create a song for an album of the id.
         const album = await Album.findByPk(albumId);
 
         if(!album){
-            const err = new Error("Album couldn't be found")
-            err.title = 'Album not found';
-            err.status = 404;
-
+            const err = buildError("Album couldn't be found", 'Album not found', 404)
             return next(err);
         }
 
         if(userId !== album.userId){
-            const err = new Error("Album does not belong to current user")
-            err.title = 'Unauthorized add';
-            err.status = 401;
-            console.log(userId, album.userId);
+            const err = buildError("Album does not belong to current user", 'Unauthorized add', 401)
             return next(err);
         }
 
@@ -154,9 +143,7 @@ router.delete( //*delete album by id
         const album = await Album.findByPk(id);
         const currentUserId = req.user.id;
         if(!album){
-            const err = new Error("Album couldn't be found");
-            err.title = 'Album not Found';
-            err.status = 404;
+            const err = buildError("Album couldn't be found", 'Album not Found', 404)
             return next(err);
         }
         // console.log(album.userId, currentUserId);
@@ -175,9 +162,7 @@ router.delete( //*delete album by id
             })
         }
         else{
-            const err = new Error("Album does not belong to the current user!");
-            err.status = 401;
-            err.title = 'Unauthorized delete';
+            const err = buildError("Album does not belong to the current user!", 'Unauthorized delete', 401)
             return next(err);
         }
     }
@@ -192,9 +177,7 @@ router.put( //* edit album by id
         const {title, description, previewImage} = req.body;
         const currentUserId = req.user.id;
         if(!album){
-            const err = new Error("Album couldn't be found");
-            err.title = 'Album not Found';
-            err.status = 404;
+            const err = buildError("Album couldn't be found", 'Album not Found', 404)
             return next(err);
         }
         if(album.userId === currentUserId){
@@ -208,25 +191,10 @@ router.put( //* edit album by id
 
         }
         else{
-            const err = new Error("Album does not belong to the current user!");
-            err.status = 401;
-            err.title = 'Unauthorized delete';
+            const err = buildError("Album does not belong to the current user!", 'Unauthorized delete', 401 )
             return next(err);
         }
     }
 )
-//!test commit to rebuiild heroku
-// router.use((err, _req, res, _next) => { //! intercepts the regular error handler for validationError Handler
 
-//     res.statusCode(err.status || 500);
-//     // console.error(err);
-//     res.json({
-
-//         message : err.message,
-//         statusCode : err.status
-
-//         // stack : isProduction ? null : err.stack
-//     });
-//     next(err);
-// });
 module.exports = router;
