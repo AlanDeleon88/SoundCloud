@@ -22,7 +22,7 @@ const validateLogin = [
 
 
 router.post( //? login route grants user a token
-    '/',
+    '/login',
     validateLogin,
     async (req, res, next) => {
         const { credential, password } = req.body;
@@ -44,7 +44,7 @@ router.post( //? login route grants user a token
     );
 
 router.delete( //? logout route, deletes the token cookie.
-    '/',
+    '/logout',
     (_req, res) => {
         res.clearCookie('token');
         return res.json({ message: 'success'});
