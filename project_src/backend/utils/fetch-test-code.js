@@ -4,7 +4,7 @@
 //* SESSIONS FETCHES ----------------------------
 //!log in fetch request
 
-fetch('/api/session', {
+fetch('/api/session/login', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +14,7 @@ fetch('/api/session', {
   }).then(res => res.json()).then(data => console.log(data));
 
   //! logout route
-  fetch('/api/session', {
+  fetch('/api/session/logout', {
     method: 'DELETE',
     headers: {
       "Content-Type": "application/json",
@@ -145,6 +145,28 @@ fetch('/api/songs/:songId', {
     },
 }).then(res => res.json()).then(data => console.log(data));
 
+//! get all comments of a song
+
+fetch('/api/songs/:songId/comments', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+}).then(res => res.json()).then(data => console.log(data));
+
+//! post a new comment to a song
+fetch('/api/songs/:songId/comments', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+        body: JSON.stringify({
+            "body" : ""
+      })
+}).then(res => res.json()).then(data => console.log(data));
+
 //! create a song for an album based on album id
 fetch('/api/albums/:albumId/songs', {
     method: 'POST',
@@ -185,3 +207,26 @@ fetch('/api/songs/:songId', {
 }).then(res => res.json()).then(data => console.log(data));
 
 //* COMMENTS FETCHES ------------------------------------------------->
+//! edit a comment for a song
+
+fetch('/api/comments/17', {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+        body: JSON.stringify({
+            "body" : ""
+      })
+}).then(res => res.json()).then(data => console.log(data));
+
+//! delete a comment for a song
+
+fetch('/api/comments/17', {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+}).then(res => res.json()).then(data => console.log(data));
+

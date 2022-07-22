@@ -56,17 +56,17 @@ router.get( //? get albums by id endpoint
             next(err);
         }
         //!find album's songs here.
-        let songs = await album.getSongs()
-        let artist = await User.findOne({
+        let songs = await album.getSongs() //! could refactor this to get all songs and artist in one query.
+        let artist = await User.findOne({ //! check comments route for an example.
             where : {id : album.userId},
             attributes: ['id','username','previewImage']
         })
         // let songs = [];
+        album.dataValues.artist = artist;
         res.statusCode = 200;
         res.json(
         {
             album,
-            "Artist": artist,
             "Songs" : songs
 
         })
