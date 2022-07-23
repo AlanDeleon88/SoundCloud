@@ -55,10 +55,15 @@ router.post(
             // console.log('TEST-------------->');
             return next(newUser);
         }
-        await setTokenCookie(res, newUser);
+        let token = await setTokenCookie(res, newUser);
 
-        return res.json({
-            newUser
+        return res.json({ 
+            id : newUser.id,
+            firstName : newUser.firstName,
+            lastName : newUser.lastName,
+            email: newUser.email,
+            token: token
+
         });
     }
     )

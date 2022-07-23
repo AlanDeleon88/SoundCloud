@@ -37,8 +37,11 @@ router.post( //? login route grants user a token
          let token = await setTokenCookie(res, user);
 
         return res.json({
-            user,
-            "token" : `${token}`
+            id: user.id,
+            firstName: user.firstName,
+            lastName : user.lastName,
+            email: user.email,
+            token : token
         })
     }
     );
