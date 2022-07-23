@@ -82,7 +82,7 @@ router.post(
         // console.log('test', title);
         const { user } = req;
         const  userId = req.user.id;
-        console.log(userId);
+        // console.log(userId);
         let newAlbum = await Album.create(
             {
                 userId : userId,
