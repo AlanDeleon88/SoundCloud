@@ -571,7 +571,7 @@ Returns all the Albums created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: api/session/albums might change to api/albums/me ? 
+  * URL: api/session/albums
   * Body: none
 
 * Successful Response
@@ -821,7 +821,7 @@ Returns all the comments that belong to a song specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /songs/:songId/comments
+  * URL: api/songs/:songId/comments
   * Body: none
 
 * Successful Response
@@ -869,7 +869,7 @@ Create and return a new comment for a song specified by id.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /songs/:songId/comments
+  * URL: api/songs/:songId/comments
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -934,7 +934,7 @@ Update and return an existing comment.
 * Require proper authorization: Comment must belong to the current user
 * Request
   * Method: PUT
-  * URL: /comments/:commentId
+  * URL: api/comments/:commentId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -999,7 +999,7 @@ Delete an existing comment.
 * Require proper authorization: Comment must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /comments/:commentId
+  * URL: api/comments/:commentId
   * Body: none
 
 * Successful Response
