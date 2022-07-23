@@ -1210,7 +1210,7 @@ Creates and returns a new playlist.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /playlists
+  * URL: api/playlists
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1263,7 +1263,7 @@ Add a song to a playlist specified by the playlist's id.
 * Require proper authorization: Playlist must belong to the current user
 * Request
   * Method: POST
-  * URL: /playlists/:playlistId
+  * URL: api/playlists/:playlistId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1321,7 +1321,7 @@ Returns the details of a playlist specified by its id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /playlists/:playlistId
+  * URL: api/playlists/:playlistId
   * Body: none
 
 * Successful Response
@@ -1477,7 +1477,7 @@ Returns all the playlists created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: me/playlists
+  * URL: session/playlists
   * Body: none
 
 * Successful Response
