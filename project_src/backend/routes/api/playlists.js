@@ -105,5 +105,31 @@ router.post(
         })
 
     }
+);
+
+router.put(
+    '/:id',
+    [requireAuth, validatePlaylist],
+    async (req, res, next) =>{
+        const { id } = req.params;
+        const { user } = req;
+        const playlist = await Playlist.findByPk(id);
+        const {name, imageUrl} = req.body;
+
+        if(!playlist){
+            const err = buildError('Could not find playlist', 'invalid id', 404);
+            return next(err);
+        }
+        if(user.id !== playlist.userId){
+            const err = buildError('Playlist does not belong to current user', 'Unauthorized edit', 401);
+            return next(err);
+        }
+        await playlist.update({
+            name,
+            previewImage : imageUrl || 'N/A'
+        })
+        res.statusCode = 200;
+        res.json(playlist);
+    }
 )
 module.exports = router;

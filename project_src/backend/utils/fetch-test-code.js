@@ -277,3 +277,17 @@ fetch('/api/playlists/:playlistId', {
        songId : 1
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+//! edit a playlist from its id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+    body: JSON.stringify({
+       name: '',
+       imageUrl : 'img url'
+  })
+}).then(res => res.json()).then(data => console.log(data));
