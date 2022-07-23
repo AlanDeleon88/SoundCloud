@@ -18,7 +18,7 @@ module.exports = {
         onDelete : 'CASCADE'
       },
       songId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull : false,
         references : {
           model : 'Songs',

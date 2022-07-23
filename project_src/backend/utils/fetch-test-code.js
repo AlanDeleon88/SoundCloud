@@ -264,3 +264,16 @@ fetch('/api/playlists/', {
         previewImage: 'img-url'
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+//! add a song to playlist based on the playlist's id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+    body: JSON.stringify({
+       songId : 1
+  })
+}).then(res => res.json()).then(data => console.log(data));

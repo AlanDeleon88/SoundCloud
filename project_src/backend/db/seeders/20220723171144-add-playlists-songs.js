@@ -76,6 +76,9 @@ module.exports = {
 
      for (let playlistSong of playlistSongData){
       const {songId, playlistId} = playlistSong;
+      // console.log(songId, playlistId);
+      console.log('songId: ', songId);
+      console.log('playlistId: ', playlistId);
       await PlaylistSong.create({
         songId,
         playlistId

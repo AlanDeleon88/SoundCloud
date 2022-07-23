@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album, Song, Playlist } = require('../../db/models');
+const { User, Album, Song, Playlist, PlaylistSong } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -26,9 +26,9 @@ router.get(
             include : {
                 model : Song,
                 through: {
+                    // model: PlaylistSong,
                     attributes : []
                 }
-
 
             },
 
@@ -63,6 +63,47 @@ router.post(
 
         res.statusCode = 201;
         res.json(playlist);
+    }
+);
+
+router.post(
+    '/:id',
+    requireAuth,
+    async (req, res, next) => {
+        const { id } = req.params;
+        const { user } = req;
+        const {songId} = req.body;
+        const playlist = await Playlist.findByPk(id);
+        const song = await Song.findByPk(songId);
+
+        if(!playlist){
+            const err = buildError('Playlist could not be found', 'invalid id', 404);
+            return next(err);
+        }
+        if(user.id !== playlist.userId){
+            const err = buildError('Playlist does not belong to current user', 'Unauthorized add', 401);
+            return next(err);
+        }
+        if(!song){
+            const err = buildError('Song could not be found', 'invalid id', 404);
+            return next(err);
+        }
+        //  console.log('TESTING-------------------------------',song.id, playlist.id);
+        res.statusCode = 200;
+
+        // await playlist.addSong(song);
+        let newPlaylistSong = await PlaylistSong.create({
+            playlistId : playlist.id,
+            songId : song.id
+        })
+
+        // console.log(newPlaylistSong);
+        res.json({
+            id: newPlaylistSong.id,
+            playlistId : newPlaylistSong.playlistId,
+            songId : newPlaylistSong.songId
+        })
+
     }
 )
 module.exports = router;
