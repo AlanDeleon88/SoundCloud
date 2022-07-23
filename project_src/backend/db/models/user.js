@@ -33,6 +33,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey : 'userId', onDelete : 'cascade', hooks: true
         }
       );
+
+      User.hasMany(
+        models.Playlist,
+        {
+          foreignKey : 'userId', onDelete : 'cascade', hooks: true
+        }
+      )
     }
     toSafeObject() {
       const {id, username, email, firstName, lastName} = this; //!context of User instance.

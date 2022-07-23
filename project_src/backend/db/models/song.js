@@ -39,7 +39,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     )
     //TODO add association to playlist through join table songs belong to many playlists.
-
+    Song.belongsToMany(
+      models.Playlist,
+      {
+        through : models.PlaylistSong
+      }
+    )
     }
   }
   Song.init({
