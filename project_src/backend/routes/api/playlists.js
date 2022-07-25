@@ -131,5 +131,36 @@ router.put(
         res.statusCode = 200;
         res.json(playlist);
     }
+);
+
+router.delete(
+    '/:id',
+    [requireAuth],
+    async (req, res, next) =>{
+        const { user } = req;
+        const { id } = req.params;
+        const playlist = await Playlist.findByPk(id);
+
+        if(!playlist){
+            const err = buildError('Could not find playlist', 'invalid Id', 404);
+            return next(err);
+        }
+        if(playlist.userId !== user.id){
+            const err = buildError('Playlist does not belong to current user', 'Unauthorized delete', 401);
+            return next(err);
+        }
+
+        await Playlist.destroy({
+            where: {
+                id: id
+            }
+        })
+
+        res.statusCode = 200;
+        res.json({
+            "message" : "Successfully deleted",
+            "statusCode" : 200
+        });
+    }
 )
 module.exports = router;

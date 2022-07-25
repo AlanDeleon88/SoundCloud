@@ -291,3 +291,14 @@ fetch('/api/playlists/:playlistId', {
        imageUrl : 'img url'
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+//! delete a playlist from its id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+
+}).then(res => res.json()).then(data => console.log(data));
