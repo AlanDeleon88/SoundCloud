@@ -230,3 +230,75 @@ fetch('/api/comments/17', {
     },
 }).then(res => res.json()).then(data => console.log(data));
 
+//* PLAYLIST FETCHES ------------------------------------
+
+//! get current users playlists
+fetch('/api/session/playlists', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+}).then(res => res.json()).then(data => console.log(data));
+
+//! get detatils of a play list from id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+}).then(res => res.json()).then(data => console.log(data));
+
+//! post a new playlist
+
+fetch('/api/playlists/', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+    body: JSON.stringify({
+        "name" : "",
+        previewImage: 'img-url'
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+//! add a song to playlist based on the playlist's id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+    body: JSON.stringify({
+       songId : 1
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+//! edit a playlist from its id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+    body: JSON.stringify({
+       name: '',
+       imageUrl : 'img url'
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+//! delete a playlist from its id
+
+fetch('/api/playlists/:playlistId', {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+
+}).then(res => res.json()).then(data => console.log(data));

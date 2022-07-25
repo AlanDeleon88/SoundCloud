@@ -37,8 +37,11 @@ router.post( //? login route grants user a token
          let token = await setTokenCookie(res, user);
 
         return res.json({
-            user,
-            "token" : `${token}`
+            id: user.id,
+            firstName: user.firstName,
+            lastName : user.lastName,
+            email: user.email,
+            token : token
         })
     }
     );
@@ -79,7 +82,7 @@ router.get( //! route to get all albums from current user. maybe change to album
         res.json({userAlbums})
 
     }
-)
+);
 
 router.get(
     '/songs',
@@ -96,6 +99,20 @@ router.get(
         res.statusCode = 200;
         res.json({"Songs" : userSongs});
     }
-)
+);
 
+router.get(
+    '/playlists',
+    restoreUser,
+    async (req, res, next) => {
+        const { user } = req;
+        if(!user){
+            const err = buildError('No user is logged in.', 'No user can be found', 404)
+            next(err);
+        }
+        let playlists = await user.getPlaylists();
+        res.statusCode = 200;
+        res.json(playlists);
+    }
+)
 module.exports = router;

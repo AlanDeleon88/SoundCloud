@@ -78,17 +78,17 @@ router.post(
     [validateAlbum, requireAuth], //!validate req body
    //! check if there is a session user
     async (req, res, next) =>{
-        const {title, description, previewImage} = req.body;
+        const {title, description, imageUrl} = req.body;
         // console.log('test', title);
         const { user } = req;
         const  userId = req.user.id;
-        console.log(userId);
+        // console.log(userId);
         let newAlbum = await Album.create(
             {
                 userId : userId,
                 title,
                 description: description || 'N/A',
-                previewImage : previewImage || 'N/A'
+                previewImage : imageUrl || 'N/A'
             }
         )
         user.addAlbums([newAlbum]);
@@ -103,7 +103,7 @@ router.post( //* create a song for an album of the id.
     [validateSong, requireAuth],
     async (req, res, next) =>{
         const albumId = req.params.id;
-        const { title, description, url, previewImage} = req.body;
+        const { title, description, url, imageUrl} = req.body;
         const userId = req.user.id;
 
         const album = await Album.findByPk(albumId);
@@ -124,7 +124,7 @@ router.post( //* create a song for an album of the id.
             title: title,
             description: description || 'N/A',
             url: url,
-            previewImage : previewImage || 'N/A'
+            previewImage : imageUrl || 'N/A'
         })
 
         album.addSongs([newSong]);
@@ -174,7 +174,7 @@ router.put( //* edit album by id
     async (req, res, next) => {
         const {id} = req.params;
         const album = await Album.findByPk(id);
-        const {title, description, previewImage} = req.body;
+        const {title, description, imageUrl} = req.body;
         const currentUserId = req.user.id;
         if(!album){
             const err = buildError("Album couldn't be found", 'Album not Found', 404)
@@ -184,7 +184,7 @@ router.put( //* edit album by id
             await album.update({
                 title,
                 description : description || 'N/A',
-                previewImage : previewImage || 'N/A'
+                previewImage : imageUrl || 'N/A'
             })
             res.statusCode = 200;
             res.json(album);

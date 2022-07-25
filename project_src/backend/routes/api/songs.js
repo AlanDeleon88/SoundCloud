@@ -141,7 +141,7 @@ router.put(
     async (req, res, next) =>{
         const { id } = req.params;
         const { user } = req;
-        const { title, description, url, previewImage } = req.body;
+        const { title, description, url, imageUrl } = req.body;
 
         const song = await Song.findByPk(id);
 
@@ -161,7 +161,7 @@ router.put(
             title,
             description: description || 'N/A',
             url,
-            previewImage : previewImage
+            previewImage : imageUrl || 'N/A'
         })
         res.statusCode = 200;
 
