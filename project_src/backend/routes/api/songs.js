@@ -28,12 +28,86 @@ const validateComment = [
     .notEmpty()
     .withMessage('Body text required'),
     handleValidationErrors
-]
+];
+
+// const validateQuery = [
+//     check('page')
+//     .if(req.query.page >= 0)
+//     .withMessage('page query must be greater or equal to 0'),
+//     check('size')
+//     .if(req.query.size >= 0)
+//     .withMessage('size query must be greater or equal to 0')
+
+// ]
+const checkQuery = (page, size) =>{
+    let queryPage = Number(page);
+    let querySize = Number(size);
+    if(queryPage < 0){
+        const err = buildError('Page query must be equal to 0 or greater', 'Bad request', 400)
+        return err
+    }
+    if(querySize < 0){
+        const err = buildError('Size query must be equal to 0 or greater', 'Bad request', 400)
+        return err
+    }
+    if(Number.isNaN(queryPage)) queryPage = 0;
+    if(Number.isNaN(querySize)) querySize = 20;
+    return {
+        page: queryPage,
+        size : querySize
+    }
+}
 
 router.get(
     '/',
-    async (req,res) =>{
-        const songs = await Song.findAll();
+    async (req, res, next) =>{
+        const {Op} = require('sequelize');
+        const { page, size, title, createdAt } = req.query;
+
+        console.log('TEST --------------->', page, size, title, createdAt);
+
+        let pagination = checkQuery(page, size);
+
+        if(pagination instanceof Error){
+            return next(pagination);
+        }
+        const where = {};
+        if(title){
+            where.title = {[Op.like] : `%${title}%`};
+        }
+        if(createdAt){
+            // where.createdAt = createdAt;
+            // dateString = createdAt.toString();
+            // console.log(createdAt);
+            let dateCreatedAt = new Date(createdAt);
+            let trackDate = new Date(createdAt);
+            let nextDay = trackDate.getDate() + 1;
+            let endDate = new Date(trackDate.setDate(nextDay));
+            // console.log(dateCreatedAt, endDate );
+            where.createdAt = {[Op.between] : [dateCreatedAt, endDate]};
+        }
+        let offset = pagination.size * (pagination.page - 1);
+        // console.log(where);
+        const songs = await Song.findAll({
+            // where :
+            // {
+            //     title : {[Op.like] : `%${title}%`}
+
+            // },
+            where,
+            offset : offset,
+            limit: pagination.size
+        });
+        // if(page < 0){
+        //     const err = buildError('Page query must be equal to 0 or greater', 'Bad request', 400)
+        //     return next(err);
+        // }
+        // if(size < 0){
+        //     const err = buildError('Size query must be equal to 0 or greater', 'Bad request', 400)
+        //     return next(err);
+        // }
+
+
         if(!songs){
             const err = buildError('No songs found!', 'No songs', 404)
             return next(err);
