@@ -51,6 +51,24 @@ router.get(
 );
 
 router.get(
+    '/:id/playlists',
+    async (req, res, next) => {
+        const { id } = req.params;
+        const artist = await User.findByPk(id);
+        if(!artist){
+            const err = buildError('Could not find artist', 'invalid id', 404);
+            return next(err);
+        }
+        const playlists = await artist.getPlaylists();
+        res.statusCode = 200;
+
+        res.json({
+            Playlists: playlists
+        })
+    }
+)
+
+router.get(
     '/:id',
     async (req, res, next) => {
         const { id } = req.params;
