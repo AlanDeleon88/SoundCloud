@@ -115,6 +115,8 @@ router.get(
         res.statusCode = 200;
         res.json({
             "Songs" : songs,
+            page: page,
+            size : size
         })
     }
 );
