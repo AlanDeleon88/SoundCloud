@@ -13,6 +13,24 @@ const { buildError } = require('../../utils/errorBuild.js');
 // then take object ie artist --> artist.datavalues.sonngs.length, can use delete.obj method to get rid of key : value pairs.
 
 router.get(
+    '/:id/albums',
+    async (req, res, next) => {
+        const { id } = req.params;
+        const artist = await User.findByPk(id);
+        if(!artist){
+            const err = buildError('Could not find artist', 'invalid id', 404);
+            return next(err);
+        }
+        const albums = await artist.getAlbums();
+
+        res.statusCode = 200;
+        res.json({
+            Albums : albums
+        })
+    }
+    )
+
+router.get(
     '/:id/songs',
     async (req, res, next) => {
         const { id } = req.params;

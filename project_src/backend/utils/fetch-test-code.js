@@ -305,7 +305,30 @@ fetch('/api/playlists/:playlistId', {
 
 
 //* Artist fetches------------------------
+//! get details of an artist from id
 fetch('/api/artists/:artistId', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+
+}).then(res => res.json()).then(data => console.log(data));
+
+//! get all songs of an artist from id
+
+fetch('/api/artists/:artistId/songs', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "XSRF-TOKEN": `<value of XSRF-TOKEN cookie>`
+    },
+
+}).then(res => res.json()).then(data => console.log(data));
+
+//! get all albums of an artist from id
+
+fetch('/api/artists/:artistId/albums', {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
