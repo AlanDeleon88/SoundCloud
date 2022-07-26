@@ -12,16 +12,31 @@ const { buildError } = require('../../utils/errorBuild.js');
 // query for songs and albums related to artist id
 // then take object ie artist --> artist.datavalues.sonngs.length, can use delete.obj method to get rid of key : value pairs.
 
+router.get(
+    '/:id/songs',
+    async (req, res, next) => {
+        const { id } = req.params;
+        const artist = await User.findByPk(id);
+        if(!artist){
+            const err = buildError("Couldn't find an Artist with the specified id", 'invalid id', 404);
+            return next(err);
+        }
+        const songs = await artist.getSongs();
 
+        res.statusCode = 200;
+
+        res.json({
+            Songs: songs
+        })
+
+    }
+);
 
 router.get(
     '/:id',
     async (req, res, next) => {
         const { id } = req.params;
         const artist = await User.findByPk(id, {
-            where: {
-                id : id
-            },
             include:[
                 {model: Song, attributes : ['previewImage']}, {model: Album}
                 ],
@@ -45,6 +60,6 @@ router.get(
                 artist,
             });
     }
-)
+);
 
 module.exports = router;
