@@ -1035,7 +1035,7 @@ Returns the details of an artist specified by their id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId
+  * URL: api/artists/:artistId
   * Body: none
 
 * Successful Response
@@ -1074,7 +1074,7 @@ Returns all the songs created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId/songs
+  * URL: api/artists/:artistId/songs
   * Body: none
 
 * Successful Response
@@ -1121,7 +1121,7 @@ Returns all the albums created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId/albums
+  * URL: api/artists/:artistId/albums
   * Body: none
 
 * Successful Response
@@ -1375,7 +1375,7 @@ Updates and returns an existing playlist.
 * Require proper authorization: Playlist must belong to the current user
 * Request
   * Method: PUT
-  * URL: /playlist/:playlistId
+  * URL: api/playlist/:playlistId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1441,7 +1441,7 @@ Deletes an existing playlist.
 * Require proper authorization: Playlist must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /playlist/:playlistId
+  * URL: api/playlist/:playlistId
   * Body: none
 
 * Successful Response
@@ -1477,7 +1477,7 @@ Returns all the playlists created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: session/playlists
+  * URL: api/session/playlists
   * Body: none
 
 * Successful Response
@@ -1508,7 +1508,7 @@ Return songs filtered by query parameters.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /songs
+  * URL: api/songs
   * Query Parameters
     * page: integer, minimum: 0, maximum: 10, default: 0
     * size: integer, minimum: 0, maximum: 20, default: 20
