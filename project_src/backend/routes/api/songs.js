@@ -43,7 +43,7 @@ const checkQuery = (page, size) =>{
         const err = buildError('Size query must be equal to 0 or greater', 'Bad request', 400)
         return err;
     }
-    if(Number.isNaN(queryPage)) queryPage = 0;
+    if(Number.isNaN(queryPage)) queryPage = 1;
     if(Number.isNaN(querySize)) querySize = 20;
     return {
         page: queryPage,
@@ -113,8 +113,8 @@ router.get(
         res.statusCode = 200;
         res.json({
             "Songs" : songs,
-            page: page,
-            size : size
+            page: pagination.page,
+            size : pagination.size
         })
     }
 );
