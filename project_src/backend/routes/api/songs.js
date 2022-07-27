@@ -58,10 +58,8 @@ router.get(
         const { page, size, title, createdAt } = req.query;
 
         // console.log('TEST --------------->', page, size, title, createdAt);
-        if(!validator.isDate(createdAt)){
-            const err = buildError('CreatedAt is Invalid use YYYY-MM-DD format', 'Invalid Date', 400);
-            return next(err);
-        }
+
+
 
         let pagination = checkQuery(page, size);
 
@@ -73,6 +71,10 @@ router.get(
             where.title = {[Op.like] : `%${title}%`};
         }
         if(createdAt){
+            if(!validator.isDate(createdAt)){
+                const err = buildError('CreatedAt is Invalid use YYYY-MM-DD format', 'Invalid Date', 400);
+                return next(err);
+            }
 
             // console.log(createdAt);
             let dateCreatedAt = new Date(createdAt);
