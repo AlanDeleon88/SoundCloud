@@ -10,6 +10,8 @@ const { buildError } = require('../../utils/errorBuild.js');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+const validator = require('validator');
+
 const validateSong = [
     check('title')
     .exists({ checkFalsy : true })
@@ -30,25 +32,16 @@ const validateComment = [
     handleValidationErrors
 ];
 
-// const validateQuery = [
-//     check('page')
-//     .if(req.query.page >= 0)
-//     .withMessage('page query must be greater or equal to 0'),
-//     check('size')
-//     .if(req.query.size >= 0)
-//     .withMessage('size query must be greater or equal to 0')
-
-// ]
 const checkQuery = (page, size) =>{
     let queryPage = Number(page);
     let querySize = Number(size);
     if(queryPage < 0){
         const err = buildError('Page query must be equal to 0 or greater', 'Bad request', 400)
-        return err
+        return err;
     }
     if(querySize < 0){
         const err = buildError('Size query must be equal to 0 or greater', 'Bad request', 400)
-        return err
+        return err;
     }
     if(Number.isNaN(queryPage)) queryPage = 0;
     if(Number.isNaN(querySize)) querySize = 20;
@@ -64,7 +57,11 @@ router.get(
         const {Op} = require('sequelize');
         const { page, size, title, createdAt } = req.query;
 
-        console.log('TEST --------------->', page, size, title, createdAt);
+        // console.log('TEST --------------->', page, size, title, createdAt);
+        if(!validator.isDate(createdAt)){
+            const err = buildError('CreatedAt is Invalid use YYYY-MM-DD format', 'Invalid Date', 400);
+            return next(err);
+        }
 
         let pagination = checkQuery(page, size);
 
@@ -76,8 +73,7 @@ router.get(
             where.title = {[Op.like] : `%${title}%`};
         }
         if(createdAt){
-            // where.createdAt = createdAt;
-            // dateString = createdAt.toString();
+
             // console.log(createdAt);
             let dateCreatedAt = new Date(createdAt);
             let trackDate = new Date(createdAt);
