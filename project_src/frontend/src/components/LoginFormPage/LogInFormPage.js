@@ -24,7 +24,7 @@ const LogInFormPage = () =>{
         await dispatch(login(user)) //! important pattern for error handling calls to the backend!!
         .then(()=>{
 
-           //? history push here.
+           history.push('/');
 
 
         })
@@ -35,6 +35,8 @@ const LogInFormPage = () =>{
             setHasSubmitted(true);
             console.log(validationErrors);
         })
+
+
 
 
 
@@ -56,17 +58,23 @@ const LogInFormPage = () =>{
                 </ul>
 
             </>)}
-            <form className='login-container' onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor='usernameOrEmail'>Username or Email</label>
-                    <input id='userNameOrEmail' type='text' onChange={(e) => setCredential(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor='credential'>password</label>
-                    <input id='credential' type='password' onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <button type='submit'>Login</button>
-            </form>
+            <div className='login-container'>
+
+                <form onSubmit={handleSubmit}>
+                        <div className='login-input'>
+                            <label htmlFor='usernameOrEmail'>Username or Email</label>
+                            <input id='userNameOrEmail' type='text' value={credential} required onChange={(e) => setCredential(e.target.value)} />
+
+
+                            <label htmlFor='credential'>password</label>
+                            <input id='credential' type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
+
+                        </div>
+
+                    <button type='submit' className='login-button'>Login</button>
+                </form>
+
+            </div>
         </>
     )
 
