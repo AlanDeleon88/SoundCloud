@@ -11,6 +11,7 @@ const SignupFormPage = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -26,29 +27,36 @@ const SignupFormPage = () => {
             password
         }
         // console.log(user);
-        await dispatch(signup(user)) //! important pattern for error handling calls to the backend!!
-        .then(()=>{
+        if(password === confirmPassword){
 
-        //    history.push('/');
+            await dispatch(signup(user)) //! important pattern for error handling calls to the backend!!
+            .then(()=>{
+
+            //    history.push('/');
 
 
-        })
-        .catch(async (res) =>{
-            const data = await res.json();
-            // console.log(data.errors);
-            data.errors && await setValidationErrors(data.errors);
-            setHasSubmitted(true);
-            console.log(validationErrors);
-        })
+            })
+            .catch(async (res) =>{
+                const data = await res.json();
+                // console.log(data.errors);
+                data.errors && await setValidationErrors(data.errors);
+                setHasSubmitted(true);
+                console.log(validationErrors);
+            })
+
+        }
+        setValidationErrors(['Passwords Must Match!'])
+        // console.log(validationErrors);
+        return;
     }
     return(
         <>
             {validationErrors.length > 0 && (
             <>
                 <ul className='error-list'>
-                    {validationErrors.map(error => {
+                    {validationErrors.map((error, i) => {
                         return (
-                            <li>
+                            <li key={i}>
                                 {error}
                             </li>
                         )
@@ -74,6 +82,9 @@ const SignupFormPage = () => {
 
                         <label htmlFor='password'>Password</label>
                         <input id='password' value={password} onChange={(e) =>setPassword(e.target.value)}/>
+
+                        <label htmlFor='confirmPassword'>Confirm Password</label>
+                        <input id='confirmPassword' value={confirmPassword} onChange={(e) =>setConfirmPassword(e.target.value)}/>
 
                         <button type='submit' className='signup-button'>Signup</button>
 
