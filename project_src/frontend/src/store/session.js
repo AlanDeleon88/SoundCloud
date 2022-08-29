@@ -18,6 +18,8 @@ const removeUser = () => {
     }
 }
 
+
+
 export const login = (user) => async (dispatch) =>{
     const {credential, password} = user;
 
@@ -39,12 +41,6 @@ export const login = (user) => async (dispatch) =>{
         return response;
 
 
-    // else{
-    //     const errors = await response.json();
-    //     console.log(errors); //! add something else to return to give the component to render a failed log in page.
-    //     return errors;
-    // }
-
 }
 
 export const logout = () => async (dispatch) => {
@@ -55,6 +51,13 @@ export const logout = () => async (dispatch) => {
         dispatch(removeUser());
         //!some kind of return to let component know logout was successful.
     }
+}
+
+export const restoreUser = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session');
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
 }
 
 const setInitialState = () => {
