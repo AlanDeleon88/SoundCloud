@@ -19,7 +19,7 @@ function App() {
     <>
 
 
-      <Navigation />
+      <Navigation isLoaded={isLoaded}/>
 
       <Switch>
 

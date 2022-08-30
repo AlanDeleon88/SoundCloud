@@ -41,7 +41,7 @@ const SignupFormPage = () => {
                 // console.log(data.errors);
                 data.errors && await setValidationErrors(data.errors);
                 setHasSubmitted(true);
-                console.log(validationErrors);
+                // console.log(validationErrors);
             })
 
         }

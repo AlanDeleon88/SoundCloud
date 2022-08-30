@@ -1,4 +1,30 @@
 .fa-solid {
     font-size:x-large;
     color: red;
+
+}
+
+.fa-solid:active{
+    transform: scale(.95);
+    box-shadow: 3px 2px 22px 1px black;
+}
+
+.user-info-list{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-left: 0px;
+    width: fit-content;
+
+}
+
+.menu-list-item{
+    border: 1px solid black;
+    padding: 3px;
+
+}
+
+.log-out-button:active{
+
+    box-shadow: 3px 2px 22px 1px black;
 }

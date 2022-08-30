@@ -41,7 +41,8 @@ router.post( //? login route grants user a token
             firstName: user.firstName,
             lastName : user.lastName,
             email: user.email,
-            token : token
+            token : token,
+            username: user.username
         })
     }
     );

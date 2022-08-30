@@ -1,9 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import ProfileButton from "./ProfileButton";
-const Navigation = () => {
-    const currentUser = useSelector(state=>state.session.user);
-    // console.log(currentUser);
+import { useEffect, useState } from "react";
+const Navigation = ({isLoaded}) => {
+    const [currentUser, setCurrentUser] = useState({});
+    const user = useSelector(state=>state.session.user);
+    //  console.log(user);
+
+    useEffect(() =>{
+        setCurrentUser(user);
+        // console.log('user changed!');
+    },[user])
+    // console.log(isLoaded);
     return(
         <>
 
@@ -20,9 +28,19 @@ const Navigation = () => {
                         </li>
 
                     </>
-                ) :
+                )
+                :
                 (
-                    <ProfileButton />
+                    <>
+
+                        {isLoaded && (
+
+                            <ProfileButton user={currentUser}/>
+
+                        )}
+                        
+                    </>
+
                 )
 
                  }
