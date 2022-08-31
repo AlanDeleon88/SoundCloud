@@ -62,6 +62,7 @@ router.post(
             firstName : newUser.firstName,
             lastName : newUser.lastName,
             email: newUser.email,
+            username: username,
             token: token
 
         });

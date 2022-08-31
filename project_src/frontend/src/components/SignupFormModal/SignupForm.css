@@ -1,0 +1,9 @@
+.signup-inputs{
+    display: flex;
+    flex-direction: column;
+    color: red
+}
+
+.signup-container{
+    padding: 50px;
+}
