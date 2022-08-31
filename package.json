@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "npm --prefix project_src/backend install project_src/backend",
+    "install": "npm --prefix project_src/backend install project_src/backend && npm --prefix project_src/frontend install project_src/frontend",
     "dev:backend" : "npm install --prefix project_src/backend start",
     "sequelize" : "npm run --prefix project_src/backend sequelize",
     "sequelize-cli" : "npm run --prefix project_src/backend sequelize-cli",
