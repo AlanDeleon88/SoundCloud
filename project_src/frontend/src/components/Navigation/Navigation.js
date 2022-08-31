@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import ProfileButton from "./ProfileButton";
 import { useEffect, useState } from "react";
+import LoginFormModal from "../LoginFormModal";
 const Navigation = ({isLoaded}) => {
     const [currentUser, setCurrentUser] = useState({});
     const user = useSelector(state=>state.session.user);
@@ -11,42 +12,32 @@ const Navigation = ({isLoaded}) => {
         setCurrentUser(user);
         // console.log('user changed!');
     },[user])
-    // console.log(isLoaded);
+    let sessionLinks;
+
+    if(currentUser){
+        sessionLinks = (
+            <>
+                <ProfileButton user={currentUser} />
+            </>
+        )
+    }
+    else{
+        sessionLinks =(
+            <>
+                <LoginFormModal />
+                <NavLink to='/signup'>Signup</NavLink>
+            </>
+        )
+    }
     return(
         <>
 
 
             <ul className='nav-bar'>
-                {!currentUser ? (
-                    <>
-                        <li>
-                            <NavLink to='/login'>Login</NavLink>
-                        </li>
 
-                        <li>
-                            <NavLink to='/signup'>Signup</NavLink>
-                        </li>
-
-                    </>
-                )
-                :
-                (
-                    <>
-
-                        {isLoaded && (
-
-                            <ProfileButton user={currentUser}/>
-
-                        )}
-                        
-                    </>
-
-                )
-
-                 }
                 <li>
-
                     <NavLink to='/'>Home</NavLink>
+                    {isLoaded && sessionLinks}
                 </li>
             </ul>
 

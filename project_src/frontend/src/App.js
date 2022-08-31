@@ -27,9 +27,6 @@ function App() {
           <h1>Hello from App Home</h1>
         </Route>
 
-        <Route path='/login'>
-          <LogInFormPage />
-        </Route>
 
         <Route path='/signup'>
           <SignupFormPage />

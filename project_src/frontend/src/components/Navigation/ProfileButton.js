@@ -10,9 +10,6 @@ const ProfileButton = ({user}) =>{
     const userDropDownMenu = [user.username, user.email]
     const dispatch = useDispatch();
 
-
-
-
     const handleClick = () => {
         setShowMenu(!showMenu);
     }

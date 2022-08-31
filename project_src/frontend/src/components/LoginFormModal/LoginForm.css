@@ -1,0 +1,23 @@
+.login-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.login-input{
+    display: flex;
+    flex-direction: column;
+
+    width: min-content;
+    font-weight: bold;
+    padding: 75px;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: cetner;
+}

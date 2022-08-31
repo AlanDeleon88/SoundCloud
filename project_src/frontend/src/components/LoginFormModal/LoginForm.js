@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import { login } from '../../store/session';
 import {useHistory} from 'react-router-dom';
 
-import './LogInFormPage.css'
+import './LoginForm.css'
 
 
 const LogInFormPage = () =>{
@@ -55,7 +55,7 @@ const LogInFormPage = () =>{
             </>)}
             <div className='login-container'>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='form-container'>
                         <div className='login-input'>
                             <label htmlFor='usernameOrEmail'>Username or Email</label>
                             <input id='userNameOrEmail' type='text' value={credential} required onChange={(e) => setCredential(e.target.value)} />
