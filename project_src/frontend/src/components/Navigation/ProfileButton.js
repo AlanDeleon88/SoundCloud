@@ -2,18 +2,19 @@ import './ProfileButton.css'
 import {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import { NavLink, useHistory } from 'react-router-dom';
 
 
 
 const ProfileButton = ({user}) =>{
     const [showMenu, setShowMenu] = useState(false);
-    const userDropDownMenu = [user.username, user.email]
+    // const userDropDownMenu = [user.username, user.email, 'Albums']
     const dispatch = useDispatch();
-
+    const history = useHistory();
+    let username = user.username;
     const handleClick = () => {
         setShowMenu(!showMenu);
     }
-    // console.log(showMenu);
 
     useEffect(() => {
         if(!showMenu) return
@@ -27,6 +28,7 @@ const ProfileButton = ({user}) =>{
 
     const handleLogOut = async (e) => {
         await dispatch(logout());
+        history.push('/')
     }
 
     return (
@@ -37,6 +39,8 @@ const ProfileButton = ({user}) =>{
                     <div className='drop-down-menu'>
                         <ul style={{listStyle: 'none'}} className='user-info-list'>
                             {
+
+                            /* {
                                 userDropDownMenu.map((listItem, i) => {
                                     return(
                                         <li key={i} className='menu-list-item'>
@@ -44,7 +48,11 @@ const ProfileButton = ({user}) =>{
                                         </li>
                                     )
                                 })
+                            } */
                             }
+                            <li>{user.username}</li>
+                            <li>{user.email}</li>
+                            <li><NavLink to={`/me/albums`}> My Albums </NavLink></li>
                             <li className='menu-list-item log-out-button' onClick={handleLogOut}>
                                 Logout
                             </li>

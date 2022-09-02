@@ -1,0 +1,22 @@
+.album-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color: red;
+    border: 1px solid black;
+    font-size: 35px;
+    width: 150%;
+}
+
+.album-title{
+   margin-left: -15px;
+}
+
+.edit-album{
+    display: flex;
+    padding: 10px;
+    font-size: 30px;
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+}

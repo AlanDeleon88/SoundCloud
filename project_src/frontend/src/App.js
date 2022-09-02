@@ -1,12 +1,10 @@
-import LogInFormPage from "./components/LoginFormPage_DEPRECIATED";
-import SignupFormPage from "./components/SignupFormPage_DEPRECIATED";
 import Navigation from "./components/Navigation";
 import { Route, Switch, NavLink} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from './store/session';
 import {useState, useEffect} from 'react';
+import UserAlbums from "./components/UserAlbums";
 
-{/* <i class="fa-regular fa-user-astronaut"></i> */} //!astronaught icon
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,6 +13,8 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
 
   }, [dispatch])
+  const user = useSelector(state=>state.session.user);
+
   return isLoaded && (
     <>
 
@@ -24,7 +24,10 @@ function App() {
       <Switch>
 
         <Route exact path='/'>
-          <h1>Hello from App Home</h1>
+          <h1>SoundCloud!</h1>
+        </Route>
+        <Route path={`/me/albums`}>
+          <UserAlbums id={user.id}/>
         </Route>
 
       </Switch>

@@ -1,0 +1,10 @@
+.album-list{
+    display:flex;
+    justify-content: center;
+
+
+}
+
+.album-list-style{
+    list-style: none;
+}
