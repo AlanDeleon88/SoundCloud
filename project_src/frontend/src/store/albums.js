@@ -17,7 +17,7 @@ export const loadUserAlbums = (id) => async (dispatch) =>{
     const response = await csrfFetch(`/api/artists/${id}/albums`);
     if(response.ok){
         const albums = await response.json();
-        console.log('thunk', albums);
+        // console.log('thunk', albums);
         dispatch(loadAlbums(albums));
         return albums;
     }

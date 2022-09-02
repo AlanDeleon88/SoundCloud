@@ -9,12 +9,13 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
     const albums = useSelector(state=>state.albums);
-    //const albums = useSelector(state=>state.albums);
+
     console.log('user', id);
 
     useEffect(()=>{
         dispatch(loadUserAlbums(id)).then(()=>setIsLoaded(true));
     },[dispatch])
+
     //! change thunk action to make fetch to /artists/id/albums
 
     return(
