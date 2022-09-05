@@ -15,6 +15,7 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
     const currentUser = useSelector(state=>state.session.user);
     const match = useRouteMatch();
 
+    //!need to add logic for if a user has no albums, they can still see add album button.
     // if(currentUser){
     //     console.log('user', currentUser.id);
     // }
