@@ -75,7 +75,7 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
 
                     <Route exact path={match.url}>
                         {myAlbum && (
-                            <AddAlbumFormModal />
+                            <AddAlbumFormModal album={null}/>
                         )}
 
                     </Route>

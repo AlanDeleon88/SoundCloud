@@ -9,7 +9,8 @@ const AddAlbumFormModal = () => {
     return (
         <>
             <div className="add-album-button" onClick={() => setShowModal(true)}>
-                <i className="fa fa-plus" aria-hidden="true"></i>
+
+                 <i className="fa fa-plus" aria-hidden="true"></i>
             </div>
             {showModal &&(
                 <>

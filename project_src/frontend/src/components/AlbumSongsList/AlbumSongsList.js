@@ -10,7 +10,7 @@ const AlbumSongsList = ({album}) =>{
     let albumSongs = Object.values(useSelector(state=>state.songs));
     const artist = useSelector(state=>state.artist);
     const dispatch = useDispatch();
-
+    //TODO add a back button to user's albums;
     useEffect(() =>{
         dispatch(loadAlbumSongs(id))
         .then(() => dispatch(getArtist(userId)))

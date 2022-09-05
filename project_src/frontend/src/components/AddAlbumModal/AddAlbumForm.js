@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { addUserAlbum } from '../../store/albums';

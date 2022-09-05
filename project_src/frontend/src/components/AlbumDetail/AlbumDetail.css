@@ -48,11 +48,11 @@
 
 .edit-album{
     padding: 10px;
+    margin-right: 10px;
     font-size: 20px;
     border: 1px solid black;
     height: fit-content;
     width: fit-content;
-    margin-right: 10px;
     color: red;
 
 }

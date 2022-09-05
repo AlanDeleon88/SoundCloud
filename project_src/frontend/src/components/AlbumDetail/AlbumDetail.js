@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { deleteUserAlbum } from '../../store/albums';
 import DeleteAlbumModal from '../DeleteAlbumModal';
+import EditAlbumFormModal from '../EditAlbumModal';
 import AlbumSongsList from '../AlbumSongsList';
+
 
 
 const AlbumDetail = ({album}) => {
@@ -48,9 +50,11 @@ const AlbumDetail = ({album}) => {
                             <>
                                 <div className='album-controls'>
 
-                                    <button className='edit-album' onClick={handleEditClick}>
+                                    {/* <button className='edit-album' onClick={handleEditClick}>
                                         Edit
-                                    </button>
+                                    </button> */}
+                                    <EditAlbumFormModal album={album}/>
+
                                     <DeleteAlbumModal album={album}/>
                                 </div>
                             </>
