@@ -45,10 +45,16 @@ function App() {
             also to update songs, we can update a song when we have a song list in our redux store, just do a thunk action with
             the song id and do an update dispatch with the returned song from the back end to update our store.
             </p>
-          <UserAlbums id={2}/>
+            <div className='album-comp-container'>
+              <UserAlbums id={2}/>
+
+
+            </div>
         </Route>
         <Route path={`/me/albums`}>
-          <UserAlbums id={userId}/>
+          <div className='album-comp-container'>
+            <UserAlbums id={userId}/>
+          </div>
         </Route>
 
         <Route path={'/'}>

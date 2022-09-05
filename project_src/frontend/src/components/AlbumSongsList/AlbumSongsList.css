@@ -42,3 +42,14 @@
     height: 50px;
 
 }
+
+@media only screen and (max-width: 500px) {
+    .album-header{
+        width: 350px;
+    }
+
+    .song-item{
+        font-size: 15px;
+    }
+
+}

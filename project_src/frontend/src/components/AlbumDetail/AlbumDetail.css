@@ -8,6 +8,17 @@
 
 }
 
+@media only screen and (max-width: 500px) {
+    .album-container{
+        width: 350px;
+    }
+
+    .link-title{
+        font-size: 15px;
+    }
+
+}
+
 .album-list-title{
     display: flex;
     flex-direction: column;
