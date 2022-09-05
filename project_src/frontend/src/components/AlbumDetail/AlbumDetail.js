@@ -43,7 +43,7 @@ const AlbumDetail = ({album}) => {
             <Route exact path={`${match.url}`}>
                 <div className="album-container" onClick={handleAlbumClick}>
 
-                    <div className='album-title'>
+                    <div className='album-list-title'>
                     <NavLink to={`${match.url}/${title}/songs`}> {title} </NavLink>
                     </div>
 

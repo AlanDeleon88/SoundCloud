@@ -28,7 +28,7 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
                     {
                         albums.map(album =>{
                             return(
-                                <li key={album.id}>
+                                <li key={album.id} className='album-list-item'>
                                     <AlbumDetail album={album}/>
                                 </li>
                             )

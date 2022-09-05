@@ -12,9 +12,7 @@ const loadSongs = (payload) => {
 }
 
 const setInitialState = () =>{
-    return {
-        songs: null,
-    }
+    return {}
 }
 
 
@@ -22,9 +20,9 @@ export const loadAlbumSongs = (id) => async (dispatch) =>{
     const response = await csrfFetch(`/api/albums/${id}`)
     if(response.ok){
         const album = await response.json();
-        console.log('THUNK',album.Songs);
+        // console.log('THUNK',album.Songs);
         dispatch(loadSongs(album.Songs));
-        // return album.Songs;
+        return album.Songs;
     }
 }
 
@@ -33,8 +31,17 @@ const songsReducer = (state = setInitialState(), action) =>{
     switch(action.type){
         case LOAD_SONGS:
             const songs = action.payload;
+            // newState.songs = {};
             // console.log('reducer side', songs);
-            newState = {...songs}
+            // console.log(newState);
+            songs.forEach(song =>{
+                if(newState[song.id] === undefined){
+                    newState[song.id] = song;
+                }
+            })
+            console.log(newState);
+            // console.log(newSongState);
+            // newState = {...songs}
             return newState;
         default:
             return state;

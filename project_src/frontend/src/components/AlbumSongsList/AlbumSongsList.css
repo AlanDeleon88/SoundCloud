@@ -1,0 +1,44 @@
+.album-songs-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 1080px;
+}
+
+.album-song-table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 30px;
+    margin-top: 30px;
+
+}
+
+.album-header{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 1080px;
+}
+
+.album-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    font-size: 45px;
+}
+
+.song-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-size: 20px;
+    height: 50px;
+
+}

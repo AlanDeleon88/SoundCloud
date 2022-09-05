@@ -39,7 +39,12 @@ function App() {
 
         </Route>
         <Route path='/albums'>
-          <p>Test link to look at another album from another user.</p>
+          <p>Test link to look at another album from another user. If I use songs
+            I could link it up to the album song detail page instead. rather than the album list.
+            Aslo make multiple slices of state for whatever i need IE usersAlbum and albums can be different slices of state.
+            also to update songs, we can update a song when we have a song list in our redux store, just do a thunk action with
+            the song id and do an update dispatch with the returned song from the back end to update our store.
+            </p>
           <UserAlbums id={2}/>
         </Route>
         <Route path={`/me/albums`}>

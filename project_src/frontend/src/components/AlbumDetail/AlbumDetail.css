@@ -6,6 +6,15 @@
     border: 1px solid black;
     font-size: 35px;
     width: 150%;
+
+}
+
+.album-list-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    font-size: 45px;
 }
 
 
@@ -16,4 +25,5 @@
     border: 1px solid black;
     height: fit-content;
     width: fit-content;
+    margin-right: 30px;
 }
