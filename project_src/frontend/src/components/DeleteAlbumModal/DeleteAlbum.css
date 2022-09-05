@@ -1,0 +1,62 @@
+.delete-album-button{
+    font-size: 40px;
+    margin-right: 10px;
+    color: grey;
+}
+
+.delete-album-button:active{
+    color: black;
+    transform: scale(.90);
+}
+
+.delete-window-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 500px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.delete-prompt{
+    margin-top: 40px;
+    font-size: 25px;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:100%;
+
+
+}
+
+.button{
+    margin-bottom: 50px;
+    width: 100px;
+    height: 50px;
+
+}
+
+.yes{
+    background-color: orangered;
+    color:white;
+}
+
+.yes:active{
+    background-color: blue;
+    transform: scale(.90);
+}
+
+.no{
+    background-color: black;
+    color: white;
+}
+
+.no:active{
+    background-color: white;
+    color: black;
+    transform: scale(.90);
+}

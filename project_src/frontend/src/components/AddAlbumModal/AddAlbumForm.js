@@ -70,11 +70,11 @@ const AddAlbumForm = ({showModal}) => {
                         <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/>
                     </div>
 
+                    <button  type='submit'className='album-submit-button' onClick={handleSubmit}>
+                            Submit
+                    </button>
 
                 </form>
-                <button className='album-submit-button' onClick={handleSubmit}>
-                        Submit
-                </button>
             </div>
         </>
     )
