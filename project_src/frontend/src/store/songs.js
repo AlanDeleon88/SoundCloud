@@ -34,6 +34,7 @@ const songsReducer = (state = setInitialState(), action) =>{
             // newState.songs = {};
             // console.log('reducer side', songs);
             // console.log(newState);
+            newState = {};
             songs.forEach(song =>{
                 if(newState[song.id] === undefined){
                     newState[song.id] = song;

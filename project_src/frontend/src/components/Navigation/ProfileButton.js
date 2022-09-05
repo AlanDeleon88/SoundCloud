@@ -50,9 +50,9 @@ const ProfileButton = ({user}) =>{
                                 })
                             } */
                             }
-                            <li>{user.username}</li>
-                            <li>{user.email}</li>
-                            <li><NavLink to={`/me/albums`}> My Albums </NavLink></li>
+                            <li className='user-info-list-item'>{user.username}</li>
+                            <li className='user-info-list-item'>{user.email}</li>
+                            <li className='user-info-list-item'><NavLink to={`/me/albums`}> My Albums </NavLink></li>
                             <li className='menu-list-item log-out-button' onClick={handleLogOut}>
                                 Logout
                             </li>

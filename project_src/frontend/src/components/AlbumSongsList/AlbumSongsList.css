@@ -1,7 +1,7 @@
 .album-songs-container{
     display: flex;
     justify-content: flex-start;
-    width: 1080px;
+    width:100%;
 }
 
 .album-song-table{
@@ -21,7 +21,7 @@
 
     border: 2px solid black;
     border-collapse: collapse;
-    width: 1080px;
+    width: 720px;
 }
 
 .album-title{

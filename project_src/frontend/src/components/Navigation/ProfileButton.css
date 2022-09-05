@@ -16,8 +16,13 @@
     padding-left: 0px;
     width: fit-content;
 
+
+
 }
 
+.user-info-list-item{
+    border: 1px solid black;
+}
 .menu-list-item{
     border: 1px solid black;
     padding: 3px;

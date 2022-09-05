@@ -7,7 +7,6 @@ import { csrfFetch } from '../../store/csrf';
 
 const AlbumDetail = ({album}) => {
     const {title, id, previewImage, userId} = album;
-    const [showSongs, setShowSongs] = useState(false);
 
     const [myAlbum, setMyAlbum] = useState(false);
     // const songs = Object.values(useSelector(state=>state.songs));
@@ -30,7 +29,11 @@ const AlbumDetail = ({album}) => {
         }
     },[])
     const handleAlbumClick = (e) =>{
-        setShowSongs(!showSongs)
+        // history.push(`${match.url}/${title}/songs`)
+
+    }
+
+    const handleEditClick = (e) => {
 
     }
 
@@ -43,15 +46,15 @@ const AlbumDetail = ({album}) => {
             <Route exact path={`${match.url}`}>
                 <div className="album-container" onClick={handleAlbumClick}>
 
-                    <div className='album-list-title'>
-                    <NavLink to={`${match.url}/${title}/songs`}> {title} </NavLink>
+                    <div className='album-list-title' >
+                    <NavLink to={`${match.url}/${title}/songs`} className='link-title'> {title} </NavLink>
                     </div>
 
                         {myAlbum &&(
                             <>
-                                <div className='edit-album'>
+                                <button className='edit-album' onClick={handleEditClick}>
                                     Edit
-                                </div>
+                                </button>
                             </>
                         )}
 

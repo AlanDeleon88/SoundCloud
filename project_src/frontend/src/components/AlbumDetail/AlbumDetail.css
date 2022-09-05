@@ -2,9 +2,8 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    color: red;
-    border: 1px solid black;
-    font-size: 35px;
+    border: 2px solid black;
+    border-collapse: collapse;
     width: 150%;
 
 }
@@ -14,16 +13,35 @@
     flex-direction: column;
     justify-content: center;
     height: 150px;
-    font-size: 45px;
+
+
 }
 
+.link-title{
+    text-decoration: none;
+    font-size: 40px;
+    margin-left : 20px;
+    color: black;
+}
+
+.link-title:active{
+    color:blue;
+    transform: scale(.90);
+}
 
 .edit-album{
     display: flex;
     padding: 10px;
-    font-size: 30px;
+    font-size: 20px;
     border: 1px solid black;
     height: fit-content;
     width: fit-content;
     margin-right: 30px;
+    color: red;
+
+}
+
+.edit-album:active{
+    color:blue;
+    transform: scale(.90);
 }
