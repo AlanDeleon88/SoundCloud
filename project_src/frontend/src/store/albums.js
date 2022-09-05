@@ -60,7 +60,9 @@ export const loadUserAlbums = (id) => async (dispatch) =>{
 }
 
 export const deleteUserAlbum = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/albums/${id}`);
+    const response = await csrfFetch(`/api/albums/${id}`,{
+        method: 'DELETE'
+    });
     if(response.ok){
         const message = await response.json();
         dispatch(deleteAlbum(id));
