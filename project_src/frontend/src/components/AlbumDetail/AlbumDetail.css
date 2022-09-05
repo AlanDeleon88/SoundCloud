@@ -4,7 +4,7 @@
     align-items: center;
     border: 2px solid black;
     border-collapse: collapse;
-    width: 150%;
+    width: 720px;
 
 }
 
@@ -19,7 +19,7 @@
 
 .link-title{
     text-decoration: none;
-    font-size: 40px;
+    font-size: 30px;
     margin-left : 20px;
     color: black;
 }

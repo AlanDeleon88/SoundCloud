@@ -51,7 +51,14 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
         <>
             {isLoaded &&
             (
+
             <div className='album-list'>
+                <Route exact path={match.url}>
+
+                    <h1>User Header place holder</h1>
+
+                </Route>
+
                 <ul className='album-list-style'>
 
                     {
@@ -65,14 +72,14 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
 
                     }
 
-                    <Route exact path={match.url}>
 
+                    <Route exact path={match.url}>
                         {myAlbum && (
                             <AddAlbumFormModal />
                         )}
 
-
                     </Route>
+
 
                     </ul>
 
