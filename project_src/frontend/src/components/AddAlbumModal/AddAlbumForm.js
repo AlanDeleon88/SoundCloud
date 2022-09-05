@@ -57,20 +57,23 @@ const AddAlbumForm = ({showModal}) => {
                 )}
 
                 <form className='add-album-form' onSubmit={handleSubmit}>
-                    <h3>Add Album:</h3>
-                    <label htmlFor='title'>Title</label>
-                    <input id='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
-                    <label htmlFor='description'>Description</label>
-                    <input id='description' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <div className='album-form-inputs'>
+                     <h4>Add Album:</h4>
+                        <label htmlFor='title'>Title</label>
+                        <input id='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
-                    <label htmlFor='imageUrl'>Image-Url</label>
-                    <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/>
+                        <label htmlFor='description'>Description</label>
+                        <input id='description' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
+
+                        <label htmlFor='imageUrl'>Image-Url</label>
+                        <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/>
+                    </div>
+
 
                 </form>
-
                 <button className='album-submit-button' onClick={handleSubmit}>
-                    Submit
+                        Submit
                 </button>
             </div>
         </>
