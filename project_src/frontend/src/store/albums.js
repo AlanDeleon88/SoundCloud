@@ -6,6 +6,13 @@ const ADD_ALBUM = 'albums/ADD_ALBUMS';
 const DELETE_ALBUM = 'albums/DELETE_ALBUM';
 const EDIT_ALBUM = 'albums/EDIT_ALBUM';
 
+const deleteAlbum = (id) => {
+    return {
+        type:DELETE_ALBUM,
+        id
+    }
+}
+
 const loadAlbums = (albums) => {
     return{
         type:LOAD_ALBUMS,
@@ -19,6 +26,8 @@ const addAlbum = (album) => {
         album,
     }
 }
+
+
 
 export const addUserAlbum = (album) => async (dispatch) => {
     const {title, description, imageUrl} = album;
@@ -50,6 +59,16 @@ export const loadUserAlbums = (id) => async (dispatch) =>{
 
 }
 
+export const deleteUserAlbum = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/${id}`);
+    if(response.ok){
+        const message = await response.json();
+        dispatch(deleteAlbum(id));
+    }
+}
+
+
+
 const setInitialState = () =>{
     return {};
 }
@@ -74,6 +93,10 @@ const albumsReducer = (state = setInitialState(), action) =>{
             const album = action.album;
             console.log(action.album);
             newState[album.id] = album;
+            return newState;
+        case DELETE_ALBUM:
+            const id = action.id;
+            delete newState[id];
             return newState;
 
         default:

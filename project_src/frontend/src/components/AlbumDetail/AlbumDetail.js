@@ -2,8 +2,9 @@ import './AlbumDetail.css'
 import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
+import { deleteUserAlbum } from '../../store/albums';
 import AlbumSongsList from '../AlbumSongsList';
-import { csrfFetch } from '../../store/csrf';
+
 
 const AlbumDetail = ({album}) => {
     const {title, id, previewImage, userId} = album;
@@ -37,6 +38,17 @@ const AlbumDetail = ({album}) => {
 
     }
 
+    const handleDeleteClick = async (e) =>{
+        // console.log(album.id);
+        //TODO Look up a way to add a confirmation alert or window to make sure user wants to delete album.
+        return await dispatch(deleteUserAlbum(album.id))
+        .catch( async (res)=>{
+            const data = await res.json();
+            const errors = data.errors;
+            window.alert(errors); //!temp
+        })
+    }
+
     // console.log(myAlbum);
     return(
         <>
@@ -52,9 +64,14 @@ const AlbumDetail = ({album}) => {
 
                         {myAlbum &&(
                             <>
-                                <button className='edit-album' onClick={handleEditClick}>
-                                    Edit
-                                </button>
+                                <div className='album-controls'>
+
+                                    <button className='edit-album' onClick={handleEditClick}>
+                                        Edit
+                                    </button>
+                                    <button className='delete-album' onClick={handleDeleteClick}> <i className="fa fa-trash" aria-hidden="true"></i> </button>
+
+                                </div>
                             </>
                         )}
 

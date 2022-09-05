@@ -29,14 +29,30 @@
     transform: scale(.90);
 }
 
-.edit-album{
+.album-controls{
     display: flex;
+    justify-content: space-around;
+}
+
+.delete-album{
+    margin-right: 10px;
+    width: fit-content;
+    font-size: 30px;
+    border: 1px solid black;
+}
+
+.delete-album:active{
+    color: white;
+    background-color: black;
+}
+
+.edit-album{
     padding: 10px;
     font-size: 20px;
     border: 1px solid black;
     height: fit-content;
     width: fit-content;
-    margin-right: 30px;
+    margin-right: 10px;
     color: red;
 
 }
