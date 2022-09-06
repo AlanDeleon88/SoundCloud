@@ -51,6 +51,7 @@ const AlbumSongsList = ({album}) =>{
             <h2>by {artist.username} click this later to go to user info page with a link to all his albums later</h2>
         </div>
         <div className="album-songs-container">
+            { /*might have to render songs in the modal componenent instead of here. i should make a new branch for this feature.*/}
             <table className="album-song-table">
                 <tbody>
                     {
