@@ -40,6 +40,9 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
                 setMyAlbum(false);
             }
         }
+        if(match.url === '/me/albums'){
+            setMyAlbum(true);
+        }
     })
 
     //! change thunk action to make fetch to /artists/id/albums
@@ -75,7 +78,17 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
 
                     <Route exact path={match.url}>
                         {myAlbum && (
-                            <AddAlbumFormModal album={null}/>
+                            <>
+                                <div className='add-album-bundle'>
+                                    {albums.length <= 0 && (
+                                        <h2>Add a new Album</h2>
+                                    )}
+
+                                    <AddAlbumFormModal album={null}/>
+
+                                </div>
+
+                            </>
                         )}
 
                     </Route>
