@@ -9,6 +9,7 @@ const AlbumSongsList = ({album}) =>{
     const {id, userId, title} = album;
     const [isLoaded, setIsLoaded] = useState(false);
     const [myAlbum, setMyAlbum] = useState(false);
+
     let albumSongs = Object.values(useSelector(state=>state.songs));
     const artist = useSelector(state=>state.artist);
     const currentUser = useSelector(state => state.session.user);
@@ -38,39 +39,48 @@ const AlbumSongsList = ({album}) =>{
     // console.log(artist);
     return(
         <>
-            <h2>
-                TESTING SONGS ROUTE.
-            </h2>
+        {!isLoaded ? (
+            <h1>Loading</h1>
+        )
+        :
+
+        (
+        <>
             <div className='album-header'>
-                <h1 className="album-title"> {title}</h1>
-                <h2>by {artist.username} click this later to go to user info page with a link to all his albums later</h2>
-            </div>
-            <div className="album-songs-container">
-                <table className="album-song-table">
-                    <tbody>
-                        {
-                        isLoaded ? (
-                            albumSongs.map(song =>{
-                                return(
-                                    <tr key={song.id} className='song-item'>
-                                        <td>
-                                            {song.title}
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        ) : null
-                    }
-                    </tbody>
-                </table>
+            <h1 className="album-title"> {title}</h1>
+            <h2>by {artist.username} click this later to go to user info page with a link to all his albums later</h2>
+        </div>
+        <div className="album-songs-container">
+            <table className="album-song-table">
+                <tbody>
+                    {
+                    isLoaded ? (
+                        albumSongs.map(song =>{
+                            return(
+                                <tr key={song.id} className='song-item'>
+                                    <td>
+                                        {song.title}
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    ) : null
+                }
+                </tbody>
+            </table>
 
 
-            </div>
+        </div>
+
+        </>
+
+        )}
             {myAlbum && (
 
                     <AddSongModal album={album}/>
-               
+
             )}
+
 
         </>
     )
