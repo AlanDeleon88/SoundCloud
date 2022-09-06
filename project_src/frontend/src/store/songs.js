@@ -11,10 +11,39 @@ const loadSongs = (payload) => {
     }
 }
 
+const addSong = (song) => {
+    return {
+        type:ADD_SONG,
+        song
+
+    }
+}
+
 const setInitialState = () =>{
     return {}
 }
 
+export const addAlbumSong = (song) => async (dispatch) => {
+    const {title, songUrl, imageUrl, description, albumId} = song;
+    // console.log(song);
+    const response = await csrfFetch(`/api/albums/${albumId}/songs`, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            title,
+            description,
+            imageUrl,
+            url: songUrl
+        })
+    })
+
+    if(response.ok){
+        const newSong = await response.json();
+        // console.log('add song THUNK', newSong.song);
+        dispatch(addSong(newSong.song));
+        return newSong;
+    }
+}
 
 export const loadAlbumSongs = (id) => async (dispatch) =>{
     const response = await csrfFetch(`/api/albums/${id}`)
@@ -40,9 +69,14 @@ const songsReducer = (state = setInitialState(), action) =>{
                     newState[song.id] = song;
                 }
             })
-            console.log(newState);
+            // console.log(newState);
             // console.log(newSongState);
             // newState = {...songs}
+            return newState;
+        case ADD_SONG:
+            const newSong = action.song;
+            // console.log('REDUCER', newSong);
+            newState[newSong.id] = newSong;
             return newState;
         default:
             return state;

@@ -130,7 +130,7 @@ router.post( //* create a song for an album of the id.
         album.addSongs([newSong]);
         res.statusCode = 201;
         res.json({
-            newSong
+            song : newSong
         })
     }
 );
