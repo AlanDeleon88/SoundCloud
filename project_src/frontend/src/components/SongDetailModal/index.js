@@ -1,23 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState } from 'react';
 import { Modal } from '../../context/Modal';
-import { useSelector } from 'react-redux';
-import { loadAlbumSongs } from '../../store/songs';
-import SongDetail from './AddAlbumForm';
-import './AddAlbumForm.css';
+import SongDetail from './SongDetail';
+import './SongDetail.css'
 
-const SongDetailModal = ({album}) => {
+const SongDetailModal = ({song, album, artist}) => {
     const [showModal, setShowModal] = useState(false);
+
+
     //!might have to render the songs in here instead of on the album song list page.
     return (
         <>
-            <div className="add-album-button" onClick={() => setShowModal(true)}>
+            <div onClick={() => setShowModal(true)}>
 
-                 <i className="fa fa-plus" aria-hidden="true"></i>
+                {song.title}
+
             </div>
             {showModal &&(
                 <>
                     <Modal onClose={() => setShowModal(false)}>
-                        <SongDetail showModal={setShowModal} />
+                        <SongDetail showModal={setShowModal} song={song} album={album} artist={artist}/>
                     </Modal>
                 </>
             )}

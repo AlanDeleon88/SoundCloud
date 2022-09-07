@@ -19,8 +19,25 @@ const addSong = (song) => {
     }
 }
 
+const deleteSong = (id) => {
+    return {
+        type: DELETE_SONG,
+        id
+    }
+}
+
 const setInitialState = () =>{
     return {}
+}
+
+export const deleteUserSong = (id) => async (dispatch) =>{
+    const response = await csrfFetch(`/api/songs/${id}`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok){
+        dispatch(deleteSong(id));
+    }
 }
 
 export const addAlbumSong = (song) => async (dispatch) => {
@@ -78,6 +95,9 @@ const songsReducer = (state = setInitialState(), action) =>{
             // console.log('REDUCER', newSong);
             newState[newSong.id] = newSong;
             return newState;
+        case DELETE_SONG:
+           delete newState[action.id];
+           return newState;
         default:
             return state;
     }

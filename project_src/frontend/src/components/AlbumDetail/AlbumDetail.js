@@ -1,8 +1,7 @@
 import './AlbumDetail.css'
 import {useState, useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
-import { deleteUserAlbum } from '../../store/albums';
+import { useSelector } from 'react-redux';
+import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
 import DeleteAlbumModal from '../DeleteAlbumModal';
 import EditAlbumFormModal from '../EditAlbumModal';
 import AlbumSongsList from '../AlbumSongsList';
@@ -10,7 +9,7 @@ import AlbumSongsList from '../AlbumSongsList';
 
 
 const AlbumDetail = ({album}) => {
-    const {title, id, previewImage, userId} = album;
+    const {title, previewImage, userId} = album;
 
     const [myAlbum, setMyAlbum] = useState(false);
     const user = useSelector(state=>state.session.user);
@@ -23,14 +22,10 @@ const AlbumDetail = ({album}) => {
                 setMyAlbum(true);
             }
         }
-    },[])
+    },[user, userId])
     const handleAlbumClick = (e) =>{
         // history.push(`${match.url}/${title}/songs`)
 
-    }
-
-    const handleEditClick = (e) => {
-        //TODO make an edit album modal, pass in album as prop.
     }
 
     // console.log(myAlbum);

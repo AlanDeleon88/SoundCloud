@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadUserAlbums } from "../../store/albums";
 import AlbumDetail from "../AlbumDetail";
@@ -27,7 +27,7 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
             setIsLoaded(true)
         })
 
-    },[dispatch])
+    },[dispatch, id])
 
     useEffect(() =>{
         if((albums.length > 0) && (currentUser)){
@@ -44,12 +44,9 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
         if(match.url === '/me/albums'){
             setMyAlbum(true);
         }
-    })
+    },[currentUser, match.url, albums])
 
     //! change thunk action to make fetch to /artists/id/albums
-    const handleAddClick = (e) =>{
-
-    }
 
     return(
         <>

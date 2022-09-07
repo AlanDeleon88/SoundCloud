@@ -1,18 +1,19 @@
-import './DeleteAlbum.css'
+import './DeleteSong.css'
 import { useDispatch } from 'react-redux';
-import { deleteUserAlbum } from '../../store/albums';
-const DeleteAlbum = ({album, showModal}) =>{
+import { deleteUserSong } from '../../store/songs';
+const DeleteSong = ({song, showModal}) =>{
     const dispatch = useDispatch();
 
     const handleYes = async (e) =>{
         e.preventDefault();
-        return await dispatch(deleteUserAlbum(album.id))
+        return await dispatch(deleteUserSong(song.id))
         .then(() => {
             showModal(false);
         })
         .catch( async (res)=>{
             const data = await res.json();
             const errors = data.message;
+            console.log(data);
             window.alert(errors); //!temp
         })
     }
@@ -25,7 +26,7 @@ const DeleteAlbum = ({album, showModal}) =>{
     return(
         <div className="delete-window-container">
             <div className='delete-prompt'>
-                Are you sure you want to delete this album?
+                Are you sure you want to delete this song?
             </div>
             <div className='button-container'>
                 <button className='button yes' onClick={handleYes}>Yes</button>
@@ -36,4 +37,4 @@ const DeleteAlbum = ({album, showModal}) =>{
     )
 }
 
-export default DeleteAlbum;
+export default DeleteSong;

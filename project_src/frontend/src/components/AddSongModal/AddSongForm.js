@@ -1,20 +1,18 @@
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useRouteMatch } from 'react-router-dom';
 import { addAlbumSong } from '../../store/songs';
 
 
 const AddSongForm = ({showModal, album}) => {
     const albumId = album.id;
     const dispatch = useDispatch();
-    const match = useRouteMatch();
-    const history = useHistory();
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [songUrl, setSongUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    // const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +32,7 @@ const AddSongForm = ({showModal, album}) => {
         .catch(async (res) =>{
             const data = await res.json();
             const errors = data.errors;
-            setHasSubmitted(true);
+            // setHasSubmitted(true);
             if(data.errors && data){
                 setValidationErrors(errors);
             }

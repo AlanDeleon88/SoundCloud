@@ -1,0 +1,73 @@
+.song-detail-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 350px;
+    border: 2px solid black;
+}
+
+.song-image-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.song-text-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 25px;
+
+}
+
+.image-div{
+    border: 1px solid black;
+    width: 220px;
+    height: 220px;
+    margin-right: 25px;
+    margin-top: 50px;
+}
+
+.song-buttons-container{
+    width:100%;
+    display:flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.button-bundle{
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    height: 50px;
+    margin-right: 25px;
+    margin-bottom: 50px;
+}
+
+.edit{
+    width: 100px;
+}
+
+.delete{
+    width: 100px;
+}
+
+.song-detial-album-title{
+    font-size: 40px;
+}
+
+.song-title{
+    font-size: 50px;
+}
+
+.artist-username{
+    font-size: 30px;
+}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { loadAlbumSongs } from "../../store/songs";
 import { getArtist } from "../../store/artist";
 import AddSongModal from "../AddSongModal";
+import SongDetailModal from "../SongDetailModal";
 import './AlbumSongsList.css'
 
 const AlbumSongsList = ({album}) =>{
@@ -21,7 +22,7 @@ const AlbumSongsList = ({album}) =>{
         .then(() => dispatch(getArtist(userId)))
         .then(()=>setIsLoaded(true));
 
-    },[dispatch])
+    },[dispatch, id, userId])
 
     useEffect(() =>{
         if(currentUser){
@@ -32,7 +33,7 @@ const AlbumSongsList = ({album}) =>{
                 setMyAlbum(false);
             }
         }
-    })
+    },[userId, currentUser])
 
     // console.log(Object.values(albumSongs));
     // console.log(isLoaded);
@@ -60,7 +61,7 @@ const AlbumSongsList = ({album}) =>{
                             return(
                                 <tr key={song.id} className='song-item'>
                                     <td>
-                                        {song.title}
+                                        <SongDetailModal song={song} album={album} artist={artist}/>
                                     </td>
                                 </tr>
                             )
