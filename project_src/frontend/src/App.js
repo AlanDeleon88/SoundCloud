@@ -9,8 +9,11 @@ import UserAlbums from "./components/UserAlbums";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-
-
+  //!work on splash page next, make a query to songs to get a handful of songs and display them in the splash page
+  //! work on making an actual navbar.
+  //!create a splash header
+  //!create a user's album header
+  //!created an album header
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
 
