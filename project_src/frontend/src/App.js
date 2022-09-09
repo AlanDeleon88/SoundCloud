@@ -20,9 +20,8 @@ function App() {
 
   //TODO double check width styling in lists
   //TODO fix profile button dropdown menu /////// DONE?
-  //TODO add place holder image to song detail card
   //TODO fix warnings
-  //TODO add edit songs functionality
+  //TODO add edit songs functionality4
   //TODO make a readme
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
