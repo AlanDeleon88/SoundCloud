@@ -5,9 +5,8 @@ import { setUrl } from "../../store/songUrl";
 import { getAlbum } from "../../store/currentAlbum";
 
 const SongDetail = ({song, album, artist}) => {
-    //TODO add song details
-    //TODO add a placeholder for song image
-    //TODO add buttons to delete and edit song.
+
+
     const dispatch = useDispatch();
 
     const handleAlbumClick = () =>{
@@ -38,7 +37,7 @@ const SongDetail = ({song, album, artist}) => {
                  </div>
 
                 <div className='image-div'>
-                    preview image place holder
+                    <img src='https://i.imgur.com/OMht5cw.png'/>
                 </div>
 
             </div>

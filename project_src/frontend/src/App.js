@@ -16,15 +16,14 @@ import './index.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const songUrl = useSelector(state => state.songUrl);
-  const currentAlbum = useSelector(state=>state.currentAlbum);
   const img_url = 'https://i.imgur.com/DUdZ9nr.png';
-  //!work on splash page next, make a query to songs to get a handful of songs and display them in the splash page
-  //! work on making an actual navbar.
-  //!create a splash header
-  //!create a user's album header
-  //!created an album header
-  //? maybe grab artist state here for routes and stuff.
+
+  //TODO double check width styling in lists
+  //TODO fix profile button dropdown menu /////// DONE?
+  //TODO add place holder image to song detail card
+  //TODO fix warnings
+  //TODO add edit songs functionality
+  //TODO make a readme
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
 
