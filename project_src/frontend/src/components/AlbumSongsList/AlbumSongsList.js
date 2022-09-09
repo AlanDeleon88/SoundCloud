@@ -1,13 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadAlbumSongs } from "../../store/songs";
 import { getArtist } from "../../store/artist";
 import AddSongModal from "../AddSongModal";
 import SongDetailModal from "../SongDetailModal";
 import './AlbumSongsList.css'
+import { loadUserAlbums } from "../../store/albums";
 
 const AlbumSongsList = ({album}) =>{
     const {id, userId, title} = album;
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [myAlbum, setMyAlbum] = useState(false);
 
@@ -47,16 +50,23 @@ const AlbumSongsList = ({album}) =>{
 
         (
         <>
-            <div className='album-header'>
-            <h1 className="album-title"> {title}</h1>
-            <h2>by {artist.username} click this later to go to user info page with a link to all his albums later</h2>
+        <div className='album-header'>
+            <h1 className="album-title">Album: {title}</h1>
+            <h2 className='artist-header'>by: {artist.username}</h2>
         </div>
         <div className="album-songs-container">
             { /*might have to render songs in the modal componenent instead of here. i should make a new branch for this feature.*/}
             <table className="album-song-table">
                 <tbody>
+                        <tr>
+                            <td>
+                                Songs
+                            </td>
+                        </tr>
                     {
                     isLoaded ? (
+
+
                         albumSongs.map(song =>{
                             return(
                                 <tr key={song.id} className='song-item'>
@@ -66,6 +76,7 @@ const AlbumSongsList = ({album}) =>{
                                 </tr>
                             )
                         })
+
                     ) : null
                 }
                 </tbody>
@@ -78,9 +89,12 @@ const AlbumSongsList = ({album}) =>{
 
         )}
             {myAlbum && (
-
-                    <AddSongModal album={album}/>
-
+                    <>
+                        <AddSongModal album={album}/>
+                            <div>
+                                Add Song
+                            </div>
+                    </>
             )}
 
 

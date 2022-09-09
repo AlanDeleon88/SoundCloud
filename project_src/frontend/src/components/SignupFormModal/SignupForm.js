@@ -2,10 +2,11 @@ import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signup } from '../../store/session';
+import {LogInForm} from '../LoginFormModal';
 
 import './SignupForm.css'
 
-const SignupForm = () => {
+const SignupForm = ({showModal}) => {
     const dispatch = useDispatch();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -34,7 +35,7 @@ const SignupForm = () => {
             .then(()=>{
 
                history.push('/');
-
+               showModal(false);
 
             })
             .catch(async (res) =>{
@@ -73,6 +74,7 @@ const SignupForm = () => {
 
             </>)}
             <div className='signup-container'>
+                <div className='signup-header'>Signup</div>
                 <form onSubmit={handleSubmit}>
 
                     <div className='signup-inputs'>
@@ -95,11 +97,12 @@ const SignupForm = () => {
                         <input type='password' id='confirmPassword' value={confirmPassword} onChange={(e) =>setConfirmPassword(e.target.value)}/>
 
                         <button type='submit' className='signup-button'>Signup</button>
-
-
                     </div>
                 </form>
 
+                <div>
+
+                </div>
             </div>
         </>
     )

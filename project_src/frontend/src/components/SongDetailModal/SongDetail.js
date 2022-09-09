@@ -1,9 +1,22 @@
 import DeleteSongModal from "../DeleteSongModal";
+import { NavLink, useRouteMatch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUrl } from "../../store/songUrl";
+import { getAlbum } from "../../store/currentAlbum";
 
 const SongDetail = ({song, album, artist}) => {
     //TODO add song details
     //TODO add a placeholder for song image
     //TODO add buttons to delete and edit song.
+    const dispatch = useDispatch();
+
+    const handleAlbumClick = () =>{
+        // dispatch(setUrl({
+        //     songId: song.id,
+        //     albumId: album.id
+        // }))
+        // dispatch(getAlbum(album.id));
+    }
 
     return(
         <div className="song-detail-container">
@@ -13,11 +26,11 @@ const SongDetail = ({song, album, artist}) => {
                 <div className='song-text-detail'>
 
                         <div className="song-title">
-                            {song.title}
+                            <p> {song.title} </p>
                         </div>
 
                          <div className='song-detial-album-title'>
-                            {album.title}
+                           <div onClick={handleAlbumClick}>{album.title} </div>
                         </div>
                         <div className="artist-username">
                             by: {artist.username}

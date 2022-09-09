@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom';
 import './LoginForm.css'
 
 
-const LogInFormPage = () =>{
+const LogInFormPage = ({showModal}) =>{
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
@@ -25,6 +25,7 @@ const LogInFormPage = () =>{
         .then(()=>{
 
            history.push('/');
+           showModal(false);
 
         })
         .catch(async (res) =>{

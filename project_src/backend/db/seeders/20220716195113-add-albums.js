@@ -9,32 +9,32 @@ const sampleAlbums =
     userId : 1,
     title: 'the world',
     description: 'A long description of how i forgot to add this column in the first place',
-    previewImage : 'img-url'
+    previewImage : 'https://i.imgur.com/uq8Y4uE.png'
 
   },
   {
     userId : 2,
     title: 'star platinum',
     description: 'A long description of how i forgot to add this column in the first place ughhhhh',
-    previewImage : 'img-url'
+    previewImage : 'https://i.imgur.com/4oFOC90.png'
   },
   {
     userId : 3,
     title: 'silver chariot',
     description: 'A long description of how i forgot to add this column in the first place ughhhasdahh',
-    previewImage : 'img-url'
+    previewImage : 'https://i.imgur.com/k6y4gs5.png'
   },
   {
     userId : 1,
     title: 'greeeenn',
     description: 'A long description of how i forgot to add this column in the first place boooooo',
-    previewImage : 'img-url'
+    previewImage : 'https://i.imgur.com/Zye54Rr.png'
   },
   {
     userId : 4,
     title: 'hermit purpleeeee',
     description: 'A long description of how i forgot to add this column in the first place boooooo',
-    previewImage : 'img-url'
+    previewImage : 'https://i.imgur.com/Zye54Rr.png'
   },
 ]
 module.exports = {

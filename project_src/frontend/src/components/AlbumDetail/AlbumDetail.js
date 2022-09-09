@@ -38,7 +38,7 @@ const AlbumDetail = ({album}) => {
                 <div className="album-container" onClick={handleAlbumClick}>
 
                     <div className='album-list-title' >
-                    <NavLink to={`${match.url}/${title}/songs`} className='link-title'> {title} </NavLink>
+                        <NavLink to={`${match.url}/${title}/songs`} className='link-title'> {title} </NavLink>
                     </div>
 
                         {myAlbum &&(

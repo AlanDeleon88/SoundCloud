@@ -1,19 +1,30 @@
 import Navigation from "./components/Navigation";
-import { Route, Switch, NavLink} from 'react-router-dom';
+import { Route, Switch, NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from './store/session';
 import {useState, useEffect} from 'react';
 import UserAlbums from "./components/UserAlbums";
+import SplashSongs from "./components/SplashSongs";
+import SiteHeader from "./components/SiteHeader";
+import UploadModal from "./components/UploadModal";
+import AlbumSongsList from "./components/AlbumSongsList/AlbumSongsList";
+import SongAlbumList from "./components/SongAlbumList";
+
+import './index.css'
 
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const songUrl = useSelector(state => state.songUrl);
+  const currentAlbum = useSelector(state=>state.currentAlbum);
+  const img_url = 'https://i.imgur.com/DUdZ9nr.png';
   //!work on splash page next, make a query to songs to get a handful of songs and display them in the splash page
   //! work on making an actual navbar.
   //!create a splash header
   //!create a user's album header
   //!created an album header
+  //? maybe grab artist state here for routes and stuff.
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
 
@@ -28,43 +39,57 @@ function App() {
 
   return isLoaded && (
     <>
+    <div className="site-body">
 
-
-      <Navigation isLoaded={isLoaded}/>
+      <div className ='site-header'>
+        <SiteHeader isLoaded={isLoaded}/>
+      </div>
 
       <Switch>
 
         <Route exact path='/'>
-          <h1>SoundCloud!</h1>
+        <div className='splash-pic'>
+            <img src={img_url} className='img-el'/>
+            {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
+            <div className="upload-song-button"> <UploadModal /> </div>
+        </div>
+
+        <div className="splash">
+
+          <SplashSongs />
+
+        </div>
 
           <NavLink to='/albums'>new album</NavLink>
 
+        </Route>
+
+        <Route exact path = '/albums/:albumId/songs/:songId'>
+            <SongAlbumList />
 
         </Route>
-        <Route path='/albums'>
-          <p>Test link to look at another album from another user. If I use songs
-            I could link it up to the album song detail page instead. rather than the album list.
-            Aslo make multiple slices of state for whatever i need IE usersAlbum and albums can be different slices of state.
-            also to update songs, we can update a song when we have a song list in our redux store, just do a thunk action with
-            the song id and do an update dispatch with the returned song from the back end to update our store.
-            </p>
-            <div className='album-comp-container'>
-              <UserAlbums id={2}/>
 
 
-            </div>
-        </Route>
         <Route path={`/me/albums`}>
           <div className='album-comp-container'>
             <UserAlbums id={userId}/>
           </div>
         </Route>
 
-        <Route path={'/'}>
 
+        <Route path={'/:userId/albums'}>
+          <UserAlbums />
         </Route>
 
+        <Route path={'/'}>
+          <p>Page not found</p>
+        </Route>
+
+
       </Switch>
+
+    </div>
+
 
     </>
   );

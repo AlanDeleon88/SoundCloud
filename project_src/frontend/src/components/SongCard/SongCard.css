@@ -1,0 +1,33 @@
+
+.song-card{
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 210px;
+
+    margin:10px;
+}
+
+.song-card-link{
+    text-decoration: none;
+}
+
+.image-container{
+    width: 175px;
+    height: 150px;
+    /* border: 1px solid black; */
+    border-radius: 20px
+}
+
+.song-title-card{
+    font-size: 30px;
+}
+
+.song-img{
+    height: 100%;
+    width: 100%;
+}

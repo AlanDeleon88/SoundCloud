@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Route, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch, NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadUserAlbums } from "../../store/albums";
 import AlbumDetail from "../AlbumDetail";
 import AddAlbumFormModal from "../AddAlbumModal";
 import './UserAlbums.css'
+import { getArtist } from "../../store/artist";
 
 
-const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render it, will check ids to see if albums belong to current user.
+const UserAlbums = (props) =>{ //? accepts user id from what ever is gonna render it, will check ids to see if albums belong to current user.
+    const params = useParams();
+    const paramId = params.userId;
+    const id = props.id || paramId;
     const [isLoaded, setIsLoaded] = useState(false);
     const [myAlbum, setMyAlbum] = useState(false);
     const dispatch = useDispatch();
     const albums = Object.values(useSelector(state=>state.albums));
+    const artist = useSelector(state=>state.artist);
     const currentUser = useSelector(state=>state.session.user);
     const match = useRouteMatch();
 
@@ -27,7 +32,12 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
             setIsLoaded(true)
         })
 
+
     },[dispatch, id])
+
+    useEffect(() =>{
+        dispatch(getArtist(id));
+    },[dispatch])
 
     useEffect(() =>{
         if((albums.length > 0) && (currentUser)){
@@ -56,7 +66,7 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
             <div className='album-list'>
                 <Route exact path={match.url}>
 
-                    <h1>User Header place holder</h1>
+                    <h1>{artist.username}'s Albums</h1>
 
                 </Route>
 
@@ -66,7 +76,10 @@ const UserAlbums = ({id}) =>{ //? accepts user id from what ever is gonna render
                         albums.map(album =>{
                             return(
                                 <li key={album.id} className='album-list-item'>
-                                    <AlbumDetail album={album}/>
+
+                                        <AlbumDetail album={album}/>
+
+
                                 </li>
                             )
                         })

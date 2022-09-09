@@ -4,6 +4,7 @@ import ProfileButton from "./ProfileButton";
 import { useEffect, useState } from "react";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import './Navigation.css'
 const Navigation = ({isLoaded}) => {
     const [currentUser, setCurrentUser] = useState({});
     const user = useSelector(state=>state.session.user);
@@ -34,13 +35,18 @@ const Navigation = ({isLoaded}) => {
         <>
 
 
-            <ul className='nav-bar'>
+            <div className='nav-bar'>
 
-                <li>
-                    <NavLink to='/'>Home</NavLink>
-                    {isLoaded && sessionLinks}
-                </li>
-            </ul>
+                    <NavLink to='/' className={'home-link'}> <i className="fa fa-cloud" aria-hidden="true"></i>SoundCloud </NavLink>
+
+                    <div className="session-links">
+
+                        {isLoaded && sessionLinks}
+
+                    </div>
+
+
+            </div>
 
 
         </>

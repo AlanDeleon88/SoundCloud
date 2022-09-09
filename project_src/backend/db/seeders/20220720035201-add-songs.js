@@ -8,7 +8,7 @@ const songs = [
     title: 'title 1',
     description: 'first title',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 1,
@@ -16,7 +16,7 @@ const songs = [
     title: 'song no 2',
     description: '2nd song in the 1st album',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 1,
@@ -24,7 +24,7 @@ const songs = [
     title: 'song 3 yo',
     description: '3rd song in 1st album',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
 
   {
@@ -33,7 +33,7 @@ const songs = [
     title: 'music to my ears',
     description: '1st song in 2nd album',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 2,
@@ -41,7 +41,7 @@ const songs = [
     title: 'jjk',
     description: 'woooooooooooooo 2nd song in 2nd album',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 2,
@@ -49,7 +49,7 @@ const songs = [
     title: 'apex pred',
     description: 'god like aim bruh',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
 
   {
@@ -58,7 +58,7 @@ const songs = [
     title: 'nonsense?',
     description: 'wut am i doing',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 3,
@@ -66,7 +66,7 @@ const songs = [
     title: 'jumpmasta',
     description: 'yo where we goin?',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
 
   {
@@ -75,7 +75,7 @@ const songs = [
     title: 'only song',
     description: 'i only made one song for this album',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
 
   {
@@ -84,7 +84,7 @@ const songs = [
     title: 'no scopes',
     description: 'doesnt add up',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 4,
@@ -92,7 +92,7 @@ const songs = [
     title: 'imdown',
     description: 'knockdown shield rip',
     url: 'song-url',
-    previewImage: 'N/A',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 4,
@@ -100,7 +100,7 @@ const songs = [
     title: 'bloodscan',
     description: 'he found me!',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 4,
@@ -108,7 +108,7 @@ const songs = [
     title: 'game-overman',
     description: 'elimanted in the water bruh',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
   {
     userId : 4,
@@ -116,7 +116,7 @@ const songs = [
     title: 'letsooogooooo',
     description: 'marriooo',
     url: 'song-url',
-    previewImage: 'img-url',
+    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
   },
 
 ]

@@ -1,11 +1,11 @@
 .album-songs-container{
     display: flex;
     justify-content: flex-start;
-    width:100%;
+    width:720px;
 }
 
 .album-song-table{
-    border: 2px solid black;
+    border: 2px solid grey;
     border-collapse: collapse;
     width: 100%;
     font-size: 30px;
@@ -18,10 +18,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
     border: 2px solid black;
     border-collapse: collapse;
     width: 720px;
+    height: 200px;
+}
+.artist-header{
+    margin-left: 10px;
 }
 
 .album-title{
@@ -30,13 +33,14 @@
     justify-content: center;
     height: 150px;
     font-size: 45px;
+    margin-left: 10px;
 }
 
 .song-item{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 2px solid black;
+    border: 1px solid grey;
     border-collapse: collapse;
     font-size: 20px;
     height: 50px;

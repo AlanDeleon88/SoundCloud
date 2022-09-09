@@ -1,0 +1,26 @@
+.song-header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 720px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.song-title-main{
+    font-size: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.song-img-header{
+    width: 300px;
+    height: 300px;
+}
+
+.song-artist-header{
+    font-size: 40px;
+    margin-left: 10px;
+}

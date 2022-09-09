@@ -3,7 +3,8 @@
     flex-direction:column;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid black;
+    width: 400px;
+    /* border: 2px solid black; */
 
 
 }
@@ -20,5 +21,35 @@
 .form-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width:100%;
     align-items: cetner;
+}
+
+.login-button{
+    background-color: orangered;
+    height: 70px;
+    width: 100%;
+    font-size: 40px;
+}
+
+.login-button:active{
+    background-color: black;
+    color: white;
+
+}
+
+.home-log{
+    background-color: white;
+    font: black;
+    height: 50px;
+    width: 150px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.home-log:active{
+    background-color: black;
+    color: white;
+    transform: scale(.9);
 }

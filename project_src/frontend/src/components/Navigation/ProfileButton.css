@@ -1,12 +1,15 @@
 .fa-solid {
-    font-size:x-large;
-    color: red;
+    font-size:50px;
+    color:white;
+    margin-right: 40px;
+    margin-top:10px;
+
 
 }
 
 .fa-solid:active{
     transform: scale(.95);
-    box-shadow: 3px 2px 22px 1px black;
+    color: black;
 }
 
 .user-info-list{
@@ -16,8 +19,8 @@
     flex-direction: column;
     padding-left: 0px;
     width: fit-content;
-
-
+    position: absolute;
+    background-color:white;
 
 }
 

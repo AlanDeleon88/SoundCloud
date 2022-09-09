@@ -9,11 +9,11 @@ const LoginFormModal = () => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Login</button>
+            <button onClick={() => setShowModal(true)} className='home-log'>Login</button>
             {showModal &&(
                 <>
                     <Modal onClose={() => setShowModal(false)}>
-                        <LoginForm />
+                        <LoginForm showModal={setShowModal}/>
                     </Modal>
                 </>
             )}
