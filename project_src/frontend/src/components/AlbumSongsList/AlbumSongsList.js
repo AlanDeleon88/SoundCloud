@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadAlbumSongs } from "../../store/songs";
 import { getArtist } from "../../store/artist";
@@ -52,7 +52,9 @@ const AlbumSongsList = ({album}) =>{
         <>
         <div className='album-header'>
             <h1 className="album-title">Album: {title}</h1>
-            <h2 className='artist-header'>by: {artist.username}</h2>
+            <img className='album-img'src='https://i.imgur.com/NVTyWnX.png'/>
+
+            <NavLink to={`/${artist.id}/albums`}> <h2 className='artist-header'>by: {artist.username}</h2> </NavLink>
         </div>
         <div className="album-songs-container">
             { /*might have to render songs in the modal componenent instead of here. i should make a new branch for this feature.*/}

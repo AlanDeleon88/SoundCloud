@@ -8,6 +8,7 @@
     border: 2px solid black;
 }
 
+
 .song-image-detail{
     display: flex;
     justify-content: space-between;
@@ -62,6 +63,7 @@
 
 .song-detial-album-title{
     font-size: 30px;
+    margin-right: 20px;
 }
 
 .song-title{

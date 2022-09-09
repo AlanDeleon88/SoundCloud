@@ -63,7 +63,7 @@ export const addAlbumSong = (song) => async (dispatch) => {
 }
 
 export const loadSplashSongs = () => async (dispatch) => {
-    const response = await csrfFetch('/api/songs?page=2&size=10');
+    const response = await csrfFetch('/api/songs?page=1&size=9');
     if(response.ok){
         const songs = await response.json();
         dispatch(loadSongs(songs.Songs));

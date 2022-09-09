@@ -32,7 +32,13 @@ const SplashSongs = () => {
         <>
 
             {isLoaded ? (
+                <>
+
+                <div className="featured-songs">
+                    Featured Songs
+                </div>
                 <ul className='splash-container'>
+
                     {
 
 
@@ -50,7 +56,7 @@ const SplashSongs = () => {
                     }
 
                 </ul>
-
+                </>
             )
 
             :

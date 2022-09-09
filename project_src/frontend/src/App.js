@@ -60,11 +60,10 @@ function App() {
 
         </div>
 
-          <NavLink to='/albums'>new album</NavLink>
 
         </Route>
 
-        <Route exact path = '/albums/:albumId/songs/:songId'>
+        <Route path = '/albums/:albumId/songs/:songId'>
             <SongAlbumList />
 
         </Route>

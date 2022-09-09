@@ -66,7 +66,11 @@ const UserAlbums = (props) =>{ //? accepts user id from what ever is gonna rende
             <div className='album-list'>
                 <Route exact path={match.url}>
 
-                    <h1>{artist.username}'s Albums</h1>
+                    <div className="user-header">
+                        <img className='user-album-img'src='https://i.imgur.com/WYC4sLx.png'/>
+                        <h1 className="artist-header">{artist.username}'s Albums</h1>
+
+                    </div>
 
                 </Route>
 

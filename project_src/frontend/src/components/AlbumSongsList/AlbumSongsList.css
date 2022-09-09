@@ -18,14 +18,24 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border: 2px solid black;
+    border: 1px solid black;
     border-collapse: collapse;
     width: 720px;
     height: 200px;
 }
+
+.album-img {
+    position:absolute;
+    width: 720px;
+    height: 200px;
+    z-index: -1;
+}
 .artist-header{
     margin-left: 10px;
+
+    color:white;
 }
+
 
 .album-title{
     display: flex;
@@ -34,6 +44,7 @@
     height: 150px;
     font-size: 45px;
     margin-left: 10px;
+    color: white;
 }
 
 .song-item{
