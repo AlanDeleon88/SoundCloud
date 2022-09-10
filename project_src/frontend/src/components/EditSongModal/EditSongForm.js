@@ -60,7 +60,7 @@ const EditSongForm = ({showModal, song}) => {
                 <form className='add-song-form' onSubmit={handleSubmit}>
 
                     <div className='song-form-inputs'>
-                     <h4>Add Song:</h4>
+                     <h4>Edit Song:</h4>
                         <label htmlFor='title'>Title</label>
                         <input id='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
 
