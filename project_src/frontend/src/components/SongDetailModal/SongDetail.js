@@ -1,21 +1,28 @@
 import DeleteSongModal from "../DeleteSongModal";
 import { NavLink, useRouteMatch } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUrl } from "../../store/songUrl";
-import { getAlbum } from "../../store/currentAlbum";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import EditSongModal from "../EditSongModal";
 
 const SongDetail = ({song, album, artist}) => {
 
 
-    const dispatch = useDispatch();
+    const [mySong, setMySong] = useState(false);
+    const currentUser = useSelector(state=>state.session.user);
+    useEffect(() =>{
+        if((song) && (currentUser)){
+            // console.log('IM RUNNNING!!');
+            if(song.userId === currentUser.id){
 
-    const handleAlbumClick = () =>{
-        // dispatch(setUrl({
-        //     songId: song.id,
-        //     albumId: album.id
-        // }))
-        // dispatch(getAlbum(album.id));
-    }
+                setMySong(true);
+
+            }
+            else{
+                setMySong(false);
+            }
+        }
+
+    },[currentUser, song])
 
     return(
         <div className="song-detail-container">
@@ -29,10 +36,10 @@ const SongDetail = ({song, album, artist}) => {
                         </div>
 
                          <div className='song-detial-album-title'>
-                           <div onClick={handleAlbumClick}>{album.title} </div>
+                           <div>{album.title} </div>
                         </div>
                         <div className="artist-username">
-                            by: {artist.username}
+                            by: <NavLink to={`/${artist.id}/albums`}> {artist.username} </NavLink>
                         </div>
                  </div>
 
@@ -44,13 +51,17 @@ const SongDetail = ({song, album, artist}) => {
 
 
             <div className="song-buttons-container">
-                <div className="button-bundle">
-                   {/*Render delete song modal here and pass songs into it*/}
-                    {/* <button className='delete'>Delete</button> */}
-                    {/*Render edit modal here. */}
-                    <button className='edit'>Edit</button>
-                    <DeleteSongModal song={song}/>
-                </div>
+                {mySong &&(
+
+                    <div className="button-bundle">
+                    {/*Render delete song modal here and pass songs into it*/}
+                        {/* <button className='delete'>Delete</button> */}
+                        {/*Render edit modal here. */}
+                        <EditSongModal song={song} />
+                        <DeleteSongModal song={song}/>
+                    </div>
+
+                )}
             </div>
 
         </div>

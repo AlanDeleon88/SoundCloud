@@ -54,6 +54,10 @@ const SongAlbumList = () => {
 
                             </div>
 
+                            <div>
+                                {currentSong.description}
+                            </div>
+
                             <div className='song-artist-header'>
                                by: <NavLink to={`/${currentArtist.id}/albums`}> {currentArtist.username} </NavLink>
 
@@ -65,7 +69,9 @@ const SongAlbumList = () => {
                 )
                 :
                 (
-                    <h1>Loading</h1>
+                    <>
+                        Loading
+                    </>
                 )
 
             }

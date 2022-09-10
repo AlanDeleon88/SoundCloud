@@ -12,6 +12,7 @@
     width: 720px;
     height: 720px;
     margin-top:50px;
+    margin-bottom: 20px;
 }
 
 .upload-song-button{
@@ -50,3 +51,16 @@
 a{
     text-decoration: none;
 }
+
+.about-link{
+    border: 1px solid black;
+    font-size: 40px;
+    background-color: orangered;
+    color: white;
+    padding: 5px;
+}
+
+.about-link:active{
+    background-color: black;
+}
+

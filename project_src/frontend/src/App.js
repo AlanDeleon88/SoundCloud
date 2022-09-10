@@ -21,7 +21,7 @@ function App() {
   //TODO double check width styling in lists
   //TODO fix profile button dropdown menu /////// DONE?
   //TODO fix warnings
-  //TODO add edit songs functionality4
+  //TODO add edit songs functionality
   //TODO make a readme
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
@@ -58,7 +58,11 @@ function App() {
 
         </div>
 
+        <div>
 
+            <a className='about-link' href='https://github.com/AlanDeleon88'> About </a>
+
+        </div>
         </Route>
 
         <Route path = '/albums/:albumId/songs/:songId'>

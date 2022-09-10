@@ -21,13 +21,13 @@
     border: 1px solid black;
     border-collapse: collapse;
     width: 720px;
-    height: 200px;
+    height: 250px;
 }
 
 .album-img {
     position:absolute;
     width: 720px;
-    height: 200px;
+    height: inherit;
     z-index: -1;
 }
 .artist-header{
@@ -36,12 +36,16 @@
     color:white;
 }
 
+.album-desc{
+    color: white;
+    margin-left: 10px;
+}
 
 .album-title{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 150px;
+
     font-size: 45px;
     margin-left: 10px;
     color: white;
@@ -56,6 +60,10 @@
     font-size: 20px;
     height: 50px;
 
+}
+.song-item:active{
+    color: white;
+    background-color: black;
 }
 
 @media only screen and (max-width: 500px) {

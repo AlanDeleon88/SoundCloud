@@ -24,7 +24,7 @@
     justify-content: center;
 
     align-items: center;
-    
+
     margin-left: 25px;
 
 }
@@ -69,6 +69,7 @@
 
 .song-title{
     font-size: 50px;
+    text-overflow: ellipsis;
 }
 
 .artist-username{

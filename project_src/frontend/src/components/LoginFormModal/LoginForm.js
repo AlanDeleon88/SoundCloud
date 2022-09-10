@@ -65,6 +65,21 @@ const LogInFormPage = ({showModal}) =>{
                             <label htmlFor='credential'>password</label>
                             <input id='credential' type='password' value={password}  required onChange={(e) => setPassword(e.target.value)} />
 
+                            <button onClick={async (e) =>{
+                                e.preventDefault();
+                                const user ={
+                                    credential:'Demo-lition',
+                                    password: 'password'
+                                }
+                                await dispatch(login(user)) //! important pattern for error handling calls to the backend!!
+                                .then(()=>{
+
+                                   history.push('/');
+                                   showModal(false);
+
+                                })
+
+                            }}> Demo Login here</button>
                         </div>
 
                     <button type='submit' className='login-button'>Login</button>

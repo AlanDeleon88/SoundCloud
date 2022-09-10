@@ -20,14 +20,14 @@ const SplashSongs = () => {
         .catch(async (res) =>{
             const data = await res.json();
             const errors = data.errors;
-            console.log('errors', errors);
+            // console.log('errors', errors);
 
             if(data.errors && data) setErrors(errors);
 
         })
 
     },[dispatch])
-    console.log(songs);
+    // console.log(songs);
     return (
         <>
 

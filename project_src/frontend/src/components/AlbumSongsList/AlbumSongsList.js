@@ -9,7 +9,7 @@ import './AlbumSongsList.css'
 import { loadUserAlbums } from "../../store/albums";
 
 const AlbumSongsList = ({album}) =>{
-    const {id, userId, title} = album;
+    const {id, userId, title, description} = album;
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [myAlbum, setMyAlbum] = useState(false);
@@ -53,7 +53,7 @@ const AlbumSongsList = ({album}) =>{
         <div className='album-header'>
             <h1 className="album-title">Album: {title}</h1>
             <img className='album-img'src='https://i.imgur.com/NVTyWnX.png'/>
-
+            <p className='album-desc'>{description}</p>
             <NavLink to={`/${artist.id}/albums`}> <h2 className='artist-header'>by: {artist.username}</h2> </NavLink>
         </div>
         <div className="album-songs-container">
@@ -90,7 +90,7 @@ const AlbumSongsList = ({album}) =>{
         </>
 
         )}
-            {myAlbum && (
+            {myAlbum && isLoaded && (
                     <>
                         <AddSongModal album={album}/>
                             <div>
