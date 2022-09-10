@@ -55,12 +55,13 @@ function App() {
         <div className="splash">
 
           <SplashSongs />
+          <a className='about-link' href='https://github.com/AlanDeleon88'> About </a>
 
         </div>
 
         <div>
 
-            <a className='about-link' href='https://github.com/AlanDeleon88'> About </a>
+
 
         </div>
         </Route>

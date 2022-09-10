@@ -8,10 +8,12 @@
 .splash{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content:baseline;
+    /* position: relative; */
     width: 720px;
     height: 720px;
-    margin-top:50px;
+    margin-top:100px;
     margin-bottom: 20px;
 }
 
@@ -58,6 +60,7 @@ a{
     background-color: orangered;
     color: white;
     padding: 5px;
+    margin-left: 30px;
 }
 
 .about-link:active{
@@ -66,5 +69,5 @@ a{
 
 body{
     font-family: sans-serif;
-    
+
 }
