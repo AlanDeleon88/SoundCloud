@@ -14,7 +14,7 @@ export const getAlbum = (id) => async (dispatch) =>{
     const response = await csrfFetch(`/api/albums/${id}`);
     if(response.ok){
         const album = await response.json()
-        console.log('currentAlbum THUNK', album);
+        // console.log('currentAlbum THUNK', album);
         dispatch(setAlbum(album));
         return album;
     }

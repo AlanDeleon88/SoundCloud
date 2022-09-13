@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { updateSong } from '../../store/songs';
+import { getSong } from '../../store/currentSong';
 import'./EditSong.css'
 
 const EditSongForm = ({showModal, song}) => {
@@ -27,6 +28,8 @@ const EditSongForm = ({showModal, song}) => {
         return await dispatch(updateSong(song))
         .then(() => {
             showModal(false);
+            dispatch(getSong(songId))
+
         })
         .catch(async (res) =>{
             const data = await res.json();

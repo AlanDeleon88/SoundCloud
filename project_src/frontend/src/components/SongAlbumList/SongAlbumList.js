@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react";
 import { useParams, useRouteMatch, NavLink } from "react-router-dom";
 import { getAlbum } from "../../store/currentAlbum";
-import { getArtist } from "../../store/artist";
+import { getSong } from "../../store/currentSong";
 
 import AlbumSongsList from "../AlbumSongsList/AlbumSongsList";
 import './SongAlbumList.css'
@@ -14,18 +14,33 @@ const SongAlbumList = () => {
     songId = Number(songId);
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [currentSong, setCurrentSong] = useState('');
+    // const [currentSong, setCurrentSong] = useState('');
+    const currentSong = useSelector(state=>state.currentSong);
     const currentAlbum = useSelector(state=>state.currentAlbum);
     const currentArtist = useSelector(state=>state.artist);
+
+    console.log(currentSong);
 
 
     // console.log(Number(albumId), Number(songId));
     // console.log(albumId, songId);
+    //TODO update edit to update song header as well.
 
     useEffect(() => {
         dispatch(getAlbum(albumId)).then((res) =>{
-            console.log(res);
-            setCurrentSong(res.songs[songId])
+            // console.log(res);
+            // setCurrentSong(res.songs[songId])
+            // setIsLoaded(true);
+        })
+        .then(() => {
+            dispatch(getSong(songId))
+            .then((res) =>{
+                // setCurrentSong(res.song);
+                // console.log(res);
+                // setIsLoaded(true);
+            })
+        })
+        .then(() =>{
             setIsLoaded(true);
         })
         .catch(async(res) =>{
@@ -34,7 +49,7 @@ const SongAlbumList = () => {
             console.log(errors);
         })
 
-        return () => {};
+
     }, [dispatch])
 
     // console.log(currentAlbum.Songs)
@@ -50,7 +65,20 @@ const SongAlbumList = () => {
                         <div className='song-artist-header'>
 
                             <div className='song-title-main'>
-                                {currentSong.title}
+                                {currentSong.song ? (
+                                    <>
+                                        {currentSong.song.title}
+
+                                    </>
+
+                                )
+                                :
+                                (
+                                    <>
+                                        loading
+                                    </>
+                                )
+                            }
 
                             </div>
 
