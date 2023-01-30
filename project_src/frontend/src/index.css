@@ -69,5 +69,7 @@ a{
 
 body{
     font-family: sans-serif;
+    border:none;
+    margin: 0px;
 
 }

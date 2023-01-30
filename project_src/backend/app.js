@@ -26,6 +26,7 @@ app.use(morgan('dev'));
 //init cookieParser middleware parsing cookies from requests
 app.use(cookieParser());
 //init express middleware for json body parsing.
+app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 //Security middleware

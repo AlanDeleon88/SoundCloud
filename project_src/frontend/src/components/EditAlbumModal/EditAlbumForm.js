@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserAlbum } from "../../store/albums";
+import { csrfFetch } from "../../store/csrf";
 
 const EditAlbumForm = ({album, showModal}) => {
     const [title, setTitle] = useState(album.title);
     const [description, setDescription] = useState(album.description);
-    const [imageUrl, setImageUrl] = useState(album.previewImage);
+    //!replace with preview image after re-seeding db with demo images.
+    const [imageUrl, setImageUrl] = useState('');
+    // const [image, setImage] = useState('')
     const [validationErrors, setValidationErrors] = useState([]);
     const dispatch = useDispatch();
 
@@ -35,6 +38,32 @@ const EditAlbumForm = ({album, showModal}) => {
     }
 
 
+    const updateImage = async e =>{
+        const image = e.target.files[0]
+        const formData = new FormData()
+
+        if(image){
+            formData.append('image', image)
+            const res = await csrfFetch('/api/upload/image',{
+                method : 'POST',
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                body:formData
+            })
+            if(res.ok){
+                const data = await res.json();
+                const img_url = data.url
+                // console.log(img_url);
+                setImageUrl(img_url)
+            }
+            else{
+                //! debug error handle
+                window.alert('uh oh something happened')
+            }
+        }
+    }
+
     return(
 
         <>
@@ -63,10 +92,20 @@ const EditAlbumForm = ({album, showModal}) => {
                     <label htmlFor='description'>Description</label>
                     <input id='description' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
 
-                    <label htmlFor='imageUrl'>Image-Url</label>
-                    <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/>
+                    {/* <label htmlFor='imageUrl'>Image-Url</label>
+                    <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/> */}
+
+                    <label>
+                        edit album image
+                    </label>
+                    <input type='file' accept="image/*" onChange={updateImage}/>
                 </div>
 
+                <div className="edit-album-img-prev-container">
+                    {imageUrl &&
+                        <img src={imageUrl} style={{'height' : '50px', 'width' : '50px'}}/>
+                    }
+                </div>
                 <button  type='submit'className='album-submit-button' onClick={handleSubmit}>
                         Submit
                 </button>

@@ -13,6 +13,7 @@ const songsRouter = require('./songs.js');
 const commentsRouter = require('./comments.js');
 const playlistsRouter = require('./playlists.js');
 const artistsRouter = require('./artists.js');
+const uploadRouter = require('./upload.js')
 
 router.use('/session', sessionRouter);
 
@@ -28,9 +29,11 @@ router.use('/playlists', playlistsRouter);
 
 router.use('/artists', artistsRouter);
 
+router.use('/upload', uploadRouter);
+
 
 router.post('/test', (req, res) =>{
-    
+
     res.json({ requestBody : req.body });
 });
 
