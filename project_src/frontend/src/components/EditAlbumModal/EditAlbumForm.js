@@ -7,7 +7,7 @@ const EditAlbumForm = ({album, showModal}) => {
     const [title, setTitle] = useState(album.title);
     const [description, setDescription] = useState(album.description);
     //!replace with preview image after re-seeding db with demo images.
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl, setImageUrl] = useState(album.previewImage);
     // const [image, setImage] = useState('')
     const [validationErrors, setValidationErrors] = useState([]);
     const dispatch = useDispatch();
@@ -40,6 +40,7 @@ const EditAlbumForm = ({album, showModal}) => {
 
     const updateImage = async e =>{
         const image = e.target.files[0]
+        // console.log(image);
         const formData = new FormData()
 
         if(image){
@@ -103,7 +104,7 @@ const EditAlbumForm = ({album, showModal}) => {
 
                 <div className="edit-album-img-prev-container">
                     {imageUrl &&
-                        <img src={imageUrl} style={{'height' : '50px', 'width' : '50px'}}/>
+                        <img src={imageUrl} style={{'height' : '50px', 'width' : '50px'}} alt={`${imageUrl}`}/>
                     }
                 </div>
                 <button  type='submit'className='album-submit-button' onClick={handleSubmit}>
