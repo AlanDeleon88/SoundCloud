@@ -28,7 +28,7 @@
 
 .login-button{
     background-color: orangered;
-    height: 70px;
+    height: 40px;
     width: 100%;
     font-size: 40px;
 }
@@ -40,17 +40,18 @@
 }
 
 .home-log{
-    background-color: white;
-    font: black;
-    height: 50px;
+    background-color:  	#1a035a;
+    height: 30px;
     width: 150px;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 10px;
+    color: white;
+    border:none;
 }
 
 .home-log:active{
     background-color: black;
     color: white;
     transform: scale(.9);
-    
+
 }

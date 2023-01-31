@@ -9,6 +9,7 @@ import SiteHeader from "./components/SiteHeader";
 import UploadModal from "./components/UploadModal";
 import AlbumSongsList from "./components/AlbumSongsList/AlbumSongsList";
 import SongAlbumList from "./components/SongAlbumList";
+import splash_header from './img_src/splash_3.png'
 
 import './index.css'
 
@@ -16,7 +17,7 @@ import './index.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const img_url = 'https://i.imgur.com/DUdZ9nr.png';
+  // const img_url = 'https://i.imgur.com/DUdZ9nr.png';
 
   //TODO double check width styling in lists
   //TODO fix profile button dropdown menu /////// DONE?
@@ -40,22 +41,36 @@ function App() {
     <div className="site-body">
 
       <div className ='site-header'>
+        {/* need to render a different site header depending if theres a user or not. */}
         <SiteHeader isLoaded={isLoaded}/>
       </div>
 
       <Switch>
 
+        {/* can dynamically render this homepage between the splash page and the login home */}
         <Route exact path='/'>
+        
         <div className='splash-pic'>
-            <img src={img_url} className='img-el'/>
+            <img src={splash_header} className='img-el'/>
             {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
-            <div className="upload-song-button"> <UploadModal /> </div>
+
+            <div className="upload-song-button">
+
+            <div className="splash-caption">
+              Discover your sound.
+            </div>
+
+            <UploadModal />
+
+            </div>
+
         </div>
 
         <div className="splash">
 
           <SplashSongs />
-          <a className='about-link' href='https://github.com/AlanDeleon88'> About </a>
+          {/* Eventually get rid of this and add 2 links next to site header */}
+          {/* <a className='about-link' href='https://github.com/AlanDeleon88'> About </a> */}
 
         </div>
 

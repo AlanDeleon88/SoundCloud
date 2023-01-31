@@ -40,11 +40,12 @@
 .home-sign{
     background-color: white;
     font: black;
-    height: 50px;
+    border: none;
+    height: 30px;
     width: 150px;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 10px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .home-sign:active{

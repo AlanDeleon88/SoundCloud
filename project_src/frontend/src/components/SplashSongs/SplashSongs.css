@@ -4,11 +4,13 @@
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
+    padding: 0px;
     /* position: absolute; */
 }
 
 .featured-songs{
     display: flex;
     justify-content: center;
-    font-size: 40px;
+    align-items: center;
+    font-size: 30px;
 }

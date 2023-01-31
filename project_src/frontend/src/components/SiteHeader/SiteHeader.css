@@ -1,5 +1,5 @@
 .nav-container{
-    width: 98.5%;
+    width: 80%;
     position: absolute;
     /* border: 1px solid red; */
 }
@@ -7,6 +7,6 @@
 .header{
     display: flex;
     /* border: 1px solid blue; */
-    width:100%;
-    height: 150px;
+    width:80%;
+    height: 75px;
 }

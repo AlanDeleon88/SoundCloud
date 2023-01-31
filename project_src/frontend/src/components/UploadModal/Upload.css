@@ -5,12 +5,14 @@
 }
 
 .upload-button{
-    background-color: orangered;
-    height: 100px;
+    background-color: #1a035a;
+    height: 50px;
     width: 200px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 20px;
+    border:none;
+    color: white;
 }
 
 .upload-button:active{

@@ -1,15 +1,15 @@
 
 .song-card{
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: fit-content;
-    height: 225px;
-
-    margin:10px;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
 }
 
 .song-card-link{
@@ -18,17 +18,18 @@
 
 .image-container{
     width: fit-content;
-    height: 150px;
+    height: 75px;
     /* border: 1px solid black; */
     border-radius: 20px
 }
 
 .song-title-card{
-    font-size: 20px;
+    font-size: 15px;
     padding: 10px;
+    overflow: hidden;
 }
 
 .song-img{
-    height: 150px;
-    width: 150px;
+    height: 75px;
+    width: 75px;
 }

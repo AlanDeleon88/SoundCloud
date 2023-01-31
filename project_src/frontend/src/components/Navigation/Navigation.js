@@ -37,7 +37,13 @@ const Navigation = ({isLoaded}) => {
 
             <div className='nav-bar'>
 
-                    <NavLink to='/' className={'home-link'}> <i className="fa fa-cloud" aria-hidden="true"></i>SoundCloud </NavLink>
+
+                    <div className="home-about-container">
+                        <NavLink to='/' className={'home-link'}> <i className="fa fa-cloud" aria-hidden="true"></i>MixNebula</NavLink>
+                        <div className= "about-links">
+
+                        </div>
+                    </div>
 
                     <div className="session-links">
 
