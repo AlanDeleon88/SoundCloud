@@ -3,6 +3,7 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import EditSongModal from "../EditSongModal";
+import ReactAudioPlayer from 'react-audio-player';
 
 const SongDetail = ({song, album, artist}) => {
 
@@ -44,7 +45,7 @@ const SongDetail = ({song, album, artist}) => {
                  </div>
 
                 <div className='image-div'>
-                    <img src='https://i.imgur.com/OMht5cw.png'/>
+                    <img src={`${song.previewImage}`} alt={`${song.previewImage}`}/>
                 </div>
 
             </div>
@@ -62,6 +63,10 @@ const SongDetail = ({song, album, artist}) => {
                     </div>
 
                 )}
+            </div>
+            <div>
+                    <ReactAudioPlayer src={song.url} controls/>
+                    test
             </div>
 
         </div>

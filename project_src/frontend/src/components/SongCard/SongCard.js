@@ -18,7 +18,7 @@ const SongCard = ({song}) => {
 
                 <div className="song-card">
                     <div className="image-container">
-                        <img className='song-img'src='https://i.imgur.com/Xglo6qf.jpg'/>
+                        <img className='song-img'src={song.previewImage} alt={`${song.previewImage}`}/>
                     </div>
                     <div className='song-title-card'>
                         {title}
