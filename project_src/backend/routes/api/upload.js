@@ -23,4 +23,16 @@ router.post(
     }
 )
 
+router.post(
+    '/song',
+    singleMulterUpload('song'),
+    requireAuth,
+    async (req, res) =>{
+        const songUrl = await singlePublicFileUpload(req.file)
+        return res.json({
+            url: songUrl,
+        })
+    }
+)
+
 module.exports = router;
