@@ -42,25 +42,48 @@ function App() {
 
       <div className ='site-header'>
         {/* need to render a different site header depending if theres a user or not. */}
-        <SiteHeader isLoaded={isLoaded}/>
+        { user ?
+          (
+            <>
+
+            </>
+          )
+          :
+          (
+            <>
+              <SiteHeader isLoaded={isLoaded}/>
+            </>
+          )
+
+        }
+
+
       </div>
 
       <Switch>
 
         {/* can dynamically render this homepage between the splash page and the login home */}
         <Route exact path='/'>
-        
-        <div className='splash-pic'>
-            <img src={splash_header} className='img-el'/>
+        { user ?
+          (
+            <>
+
+            </>
+          )
+          :
+          (
+            <>
+            <div className='splash-pic'>
+              <img src={splash_header} className='img-el'/>
             {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
 
-            <div className="upload-song-button">
+              <div className="upload-song-button">
 
-            <div className="splash-caption">
-              Discover your sound.
-            </div>
+                <div className="splash-caption">
+                  Discover your sound.
+                </div>
 
-            <UploadModal />
+                <UploadModal />
 
             </div>
 
@@ -74,11 +97,11 @@ function App() {
 
         </div>
 
-        <div>
 
+            </>
+          )
+        }
 
-
-        </div>
         </Route>
 
         <Route path = '/albums/:albumId/songs/:songId'>

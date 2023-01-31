@@ -4,6 +4,8 @@ import ProfileButton from "./ProfileButton";
 import { useEffect, useState } from "react";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { AiFillGithub } from "react-icons/ai";
+import {AiFillLinkedin} from 'react-icons/ai'
 import './Navigation.css'
 const Navigation = ({isLoaded}) => {
     const [currentUser, setCurrentUser] = useState({});
@@ -40,8 +42,13 @@ const Navigation = ({isLoaded}) => {
 
                     <div className="home-about-container">
                         <NavLink to='/' className={'home-link'}> <i className="fa fa-cloud" aria-hidden="true"></i>MixNebula</NavLink>
-                        <div className= "about-links">
-
+                        <div className= "about-links-container">
+                            <a href='https://github.com/AlanDeleon88' className="about-links">
+                                <AiFillGithub />
+                            </a>
+                            <a href='https://www.linkedin.com/in/alan-de-leon-b54621212/' className="about-links">
+                                <AiFillLinkedin />
+                            </a>
                         </div>
                     </div>
 
