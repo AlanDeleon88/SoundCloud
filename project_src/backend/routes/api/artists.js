@@ -12,6 +12,34 @@ const { buildError } = require('../../utils/errorBuild.js');
 // query for songs and albums related to artist id
 // then take object ie artist --> artist.datavalues.sonngs.length, can use delete.obj method to get rid of key : value pairs.
 
+//! create get route that gets a list of artists to display on explore component
+
+router.get(
+    '/',
+    async (req, res, next) =>{
+        let offset = Math.floor(Math.random() * 10)
+        const users = await User.findAll({
+            include:[
+                {model: Song, attributes : ['id']}, {model: Album, attributes: ['id']}
+                ],
+            offset: offset,
+            limit: 5
+        })
+
+        users.forEach(user =>{
+            user.dataValues.songs = user.dataValues.Songs.length
+            user.dataValues.albums = user.dataValues.Albums.length
+            delete user.dataValues.Songs
+            delete user.dataValues.Albums
+        })
+
+        res.statusCode = 200;
+        res.json({
+            'artists' : users
+        })
+    }
+)
+
 router.get(
     '/:id/albums',
     async (req, res, next) => {

@@ -7,6 +7,7 @@ import artistReducer from './artist';
 import songUrlReducer from './songUrl';
 import currentAlbumReducer from './currentAlbum';
 import currentSongReducer from './currentSong';
+import exploreArtistsReducer from './exploreArtists';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     artist: artistReducer,
     songUrl: songUrlReducer,
     currentAlbum: currentAlbumReducer,
-    currentSong: currentSongReducer
+    currentSong: currentSongReducer,
+    exploreArtists: exploreArtistsReducer
 });
 
 let enhancer;

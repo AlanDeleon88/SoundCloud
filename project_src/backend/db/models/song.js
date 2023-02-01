@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey : 'albumId',
           onDelete : 'cascade',
-          hooks : true
+          hooks : true,
         }
       );
     //TODO add association to comments songs has many comments.

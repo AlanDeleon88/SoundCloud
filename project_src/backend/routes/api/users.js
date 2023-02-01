@@ -63,7 +63,8 @@ router.post(
             lastName : newUser.lastName,
             email: newUser.email,
             username: username,
-            token: token
+            token: token,
+            previewImage: newUser.previewImage
 
         });
     }

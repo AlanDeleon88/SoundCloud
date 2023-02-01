@@ -11,7 +11,9 @@ import AlbumSongsList from "./components/AlbumSongsList/AlbumSongsList";
 import SongAlbumList from "./components/SongAlbumList";
 import splash_header from './img_src/splash_3.png'
 import LoggedInSiteHeader from "./components/LoggedInSiteHeader";
+import LoggedHome from "./components/LoggedHome";
 import './index.css'
+
 
 
 function App() {
@@ -68,6 +70,11 @@ function App() {
           (
             <>
 
+              <div className="logged-home-container">
+
+                <LoggedHome />
+
+              </div>
             </>
           )
           :
@@ -105,10 +112,10 @@ function App() {
         </Route>
 
         <Route path = '/albums/:albumId/songs/:songId'>
+
             <SongAlbumList />
 
         </Route>
-
 
         <Route path={`/me/albums`}>
           <div className='album-comp-container'>
@@ -127,6 +134,9 @@ function App() {
 
 
       </Switch>
+      <div>
+         PLACE HOLDER FOR MUSIC PLAYER
+      </div>
 
     </div>
 

@@ -1,0 +1,32 @@
+.artist-list-el-main-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.artist-list-el-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.artist-numbers{
+    display: flex;
+}
+
+.artist-list-el-tracks-container{
+    display: flex;
+}
+.artist-list-el-tracks{
+    /* padding: 3px; */
+}
+
+.artist-numbers{
+    padding: 3px;
+    padding-top:0px;
+}
+
+.artist-list-el-name-tracks-container{
+    padding-left:5px;
+}

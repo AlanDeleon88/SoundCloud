@@ -15,6 +15,7 @@
     height: 720px;
     /* margin-top:100px; */
     margin-bottom: 20px;
+    overflow: scroll;
 }
 
 .upload-song-button{
@@ -54,13 +55,28 @@
     background-color: transparent;
 }
 
+
+
 .site-body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    /* justify-content: center; */
+    width: 99.9%;
+    height: 100%;
+    object-fit: fill;
+    position: fixed;
+    top:0;
+    left:0;
+    margin: 0px;
+    padding: 0px;
+    /* border: solid 1px pink; */
+    /* overflow: scroll; */
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
 
 a{
     text-decoration: none;
@@ -87,4 +103,9 @@ body{
     background-color: #100f0f;
     color: white;
 
+}
+
+.logged-home-container{
+    width: 90%;
+    height: 100%;
 }
