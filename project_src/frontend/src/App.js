@@ -10,7 +10,7 @@ import UploadModal from "./components/UploadModal";
 import AlbumSongsList from "./components/AlbumSongsList/AlbumSongsList";
 import SongAlbumList from "./components/SongAlbumList";
 import splash_header from './img_src/splash_3.png'
-
+import LoggedInSiteHeader from "./components/LoggedInSiteHeader";
 import './index.css'
 
 
@@ -45,7 +45,7 @@ function App() {
         { user ?
           (
             <>
-
+              <LoggedInSiteHeader />
             </>
           )
           :
@@ -85,20 +85,20 @@ function App() {
 
                 <UploadModal />
 
-            </div>
+              </div>
 
-        </div>
+          </div>
 
-        <div className="splash">
+          <div className="splash">
 
-          <SplashSongs />
-          {/* Eventually get rid of this and add 2 links next to site header */}
-          {/* <a className='about-link' href='https://github.com/AlanDeleon88'> About </a> */}
+            <SplashSongs />
+            {/* Eventually get rid of this and add 2 links next to site header */}
+            {/* <a className='about-link' href='https://github.com/AlanDeleon88'> About </a> */}
 
-        </div>
+          </div>
 
 
-            </>
+          </>
           )
         }
 

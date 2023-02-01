@@ -1,0 +1,59 @@
+.logged-profile-pic{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.logged-user-area-container{
+    height: 100%;
+    width: 15%;
+}
+
+.logged-profile-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logged-profile-upload-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: solid 1px red; */
+    height: 100%;
+    width: 100%;
+}
+
+.logged-profile-username{
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+/* Drop down styles  */
+
+.logged-drop-down-menu-container{
+    background-color: #2f2b3b;
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    font-size: 17px;
+    position: relative;
+    left:132px;
+}
+
+.logged-drop-down-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.logged-drop-down-item:hover{
+    background-color: #454057;
+}
+
+.logged-list-text{
+    padding-left: 5px;
+}
