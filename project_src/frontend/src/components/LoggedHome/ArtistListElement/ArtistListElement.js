@@ -3,6 +3,9 @@ import tempProfile from '../../LoggedInSiteHeader/temp_images/profile_placeholde
 import {MdOutlineMusicVideo , MdAlbum} from 'react-icons/md'
 const ArtistListElement = ({artists}) =>{
 
+    //TODO add hover tips over songs and album
+    //TODO change icons into links to the artists page for albums or tracks
+
     return(
         <>
             <div className='artist-list-el-main-container'>
@@ -15,12 +18,19 @@ const ArtistListElement = ({artists}) =>{
                     </div>
                     <div className='artist-list-el-tracks-container'>
                         <div className='artist-list-el-tracks artist-numbers'>
+
                             <MdOutlineMusicVideo />
-                            {artists.songs}
+                            <div className='artist-list-el-song-album'>
+                                {artists.songs}
+                            </div>
+
                         </div>
                         <div className='artist-list-el-albums artist-numbers'>
                             <MdAlbum />
-                            {artists.albums}
+                            <div className='artist-list-el-song-album'>
+                                {artists.albums}
+
+                            </div>
                         </div>
                     </div>
                 </div>

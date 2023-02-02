@@ -18,9 +18,7 @@
 .artist-list-el-tracks-container{
     display: flex;
 }
-.artist-list-el-tracks{
-    /* padding: 3px; */
-}
+
 
 .artist-numbers{
     padding: 3px;
@@ -29,4 +27,8 @@
 
 .artist-list-el-name-tracks-container{
     padding-left:5px;
+}
+
+.artist-list-el-song-album{
+    padding-left: 5px;
 }

@@ -4,6 +4,7 @@ import ExploreUserComponent from './ExploreUserComponent'
 
 
 const LoggedHome = () =>{
+    //TODO maybe add featured playlists or featured albums to fill out page more.
 
     return(
         <>
