@@ -23,12 +23,13 @@ const AlbumSongsList = ({album}) =>{
     useEffect(() =>{
         dispatch(loadAlbumSongs(id))
         .then(() => dispatch(getArtist(userId)))
-        .then(()=>setIsLoaded(true));
+        .then(() => setIsLoaded(true));
 
     },[dispatch, id, userId])
 
     useEffect(() =>{
         if(currentUser){
+            console.log('HEY IM BEING CALLED');
             if(userId === currentUser.id){
                 setMyAlbum(true);
             }

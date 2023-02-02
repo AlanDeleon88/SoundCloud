@@ -12,7 +12,7 @@ const ExploreUserComponent = () =>{
         dispatch(getExploreArtists()).then(res =>{
             setIsLoaded(true)
         })
-        return () => setIsLoaded(false)
+        
     },[dispatch])
 
     return(

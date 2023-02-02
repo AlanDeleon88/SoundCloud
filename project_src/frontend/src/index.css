@@ -18,6 +18,12 @@
     overflow: scroll;
 }
 
+.test{
+    width:100%;
+    height:100%;
+    background-color: pink;
+}
+
 .upload-song-button{
     position: absolute;
     display: flex;
@@ -109,3 +115,4 @@ body{
     width: 90%;
     height: 100%;
 }
+

@@ -2,6 +2,8 @@ import './LoggedInSiteHeader.css'
 import HomeAboutLinksComponent from './HomeAboutLinksComponent'
 import UserNavAreaComponent from './UserNavAreaComponent'
 import { useSelector } from 'react-redux'
+import LoginFormModal from '../LoginFormModal'
+import SignupFormModal from '../SignupFormModal'
 
 
 const LoggedInSiteHeader = () =>{
@@ -24,9 +26,25 @@ const LoggedInSiteHeader = () =>{
                         <input type='text' placeholder='Search Artists'/>
                     </div>
 
-                    <div className='logged-user-area-container'>
-                        <UserNavAreaComponent user={user}/>
-                    </div>
+                    {
+                        user ?
+                        (
+                            <>
+                                <div className='logged-user-area-container'>
+                                    <UserNavAreaComponent user={user}/>
+                                </div>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                    <LoginFormModal />
+                                    <SignupFormModal />
+                            </>
+                        )
+
+
+                    }
 
                 </div>
             </div>

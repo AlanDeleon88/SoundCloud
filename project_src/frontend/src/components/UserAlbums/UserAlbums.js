@@ -27,10 +27,11 @@ const UserAlbums = (props) =>{ //? accepts user id from what ever is gonna rende
     //  console.log('album user', albums[0].userId);
 
     useEffect(()=>{
+        // console.log("USER ALBUMS LOADING FOR SOME REASON");
         dispatch(loadUserAlbums(id))
         .then(()=>{
             setIsLoaded(true)
-        })
+        },[dispatch])
 
 
     },[dispatch, id])

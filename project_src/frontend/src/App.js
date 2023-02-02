@@ -12,6 +12,7 @@ import SongAlbumList from "./components/SongAlbumList";
 import splash_header from './img_src/splash_3.png'
 import LoggedInSiteHeader from "./components/LoggedInSiteHeader";
 import LoggedHome from "./components/LoggedHome";
+import UserProfilePage from "./components/UserProfilePage";
 import './index.css'
 
 
@@ -41,7 +42,7 @@ function App() {
   return isLoaded && (
     <>
     <div className="site-body">
-
+      {/* {console.log(window.location.pathname)} */}
       <div className ='site-header'>
         {/* need to render a different site header depending if theres a user or not. */}
         { user ?
@@ -53,7 +54,9 @@ function App() {
           :
           (
             <>
-              <SiteHeader isLoaded={isLoaded}/>
+
+
+
             </>
           )
 
@@ -80,6 +83,7 @@ function App() {
           :
           (
             <>
+            <SiteHeader isLoaded={isLoaded}/>
             <div className='splash-pic'>
               <img src={splash_header} className='img-el'/>
             {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
@@ -99,8 +103,6 @@ function App() {
           <div className="splash">
 
             <SplashSongs />
-            {/* Eventually get rid of this and add 2 links next to site header */}
-            {/* <a className='about-link' href='https://github.com/AlanDeleon88'> About </a> */}
 
           </div>
 
@@ -112,14 +114,42 @@ function App() {
         </Route>
 
         <Route path = '/albums/:albumId/songs/:songId'>
+           { !user &&
+            <LoggedInSiteHeader />
 
-            <SongAlbumList />
+          }
+
+          <SongAlbumList />
 
         </Route>
 
+        <Route path = '/:username/:userId'>
+          {/* might have to make another edit to site nav whether user
+            is logged in or not. will either show login or sign up options, or show profile drop down..
+            might have to add this component to each route...
+          */}
+          { !user &&
+            <LoggedInSiteHeader />
+
+          }
+     
+            <UserProfilePage />
+
+
+          {/* TEST ROUTE MOFO */}
+
+        </Route>
+
+
+
+
         <Route path={`/me/albums`}>
           <div className='album-comp-container'>
-            <UserAlbums id={userId}/>
+
+            <div className="test">
+                {/* HelloTestWtf */}
+            </div>
+            {/* <UserAlbums id={userId}/> */}
           </div>
         </Route>
 
