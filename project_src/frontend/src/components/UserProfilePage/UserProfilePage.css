@@ -1,4 +1,3 @@
-
 .user-page-main-container{
     border: solid 1px green;
     width: 90%;
@@ -6,36 +5,4 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.user-page-header-container{
-    border: solid 1px pink;
-    width:100%;
-    height: 35%;
-    display: flex;
-    align-items: center;
-
-}
-
-.user-page-profile-pic{
-    width: 225px;
-    height: 225px;
-    border-radius: 100%;
-}
-.user-page-cover-img-container{
-    border: solid 1px skyblue;
-    width: 100%;
-    height: 35%;
-
-
-
-    /* height: 35%; */
-}
-.user-page-cover-img{
-    width:90%;
-    height:32.5%;
-    position: absolute;
-    object-fit:fill;
-    z-index: -1;
-    /* background-position: 0 0; */
 }
