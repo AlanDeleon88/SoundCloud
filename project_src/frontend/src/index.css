@@ -78,6 +78,7 @@
     padding: 0px;
     /* border: solid 1px pink; */
     /* overflow: scroll; */
+    /* z-index: 1; */
 }
 
 ::-webkit-scrollbar {
@@ -116,3 +117,13 @@ body{
     height: 100%;
 }
 
+.music-player-placeholder{
+    border: 1px solid lightgoldenrodyellow;
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: blueviolet;
+    /* opacity: 20%; */
+    z-index: 15;
+}

@@ -132,7 +132,7 @@ function App() {
             <LoggedInSiteHeader />
 
           }
-     
+
             <UserProfilePage />
 
 
@@ -164,7 +164,7 @@ function App() {
 
 
       </Switch>
-      <div>
+      <div className="music-player-placeholder">
          PLACE HOLDER FOR MUSIC PLAYER
       </div>
 

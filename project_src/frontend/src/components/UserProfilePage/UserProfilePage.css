@@ -4,5 +4,55 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.user-page-nav-bar-container{
+    border: solid 1px blue;
+    width:100%;
+    height: 5%;
+    display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+
+.user-page-content-container{
+    /* border: solid 1px red; */
+    display: flex;
+    width:100%;
+    height: 65%;
+    overflow: scroll;
+    z-index: 1;
+}
+
+.user-page-content{
+    border: 1px solid pink;
+    width: 85%;
+    z-index: 1;
+}
+
+.user-page-stats-container{
+    border: 1px solid brown;
+    width: 15%;
+}
+
+.user-page-nav-link{
+    width: 50px;
+    height:25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:5px;
+    padding-left: 10px;
+    padding-right:10px;
+    border-radius: 10px;
+
+}
+
+.user-page-nav-active{
+    background-color: #330aa4;
+    color: white;
+    font-weight: bold;
 }

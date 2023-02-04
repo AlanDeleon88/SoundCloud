@@ -40,6 +40,7 @@
     font-size: 17px;
     position: relative;
     left:132px;
+    z-Index: 20;
 }
 
 .logged-drop-down-item{

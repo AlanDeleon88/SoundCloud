@@ -52,6 +52,7 @@ const AddSongForm = ({showModal, album}) => {
         if (song){
             uploadFile(song, 'song').then((res) =>{
                 setSongUrl(res)
+                console.log(res);
             }).catch(async (res)=>{
                 const data = await res.json();
                 console.log(data);
@@ -59,6 +60,9 @@ const AddSongForm = ({showModal, album}) => {
 
         }
     }
+    //! write a multi file upload to upload seed data to aws later.
+
+
 
     const handleImg = e =>{
         const image = e.target.files[0]
@@ -100,7 +104,7 @@ const AddSongForm = ({showModal, album}) => {
                         <input id='description' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
 
                         <label htmlFor='songUrl'>Song-Url</label>
-                        <input id='songUrl' type='file' accept = 'aduio/*' onChange={handleSong} onClick={handleInputClick}/>
+                        <input id='songUrl' type='file' accept = 'aduio/*' onChange={handleSong} onClick={handleInputClick} multiple/>
 
                         <label htmlFor='imageUrl'>Image-Url</label>
                         <input id='ImageUrl' type='file' accept='image/*' onChange={handleImg} onClick={handleInputClick}/>

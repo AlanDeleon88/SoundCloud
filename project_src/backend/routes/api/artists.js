@@ -53,7 +53,8 @@ router.get(
 
         res.statusCode = 200;
         res.json({
-            Albums : albums
+            albums : albums,
+
         })
     }
     )
@@ -102,7 +103,7 @@ router.get(
         const { id } = req.params;
         const artist = await User.findByPk(id, {
             include:[
-                {model: Song, attributes : ['previewImage']}, {model: Album}
+                {model: Song, attributes : ['previewImage','url', 'previewImage','title', 'description']}, {model: Album, attributes: ['id', 'previewImage', 'userId','title']}
                 ],
             attributes: ['id', 'username', 'previewImage']
 
@@ -114,8 +115,8 @@ router.get(
         }
         artist.dataValues.totalSongs = artist.dataValues.Songs.length;
         artist.dataValues.totalAlbums = artist.dataValues.Albums.length;
-        delete artist.dataValues.Songs;
-        delete artist.dataValues.Albums;
+        // delete artist.dataValues.Songs;
+        // delete artist.dataValues.Albums;
         // console.log(artist.totalSongs, artist.totalAlbums);
         console.log(artist);
         res.statusCode = 200;
