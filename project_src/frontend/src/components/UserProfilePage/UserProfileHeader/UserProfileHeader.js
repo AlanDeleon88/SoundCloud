@@ -13,7 +13,7 @@ const UserProfileHeader = ({user, currentUser, userId}) =>{
             <div className="user-page-profile-pic-container">
 
             <div className="user-page-profile-edit-container">
-                <img src={tempProfilePicture} className="user-page-profile-pic"/>
+                <img src={user.profile_picture} className="user-page-profile-pic"/>
                 { currentUser &&
                 <>
                     { currentUser.id === userId ?
@@ -49,7 +49,7 @@ const UserProfileHeader = ({user, currentUser, userId}) =>{
             </div>
 
                 <div className="user-page-username-container" >
-                    TEST USERNAME
+                    {user.username}
                 </div>
 
             </div>
@@ -71,11 +71,28 @@ const UserProfileHeader = ({user, currentUser, userId}) =>{
             }
         </div>
         </div>
-        <img className="user-page-cover-img" src={tempCover}/>
+        {user.profile_cover ?
+            (
+                <>
+                    <img className="user-page-cover-img" src={user.profile_cover}/>
 
-            {/* place holder if a user does not have a set cover img */}
+                </>
+            )
 
-        {/* <div className='user-page-cover-place-holder'> </div> */}
+            :
+            (
+                <>
+                    {/* place holder if a user does not have a set cover img */}
+                    <div className='user-page-cover-place-holder'> </div>
+                </>
+            )
+
+        }
+
+
+
+
+        {/*  */}
 
 
 

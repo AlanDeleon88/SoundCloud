@@ -1,5 +1,6 @@
 'use strict';
 const { User, Album, Song } = require('../models');
+const {faker} = require('@faker-js/faker')
 
 
 const songs = [
@@ -8,24 +9,22 @@ const songs = [
     albumId : 1,
     title: 'title 1',
     description: 'first title',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553559105.mp3',
   },
   {
     userId : 1,
     albumId : 1,
     title: 'song no 2',
     description: '2nd song in the 1st album',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553592820.mp3',
   },
   {
     userId : 1,
     albumId : 1,
     title: 'song 3 yo',
     description: '3rd song in 1st album',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553605045.mp3',
+
   },
 
   {
@@ -33,24 +32,21 @@ const songs = [
     albumId : 2,
     title: 'music to my ears',
     description: '1st song in 2nd album',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553653201.mp3',
   },
   {
     userId : 2,
     albumId : 2,
     title: 'jjk',
     description: 'woooooooooooooo 2nd song in 2nd album',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553670564.mp3',
   },
   {
     userId : 2,
     albumId : 2,
     title: 'apex pred',
     description: 'god like aim bruh',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553722074.mp3',
   },
 
   {
@@ -58,16 +54,14 @@ const songs = [
     albumId : 3,
     title: 'nonsense?',
     description: 'wut am i doing',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553736341.mp3',
   },
   {
     userId : 3,
     albumId : 3,
     title: 'jumpmasta',
     description: 'yo where we goin?',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553755540.mp3',
   },
 
   {
@@ -75,8 +69,7 @@ const songs = [
     albumId : 4,
     title: 'only song',
     description: 'i only made one song for this album',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553770439.mp3',
   },
 
   {
@@ -84,40 +77,85 @@ const songs = [
     albumId : 5,
     title: 'no scopes',
     description: 'doesnt add up',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553784879.mp3',
+
   },
   {
     userId : 4,
     albumId : 5,
     title: 'imdown',
     description: 'knockdown shield rip',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553796834.mp3',
   },
   {
     userId : 4,
     albumId : 5,
     title: 'bloodscan',
     description: 'he found me!',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553813715.mp3',
   },
   {
     userId : 4,
     albumId : 5,
     title: 'game-overman',
     description: 'elimanted in the water bruh',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553831089.mp3',
   },
   {
     userId : 4,
     albumId : 5,
     title: 'letsooogooooo',
     description: 'marriooo',
-    url: 'song-url',
-    previewImage: 'https://i.imgur.com/Xglo6qf.jpg',
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553850821.mp3',
+  },
+  {
+    userId : 6,
+    albumId : 7,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553866982.mp3',
+  },
+  {
+    userId : 6,
+    albumId : 7,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553866982.mp3',
+  },
+  {
+    userId : 5,
+    albumId : 6,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553559105.mp3',
+  },
+  {
+    userId : 5,
+    albumId : 6,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553592820.mp3',
+  },
+  {
+    userId : 4,
+    albumId : 5,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553605045.mp3',
+  },
+  {
+    userId : 4,
+    albumId : 5,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553653201.mp3',
+  },
+  {
+    userId : 1,
+    albumId : 4,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553670564.mp3',
   },
 
 ]

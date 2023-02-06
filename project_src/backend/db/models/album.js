@@ -52,7 +52,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     previewImage:{
       type: DataTypes.STRING,
-      allowNull : true
+      allowNull : true,
+      defaultValue: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554811745.png'
 
     },
   }, {

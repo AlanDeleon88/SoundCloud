@@ -42,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       )
     }
     toSafeObject() {
-      const {id, username, email, firstName, lastName, previewImage} = this; //!context of User instance.
-      return {id, username, email, firstName, lastName, previewImage };
+      const {id, username, email, firstName, lastName, profile_picture, profile_cover} = this; //!context of User instance.
+      return {id, username, email, firstName, lastName, profile_picture, profile_cover };
     }
 
     validatePassword(password) {
@@ -136,10 +136,10 @@ module.exports = (sequelize, DataTypes) => {
       }
 
     },
-    previewImage: {
+    profile_picture: {
       type: DataTypes.STRING,
       allowNull : true,
-      defaultValue : ''
+      defaultValue : 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554127015.png'
     },
     email:{
       type : DataTypes.STRING,
@@ -155,6 +155,10 @@ module.exports = (sequelize, DataTypes) => {
      validate : {
       len : [60, 60]
      }
+    },
+    profile_cover:{
+      type: DataTypes.STRING,
+      allowNull : true,
     }
   }, {
     sequelize,

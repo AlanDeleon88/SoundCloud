@@ -43,7 +43,8 @@ router.post( //? login route grants user a token
             email: user.email,
             token : token,
             username: user.username,
-            previewImage: user.previewImage
+            profile_picture: user.profile_picture,
+            profile_cover: user.profile_cover
         })
     }
     );

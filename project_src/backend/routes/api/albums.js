@@ -34,7 +34,7 @@ router.get( //? get all albums endpoint
     '/',
     async (req, res, next) =>{
         const albums = await Album.findAll();
-        console.log('whatt');
+        // console.log('whatt');
         if(!albums){
             const err = buildError('No albums could be found', 'No albums', 404)
             return next(err);
@@ -59,7 +59,7 @@ router.get( //? get albums by id endpoint
         let songs = await album.getSongs() //! could refactor this to get all songs and artist in one query.
         let artist = await User.findOne({ //! check comments route for an example.
             where : {id : album.userId},
-            attributes: ['id','username','previewImage']
+            attributes: ['id','username','profile_picture']
         })
         // let songs = [];
         album.dataValues.artist = artist;
@@ -87,8 +87,8 @@ router.post(
             {
                 userId : userId,
                 title,
-                description: description || 'N/A',
-                previewImage : imageUrl || 'N/A'
+                description: description,
+                previewImage : imageUrl
             }
         )
         user.addAlbums([newAlbum]);
@@ -122,9 +122,9 @@ router.post( //* create a song for an album of the id.
             userId : userId,
             albumId : album.id,
             title: title,
-            description: description || 'N/A',
+            description: description,
             url: url,
-            previewImage : imageUrl || 'N/A'
+            previewImage : imageUrl
         })
 
         album.addSongs([newSong]);
@@ -183,8 +183,8 @@ router.put( //* edit album by id
         if(album.userId === currentUserId){
             await album.update({
                 title,
-                description : description || 'N/A',
-                previewImage : imageUrl || 'N/A'
+                description : description,
+                previewImage : imageUrl
             })
             res.statusCode = 200;
             res.json(album);

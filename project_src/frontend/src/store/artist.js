@@ -15,7 +15,8 @@ export const getArtist = (id) => async (dispatch) =>{
     if(response.ok){
         const artist = await response.json();
         dispatch(setArtist(artist));
-        console.log(artist);
+        // console.log(artist);
+        return null
     }
 
 }

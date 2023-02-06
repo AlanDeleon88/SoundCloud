@@ -71,6 +71,17 @@ export const loadSplashSongs = () => async (dispatch) => {
 
 }
 
+export const getUserSongs = (id) => async (dispatch) =>{
+    const response = await csrfFetch(`/api/artists/${id}/songs`)
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(loadSongs(data.Songs))
+        return null;
+    }
+
+}
+
 export const loadAlbumSongs = (id) => async (dispatch) =>{
     const response = await csrfFetch(`/api/albums/${id}`)
     if(response.ok){

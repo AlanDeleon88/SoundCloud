@@ -23,7 +23,8 @@ module.exports = {
       },
       previewImage: {
         type: Sequelize.STRING,
-        allowNull : true
+        allowNull : true,
+        defaultValue : 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554811745.png'
       },
       createdAt: {
         allowNull: false,

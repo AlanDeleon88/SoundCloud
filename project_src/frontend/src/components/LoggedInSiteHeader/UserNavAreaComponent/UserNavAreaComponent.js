@@ -48,7 +48,7 @@ const UserNavAreaComponent = ({user}) =>{
             </button>
             <div className='logged-profile-container' onClick={handleProfileClick}>
                 <div className='logged-profile-pic-container'>
-                    <img src={placeholderProfile} className='logged-profile-pic'/>
+                    <img src={user.profile_picture} className='logged-profile-pic'/>
                 </div>
                 <div className='logged-profile-username'>
                     {user.username}

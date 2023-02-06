@@ -63,17 +63,26 @@ router.get(
     '/:id/songs',
     async (req, res, next) => {
         const { id } = req.params;
-        const artist = await User.findByPk(id);
-        if(!artist){
-            const err = buildError("Couldn't find an Artist with the specified id", 'invalid id', 404);
-            return next(err);
-        }
-        const songs = await artist.getSongs();
+        // const artist = await User.findByPk(id);
+        const song = await Song.findAll({
+            where:{
+                userId: id
+            },
+            include: [
+                {model : Album, attributes:['title', 'id', 'previewImage']},
+                {model : User, attributes:['id', 'username', 'profile_picture']}
+            ]
+        })
+        // if(!artist){
+        //     const err = buildError("Couldn't find an Artist with the specified id", 'invalid id', 404);
+        //     return next(err);
+        // }
+        // const songs = await artist.getSongs();
 
         res.statusCode = 200;
 
         res.json({
-            Songs: songs
+            Songs: song
         })
 
     }
@@ -103,9 +112,9 @@ router.get(
         const { id } = req.params;
         const artist = await User.findByPk(id, {
             include:[
-                {model: Song, attributes : ['previewImage','url', 'previewImage','title', 'description']}, {model: Album, attributes: ['id', 'previewImage', 'userId','title']}
+                {model: Song, attributes : ['previewImage','url', 'previewImage','title', 'description','id','userId', 'albumId']}, {model: Album, attributes: ['id', 'previewImage', 'userId','title']}
                 ],
-            attributes: ['id', 'username', 'previewImage']
+            attributes: ['id', 'username', 'profile_picture', 'profile_cover']
 
         })
 

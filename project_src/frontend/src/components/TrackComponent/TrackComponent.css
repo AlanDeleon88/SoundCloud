@@ -1,0 +1,98 @@
+.track-main-container{
+    /* border:solid 1px red; */
+    height: 250;
+    /* width: 300px; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.track-main-container:hover{
+    box-shadow: 2px 2px 7px #2f079f;
+}
+
+.track-album-img{
+    height: 100px;
+    width: 100px;
+    object-fit: fill;
+}
+
+
+.track-button-title-container{
+    display: flex;
+    /* border:solid 1px blue; */
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 40%;
+    /* position: relative; */
+    /* bottom:40px; */
+}
+
+.track-title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    /* border: 1px solid green; */
+
+}
+
+.track-artist{
+    color: gray;
+    font-size: 15px;
+    display: flex;
+}
+
+.track-title{
+    font-size:25px;
+}
+
+.track-button{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    /* background-color: #1a035a; */
+    border-radius: 100%;
+    width: 75px;
+    /* height: 75px; */
+    /* padding: 20px; */
+    justify-content: center;
+    border: none;
+    /* position: relative;
+    bottom: 125px; */
+}
+
+.track-pause-button{
+    position: relative;
+    left:1px;
+    top:3px;
+}
+
+.track-play-button{
+    position: relative;
+    left:3px;
+    top:3px;
+    /* height:75px; */
+
+}
+
+.edit-delete-container{
+    display: flex;
+    /* border: solid 1px pink; */
+    width:40%;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.track-ud{
+    background-color: #1a035a;
+    height:48px;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

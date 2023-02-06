@@ -1,6 +1,7 @@
 'use strict';
 
 const { User, Album } = require('../models');
+const {faker} = require('@faker-js/faker')
 
 
 const sampleAlbums =
@@ -9,32 +10,44 @@ const sampleAlbums =
     userId : 1,
     title: 'the world',
     description: 'A long description of how i forgot to add this column in the first place',
-    previewImage : 'https://i.imgur.com/uq8Y4uE.png'
+    previewImage : 'https://i.imgur.com/DIsQ6Sz.png'
 
   },
   {
     userId : 2,
     title: 'star platinum',
     description: 'A long description of how i forgot to add this column in the first place ughhhhh',
-    previewImage : 'https://i.imgur.com/4oFOC90.png'
+    previewImage : 'https://i.imgur.com/bdVjKAg.png'
   },
   {
     userId : 3,
     title: 'silver chariot',
     description: 'A long description of how i forgot to add this column in the first place ughhhasdahh',
-    previewImage : 'https://i.imgur.com/k6y4gs5.png'
+    previewImage: 'https://i.imgur.com/zIORROY.png'
   },
   {
     userId : 1,
     title: 'greeeenn',
     description: 'A long description of how i forgot to add this column in the first place boooooo',
-    previewImage : 'https://i.imgur.com/Zye54Rr.png'
+    previewImage: 'https://i.imgur.com/8Ex81rX.png'
   },
   {
     userId : 4,
     title: 'hermit purpleeeee',
     description: 'A long description of how i forgot to add this column in the first place boooooo',
-    previewImage : 'https://i.imgur.com/Zye54Rr.png'
+    previewImage: 'https://i.imgur.com/BALjpkv.png'
+  },
+  {
+    userId : 5,
+    title: faker.word.adjective(),
+    description: faker.hacker.phrase(),
+    previewImage: 'https://i.imgur.com/irv1HVy.png'
+  },
+  {
+    userId : 6,
+    title: faker.word.adjective(),
+    description: faker.hacker.phrase(),
+    previewImage: 'https://i.imgur.com/4RpJBPw.png'
   },
 ]
 module.exports = {

@@ -1,39 +1,89 @@
 'use strict';
 const  bcrypt = require('bcryptjs');
+const {faker} = require('@faker-js/faker')
+
 
 let sampleUsers = [
   {
     firstName:'Ashante',
     lastName:'Gungbubui',
     email : 'demo@user.io',
-    previewImage: 'img-url',
+    profile_picture: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554127015.png',
     username : 'Demo-lition',
-    hashedPassword : bcrypt.hashSync('password')
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover: 'https://i.imgur.com/0mR9qpQ.png'
   },
   {
     firstName: 'David',
     lastName: 'You',
     email : 'user1@user.io',
-    previewImage: 'img-url',
+    profile_picture: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554127015.png',
     username : 'FakeUser1',
-    hashedPassword : bcrypt.hashSync('password2')
+    hashedPassword : bcrypt.hashSync('password2'),
+    profile_cover: 'https://i.imgur.com/rn7DFYc.png'
   },
   {
     firstName: 'cookee',
     lastName: 'loui',
     email : 'user2@user.io',
-    previewImage: 'img-url',
+    profile_picture: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554127015.png',
     username : 'FakeUser2',
-    hashedPassword : bcrypt.hashSync('password3')
+    hashedPassword : bcrypt.hashSync('password3'),
+    profile_cover : 'https://i.imgur.com/DVPBFFe.png'
   },
   {
-    firstName: 'NEW',
-    lastName: 'user',
-    email : 'user2342@user.io',
-    previewImage: 'img-url',
-    username : 'originGamesSux',
-    hashedPassword : bcrypt.hashSync('password343')
-  }
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover: 'https://i.imgur.com/yRhGCzE.png'
+  },
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover : 'https://i.imgur.com/WFWCJlm.png'
+  },
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover : 'https://i.imgur.com/sWzP0Bm.png'
+  },
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover : 'https://i.imgur.com/fmTyo9H.png',
+  },
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password'),
+    profile_cover : 'https://i.imgur.com/kOXwnQI.png'
+  },
+  {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email : faker.internet.email(),
+    profile_picture: faker.internet.avatar(),
+    username : faker.internet.userName(),
+    hashedPassword : bcrypt.hashSync('password')
+  },
 ]
 
 module.exports = {

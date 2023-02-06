@@ -4,35 +4,35 @@ let playlistData = [
   {
     userId : 1,
     name: 'my first list',
-    previewImage: 'img-url'
+
     },
     {
     userId : 1,
     name: 'my best list',
-    previewImage: 'img-url'
+
     },
 
     {
     userId : 2,
     name: 'my favs',
-    previewImage: 'img-url'
+
     },
 
     {
     userId : 3,
     name: 'da best',
-    previewImage: 'img-url'
+
     },
     {
     userId : 3,
     name: 'da 2nd best',
-    previewImage: 'img-url'
+
     },
 
     {
     userId : 4,
     name: 'da wurst',
-    previewImage: 'img-url'
+
     },
 
 ]

@@ -10,7 +10,7 @@ const ArtistListElement = ({artists}) =>{
         <>
             <div className='artist-list-el-main-container'>
                 <div className='artist-list-el-img-container'>
-                    <img src={tempProfile} className='artist-list-el-img'/>
+                    <img src={artists.profile_picture} className='artist-list-el-img'/>
                 </div>
                 <div className='artist-list-el-name-tracks-container'>
                     <div className='artist-list-el-name'>

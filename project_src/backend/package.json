@@ -14,12 +14,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "aws-sdk": "^2.1304.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "express-validator": "^6.14.2",
@@ -34,6 +35,7 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "dotenv-cli": "^5.1.0",
     "nodemon": "^2.0.18",
     "sqlite3": "^5.0.8"

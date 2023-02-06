@@ -135,7 +135,7 @@ router.get(
             where: {
                 id : song.userId
             },
-            attributes: ['id', 'username', 'previewImage']
+            attributes: ['id', 'username', 'profile_picture']
 
         });
         const album = await Album.findOne({
@@ -233,9 +233,9 @@ router.put(
 
         await song.update({
             title,
-            description: description || 'N/A',
+            description: description,
             url,
-            previewImage : imageUrl || 'N/A'
+            previewImage : imageUrl
         })
         res.statusCode = 200;
 

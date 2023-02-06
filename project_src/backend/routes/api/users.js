@@ -64,7 +64,8 @@ router.post(
             email: newUser.email,
             username: username,
             token: token,
-            previewImage: newUser.previewImage
+            profile_picture: newUser.profile_picture,
+            profile_cover: newUser.profile_cover
 
         });
     }
