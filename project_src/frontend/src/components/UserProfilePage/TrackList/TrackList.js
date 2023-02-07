@@ -23,7 +23,7 @@ const TrackList = ({userId}) =>{
                         {songs.map(song => {
                             return(
                                 <>
-                                    <TrackComponent song={song} />
+                                    <TrackComponent song={song} key={song.id}/>
                                 </>
                             )
                         })}

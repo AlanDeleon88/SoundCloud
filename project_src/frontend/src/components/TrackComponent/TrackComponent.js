@@ -3,10 +3,12 @@ import{FaPlay, FaPause} from 'react-icons/fa'
 import track_img from './temp_data/temp_track_img.png'
 import { useState, useEffect } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setTracks, pausePlayer } from '../../store/musicPlayer'
 
 const TrackComponent = ({song}) =>{
     const [play, setPlay] = useState(false)
+    const dispatch = useDispatch();
     const [showButtons, setShowButtons] = useState(false)
     const currentUser = useSelector(state=>state.session.user)
     const albumCover = song.Album.previewImage
@@ -14,7 +16,9 @@ const TrackComponent = ({song}) =>{
     //useEffect to dispatch to musicPlayer Store.
 
     const handlePlay= e =>{
-
+        dispatch(pausePlayer()).then(res =>{
+            dispatch(setTracks([song]))
+        })
     }
 
     const onEnter = e =>{

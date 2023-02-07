@@ -1,7 +1,9 @@
 import{FaPlay, FaPause, FaStepBackward,FaStepForward } from 'react-icons/fa'
 import './MusicControls.css'
+import { prevTrack, nextTrack, pausePlayer, playPlayer } from '../../../store/musicPlayer';
+import { useDispatch } from 'react-redux';
 const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) =>{
-
+    const dispatch = useDispatch()
 
     return(
         <>
@@ -12,7 +14,11 @@ const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) 
                 <div className='music-controls-play-pause'>
                     {isPlaying ?
                         (
-                            <div className='music-controls-pause' onClick={() => onPlayPauseClick(false)}>
+                            <div className='music-controls-pause' onClick={() => {
+                                onPlayPauseClick(false)
+                                dispatch(pausePlayer())
+
+                                }}>
 
                                 <FaPause />
 
@@ -20,7 +26,10 @@ const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) 
                         )
                         :
                         (
-                            <div className='music-controls-play' onClick={() => onPlayPauseClick(true)}>
+                            <div className='music-controls-play' onClick={() => {
+                                onPlayPauseClick(true)
+                                dispatch(playPlayer())
+                                }}>
 
 
                                 <FaPlay />

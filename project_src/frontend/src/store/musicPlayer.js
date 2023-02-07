@@ -45,43 +45,94 @@ const findTrackIndex = (state) =>{
 
 }
 
+export const prevTrack = () => async dispatch =>{
+    dispatch(prevTrackAction())
+    return null
+}
+
+export const nextTrack = () => async dispatch =>{
+    dispatch(nextTrackAction())
+    return null
+}
+
+export const setTracks = (tracks) => async dispatch =>{
+    dispatch(setTracksAction(tracks))
+    return null
+}
+
+export const pausePlayer = () => async dispatch =>{
+    dispatch(pauseAction())
+    return null
+}
+
+export const playPlayer = () => async dispatch =>{
+    dispatch(playAction())
+    return null
+}
 
 export default function musicPlayerReducer(state=default_state, action){
     let newState = {}
     let index;
     switch(action.type){
         case SET_TRACKS:
-            newState = {...default_state}
+            // console.log(default_state);
+            newState = {
+                tracks : [],
+                current_track: {},
+                is_playing: false,
+            }
+            // newState = {...default_state}
             newState.tracks.push(...action.payload)
             newState.current_track = newState.tracks[0]
+            newState.is_playing = true;
+            return newState
+
+        case PLAY:
+            newState = {...state}
+            newState.is_playing = true
+            return newState
+
+        case PAUSE:
+            newState = {...state}
+            newState.is_playing = false;
             return newState
 
         case NEXT_TRACK:
             newState = {...state}
             index = findTrackIndex(newState);
+            console.log(index);
 
-            if(!index || newState.tracks.length === 0) return newState;
+            if(newState.tracks.length === 0) return newState;
 
-            newState.current_track = newState.tracks[index + 1]
-
-            if(!newState.current_track){
-                newState.current_track = newState.tracks[index]
+            // newState.current_track = newState.tracks[index + 1]
+            // console.log('length of tracks', newState.tracks.length);
+            if(index < newState.tracks.length - 1){
+                // console.log('in the array', index);
+                newState.current_track = newState.tracks[index + 1]
                 return newState
             }
-            else return newState
+            else{
+                newState.current_track = newState.tracks[0]
+                return newState
+            }
 
         case PREV_TRACK:
             newState = {...state}
             index = findTrackIndex(newState);
-            if(!index || newState.tracks.length ===0 ) return newState
+            if(newState.tracks.length === 0 ) return newState
 
-            newState.current_track = newState.tracks[index - 1]
-
-            if(!newState.current_track){
-                newState.current_track = newState.tracks[index]
+            // newState.current_track = newState.tracks[index - 1]
+            // console.log(index);
+            if(index - 1 < 0){
+                // console.log('I ENDEDUP HERE TO LOOP');
+                newState.current_track = newState.tracks[newState.tracks.length-1]
                 return newState
             }
-            else return newState
+            else{
+                //  console.log('HEY I DIDNT LOOP');
+                newState.current_track = newState.tracks[index - 1]
+                return newState
+            }
 
         case PLAY:
             newState ={...state}
