@@ -1,0 +1,42 @@
+:root{
+    --white: #fff;
+    --active-color: #00aeb0;
+}
+
+.music-player-main-container{
+    width: 100%;
+    height: 50px;
+    color: var(--white);
+    display: flex;
+    border: solid 1px skyblue;
+}
+
+.music-player-controls-container{
+    width: 30%;
+    border:solid 1px green;
+    display: flex;
+    justify-content: center;
+}
+
+.music-player-song-info-container{
+    display: flex;
+    align-items: center;
+    border: solid 2px lightgreen;
+}
+
+.music-player-text-container{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px blue;
+    color: white;
+    font-size:13px;
+}
+
+.music-player-artist-album{
+    display: flex;
+}
+
+.music-player-art{
+    height: 50px;
+    width: 50px;
+}

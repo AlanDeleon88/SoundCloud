@@ -82,7 +82,7 @@
 .edit-delete-container{
     display: flex;
     /* border: solid 1px pink; */
-    width:40%;
+    width:30%;
     justify-content: space-between;
     margin: 5px;
 }

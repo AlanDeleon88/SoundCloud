@@ -14,7 +14,7 @@ import LoggedInSiteHeader from "./components/LoggedInSiteHeader";
 import LoggedHome from "./components/LoggedHome";
 import UserProfilePage from "./components/UserProfilePage";
 import './index.css'
-
+import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 
 
 function App() {
@@ -165,7 +165,7 @@ function App() {
 
       </Switch>
       <div className="music-player-placeholder">
-         PLACE HOLDER FOR MUSIC PLAYER
+         <MusicPlayer />
       </div>
 
     </div>
