@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './MusicPlayer.css'
 import MusicControls from './MusicControls';
 import { prevTrack, nextTrack, pausePlayer, playPlayer } from '../../store/musicPlayer';
+import timeConvert from './timeConverter';
 
 
 const MusicPlayer = () =>{
@@ -77,6 +78,14 @@ const MusicPlayer = () =>{
             setIsPlaying(true)
             startTimer();
         }
+        return() =>{
+            if(url){
+                audioRef.current.pause();
+
+                clearInterval(intervalRef.current)
+                // setIsPlaying(false)
+            }
+        }
     },[url])
 
     useEffect(() => {
@@ -96,16 +105,16 @@ const MusicPlayer = () =>{
         }
     },[isPlaying])
 
-    useEffect(() =>{
-        return() =>{
-            if(url){
-                audioRef.current.pause();
+    // useEffect(() =>{
+    //     return() =>{
+    //         if(url){
+    //             audioRef.current.pause();
 
-                clearInterval(intervalRef.current)
-                // setIsPlaying(false)
-            }
-        }
-    },[url])
+    //             clearInterval(intervalRef.current)
+    //             // setIsPlaying(false)
+    //         }
+    //     }
+    // },[url])
 
     const toPrevTrack = () =>{
         dispatch(prevTrack())
@@ -130,7 +139,21 @@ const MusicPlayer = () =>{
             </div>
             <div className='music-player-seeker-container'>
                 <div className='current-prog'>
-                    {Math.floor(trackProgress)}
+                    { trackProgress ?
+                        (
+                            <>
+                                 {timeConvert(trackProgress)}
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                --:--
+                            </>
+                        )
+
+                    }
+
                 </div>
                 <input
                     type='range'
@@ -147,7 +170,7 @@ const MusicPlayer = () =>{
                     { duration ?
                         (
                             <>
-                                {Math.floor(duration)}
+                                {timeConvert(duration)}
                             </>
                         )
                         :
