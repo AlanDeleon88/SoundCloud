@@ -8,12 +8,14 @@
     height: 50px;
     color: var(--white);
     display: flex;
-    border: solid 1px skyblue;
+    /* border: solid 1px skyblue; */
+    justify-content: space-between;
+    background-color: #2f2b3b;
 }
 
 .music-player-controls-container{
-    width: 30%;
-    border:solid 1px green;
+    width: 20%;
+    /* border:solid 1px green; */
     display: flex;
     justify-content: center;
 }
@@ -22,6 +24,7 @@
     display: flex;
     align-items: center;
     border: solid 2px lightgreen;
+    width: 15%;
 }
 
 .music-player-text-container{
@@ -50,5 +53,76 @@
     align-items: center;
     justify-content: center;
     /* flex-direction: column-reverse; */
-    width: 55%;
+    width: 50%;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+     background: transparent;
+     cursor: pointer;
+     width: 90%;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    /* background:#1a035a; */
+    border-radius: 10px;
+    height: 1rem;
+  }
+  /* input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: red;
+    height: 2rem;
+  } */
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    /* margin-top: -12px; Centers thumb on the track */
+    /* margin-top:-12px; */
+    background-color: #ccbff1;
+    columns: black;
+    height: 1rem;
+    border-radius: 100%;
+    width: 1rem;
+ }
+
+ .volume-slide-container{
+    display: flex;
+    flex-direction: column;
+    /* overflow: visible; */
+    width: 100px;
+    /* position: absolute; */
+    /* left:12%; */
+    align-items: center;
+    /* font-size: 30px; */
+
+
+}
+
+
+.volume-slider{
+    -webkit-transform:rotate(-90deg);
+    position: relative;
+    bottom:50px;
+    border: 1px solid white;
+
+
+}
+.volume-place-holder{
+    -webkit-transform:rotate(-90deg);
+    border: solid 1px white;
+    position: relative;
+    bottom:50px;
+    height: 20px;
+    width: 100px;
+    opacity: 0;
+}
+
+.volume-button{
+    position: relative;
+    bottom: 15px;
+    font-size: 30px;
+    /* border:solid 1px green */
 }

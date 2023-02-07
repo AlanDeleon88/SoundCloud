@@ -4,6 +4,7 @@ import './MusicPlayer.css'
 import MusicControls from './MusicControls';
 import { prevTrack, nextTrack, pausePlayer, playPlayer } from '../../store/musicPlayer';
 import timeConvert from './timeConverter';
+import{BsVolumeDownFill} from 'react-icons/bs'
 
 
 const MusicPlayer = () =>{
@@ -11,13 +12,21 @@ const MusicPlayer = () =>{
     const {tracks, current_track, is_playing} = useSelector(state => state.musicPlayer)
     const [trackProgress, setTrackProgress] = useState(0)
     const [duration, setDuration] = useState(0)
+    const [volume, setVolume] = useState(.5)
+    const [showVolume, setShowVolume] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const {url} = current_track
     let audioRef = useRef()
     const intervalRef = useRef()
     const isReady = useRef(false)
+    const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%';
+    const currentVolumePercentage = `${(volume / 1) * 100}%`
+    const trackStyling = `
+  -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #1a035a), color-stop(${currentPercentage}, #777))`;
+    const volumeStyle = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentVolumePercentage}, #1a035a), color-stop(${currentVolumePercentage}, #777))`;
     // console.log(isPlaying);
     // console.log(duration);
+    // console.log(volume);
 
     //! need to write some dispatch or something that effects the pause or play from other components
     //! IE if I hit the play button on a track componenent it will play automatically on the main player.
@@ -27,7 +36,14 @@ const MusicPlayer = () =>{
 
         intervalRef.current = setInterval(() =>{
             if(audioRef.current.ended){
-                toNextTrack()
+                if(tracks.length > 1){
+
+                    toNextTrack()
+                }
+                else{
+                    setIsPlaying(false)
+                    dispatch(pausePlayer)
+                }
             }
             else
             {
@@ -42,6 +58,13 @@ const MusicPlayer = () =>{
         setTrackProgress(audioRef.currentTime)
     }
 
+    const handleVolume = (e) =>{
+        setVolume(e.target.value)
+        if(audioRef.current){
+            audioRef.current.volume = e.target.value
+        }
+    }
+
     const onScrubEnd = () =>{
         if(!isPlaying){
             setIsPlaying(true)
@@ -51,6 +74,7 @@ const MusicPlayer = () =>{
     const onDurationChangeHandler = e =>{
         const seconds = Math.floor(e.target.duration)
         setDuration(seconds)
+        audioRef.current.volume = volume;
     }
 
     useEffect(() =>{
@@ -59,12 +83,15 @@ const MusicPlayer = () =>{
 
     useEffect(() =>{
         if(url){
+
             audioRef.current = new Audio(url)
+            // console.log(audioRef);
             // console.log(audioRef.current.ondurationchange);
             audioRef.current.ondurationchange = onDurationChangeHandler
+
             // duration = audioRef.current.duration
         }
-    },[tracks, url])
+    },[url])
 
     useEffect(() =>{
         if(audioRef.current){
@@ -128,7 +155,7 @@ const MusicPlayer = () =>{
 
     return(
     <>
-        <div className='music-player-main-container'>
+        <div className='music-player-main-container' onMouseLeave={() =>{setShowVolume(false)}}>
             <div className='music-player-controls-container'>
                 <MusicControls
                     isPlaying={isPlaying}
@@ -136,9 +163,36 @@ const MusicPlayer = () =>{
                     onNextClick={toNextTrack}
                     onPlayPauseClick ={setIsPlaying}
                 />
+                <div className='volume-slide-container'>
+                    {showVolume ?
+                        (
+                            <input type='range' className='volume-slider'
+                                value={volume}
+                                step='.01'
+                                min='0'
+                                max='1'
+                                onChange={handleVolume}
+                                onMouseLeave={() =>{setShowVolume(false)}}
+                                style={{background: volumeStyle, 'borderRadius' : '10px'}}
+                            />
+
+                        )
+                        :
+                        (
+                            <div className='volume-place-holder'>
+                                place holder more place holder
+                            </div>
+                        )
+
+                    }
+
+                    <div className='volume-button' onMouseEnter={() =>{setShowVolume(true)}}>
+                        <BsVolumeDownFill />
+                    </div>
+                </div>
             </div>
             <div className='music-player-seeker-container'>
-                <div className='current-prog'>
+                <div className='current-prog' style={{'marginRight' : '10px'}}>
                     { trackProgress ?
                         (
                             <>
@@ -148,7 +202,7 @@ const MusicPlayer = () =>{
                         :
                         (
                             <>
-                                --:--
+                                - : -
                             </>
                         )
 
@@ -160,13 +214,14 @@ const MusicPlayer = () =>{
                     value={trackProgress}
                     step='1'
                     min='0'
-                    max ={duration? duration : `${duration}`}
+                    max ={duration ? duration  : `${duration}`}
                     className='progress'
                     onChange={(e) => onScrub(e.target.value)}
                     onMouseUp={onScrubEnd}
                     onKeyUp={onScrubEnd}
+                    style={{ background: trackStyling, 'borderRadius' : '10px' }}
                 />
-                <div className='max-prog'>
+                <div className='max-prog' style={{'margin-left' : '10px'}}>
                     { duration ?
                         (
                             <>
@@ -186,7 +241,8 @@ const MusicPlayer = () =>{
 
             <div className='music-player-song-info-container'>
                  <div className='music-player-song-art-container'>
-                    <img className='music-player-art'/>
+
+                    <img className='music-player-art' src={current_track.Album ? current_track.Album.previewImage : null}/>
                 </div>
                 <div className='music-player-text-container'>
                     <div className='music-player-artist-album'>
