@@ -31,7 +31,8 @@
     "pg": "^8.7.3",
     "sequelize": "^6.21.2",
     "sequelize-cli": "^6.4.1",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "@faker-js/faker": "^7.6.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
