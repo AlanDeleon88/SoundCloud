@@ -129,6 +129,9 @@ const MusicPlayer = () =>{
                 />
             </div>
             <div className='music-player-seeker-container'>
+                <div className='current-prog'>
+                    {Math.floor(trackProgress)}
+                </div>
                 <input
                     type='range'
                     value={trackProgress}
@@ -140,7 +143,22 @@ const MusicPlayer = () =>{
                     onMouseUp={onScrubEnd}
                     onKeyUp={onScrubEnd}
                 />
-                {Math.floor(trackProgress)}
+                <div className='max-prog'>
+                    { duration ?
+                        (
+                            <>
+                                {Math.floor(duration)}
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                --:--
+                            </>
+                        )
+
+                    }
+                </div>
             </div>
 
             <div className='music-player-song-info-container'>

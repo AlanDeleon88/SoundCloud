@@ -40,3 +40,15 @@
     height: 50px;
     width: 50px;
 }
+
+.progress{
+    width: 90%;
+}
+
+.music-player-seeker-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column-reverse; */
+    width: 55%;
+}
