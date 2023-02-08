@@ -168,7 +168,7 @@ const MusicPlayer = () =>{
                         (
                             <input type='range' className='volume-slider'
                                 value={volume}
-                                step='.01'
+                                step='.05'
                                 min='0'
                                 max='1'
                                 onChange={handleVolume}
@@ -179,9 +179,16 @@ const MusicPlayer = () =>{
                         )
                         :
                         (
-                            <div className='volume-place-holder'>
-                                place holder more place holder
-                            </div>
+                            <input type='range' className='volume-place-holder'
+                                disabled={true}
+                                value={volume}
+                                step='.01'
+                                min='0'
+                                max='1'
+                                onChange={handleVolume}
+                                onMouseLeave={() =>{setShowVolume(false)}}
+                                style={{background: volumeStyle, 'borderRadius' : '10px'}}
+                            />
                         )
 
                     }
@@ -258,7 +265,7 @@ const MusicPlayer = () =>{
                         <div className='music-player-album'>
                             {current_track.Album &&
                                 <>
-                                    {current_track.Album.title}
+                                    {/* {current_track.Album.title} */}
                                 </>
 
                             }

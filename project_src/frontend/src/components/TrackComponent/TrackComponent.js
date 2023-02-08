@@ -80,17 +80,24 @@ const TrackComponent = ({song}) =>{
                         </div>
                     </div>
                         <div className='edit-delete-container'>
-                            {currentUser.id === song.User.id && showButtons &&
+                            {currentUser &&
                                 <>
-                                    <div className='track-ud track-u'>
-                                        Edit
-                                    </div>
-                                    <div className='track-ud track-d'>
-                                        Delete
-                                    </div>
-                                </>
 
-                            }
+                                    {currentUser.id === song.User.id && showButtons &&
+                                        <>
+                                            <div className='track-ud track-u'>
+                                                Edit
+                                            </div>
+                                            <div className='track-ud track-d'>
+                                                Delete
+                                            </div>
+                                        </>
+
+                                    }
+
+                                </>
+                                    }
+
 
 
                     </div>

@@ -1,12 +1,12 @@
 .music-controls-main-container{
     display: flex;
-    width: 60%;
+    width: 70%;
     height: 100%;
     /* border: solid 1px red; */
     align-items: center;
     justify-content: space-between;
     font-size: 25px;
-    margin-left: 100px;
+    margin-left: 60px;
 }
 
 

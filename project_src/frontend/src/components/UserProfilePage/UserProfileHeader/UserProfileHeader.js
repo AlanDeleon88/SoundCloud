@@ -16,7 +16,7 @@ const UserProfileHeader = ({user, currentUser, userId}) =>{
                 <img src={user.profile_picture} className="user-page-profile-pic"/>
                 { currentUser &&
                 <>
-                    { currentUser.id === userId ?
+                    {currentUser && currentUser.id === userId ?
                         (
                             <>
                             <button className='edit-profile-pic-button'>
@@ -57,7 +57,7 @@ const UserProfileHeader = ({user, currentUser, userId}) =>{
             {currentUser &&
                 <>
 
-                    { currentUser.id === userId &&
+                    {currentUser.id === userId &&
                             <button className="edit-cover-button">
                                 <BsFillCameraFill />
                                 <div style={{'marginLeft' : '5px'}}>

@@ -118,7 +118,7 @@ body{
 }
 
 .music-player-placeholder{
-    border: 1px solid lightgoldenrodyellow;
+    /* border: 1px solid lightgoldenrodyellow; */
     height: 5%;
     width: 100%;
     position: absolute;
