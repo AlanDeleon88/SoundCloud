@@ -42,7 +42,7 @@ const MusicPlayer = () =>{
                 }
                 else{
                     setIsPlaying(false)
-                    dispatch(pausePlayer)
+                    dispatch(pausePlayer())
                 }
             }
             else

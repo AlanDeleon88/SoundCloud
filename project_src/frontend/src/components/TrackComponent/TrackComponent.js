@@ -11,10 +11,12 @@ const TrackComponent = ({song}) =>{
     const dispatch = useDispatch();
     const [showButtons, setShowButtons] = useState(false)
     const currentUser = useSelector(state=>state.session.user)
+    const musicPlayer = useSelector(state=>state.musicPlayer)
+    const {current_track, is_playing} = musicPlayer
     const albumCover = song.Album.previewImage
     //use select currentplay store to compare to title / id to see if pause or play is rendered.
     //useEffect to dispatch to musicPlayer Store.
-
+    // console.log(current_track);
     const handlePlay= e =>{
         dispatch(pausePlayer()).then(res =>{
             dispatch(setTracks([song]))
@@ -39,7 +41,7 @@ const TrackComponent = ({song}) =>{
 
                 <div className="track-button-title-container">
                     <div className="track-button" id={play ? 'track-pause' : 'track-play'} onClick={handlePlay}>
-                    {play ?
+                    {current_track && (current_track.title === song.title) && is_playing ?
                         (
                             <>
                                 <div className='track-pause-button'>
