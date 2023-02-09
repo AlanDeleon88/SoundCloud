@@ -48,11 +48,28 @@ router.get(
         const albumSongs = await Album.findAll({
             where:{userId : id},
             include: [
-                {model : Song , attributes:['id', 'title', 'description', 'url']}
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ]
+
+                }
 
             ],
             order:[[Song,'id', 'ASC']]
         })
+
         if(!artist){
             const err = buildError('Could not find artist', 'invalid id', 404);
             return next(err);

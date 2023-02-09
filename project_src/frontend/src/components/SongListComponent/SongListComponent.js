@@ -10,16 +10,16 @@ const SongListComponent = ({album, playlist, username}) =>{
     const {Songs} = album ? album : playlist
     const dispatch = useDispatch();
 
-    useEffect(() =>{
-        Songs.forEach(song =>{
+    // useEffect(() =>{
+    //     Songs.forEach(song =>{
 
-            // song['Album']['previewImage'] = album.previewImage
-            song['Album'] = {previewImage: album.previewImage}
-            song['User'] = {username: username}
-            song['albumId'] = album.id
+    //         // song['Album']['previewImage'] = album.previewImage
+    //         song['Album'] = {previewImage: album.previewImage}
+    //         song['User'] = {username: username}
+    //         // song['albumId'] = album.id
 
-        })
-    },[album])
+    //     })
+    // },[album])
 
     return(
         <>
