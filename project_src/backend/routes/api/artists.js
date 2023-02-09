@@ -45,6 +45,14 @@ router.get(
     async (req, res, next) => {
         const { id } = req.params;
         const artist = await User.findByPk(id);
+        const albumSongs = await Album.findAll({
+            where:{userId : id},
+            include: [
+                {model : Song , attributes:['id', 'title', 'description', 'url']}
+
+            ],
+            order:[[Song,'id', 'ASC']]
+        })
         if(!artist){
             const err = buildError('Could not find artist', 'invalid id', 404);
             return next(err);
@@ -53,7 +61,8 @@ router.get(
 
         res.statusCode = 200;
         res.json({
-            albums : albums,
+            albums : albumSongs,
+            username: artist.username
 
         })
     }

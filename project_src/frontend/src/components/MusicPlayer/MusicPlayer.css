@@ -63,7 +63,7 @@
     align-items: center;
     justify-content: center;
     /* flex-direction: column-reverse; */
-    width: 50%;
+    width: 55%;
 }
 
 input[type="range"] {

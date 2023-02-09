@@ -78,7 +78,7 @@ export const loadUserAlbums = (id) => async (dispatch) =>{
     if(response.ok){
         const albums = await response.json();
         // console.log('thunk', albums);
-        dispatch(loadAlbums(albums.Albums));
+        dispatch(loadAlbums(albums.albums));
         return albums;
     }
 

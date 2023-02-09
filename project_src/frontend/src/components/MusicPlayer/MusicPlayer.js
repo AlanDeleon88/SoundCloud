@@ -144,13 +144,23 @@ const MusicPlayer = () =>{
     // },[url])
 
     const toPrevTrack = () =>{
-        dispatch(prevTrack())
+        dispatch(pausePlayer()).then((res)=>{
+            dispatch(prevTrack()).then((res)=>{
+                dispatch(playPlayer())
+            })
+
+        })
 
     }
 
     const toNextTrack = () =>{
         //! dispatch to store to go to next track
-        dispatch(nextTrack())
+        // dispatch(nextTrack())
+        dispatch(pausePlayer()).then((res)=>{
+            dispatch(nextTrack()).then((res) =>{
+                dispatch(playPlayer())
+            })
+        })
     }
 
     return(

@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams, Route, Switch, NavLink, useRouteMatch} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import {BsFillCameraFill} from 'react-icons/bs'
-import tempProfilePicture from '../LoggedInSiteHeader/temp_images/profile_placeholder.png'
-import tempCover from '../LoggedInSiteHeader/temp_images/temp_cover.png'
 import './UserProfilePage.css'
 import UserProfileHeader from "./UserProfileHeader"
-import TrackComponent from "../TrackComponent"
-import ReactAudioPlayer from "react-audio-player"
-import AddSongModal from "../AddSongModal"
 import { getArtist } from "../../store/artist"
 import ExploreUserComponent from "../LoggedHome/ExploreUserComponent"
 import TrackList from "./TrackList"
+import UserAlbumList from "./UserAlbumList"
+
 const UserProfilePage = () =>{
     const [isLoaded, setIsLoaded] = useState(false)
     const currentUser = useSelector(state=>state.session.user)
@@ -55,15 +51,12 @@ const UserProfilePage = () =>{
                     <div className="user-page-content">
                         <Switch>
                             <Route path={`${match.url}`} exact={true}>
-                                {/* All of my stuff */}
-                                {/* <TrackComponent />
-                                <TrackComponent />
-                                <TrackComponent /> */}
+
                                 <TrackList userId={userId}/>
 
                             </Route>
                             <Route path={`${match.url}/albums`}>
-                                albums
+                                <UserAlbumList userId={userId} username={user.username}/>
                             </Route>
                             <Route path={`${match.url}/playlists`}>
                                 Playlists

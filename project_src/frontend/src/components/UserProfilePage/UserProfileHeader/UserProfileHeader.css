@@ -73,7 +73,7 @@
 
 .placeholder{
     /* opacity: 0; */
-    z-index: -4;
+    z-index: -7;
 }
 
 .edit-button-placeholder{
@@ -82,6 +82,7 @@
     border:solid 4px pink;
     position: relative;
     bottom: 40px;
+    opacity: 0;
 
 }
 
@@ -98,6 +99,11 @@
 .user-page-profile-edit-container:hover > .edit-profile-pic-button{
     /* background-color: red; */
     opacity: 100%;
+}
+
+.user-page-profile-edit-container:hover > .placeholder{
+    /* background-color: red; */
+    opacity: 0;
 }
 
 .user-page-edit-cover-container:hover > .edit-cover-button{

@@ -1,0 +1,29 @@
+.song-list-el-main-container{
+    display: flex;
+    align-items: center;
+    /* border: solid 1px skyblue; */
+    padding-top:5px;
+    padding-left: 5px;
+    cursor: pointer;
+    font-size:25px
+}
+
+.song-list-el-main-container:hover{
+    background-color: #2d2a38;
+}
+
+.song-active{
+    color :#a58bec;
+    background-color: #2d2a38;
+}
+
+.song-list-el-num{
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+
+.song-list-el-img{
+    height: 25px;
+    width:25px;
+}

@@ -22,6 +22,9 @@ const TrackComponent = ({song}) =>{
             dispatch(setTracks([song]))
         })
     }
+    const handlePause = e =>{
+        dispatch(pausePlayer());
+    }
 
     const onEnter = e =>{
         setShowButtons(true)
@@ -40,11 +43,11 @@ const TrackComponent = ({song}) =>{
                 </div>
 
                 <div className="track-button-title-container">
-                    <div className="track-button" id={play ? 'track-pause' : 'track-play'} onClick={handlePlay}>
+                    <div className="track-button" id={play ? 'track-pause' : 'track-play'} >
                     {current_track && (current_track.title === song.title) && is_playing ?
                         (
                             <>
-                                <div className='track-pause-button'>
+                                <div className='track-pause-button' onClick={handlePause}>
 
                                     <FaPause />
 
@@ -55,7 +58,7 @@ const TrackComponent = ({song}) =>{
                         :
                         (
                             <>
-                                <div className='track-play-button'>
+                                <div className='track-play-button' onClick={handlePlay}>
                                     <FaPlay />
                                 </div>
 

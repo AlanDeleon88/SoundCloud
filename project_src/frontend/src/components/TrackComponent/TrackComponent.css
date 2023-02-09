@@ -63,12 +63,14 @@
     border: none;
     /* position: relative;
     bottom: 125px; */
+    cursor: pointer;
 }
 
 .track-pause-button{
     position: relative;
     left:1px;
     top:3px;
+    color:#5023cd;
 }
 
 .track-play-button{

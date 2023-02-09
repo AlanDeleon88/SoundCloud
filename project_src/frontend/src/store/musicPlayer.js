@@ -1,4 +1,5 @@
 const SET_TRACKS = 'musicPlayer/SET_TRACKS'
+const SET_LIST_TRACK = 'musicPlayer/SET_LIST_TRACK'
 const NEXT_TRACK = 'musicPlayer/NEXT_TRACK'
 const PREV_TRACK = 'musicPlayer/PREV_TRACK'
 const PLAY = 'musicPlayer/PLAY'
@@ -10,6 +11,19 @@ const default_state={
     is_playing: false,
 
 }
+
+const setListTracksAction = (AlbumListObject) =>({
+    /*
+        payload: {
+            trackIndex: 3,
+            tracks, [...album/playlist tracks]
+        }
+
+    */
+        type: SET_LIST_TRACK,
+        payload: AlbumListObject
+
+})
 
 //!takes an array of song objects
 const setTracksAction = (tracks) =>({
@@ -70,6 +84,11 @@ export const playPlayer = () => async dispatch =>{
     return null
 }
 
+export const setListTrack = (trackListObj) => async dispatch =>{
+    dispatch(setListTracksAction(trackListObj))
+    return null
+}
+
 export default function musicPlayerReducer(state=default_state, action){
     let newState = {}
     let index;
@@ -87,6 +106,18 @@ export default function musicPlayerReducer(state=default_state, action){
             newState.is_playing = true;
             return newState
 
+        case SET_LIST_TRACK:{
+            newState = {
+                tracks : [],
+                current_track: {},
+                is_playing: false,
+            }
+            newState.tracks.push(...action.payload.tracks)
+            newState.current_track = newState.tracks[action.payload.trackIndex]
+            newState.is_playing = true;
+            return newState
+        }
+
         case PLAY:
             newState = {...state}
             newState.is_playing = true
@@ -100,7 +131,7 @@ export default function musicPlayerReducer(state=default_state, action){
         case NEXT_TRACK:
             newState = {...state}
             index = findTrackIndex(newState);
-            console.log(index);
+            // console.log(index);
 
             if(newState.tracks.length === 0) return newState;
 
