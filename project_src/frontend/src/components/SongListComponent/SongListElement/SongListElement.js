@@ -2,19 +2,32 @@ import './SongListElement.css'
 import { useDispatch, useSelector } from "react-redux"
 import { setListTrack, pausePlayer } from '../../../store/musicPlayer'
 
-const SongListElement = ({song, num, setCurrentSong, img, album, playlist}) =>{
+const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist}) =>{
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
     const dispatch = useDispatch()
 
     const handleSongClick = e =>{
-        let trackObj = {
-            trackIndex : num - 1,
-            tracks : album.Songs
+        let trackObj ={
+            trackIndex : num -1
         }
-        dispatch(pausePlayer()).then(res =>{
+        if(album){
 
-            dispatch(setListTrack(trackObj))
-        })
+            trackObj['tracks'] = album.Songs;
+
+            dispatch(pausePlayer()).then(res =>{
+                setCurrentSongIndex(trackObj.trackIndex)
+                dispatch(setListTrack(trackObj))
+            })
+
+        }
+        else{
+            trackObj['tracks'] = playlist.Songs
+            dispatch(pausePlayer()).then(res =>{
+                setCurrentSongIndex(trackObj.trackIndex)
+                dispatch(setListTrack(trackObj))
+            })
+        }
+
     }
 
     return(
@@ -22,7 +35,22 @@ const SongListElement = ({song, num, setCurrentSong, img, album, playlist}) =>{
             <div className= {(current_track.title === song.title) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'} onClick={handleSongClick}>
 
                 <div className='song-list-el-img-container'>
-                    <img src={img} className='song-list-el-img'/>
+                    { album ?
+                        (
+                            <>
+                                 <img src={img} className='song-list-el-img'/>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                {/* render play list mix here. */}
+                            </>
+                        )
+
+                    }
+
+
                 </div>
                 <div className='song-list-el-num'>
                     {num}

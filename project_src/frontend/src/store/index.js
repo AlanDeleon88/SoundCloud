@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
     currentSong: currentSongReducer,
     exploreArtists: exploreArtistsReducer,
     musicPlayer : musicPlayerReducer,
-    userPlaylist : userPlaylistsReducer
+    userPlaylists : userPlaylistsReducer
 });
 
 let enhancer;

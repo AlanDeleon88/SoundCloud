@@ -1,0 +1,20 @@
+.playlist-img-main-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height:161px;
+    width:165px;
+    border: none;
+}
+
+.playlist-img-quad{
+    width:80px;
+    height:80px;
+    border: none;
+}
+.playlist-img-placeholder{
+    height:80px;
+    width: 80px;
+    /* border: solid 1px red; */
+    background: linear-gradient(to left top, rgb(26, 3, 90),  #2f2b3b);
+}

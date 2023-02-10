@@ -143,7 +143,7 @@ router.get(
 
                         ],
                     through:{
-                        attributes:[]
+                        attributes:['playlistId']
                     }
 
                 }
@@ -152,7 +152,7 @@ router.get(
             order:[[Song,'id', 'ASC']],
 
         })
-        const playlists = await artist.getPlaylists();
+        // const playlists = await artist.getPlaylists();
         res.statusCode = 200;
 
         res.json({

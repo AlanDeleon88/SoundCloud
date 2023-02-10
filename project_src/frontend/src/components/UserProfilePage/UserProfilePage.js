@@ -7,6 +7,7 @@ import { getArtist } from "../../store/artist"
 import ExploreUserComponent from "../LoggedHome/ExploreUserComponent"
 import TrackList from "./TrackList"
 import UserAlbumList from "./UserAlbumList"
+import UserPlaylistList from "./UserPlaylistList"
 
 const UserProfilePage = () =>{
     const [isLoaded, setIsLoaded] = useState(false)
@@ -59,7 +60,8 @@ const UserProfilePage = () =>{
                                 <UserAlbumList userId={userId} username={user.username}/>
                             </Route>
                             <Route path={`${match.url}/playlists`}>
-                                Playlists
+                                <UserPlaylistList userId={userId} username={user.username}/>
+
                             </Route>
 
 

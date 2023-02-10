@@ -24,8 +24,9 @@ export default function userPlaylistsReducer(state={}, action){
     switch(action.type){
         case SET_PLAYLISTS:
             action.payload.forEach(playlist =>{
-                newState[playlist.id] = playlist
+                newState[playlist.id] = playlist;
             })
+            return newState
         default:
             return state
     }

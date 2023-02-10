@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .song-list-title-artist-container{
     width: 100%;
@@ -60,8 +61,8 @@
 }
 
 .song-list-img{
-    height: 150px;
-    width: 150px;
+    height: 160px;
+    width: 160px;
 }
 
 .song-list-pause{

@@ -3,29 +3,78 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import{FaPlay, FaPause} from 'react-icons/fa'
 import SongListElement from './SongListElement'
+import PlaylistImage from '../PlaylistImage'
+import { pausePlayer, playPlayer } from '../../store/musicPlayer'
+import { setListTrack } from '../../store/musicPlayer'
 
 const SongListComponent = ({album, playlist, username}) =>{
-    const [currentSong, setCurrentSong] = useState(album.Songs[0]) // set initial song to first song in album
+    const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
     const {Songs} = album ? album : playlist
     const dispatch = useDispatch();
 
-    // useEffect(() =>{
-    //     Songs.forEach(song =>{
+    const handlePlayClick = e =>{
+        /*
+            let trackObj ={
+            trackIndex : num -1
+            tracks : []
+        }
+        */
+        if(!playlist) playlist = {}
+        if(!album) album = {}
 
-    //         // song['Album']['previewImage'] = album.previewImage
-    //         song['Album'] = {previewImage: album.previewImage}
-    //         song['User'] = {username: username}
-    //         // song['albumId'] = album.id
+       let trackObj = {
+            trackIndex : currentSongIndex,
+            tracks : Songs
+       }
+        if(trackObj.trackIndex){
+            if(current_track['playlistId'] !== playlist['id'] || (album['id'] !== current_track['albumId']))  {
+                dispatch(pausePlayer()).then(res =>{
+                    trackObj.trackIndex = 0;
+                    dispatch(setListTrack(trackObj))
+                    setCurrentSongIndex(0)
+                })
+            }
+            else{
+                dispatch(playPlayer())
 
-    //     })
-    // },[album])
+            }
+
+        }
+        else{
+            dispatch(pausePlayer()).then(res =>{
+                dispatch(setListTrack(trackObj))
+            })
+
+        }
+
+    }
+
+    const handlePauseClick = e =>{
+        dispatch(pausePlayer())
+    }
+
 
     return(
         <>
             <div className='song-list-main-container'>
                 <div className='song-list-img-container'>
-                    <img src={album.previewImage} className='song-list-img'/>
+                    { album ?
+                        (
+                            <>
+                                <img src={album.previewImage} className='song-list-img'/>
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                <PlaylistImage songs={Songs}/>
+                            </>
+                        )
+
+                    }
+
+
                 </div>
 
 
@@ -33,21 +82,51 @@ const SongListComponent = ({album, playlist, username}) =>{
                 <div className='song-list-play-list-container'>
                     <div className='song-list-control-title-container'>
                         <div className='song-list-control-container'>
-                        { is_playing && (current_track.albumId === album.id) ?
+                            { album ?
+                                (
+                                    <>
+                                        { is_playing && (current_track.albumId === album.id) ?
 
-                            (
-                                <div className='song-list-pause'>
-                                    <FaPause />
-                                </div>
-                            )
-                            :
-                            (
-                                <div>
-                                    <FaPlay />
-                                </div>
-                            )
+                                            (
+                                                <div className='song-list-pause' onClick={handlePauseClick}>
+                                                    <FaPause />
+                                                </div>
+                                            )
+                                            :
+                                            (
+                                                <div onClick={handlePlayClick}>
+                                                    <FaPlay />
+                                                </div>
+                                            )
 
-                        }
+                                        }
+
+                                    </>
+                                )
+                                :
+
+                                (
+
+                                    <>
+                                        { is_playing && (current_track.PlaylistSong.playlistId === playlist.id) ?
+
+                                            (
+                                                <div className='song-list-pause' onClick={handlePauseClick}>
+                                                    <FaPause />
+                                                </div>
+                                            )
+                                            :
+                                            (
+                                                <div onClick={handlePlayClick}>
+                                                    <FaPlay />
+                                                </div>
+                                            )
+
+                                        }
+                                    </>
+                                )
+
+                            }
                         </div>
 
                         <div className='song-list-title-artist-container'>
@@ -55,7 +134,21 @@ const SongListComponent = ({album, playlist, username}) =>{
                                 {username}
                             </div>
                             <div className='song-list-title'>
-                                {album.title}
+                                { album ?
+                                    (
+                                        <>
+                                            {album.title}
+                                        </>
+                                    )
+                                    :
+                                    (
+                                        <>
+                                            {playlist.name}
+                                        </>
+                                    )
+
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -64,7 +157,22 @@ const SongListComponent = ({album, playlist, username}) =>{
                         { Songs.map((song, i) =>{
                                     return(
                                         <>
-                                            <SongListElement song={song} setCurrentSong={setCurrentSong} key={song.id} num={i+1} img={album.previewImage} album={album} playlist={playlist}/>
+                                            { album ?
+                                                (
+                                                    <>
+                                                        <SongListElement song={song} key={song.id} num={i+1} img={album.previewImage} album={album} setCurrentSongIndex={setCurrentSongIndex}/>
+                                                    </>
+                                                )
+                                                :
+                                                (
+                                                    <>
+                                                        <SongListElement song={song} key={song.id} num={i+1} playlist={playlist} setCurrentSongIndex={setCurrentSongIndex}/>
+                                                    </>
+                                                )
+
+                                            }
+
+
                                         </>
                                     )
                                 })
