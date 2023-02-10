@@ -8,8 +8,8 @@ import songUrlReducer from './songUrl';
 import currentAlbumReducer from './currentAlbum';
 import currentSongReducer from './currentSong';
 import exploreArtistsReducer from './exploreArtists';
-import focusArtistReducer from './focusArtists';
 import musicPlayerReducer from './musicPlayer';
+import userPlaylistsReducer from './userPlaylist';
 
 
 const rootReducer = combineReducers({
@@ -21,7 +21,8 @@ const rootReducer = combineReducers({
     currentAlbum: currentAlbumReducer,
     currentSong: currentSongReducer,
     exploreArtists: exploreArtistsReducer,
-    musicPlayer : musicPlayerReducer
+    musicPlayer : musicPlayerReducer,
+    userPlaylist : userPlaylistsReducer
 });
 
 let enhancer;

@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album, Song } = require('../../db/models');
+const { User, Album, Song, Playlist } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -123,11 +123,40 @@ router.get(
             const err = buildError('Could not find artist', 'invalid id', 404);
             return next(err);
         }
+
+        const playlistSongs = await Playlist.findAll({
+            where:{userId : id},
+            include: [
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ],
+                    through:{
+                        attributes:[]
+                    }
+
+                }
+
+            ],
+            order:[[Song,'id', 'ASC']],
+
+        })
         const playlists = await artist.getPlaylists();
         res.statusCode = 200;
 
         res.json({
-            Playlists: playlists
+            playlists: playlistSongs
         })
     }
 )
