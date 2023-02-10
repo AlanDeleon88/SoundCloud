@@ -30,7 +30,9 @@
 .user-page-content{
     /* border: 1px solid pink; */
     width: 85%;
+    height: 100%;
     z-index: 1;
+
 }
 
 .user-page-stats-container{
