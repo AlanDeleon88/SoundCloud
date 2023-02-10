@@ -5,6 +5,7 @@ import './UserProfileHeader.css'
 
 const UserProfileHeader = ({user, currentUser, userId}) =>{
 
+    
 
     return(
 

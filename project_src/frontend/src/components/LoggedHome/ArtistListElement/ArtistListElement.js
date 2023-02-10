@@ -1,14 +1,19 @@
 import './ArtistElement.css'
 import tempProfile from '../../LoggedInSiteHeader/temp_images/profile_placeholder.png'
 import {MdOutlineMusicVideo , MdAlbum} from 'react-icons/md'
+import { useHistory } from 'react-router-dom'
 const ArtistListElement = ({artists}) =>{
-
+    const history = useHistory()
     //TODO add hover tips over songs and album
     //TODO change icons into links to the artists page for albums or tracks
 
+    const handleArtistClick = e =>{
+        history.push(`/${artists.username}/${artists.id}`)
+    }
+
     return(
         <>
-            <div className='artist-list-el-main-container'>
+            <div className='artist-list-el-main-container' onClick={handleArtistClick}>
                 <div className='artist-list-el-img-container'>
                     <img src={artists.profile_picture} className='artist-list-el-img'/>
                 </div>

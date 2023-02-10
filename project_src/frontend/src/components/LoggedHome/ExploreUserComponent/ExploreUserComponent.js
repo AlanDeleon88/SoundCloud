@@ -6,14 +6,15 @@ import ArtistListElement from '../ArtistListElement'
 const ExploreUserComponent = () =>{
     const [isLoaded, setIsLoaded] = useState(false)
     const exploreArtists = Object.values(useSelector(state=>state.exploreArtists))
+    const artist = useSelector(state=>state.artist)
     const dispatch = useDispatch();
 
     useEffect(() =>{
         dispatch(getExploreArtists()).then(res =>{
             setIsLoaded(true)
         })
-        
-    },[dispatch])
+
+    },[dispatch, artist])
 
     return(
         <div className='explore-user-container'>

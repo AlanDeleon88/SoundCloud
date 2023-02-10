@@ -25,7 +25,7 @@ const UserProfilePage = () =>{
             setIsLoaded(true)
         })
 
-    },[dispatch])
+    },[dispatch, userId])
 
     return(
         <>

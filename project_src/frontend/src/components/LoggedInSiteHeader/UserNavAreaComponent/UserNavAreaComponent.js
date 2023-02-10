@@ -27,7 +27,15 @@ const UserNavAreaComponent = ({user}) =>{
 
     const handleAlbumClick = e =>{
         //Temp route, will eventually lead to profile page
-        history.push('/me/albums')
+        history.push(`/${user.username}/${user.id}/albums`)
+    }
+
+    const handleTracksClick = e =>{
+        history.push(`/${user.username}/${user.id}`)
+    }
+
+    const handlePlaylistClick = e =>{
+        history.push(`/${user.username}/${user.id}/playlists`)
     }
 
     useEffect(() => {
@@ -56,8 +64,15 @@ const UserNavAreaComponent = ({user}) =>{
             </div>
         </div>
         {showMenu &&
-            <div className='logged-drop-down-menu-container' onClick={handleAlbumClick}>
-                <div className='logged-drop-down-item logged-albums'>
+            <div className='logged-drop-down-menu-container'>
+                <div className='logged-drop-down-item logged-tracks'>
+                    <GiMusicalNotes />
+                    <div className='logged-list-text' onClick={handleTracksClick}>
+                        Tracks
+
+                    </div>
+                </div>
+                <div className='logged-drop-down-item logged-albums' onClick={handleAlbumClick}>
 
                     <RiAlbumFill />
                     <div className='logged-list-text'>
@@ -66,14 +81,7 @@ const UserNavAreaComponent = ({user}) =>{
                     </div>
 
                 </div>
-                <div className='logged-drop-down-item logged-tracks'>
-                    <GiMusicalNotes />
-                    <div className='logged-list-text'>
-                        Tracks
-
-                    </div>
-                </div>
-                <div className='logged-drop-down-item logged-playlist'>
+                <div className='logged-drop-down-item logged-playlist' onClick={handlePlaylistClick}>
                     <BsMusicNoteList />
                     <div className='logged-list-text'>
                         Playlist
