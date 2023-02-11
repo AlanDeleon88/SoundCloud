@@ -1,0 +1,43 @@
+.user-stats-main-container{
+    /* border:1px solid white; */
+    width: 99%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.user-stats-tracks{
+    /* border: 1px solid green; */
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-stats-albums{
+    /* border: 1px solid red; */
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-stats-label{
+    font-size: 25px;
+}
+
+.user-stats-numbers{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.user-stats-icon{
+    margin-right: 5px;
+    color:blueviolet
+}

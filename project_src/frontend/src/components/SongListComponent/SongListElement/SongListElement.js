@@ -32,7 +32,7 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
 
     return(
         <>
-            <div className= {(current_track.title === song.title) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'} onClick={handleSongClick}>
+            <div className= {(current_track.id === song.id) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'} onClick={handleSongClick}>
 
                 <div className='song-list-el-img-container'>
                     { album ?

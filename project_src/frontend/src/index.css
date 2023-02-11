@@ -113,8 +113,9 @@ body{
 }
 
 .logged-home-container{
-    width: 90%;
+    width: 80%;
     height: 100%;
+    /* border:solid 1px; */
 }
 
 .music-player-placeholder{

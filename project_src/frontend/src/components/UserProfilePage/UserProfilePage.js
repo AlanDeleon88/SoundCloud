@@ -8,6 +8,7 @@ import ExploreUserComponent from "../LoggedHome/ExploreUserComponent"
 import TrackList from "./TrackList"
 import UserAlbumList from "./UserAlbumList"
 import UserPlaylistList from "./UserPlaylistList"
+import UserStatsComponent from "./UserStatsComponent"
 
 const UserProfilePage = () =>{
     const [isLoaded, setIsLoaded] = useState(false)
@@ -68,7 +69,7 @@ const UserProfilePage = () =>{
                         </Switch>
                     </div>
                     <div className="user-page-stats-container">
-                        State Badge Here
+                        <UserStatsComponent user={user}/>
 
                         <ExploreUserComponent />
                     </div>

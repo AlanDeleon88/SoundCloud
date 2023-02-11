@@ -44,7 +44,7 @@ const TrackComponent = ({song}) =>{
 
                 <div className="track-button-title-container">
                     <div className="track-button" id={play ? 'track-pause' : 'track-play'} >
-                    {current_track && (current_track.title === song.title) && is_playing ?
+                    {current_track && (current_track.id === song.id) && is_playing ?
                         (
                             <>
                                 <div className='track-pause-button' onClick={handlePause}>

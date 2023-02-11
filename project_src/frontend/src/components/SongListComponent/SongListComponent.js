@@ -6,12 +6,14 @@ import SongListElement from './SongListElement'
 import PlaylistImage from '../PlaylistImage'
 import { pausePlayer, playPlayer } from '../../store/musicPlayer'
 import { setListTrack } from '../../store/musicPlayer'
+import {FiPlusSquare} from 'react-icons/fi'
 
 const SongListComponent = ({album, playlist, username}) =>{
     const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
-    const {Songs} = album ? album : playlist
+    const {Songs, userId} = album ? album : playlist
     const dispatch = useDispatch();
+    const current_user = useSelector(state=>state.session.user)
 
     const handlePlayClick = e =>{
         /*
@@ -108,7 +110,8 @@ const SongListComponent = ({album, playlist, username}) =>{
                                 (
 
                                     <>
-                                        { is_playing && (current_track.PlaylistSong.playlistId === playlist.id) ?
+
+                                        { is_playing && current_track.PlaylistSong && (current_track.PlaylistSong.playlistId === playlist.id) ?
 
                                             (
                                                 <div className='song-list-pause' onClick={handlePauseClick}>
@@ -179,10 +182,21 @@ const SongListComponent = ({album, playlist, username}) =>{
 
                                 }
 
+                            {((album) && (current_user) && (current_user.id === userId)) &&
 
-                            <div className='song-list-add-song-container'>
+                                <div className='song-list-add-song-container'>
+                                    <div className='song-list-add-icon'>
+                                        <FiPlusSquare />
+                                    </div>
+                                    Add song to play list
+                                </div>
 
-                            </div>
+                            }
+                            { ((playlist) && (current_user) && (current_user.id === userId)) &&
+                                <div className='song-list-add-song-container'>
+                                    play list test
+                                </div>
+                            }
 
                     </div>
 
