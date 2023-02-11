@@ -44,7 +44,7 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
                         :
                         (
                             <>
-                                {/* render play list mix here. */}
+                                <img src={song.Album? song.Album.previewImage : song.previewImage} className='song-list-el-img'/>
                             </>
                         )
 

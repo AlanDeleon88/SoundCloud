@@ -19,7 +19,7 @@ const MusicPlayer = () =>{
     let audioRef = useRef()
     const intervalRef = useRef()
     const isReady = useRef(false)
-    const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%';
+    const currentPercentage = duration ? `${((trackProgress + 1) / duration) * 100}%` : '0%';
     const currentVolumePercentage = `${(volume / 1) * 100}%`
     const trackStyling = `
   -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #1a035a), color-stop(${currentPercentage}, #777))`;
@@ -259,7 +259,7 @@ const MusicPlayer = () =>{
             <div className='music-player-song-info-container'>
                  <div className='music-player-song-art-container'>
 
-                    <img className='music-player-art' src={current_track.Album ? current_track.Album.previewImage : null}/>
+                    <img className='music-player-art' src={current_track.Album ? current_track.Album.previewImage : current_track.previewImage}/>
                 </div>
                 <div className='music-player-text-container'>
                     <div className='music-player-artist-album'>
