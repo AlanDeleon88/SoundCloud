@@ -14,6 +14,7 @@ const TrackList = ({userId}) =>{
         dispatch(getUserSongs(userId)).then(res =>{
             setIsLoaded(true)
         })
+        return() => setIsLoaded(false)
     },[dispatch, userId])
 
     return(

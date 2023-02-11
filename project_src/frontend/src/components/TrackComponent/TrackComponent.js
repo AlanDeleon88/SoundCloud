@@ -13,7 +13,7 @@ const TrackComponent = ({song}) =>{
     const currentUser = useSelector(state=>state.session.user)
     const musicPlayer = useSelector(state=>state.musicPlayer)
     const {current_track, is_playing} = musicPlayer
-    const albumCover = song.Album.previewImage
+    const albumCover = song.Album ? song.Album.previewImage : song.previewImage
     //use select currentplay store to compare to title / id to see if pause or play is rendered.
     //useEffect to dispatch to musicPlayer Store.
     // console.log(current_track);
@@ -72,7 +72,23 @@ const TrackComponent = ({song}) =>{
                             {/* {song.title} */}
                             <div className='track-artist'>
                                 <div style={{'marginRight' : '10px'}}>
-                                    Album: {song.Album.title}
+                                    { song.Album ?
+                                        (
+                                            <>
+                                                Album: {song.Album.title}
+                                            </>
+                                        )
+                                        :
+                                        (
+                                            <>
+
+                                                {`single: ${song.title}` }
+                                            </>
+                                        )
+
+                                    }
+
+
                                 </div>
                                 <div>
                                     By: {song.User.username}

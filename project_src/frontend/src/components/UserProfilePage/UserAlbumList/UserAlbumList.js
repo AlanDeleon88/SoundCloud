@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { loadUserAlbums } from "../../../store/albums"
 import SongListComponent from "../../SongListComponent/SongListComponent"
 import './UserAlbumList.css'
+import CreateAlbumModal from "../../CreateAlbumModal"
 
 
 const UserAlbumList = ({userId,username}) =>{
@@ -22,6 +23,9 @@ const UserAlbumList = ({userId,username}) =>{
     return(
         <>
             <div className="album-list-main-container">
+                <div>
+                    <CreateAlbumModal />
+                </div>
 
                     { isLoaded &&
                             <>
