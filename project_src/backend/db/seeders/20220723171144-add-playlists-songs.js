@@ -94,8 +94,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
      const Op = Sequelize.Op;
-     return queryInterface.bulkDelete('PlaylistSongs', {
-       playlistId : {[Op.in] : [1,2,3,4,5,6]}
-     }, {});
+     return queryInterface.bulkDelete('PlaylistSongs', null, { truncate: true, cascade: true });
   }
 };

@@ -83,8 +83,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
      const Op = Sequelize.Op;
-     return queryInterface.bulkDelete('Albums', {
-       title : {[Op.in] : ['the world', 'star platinum', 'silver chariot', 'greeeenn']}
-     }, {});
+     return queryInterface.bulkDelete('Albums', null ,{ truncate: true, cascade: true });
   }
 };

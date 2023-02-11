@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey : 'albumId',
           onDelete : 'cascade',
-          hooks : true
+          hooks : true,
+          allowNull: true
         }
       )
     }

@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey : 'albumId',
           onDelete : 'cascade',
           hooks : true,
+          allowNull: true
         }
       );
     //TODO add association to comments songs has many comments.
@@ -56,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
-      allowNull : false
+      allowNull : true
     },
     title: {
       type: DataTypes.STRING,
@@ -83,7 +84,8 @@ module.exports = (sequelize, DataTypes) => {
     previewImage: {
       type: DataTypes.STRING,
       allowNull : true,
-      
+      defaultValue : 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554361249.png'
+
 
     }
   }, {

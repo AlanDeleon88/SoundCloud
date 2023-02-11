@@ -19,7 +19,7 @@ module.exports = {
       },
       albumId: {
         type: Sequelize.INTEGER,
-        allowNull : false,
+        allowNull : true,
         references : {
           model : 'Albums',
           key: 'id'
@@ -41,7 +41,8 @@ module.exports = {
       previewImage: {
         type: Sequelize.STRING,
         allowNull: true,
-        
+        defaultValue: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554361249.png'
+
       },
       createdAt: {
         allowNull: false,

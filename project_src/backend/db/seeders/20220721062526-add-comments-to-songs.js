@@ -114,8 +114,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
      const Op = Sequelize.Op;
-     return queryInterface.bulkDelete('Comments', {
-       userId : {[Op.in] : [1,2,3,4]}
-     }, {});
+     return queryInterface.bulkDelete('Comments', null , { truncate: true, cascade: true });
   }
 };

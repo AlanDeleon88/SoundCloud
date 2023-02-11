@@ -157,6 +157,12 @@ const songs = [
     description: faker.hacker.phrase(),
     url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553670564.mp3',
   },
+  {
+    userId : 1,
+    title: faker.hacker.adjective(),
+    description: faker.hacker.phrase(),
+    url: 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553559105.mp3',
+  }
 
 ]
 module.exports = {
@@ -193,8 +199,6 @@ module.exports = {
      */
 
      const Op = Sequelize.Op;
-     return queryInterface.bulkDelete('Songs', {
-       userId : {[Op.in] : [1,2,3,4]}
-     }, {});
+     return queryInterface.bulkDelete('Songs',null, { truncate: true, cascade: true });
   }
 };
