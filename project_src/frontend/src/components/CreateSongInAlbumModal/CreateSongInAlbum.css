@@ -1,0 +1,21 @@
+.create-song-album-button-container{
+    /* border: solid 1px; */
+    display: flex;
+    font-size: 23px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-top:5px;
+    cursor: pointer;
+}
+
+.create-song-album-button-container:hover{
+    background-color: #2d2a38;
+}
+
+.song-list-add-icon{
+    /* border:solid 1px; */
+    display: flex;
+    margin-right: 5px;
+    color: #5023cd;
+}

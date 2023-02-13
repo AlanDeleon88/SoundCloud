@@ -16,6 +16,10 @@
     background-color: #3b189b;
 }
 
+.create-album-modal-button:active{
+    transform: scale(0.98);
+}
+
 
 .create-album-main-container{
     height: 450px;
@@ -82,9 +86,16 @@
     cursor: pointer;
     margin:15px;
     padding: 5px;
+    border-radius: 5px;
 }
 
+.create-album-img-delete:hover{
+    background-color:  rgb(252, 75, 75);
+}
 
+.create-album-img-delete:active{
+    transform: scale(.98)
+}
 .create-album-img-place-holder{
     height:100%;
     width:100%;
@@ -108,6 +119,13 @@
     margin-top:15px;
 }
 
+.create-album-img-upload-button:hover{
+    background-color: #30099b
+}
+
+.create-album-img-upload-button:active{
+    transform: scale(0.98);
+}
 
 .create-album-input-container{
     /* border: solid 1px blue; */
@@ -170,9 +188,26 @@
     border:none;
 }
 
+.create-album:hover{
+    background-color: #30099b
+}
+
+.create-album:active{
+    transform: scale(0.98)
+}
+
 .cancel-album{
     background-color: black;
     margin-right:10px;
+
+}
+
+.cancel-album:active{
+    transform: scale(0.98)
+}
+
+.cancel-album:hover{
+    background-color: rgb(58, 58, 58)
 }
 
 

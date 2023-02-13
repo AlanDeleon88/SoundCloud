@@ -10,18 +10,13 @@ import {FiPlusSquare} from 'react-icons/fi'
 
 const SongListComponent = ({album, playlist, username}) =>{
     const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
+    const [showAdd, setShowAdd] = useState(false)
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
     const {Songs, userId} = album ? album : playlist
     const dispatch = useDispatch();
     const current_user = useSelector(state=>state.session.user)
 
     const handlePlayClick = e =>{
-        /*
-            let trackObj ={
-            trackIndex : num -1
-            tracks : []
-        }
-        */
         if(!playlist) playlist = {}
         if(!album) album = {}
 
@@ -56,6 +51,14 @@ const SongListComponent = ({album, playlist, username}) =>{
         dispatch(pausePlayer())
     }
 
+    const mouseEnter = e =>{
+        setShowAdd(true)
+    }
+
+    const mouseLeave = e =>{
+        setShowAdd(false)
+    }
+
 
     return(
         <>
@@ -81,7 +84,7 @@ const SongListComponent = ({album, playlist, username}) =>{
 
 
 
-                <div className='song-list-play-list-container'>
+                <div className='song-list-play-list-container' onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
                     <div className='song-list-control-title-container'>
                         <div className='song-list-control-container'>
                             { album ?
@@ -182,20 +185,22 @@ const SongListComponent = ({album, playlist, username}) =>{
 
                                 }
 
-                            {((album) && (current_user) && (current_user.id === userId)) &&
+                            {((album) && (current_user) && (current_user.id === userId)) && (showAdd) &&
 
                                 <div className='song-list-add-song-container'>
                                     <div className='song-list-add-icon'>
                                         <FiPlusSquare />
                                     </div>
-                                    Add song to play list
+                                    <div>
+                                        Add song to album
+                                    </div>
                                 </div>
 
                             }
                             { ((playlist) && (current_user) && (current_user.id === userId)) &&
-                                <div className='song-list-add-song-container'>
-                                    play list test
-                                </div>
+                                // <div className='song-list-add-song-container'>
+                                    <></>
+                                // </div>
                             }
 
                     </div>
