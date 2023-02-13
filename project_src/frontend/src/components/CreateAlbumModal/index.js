@@ -16,7 +16,7 @@ const CreateAlbumModal = ({album}) => {
             {showModal &&(
                 <>
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateAlbumForm showModal={setShowModal}/>
+                        <CreateAlbumForm setShowModal={setShowModal}/>
                     </Modal>
                 </>
             )}

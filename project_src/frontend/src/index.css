@@ -128,3 +128,7 @@ body{
     /* opacity: 20%; */
     z-index: 15;
 }
+
+.error{
+    color:red;
+}

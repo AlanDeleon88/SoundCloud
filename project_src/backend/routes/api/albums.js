@@ -83,15 +83,29 @@ router.post(
         const { user } = req;
         const  userId = req.user.id;
         // console.log(userId);
-        let newAlbum = await Album.create(
-            {
-                userId : userId,
-                title,
-                description: description,
-                previewImage : imageUrl
-            }
-        )
+        let newAlbum
+        if(imageUrl){
+            newAlbum = await Album.create(
+                {
+                    userId : userId,
+                    title,
+                    description: description,
+                    previewImage : imageUrl
+
+                }
+            )
+        }
+        else{
+            newAlbum = await Album.create(
+                {
+                    userId : userId,
+                    title,
+                    description,
+                }
+            )
+        }
         user.addAlbums([newAlbum]);
+        newAlbum.dataValues['Songs'] = []
         res.statusCode = 201;
         res.json(newAlbum);
 

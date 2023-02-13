@@ -57,20 +57,43 @@
     display: flex;
     justify-content: center;
     font-size: 30px;
-    margin-bottom: 5px;
+    margin-bottom:25px;
 }
 .create-album-img-preview-container{
     /* border: solid 1px lightblue; */
     height:55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+
+.create-album-img{
+    height:90%;
+    width:60%;
+}
+
+.create-album-img-delete{
+    /* position: absolute; */
+
+    background-color: rgb(241, 56, 56);
+    font-size: 15px;
+    z-index: 15;
+    cursor: pointer;
+    margin:15px;
+    padding: 5px;
+}
+
+
 .create-album-img-place-holder{
     height:100%;
     width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 170px;
+    font-size: 100px;
     color: #ab9fcc;
+
 }
 
 .create-album-img-upload-button{
@@ -82,6 +105,7 @@
     background-color: #1a035a;
     border-radius: 5px;
     cursor: pointer;
+    margin-top:15px;
 }
 
 

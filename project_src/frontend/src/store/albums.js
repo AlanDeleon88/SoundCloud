@@ -70,6 +70,7 @@ export const addUserAlbum = (album) => async (dispatch) => {
         const newAlbum = await response.json();
         // console.log(newAlbum);
         dispatch(addAlbum(newAlbum));
+        return null
     }
 }
 
