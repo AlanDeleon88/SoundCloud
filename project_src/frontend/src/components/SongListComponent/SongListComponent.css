@@ -78,6 +78,19 @@
     padding: 5px;
     margin-top:5px;
     cursor: pointer;
+    /* opacity: 0; */
+}
+
+.song-list-add-song-container-placeholder{
+    /* border: solid 1px; */
+    display: flex;
+    font-size: 23px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-top:5px;
+    /* cursor: pointer; */
+    opacity: 0;
 }
 
 .song-list-add-song-container:hover{

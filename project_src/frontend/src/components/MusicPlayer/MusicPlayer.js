@@ -19,7 +19,7 @@ const MusicPlayer = () =>{
     let audioRef = useRef()
     const intervalRef = useRef()
     const isReady = useRef(false)
-    const currentPercentage = duration ? `${((trackProgress + 1) / duration) * 100}%` : '0%';
+    const currentPercentage = duration ? `${((trackProgress + .5) / duration) * 100}%` : '0%';
     const currentVolumePercentage = `${(volume / 1) * 100}%`
     const trackStyling = `
   -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #1a035a), color-stop(${currentPercentage}, #777))`;

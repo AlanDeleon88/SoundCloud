@@ -19,3 +19,137 @@
     margin-right: 5px;
     color: #5023cd;
 }
+
+
+.create-song-album-main-container{
+    height: 700px;
+    width: 800px;
+    background-color: #1a1822;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-song-album-header{
+    font-size: 50px;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    border:solid 1px green;
+}
+
+.create-song-album-title{
+    margin-left: 10px;
+    font-size:60px;
+    color: grey;
+}
+
+.create-song-album-choice-container{
+    border: 1px solid blue;
+    width: 95%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom:10px;
+}
+
+.create-song-album-tab{
+    border:solid 1px;
+    height: 50px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.create-song-album-content-container{
+    border: solid 1px red;
+    width: 95%;
+    height: 55%;
+}
+
+.create-song-album-form-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border: solid 1px lightblue;
+    width: 100%;
+    height: 100%;
+
+}
+
+.create-song-album-form-bundle{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border:1px solid pink;
+    height: 50%;
+    width:100%;
+    font-size: 50px;
+}
+
+
+.create-song-album-input{
+    background-color: #2f2b3b;
+    border: none;
+    outline: none;
+    width: 75%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    padding:10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.create-song-album-buttons-container{
+    border:solid 1px blue;
+    height: 12%;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: 	#100f0f;
+    padding-left: 5%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.create-song-album-button{
+    border:1px solid;
+    height: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.create-song-album-add-song{
+    margin-right: 20px;
+    background-color: #1a035a;
+}
+
+.create-song-album-cancel{
+    margin-right: 20px;
+    background-color: black;
+}
+
+.create-song-upload-container{
+    height: 40%;
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-song-upload-button{
+    
+}

@@ -7,10 +7,14 @@ import PlaylistImage from '../PlaylistImage'
 import { pausePlayer, playPlayer } from '../../store/musicPlayer'
 import { setListTrack } from '../../store/musicPlayer'
 import {FiPlusSquare} from 'react-icons/fi'
+import CreateSongInAlbumModal from '../CreateSongInAlbumModal'
+import { Modal } from '../../context/Modal'
+import CreateSongInAlbumForm from '../CreateSongInAlbumModal/CreateSongInAlbumForm'
 
 const SongListComponent = ({album, playlist, username}) =>{
     const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
     const [showAdd, setShowAdd] = useState(false)
+    const [showAddModal, setShowAddModal] = useState(false)
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
     const {Songs, userId} = album ? album : playlist
     const dispatch = useDispatch();
@@ -187,7 +191,7 @@ const SongListComponent = ({album, playlist, username}) =>{
 
                             {((album) && (current_user) && (current_user.id === userId)) && (showAdd) &&
 
-                                <div className='song-list-add-song-container'>
+                                <div className='song-list-add-song-container' onClick={() =>{setShowAddModal(true)}}>
                                     <div className='song-list-add-icon'>
                                         <FiPlusSquare />
                                     </div>
@@ -195,18 +199,31 @@ const SongListComponent = ({album, playlist, username}) =>{
                                         Add song to album
                                     </div>
                                 </div>
+                                // <CreateSongInAlbumModal />
 
                             }
-                            { ((playlist) && (current_user) && (current_user.id === userId)) &&
-                                // <div className='song-list-add-song-container'>
-                                    <></>
-                                // </div>
+                            { ((album) && (current_user) && (current_user.id === userId))  && (!showAdd) &&
+                                <div className='song-list-add-song-container-placeholder'>
+                                    <div className='song-list-add-icon'>
+                                        <FiPlusSquare />
+                                    </div>
+                                    <div>
+                                        Add song to album
+                                    </div>
+                                </div>
                             }
 
                     </div>
 
 
                 </div>
+
+                {showAddModal &&
+                    <Modal onClose={() => setShowAddModal(false)}>
+                        <CreateSongInAlbumForm album={album}/>
+                    </Modal>
+
+                }
 
 
             </div>

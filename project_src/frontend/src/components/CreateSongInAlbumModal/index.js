@@ -2,6 +2,7 @@ import CreateSongInAlbumForm from "./CreateSongInAlbumForm";
 import { Modal } from "../../context/Modal";
 import { useState } from "react";
 import './CreateSongInAlbum.css'
+import {FiPlusSquare} from 'react-icons/fi'
 
 
 const CreateSongInAlbumModal = ({albumId}) =>{

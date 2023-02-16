@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { addUserAlbum } from '../../store/albums';
 import uploadFile from '../../utils/uploadFile';
+import { addUserAlbum } from '../../store/albums';
 import {MdInsertPhoto, MdOutlineAddPhotoAlternate} from 'react-icons/md'
 import{AiFillCloseCircle} from 'react-icons/ai'
 import './CreateAlbum.css'
