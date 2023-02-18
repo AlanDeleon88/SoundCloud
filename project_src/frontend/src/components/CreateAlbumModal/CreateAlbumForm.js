@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import uploadFile from '../../utils/uploadFile';
 import { addUserAlbum } from '../../store/albums';
+import { getArtist } from '../../store/artist';
 import {MdInsertPhoto, MdOutlineAddPhotoAlternate} from 'react-icons/md'
 import{AiFillCloseCircle} from 'react-icons/ai'
 import './CreateAlbum.css'
@@ -12,6 +13,7 @@ const CreateAlbumForm = ({setShowModal}) =>{
     const [imageUrl, setImageUrl] = useState('');
     const dispatch = useDispatch();
     const [validationErrors, setValidationErrors] = useState([]);
+    const user = useSelector(state =>state.session.user)
 
     const updateTitle = e =>{
         setTitle(e.target.value)
@@ -29,6 +31,7 @@ const CreateAlbumForm = ({setShowModal}) =>{
         }
         // console.log(albumObj);
         return await dispatch(addUserAlbum(albumObj)).then(() =>{
+            dispatch(getArtist(user.id))
             setShowModal(false)
             return null
         })

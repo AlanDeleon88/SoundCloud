@@ -57,13 +57,25 @@
 }
 
 .create-song-album-tab{
-    border:solid 1px;
+    /* border:solid 1px; */
     height: 50px;
     width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.create-song-album-new-song{
+    background-color: #1a035a;
+    border:none;
+}
+
+.create-song-album-existing-song{
+    background-color: #1a035a;
+    border:none;
 }
 
 .create-song-album-content-container{
@@ -130,6 +142,8 @@
     justify-content: center;
     width: 150px;
     border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
 
 .create-song-album-add-song{
@@ -146,10 +160,63 @@
     height: 40%;
     display: flex;
     width:100%;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
 }
 
 .create-song-upload-button{
-    
+    background-color: #1a035a;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+.create-song-upload-not-ready{
+    /* background-color: #100f0f; */
+    background-color: #1a035a;
+    opacity: .5;
+    margin-right: 20px;
+    cursor:not-allowed;
+}
+
+.create-song-upload-button:hover{
+    background-color: #3207a7;
+}
+
+.create-song-album-sing-list{
+    display: flex;
+    align-items: center;
+    overflow: scroll;
+}
+
+.create-song-album-single-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    /* border:solid 1px; */
+    height: 150px;
+    width: 150px;
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.create-song-album-single-img{
+    height: 100px;
+    width: 100px;
+    margin-top: 5px;
+}
+
+.song-album-single-active{
+    background-color:#1a035a
 }

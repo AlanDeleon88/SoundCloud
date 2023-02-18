@@ -243,6 +243,52 @@ router.put(
     }
 );
 
+router.put(
+    '/:id/add_to_album',
+    requireAuth,
+    async (req, res, next) =>{
+        const {id} = req.params
+        const {user} = req
+        const song = await Song.findByPk(id, {
+            include:{
+                    model:User,
+                    attributes:['id', 'username', 'profile_picture']
+                    }
+        })
+        const {albumId} = req.body
+        const album = await Album.findByPk(albumId)
+
+        if(!song){
+            const err = buildError("Song couldn't be found", 'Song not Found', 404)
+
+            return next(err);
+        }
+
+        if(!album){
+            const err = buildError('album could not be found', 'unknown album', 404)
+            return next(err)
+        }
+
+        if(user.id !== song.userId){
+            const err = buildError('Song does not belong to user', 'not authorized',401)
+        }
+
+
+        await song.update({
+            albumId : albumId
+        })
+        console.log(song.dataValues);
+
+        song.dataValues['Album'] = {
+            id : album.dataValues.id,
+            title: album.dataValues.title,
+            previewImage : album.dataValues.previewImage
+        }
+        res.json(song)
+
+    }
+)
+
 router.delete(
     '/:id',
     requireAuth,
@@ -271,7 +317,8 @@ router.delete(
         res.statusCode = 200
         res.json({
             "message" : "Successfully deleted",
-            "statusCode" : res.statusCode
+            "statusCode" : res.statusCode,
+            "songId" : id
         })
     }
 );

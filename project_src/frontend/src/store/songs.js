@@ -112,6 +112,24 @@ export const updateSong = (song) => async (dispatch) =>{
     }
 }
 
+export const addSongToAlbum = (songObj) => async dispatch =>{
+    const {songId, albumId} = songObj
+    const response = await csrfFetch(`/api/songs/${songId}/add_to_album`,{
+        method: 'PUT',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            albumId: albumId
+        })
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(addAlbumSong(data))
+        return null
+
+    }
+}
+
 const songsReducer = (state = setInitialState(), action) =>{
     let newState = {...state};
     switch(action.type){

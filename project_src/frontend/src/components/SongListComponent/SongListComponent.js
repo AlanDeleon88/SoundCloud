@@ -220,7 +220,7 @@ const SongListComponent = ({album, playlist, username}) =>{
 
                 {showAddModal &&
                     <Modal onClose={() => setShowAddModal(false)}>
-                        <CreateSongInAlbumForm album={album}/>
+                        <CreateSongInAlbumForm album={album} setShowModal={setShowAddModal}/>
                     </Modal>
 
                 }
