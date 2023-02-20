@@ -23,18 +23,18 @@ const PlaylistImage = ({songs}) =>{
             <div className="playlist-img-main-container">
                 { isLoaded &&
                     <>
-                        {songImgs.map(img =>{
+                        {songImgs.map((img,i) =>{
                             return(
                                 <>{img ?
                                         (
                                             <>
-                                                <img src={img} alt='' className='playlist-img-quad'/>
+                                                <img src={img} alt='' className='playlist-img-quad' key={i}/>
                                             </>
                                         )
                                         :
                                         (
                                             <>
-                                                <div className='playlist-img-placeholder'>
+                                                <div className='playlist-img-placeholder' key={i}>
 
                                                 </div>
                                             </>
