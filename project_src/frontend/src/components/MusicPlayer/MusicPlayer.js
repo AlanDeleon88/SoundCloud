@@ -15,7 +15,7 @@ const MusicPlayer = () =>{
     const [volume, setVolume] = useState(.5)
     const [showVolume, setShowVolume] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
-    const {url} = current_track
+    const {url, id} = current_track
     let audioRef = useRef()
     const intervalRef = useRef()
     const isReady = useRef(false)
@@ -91,7 +91,7 @@ const MusicPlayer = () =>{
 
             // duration = audioRef.current.duration
         }
-    },[url])
+    },[url, id])
 
     useEffect(() =>{
         if(audioRef.current){
@@ -113,7 +113,7 @@ const MusicPlayer = () =>{
                 // setIsPlaying(false)
             }
         }
-    },[url])
+    },[url, id])
 
     useEffect(() => {
         if(audioRef.current){
