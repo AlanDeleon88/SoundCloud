@@ -100,6 +100,10 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
         // console.log(albumObj);
     }
 
+    const handleCancel = e =>{
+        setShowModal(false)
+    }
+
     return(
         <>
             <div className='edit-album-play-container'>
@@ -237,7 +241,7 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
                             <div className='edit-album-play-button edit-album-save' onClick={handleSave}>
                                 Save
                             </div>
-                            <div className='edit-album-play-button edit-album-cancel'>
+                            <div className='edit-album-play-button edit-album-cancel' onClick={handleCancel}>
                                 Cancel
                             </div>
                         </div>

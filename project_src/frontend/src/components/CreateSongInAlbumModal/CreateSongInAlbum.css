@@ -1,5 +1,5 @@
-.create-song-album-button-container{
-    /* border: solid 1px; */
+/* .create-song-album-button-container{
+
     display: flex;
     font-size: 23px;
     align-items: center;
@@ -7,11 +7,16 @@
     padding: 5px;
     margin-top:5px;
     cursor: pointer;
-}
+} */
 
-.create-song-album-button-container:hover{
+/* .create-song-album-button-container:hover{
     background-color: #2d2a38;
-}
+} */
+
+/* .create-song-album-button-container:active{
+
+    transform: scale(0.98);
+} */
 
 .song-list-add-icon{
     /* border:solid 1px; */
@@ -152,9 +157,25 @@
     background-color: #1a035a;
 }
 
+.create-song-album-add-song:hover{
+    background-color: #39207e;
+}
+
+.create-song-album-add-song:active{
+    transform:scale(0.98)
+}
+
 .create-song-album-cancel{
     margin-right: 20px;
     background-color: black;
+}
+
+.create-song-album-cancel:hover{
+    background-color: rgb(25, 25, 25);
+}
+
+.create-song-album-cancel:active{
+    transform:scale(0.98)
 }
 
 .create-song-upload-container{
@@ -180,6 +201,14 @@
 
 }
 
+.create-song-upload-button:hover{
+    background-color: #381d82;
+}
+
+.create-song-upload-button:active{
+    transform: scale(0.98);
+}
+
 .create-song-upload-not-ready{
     /* background-color: #100f0f; */
     background-color: #1a035a;
@@ -190,6 +219,10 @@
 
 .create-song-upload-button:hover{
     background-color: #3207a7;
+}
+
+.create-song-upload-button:active{
+    transform: scale(0.98);
 }
 
 .create-song-album-sing-list{

@@ -18,7 +18,8 @@
 .edit-album-play-header{
     /* border: solid 1px red; */
     font-size: 50px;
-    margin-top:20px;
+    margin-top:15px;
+    margin-bottom:5px;
 }
 
 .edit-album-play-img{
@@ -149,12 +150,36 @@
     background-color: #1a035a;
 }
 
+.edit-album-save:hover{
+    background-color: #36168e;
+}
+
+.edit-album-save:active{
+    transform: scale(0.98);
+}
+
 .edit-album-cancel{
     background-color: black;
+}
+
+.edit-album-cancel:hover{
+    background-color: rgb(47, 47, 47);
+}
+
+.edit-album-cancel:active{
+    transform: scale(0.98);
 }
 
 .edit-album-play-delete{
     background-color: rgb(251, 44, 44);
     padding-left: 2px;
     padding-right: 2px;
+}
+
+.edit-album-play-delete:hover{
+    background-color: rgb(245, 78, 78);
+}
+
+.edit-album-play-delete:active{
+    transform: scale(0.98);
 }
