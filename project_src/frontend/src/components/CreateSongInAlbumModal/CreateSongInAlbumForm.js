@@ -20,6 +20,7 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
     const [newSong, setNewSong] = useState(true)
     const [songId, setSongId] = useState(0)
     const [filename, setFilename] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
 
@@ -87,6 +88,17 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
                 dispatch(getArtist(user.id))
                 setShowModal(false)
             })
+            .catch(async (res) =>{
+                if(res){
+                    const data = await res.json()
+                    const errors = data.errors
+
+                    if(data.errors && data){
+                        setValidationErrors(errors)
+                    }
+
+                }
+            })
         }
 
     }
@@ -118,6 +130,18 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
                         {`${album.title}`}
                     </div>
                 </div>
+                    { validationErrors &&
+                        <>
+                            {validationErrors.map(error =>{
+                                return(
+                                    <div className='create-album-errors error'>
+                                        {error}
+                                    </div>
+                                )
+                            })}
+                        </>
+
+                    }
 
                 <div className='create-song-album-choice-container'>
                     <div className={newSong? 'create-song-album-new-song create-song-album-tab' : 'create-song-album-tab'} onClick={handleNewTab}>

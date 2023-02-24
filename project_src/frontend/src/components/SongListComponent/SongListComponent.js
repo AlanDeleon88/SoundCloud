@@ -10,11 +10,15 @@ import {FiPlusSquare} from 'react-icons/fi'
 import CreateSongInAlbumModal from '../CreateSongInAlbumModal'
 import { Modal } from '../../context/Modal'
 import CreateSongInAlbumForm from '../CreateSongInAlbumModal/CreateSongInAlbumForm'
+import {BiEdit} from 'react-icons/bi'
+import {IoSettingsSharp} from 'react-icons/io5'
+import EditAlbumPlaylistForm from '../EditAlbumPlaylistModal'
 
 const SongListComponent = ({album, playlist, username}) =>{
     const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
     const [showAdd, setShowAdd] = useState(false)
     const [showAddModal, setShowAddModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
     const {Songs, userId} = album ? album : playlist
     const dispatch = useDispatch();
@@ -161,6 +165,40 @@ const SongListComponent = ({album, playlist, username}) =>{
 
                             </div>
                         </div>
+                        <div>
+                                {((album) && (current_user) && (current_user.id === userId)) && (showAdd) ?
+                                    (
+                                        <div className='song-list-edit' onClick={() =>{setShowEditModal(true)}}>
+                                            <IoSettingsSharp/>
+
+                                        </div>
+
+                                    )
+                                    :
+                                    (
+                                    <div className='song-list-edit-placeholder'>
+                                        <IoSettingsSharp/>
+                                    </div>
+                                    )
+
+                                }
+
+                                {((playlist) && (current_user) && (current_user.id === userId)) && (showAdd) ?
+                                    (
+
+                                        <div className='song-list-edit' onClick={() =>{setShowEditModal(true)}}>
+                                            <IoSettingsSharp/>
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <div className='song-list-edit-placeholder'>
+                                            <IoSettingsSharp/>
+                                        </div>
+                                    )
+
+                                }
+                        </div>
                     </div>
 
                     <div className='song-list-song-element-container'>
@@ -221,6 +259,18 @@ const SongListComponent = ({album, playlist, username}) =>{
                 {showAddModal &&
                     <Modal onClose={() => setShowAddModal(false)}>
                         <CreateSongInAlbumForm album={album} setShowModal={setShowAddModal}/>
+                    </Modal>
+
+                }
+                {(showEditModal && album) &&
+
+                    <Modal onClose={() => setShowEditModal(false)}>
+                        <EditAlbumPlaylistForm album={album} setShowModal={setShowEditModal}/>
+                    </Modal>
+                }
+                { showEditModal && playlist &&
+                    <Modal onClose={() => setShowEditModal(false)}>
+                        <EditAlbumPlaylistForm playlist={playlist} setShowModal={setShowEditModal}/>
                     </Modal>
 
                 }

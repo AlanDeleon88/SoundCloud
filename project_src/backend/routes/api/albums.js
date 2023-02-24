@@ -187,25 +187,54 @@ router.put( //* edit album by id
     [requireAuth, validateAlbum],
     async (req, res, next) => {
         const {id} = req.params;
-        const album = await Album.findByPk(id);
-        const {title, description, imageUrl} = req.body;
+        // const album = await Album.findByPk(id);
         const currentUserId = req.user.id;
+        console.log(Number(id), Number(currentUserId) );
+        const album = await Album.findOne({
+            where:{id : Number(id)},
+            include: [
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ]
+
+                }
+
+            ],
+            order:[[Song,'id', 'ASC']]
+        })
+        const {title, description, imageUrl} = req.body;
+
+
         if(!album){
             const err = buildError("Album couldn't be found", 'Album not Found', 404)
             return next(err);
         }
-        if(album.userId === currentUserId){
+        // console.log(album.dataValues.userId);
+        if(album.dataValues.userId === currentUserId){
             await album.update({
                 title,
                 description : description,
-                previewImage : imageUrl
+                previewImage : imageUrl ? imageUrl : 'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675554811745.png'
             })
+
             res.statusCode = 200;
             res.json(album);
 
         }
         else{
-            const err = buildError("Album does not belong to the current user!", 'Unauthorized delete', 401 )
+            const err = buildError("Album does not belong to the current user!", 'Unauthorized edit', 401 )
             return next(err);
         }
     }

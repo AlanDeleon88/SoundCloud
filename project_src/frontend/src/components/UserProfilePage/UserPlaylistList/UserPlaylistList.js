@@ -14,7 +14,7 @@ const UserPlaylistList = ({userId, username}) =>{
         dispatch(loadUserPlaylists(userId)).then((res) =>{
             setIsLoaded(true)
         })
-    },[dispatch])
+    },[dispatch,userId])
 
 
 

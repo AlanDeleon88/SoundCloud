@@ -19,3 +19,11 @@
 .music-controls-play{
     cursor: pointer;
 }
+
+.music-controls-next-track{
+    cursor: pointer;
+}
+
+.music-controls-prev-track{
+    cursor: pointer;
+}

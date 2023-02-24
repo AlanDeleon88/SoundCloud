@@ -49,6 +49,7 @@ export const updateUserAlbum = (album) => async (dispatch) =>{
     if(response.ok) {
         const updatedAlbum = await response.json();
         dispatch(updateAlbum(updatedAlbum));
+        return null;
     }
 }
 

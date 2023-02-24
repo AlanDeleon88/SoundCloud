@@ -103,3 +103,18 @@
     margin-right: 5px;
     color: #5023cd;
 }
+
+.song-list-edit-placeholder{
+    opacity: 0;
+     font-size: 40px;
+}
+
+.song-list-edit{
+   font-size: 40px;
+   cursor: pointer;
+   color: #6641cd;
+}
+
+.song-list-edit:hover{
+    color: #9380c9;
+}

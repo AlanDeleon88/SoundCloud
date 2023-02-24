@@ -29,7 +29,7 @@ const Navigation = ({isLoaded}) => {
         sessionLinks =(
             <>
                 <LoginFormModal />
-                <SignupFormModal />
+                {/* <SignupFormModal /> */}
             </>
         )
     }

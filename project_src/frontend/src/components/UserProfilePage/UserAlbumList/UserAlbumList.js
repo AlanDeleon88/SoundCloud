@@ -16,7 +16,7 @@ const UserAlbumList = ({userId,username}) =>{
         dispatch(loadUserAlbums(userId)).then((res) =>{
             setIsLoaded(true)
         })
-    },[dispatch])
+    },[dispatch,userId])
 
 
 
