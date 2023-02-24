@@ -38,8 +38,10 @@ const LoggedInSiteHeader = () =>{
                         :
                         (
                             <>
-                                    <LoginFormModal />
-                                    <SignupFormModal />
+                                    <div className='login-modal-container'>
+                                        <LoginFormModal />
+                                    </div>
+                                    {/* <SignupFormModal /> */}
                             </>
                         )
 

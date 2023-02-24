@@ -74,11 +74,13 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
     }
 
     const handleAddSong = e => {
+
+
         let songObj = {
             title: title,
             description: description,
             songUrl: songUrl,
-            albumId : album.id
+            albumId : album ? album.id : null
         }
         if(!isUploading && songUrl){
             //! dispatch to create song here.
@@ -122,14 +124,33 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
         <>
             <div className='create-song-album-main-container'>
 
-                <div className='create-song-album-header'>
-                    <div>
-                        Add song :
-                    </div>
-                    <div className='create-song-album-title'>
-                        {`${album.title}`}
-                    </div>
-                </div>
+                {album ?
+                (
+                    <>
+                        <div className='create-song-album-header'>
+                            <div>
+                                Add song :
+                            </div>
+                            <div className='create-song-album-title'>
+                                {`${album.title}`}
+                            </div>
+                        </div>
+
+                    </>
+                )
+                :
+                (
+                    <>
+                        <div className='create-song-album-header'>
+                            <div>
+                                Create a new song
+                            </div>
+                        </div>
+                    </>
+                )
+
+                }
+
                     { validationErrors &&
                         <>
                             {validationErrors.map(error =>{
@@ -142,17 +163,18 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
                         </>
 
                     }
+                { album &&
+                    <div className='create-song-album-choice-container'>
+                        <div className={newSong? 'create-song-album-new-song create-song-album-tab' : 'create-song-album-tab'} onClick={handleNewTab}>
+                            Add a new song
+                        </div>
 
-                <div className='create-song-album-choice-container'>
-                    <div className={newSong? 'create-song-album-new-song create-song-album-tab' : 'create-song-album-tab'} onClick={handleNewTab}>
-                        Add a new song
+                        <div className={newSong ? 'create-song-album-tab' :'create-song-album-existing-song create-song-album-tab'} onClick={handleExistingTab}>
+                            Add existing single
+                        </div>
+
                     </div>
-
-                    <div className={newSong ? 'create-song-album-tab' :'create-song-album-existing-song create-song-album-tab'} onClick={handleExistingTab}>
-                        Add existing single
-                    </div>
-
-                </div>
+                }
 
                 <div className='create-song-album-content-container'>
                     { newSong ?

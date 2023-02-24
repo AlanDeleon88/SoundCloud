@@ -85,6 +85,7 @@
     border-radius: 10px;
     border:none;
     color: white;
+    cursor: pointer;
 }
 
 .login-button:active{
@@ -126,6 +127,7 @@
      color: white;
      border-radius: 10px;
      border:none;
+     cursor: pointer;
 }
 
 .login-signup-prompt{

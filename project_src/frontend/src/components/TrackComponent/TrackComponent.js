@@ -120,7 +120,7 @@ const TrackComponent = ({song}) =>{
 
                                 </>
                                     }
-                            { showButtons &&
+                            { showButtons && currentUser &&
                                 <div className='track-comp-add-to-playlist'>
                                     <FiPlusSquare />
                                 </div>
