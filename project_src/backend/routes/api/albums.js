@@ -189,7 +189,7 @@ router.put( //* edit album by id
         const {id} = req.params;
         // const album = await Album.findByPk(id);
         const currentUserId = req.user.id;
-        console.log(Number(id), Number(currentUserId) );
+        // console.log(Number(id), Number(currentUserId) );
         const album = await Album.findOne({
             where:{id : Number(id)},
             include: [
@@ -223,6 +223,7 @@ router.put( //* edit album by id
         }
         // console.log(album.dataValues.userId);
         if(album.dataValues.userId === currentUserId){
+            console.log('TEST-----------------------------------------------------',imageUrl);
             await album.update({
                 title,
                 description : description,

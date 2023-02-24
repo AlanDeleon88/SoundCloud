@@ -16,7 +16,7 @@
 }
 
 .edit-album-play-header{
-    border: solid 1px red;
+    /* border: solid 1px red; */
     font-size: 50px;
     margin-top:20px;
 }
@@ -78,7 +78,7 @@
 }
 
 .edit-album-play-input-container{
-    border:solid 1px blue;
+    /* border:solid 1px blue; */
     width: 75%;
     margin-top: 10px;
 }
@@ -106,7 +106,7 @@
     width:100%;
     display: flex;
     justify-content: center;
-    border:solid 1px;
+    /* border:solid 1px; */
     align-items: center;
     margin-top:15px;
     height:100%;
@@ -118,7 +118,7 @@
 .edit-album-play-buttons{
     width: 90%;
 
-    border: solid 1px green;
+    /* border: solid 1px green; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -141,5 +141,20 @@
     width: 100px;
     border-radius: 10px;
     cursor: pointer;
+    border:none;
 
+}
+
+.edit-album-save{
+    background-color: #1a035a;
+}
+
+.edit-album-cancel{
+    background-color: black;
+}
+
+.edit-album-play-delete{
+    background-color: rgb(251, 44, 44);
+    padding-left: 2px;
+    padding-right: 2px;
 }

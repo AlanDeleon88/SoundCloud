@@ -36,6 +36,7 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
             uploadFile(image, 'image').then(res =>{
                 setImageUrl(res)
                 setIsLoading(false)
+                setImgInputted(true)
             }).catch(async (res) =>{
                 const data = await res.json()
                 console.log(data);
@@ -78,6 +79,7 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
         if(!titleInputted && !imgInputted && !descInputted){
             setShowModal(false);
         }
+
         dispatch(updateUserAlbum(albumObj)).then(res =>{
             dispatch(loadUserAlbums(user.id))
             dispatch(getArtist(user.id))
