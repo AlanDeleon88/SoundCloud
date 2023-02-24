@@ -93,6 +93,7 @@ export const deleteUserAlbum = (id) => async (dispatch) => {
     if(response.ok){
         // const message = await response.json();
         dispatch(deleteAlbum(id));
+        return null
     }
 }
 

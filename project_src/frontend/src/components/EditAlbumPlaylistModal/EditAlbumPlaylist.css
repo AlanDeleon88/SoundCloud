@@ -7,6 +7,16 @@
     flex-direction: column;
     align-items: center;
 }
+.edit-playlist-container{
+    width: 500px;
+    height: 325px;
+    background-color: #1a1822;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 
 .edit-album-play-img-container{
     display: flex;

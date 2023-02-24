@@ -8,6 +8,7 @@ import { updateUserAlbum } from '../../store/albums'
 import { loadUserAlbums } from '../../store/albums'
 import { getArtist } from '../../store/artist'
 import {MdInsertPhoto, MdOutlineAddPhotoAlternate} from 'react-icons/md'
+import { deleteUserAlbum } from '../../store/albums'
 
 
 const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
@@ -109,9 +110,32 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
         setShowModal(false)
     }
 
+    const handleDelete = e =>{
+        if(album){
+            dispatch(deleteUserAlbum(album.id)).then(res =>{
+                dispatch(loadUserAlbums(user.id))
+                dispatch(getArtist(user.id))
+                setShowModal(false)
+            })
+            .catch(async (res) =>{
+                if(res){
+                    const data = await res.json()
+                    const errors = data.errors
+
+                    if(data.errors && data){
+                        setValidationErrors(errors)
+                    }
+
+                }
+            })
+
+        }
+
+    }
+
     return(
         <>
-            <div className='edit-album-play-container'>
+            <div className={album ? 'edit-album-play-container' : 'edit-playlist-container'}>
                 <div className='edit-album-play-header'>
                     { album ?
                         (
@@ -238,8 +262,8 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
 
                 <div className='edit-album-play-button-background'>
                     <div className='edit-album-play-buttons'>
-                        <div className='edit-album-play-delete edit-album-play-button'>
-                            Delete Album
+                        <div className='edit-album-play-delete edit-album-play-button' onClick={handleDelete}>
+                            Delete
                         </div>
 
                         <div className='edit-album-play-button-bundle'>
