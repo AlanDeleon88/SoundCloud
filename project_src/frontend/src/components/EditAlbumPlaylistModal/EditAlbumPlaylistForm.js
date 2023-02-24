@@ -61,43 +61,48 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
     }
 
     const handleSave = e =>{
-        let albumObj = {
-            title: title,
-            description: description,
-            imageUrl: imageUrl,
-            id: album.id
-        }
-        if(!titleInputted){
-            albumObj.title = album.title
-        }
-        if(!descInputted){
-            albumObj.description = album.description
-        }
-        if(!imgInputted){
-            albumObj.imageUrl = album.previewImage
-        }
-        if(!titleInputted && !imgInputted && !descInputted){
-            setShowModal(false);
-        }
-
-        dispatch(updateUserAlbum(albumObj)).then(res =>{
-            dispatch(loadUserAlbums(user.id))
-            dispatch(getArtist(user.id))
-            setShowModal(false)
-
-        })
-        .catch(async (res) =>{
-            if(res){
-                const data = await res.json()
-                const errors = data.errors
-
-                if(data.errors && data){
-                    setValidationErrors(errors)
-                }
-
+        if(album){
+            let albumObj = {
+                title: title,
+                description: description,
+                imageUrl: imageUrl,
+                id: album.id
             }
-        })
-        // console.log(albumObj);
+            if(!titleInputted){
+                albumObj.title = album.title
+            }
+            if(!descInputted){
+                albumObj.description = album.description
+            }
+            if(!imgInputted){
+                albumObj.imageUrl = album.previewImage
+            }
+            if(!titleInputted && !imgInputted && !descInputted){
+                setShowModal(false);
+            }
+
+            dispatch(updateUserAlbum(albumObj)).then(res =>{
+                dispatch(loadUserAlbums(user.id))
+                dispatch(getArtist(user.id))
+                setShowModal(false)
+
+            })
+            .catch(async (res) =>{
+                if(res){
+                    const data = await res.json()
+                    const errors = data.errors
+
+                    if(data.errors && data){
+                        setValidationErrors(errors)
+                    }
+
+                }
+            })
+
+        }
+        else{
+
+        }
     }
 
     const handleCancel = e =>{
@@ -222,11 +227,11 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
                 <div className='edit-album-play-input-container'>
                     <div className='edit-album-play-input-bundle'>
                         <label className='edit-album-play-label'>Title</label>
-                        <input className='edit-album-play-input' type='text' onChange={updateTitle} value={titleInputted ? title : album.title}/>
+                        <input className='edit-album-play-input' type='text' onChange={updateTitle} value={titleInputted ? title : album ? album.title : playlist.name}/>
                     </div>
                     <div className='edit-album-play-input-bundle'>
                         <label className='edit-album-play-label'>Description</label>
-                        <input className='edit-album-play-input' type='text' onChange={updateDescription} value={descInputted ? description : album.description}/>
+                        <input className='edit-album-play-input' type='text' onChange={updateDescription} value={descInputted ? description : album ? album.description : playlist.description}/>
 
                     </div>
                 </div>
