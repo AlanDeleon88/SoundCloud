@@ -9,6 +9,8 @@ import { loadUserAlbums } from '../../store/albums'
 import { getArtist } from '../../store/artist'
 import {MdInsertPhoto, MdOutlineAddPhotoAlternate} from 'react-icons/md'
 import { deleteUserAlbum } from '../../store/albums'
+import { updateUserPlaylist } from '../../store/userPlaylist'
+import { loadUserPlaylists } from '../../store/userPlaylist'
 
 
 const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
@@ -102,6 +104,38 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
 
         }
         else{
+            let playlistObj = {
+                title: title,
+                description: description,
+                playlistId : playlist.id
+            }
+            if(!titleInputted){
+                playlistObj.title = playlist.title
+            }
+            if(!descInputted){
+                playlistObj.description = playlist.description
+            }
+
+            if(!titleInputted && !descInputted){
+                setShowModal(false);
+            }
+            console.log(playlistObj);
+            dispatch(updateUserPlaylist(playlistObj)).then(res =>{
+                dispatch(loadUserPlaylists(user.id))
+                dispatch(getArtist(user.id))
+                setShowModal(false)
+            })
+            .catch(async (res) =>{
+                if(res){
+                    const data = await res.json()
+                    const errors = data.errors
+
+                    if(data.errors && data){
+                        setValidationErrors(errors)
+                    }
+
+                }
+            })
 
         }
     }

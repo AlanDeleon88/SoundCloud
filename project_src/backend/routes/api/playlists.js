@@ -113,8 +113,36 @@ router.put(
     async (req, res, next) =>{
         const { id } = req.params;
         const { user } = req;
-        const playlist = await Playlist.findByPk(id);
-        const {name, imageUrl} = req.body;
+        const {name, description} = req.body;
+        // const playlist = await Playlist.findByPk(id);
+        const playlist = await Playlist.findOne({
+            where:{id : id},
+            include: [
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ],
+                    through:{
+                        attributes:['playlistId']
+                    }
+
+                }
+
+            ],
+            order:[[Song,'id', 'ASC']],
+
+        })
 
         if(!playlist){
             const err = buildError('Could not find playlist', 'invalid id', 404);
@@ -126,7 +154,7 @@ router.put(
         }
         await playlist.update({
             name,
-            previewImage : imageUrl || 'N/A'
+            description
         })
         res.statusCode = 200;
         res.json(playlist);

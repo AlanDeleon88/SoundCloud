@@ -1,10 +1,16 @@
 import { csrfFetch } from "./csrf"
 
 const SET_PLAYLISTS = 'userPlaylist/SET_PLAYLISTS'
+const ADD_PLAYLIST = 'userPlaylist/ADD_PLAYLIST'
 
 const setPlaylistsAction = (playlists) =>({
     type : SET_PLAYLISTS,
     payload: playlists
+})
+
+const addPlayListAction = (playlist) =>({
+    type : ADD_PLAYLIST,
+    payload: playlist
 })
 
 
@@ -19,6 +25,24 @@ export const loadUserPlaylists = (id) => async dispatch =>{
     }
 }
 
+export const updateUserPlaylist = (playlist) => async dispatch =>{
+    const {title, description, playlistId} = playlist
+    const response = await csrfFetch(`/api/playlists/${playlistId}`,{
+        method: 'PUT',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            name: title,
+            description: description
+        })
+
+    })
+    if(response.ok){
+        const data = await response.json();
+        dispatch(addPlayListAction(data))
+        return null
+    }
+}
+
 export default function userPlaylistsReducer(state={}, action){
     let newState = {}
     switch(action.type){
@@ -26,6 +50,11 @@ export default function userPlaylistsReducer(state={}, action){
             action.payload.forEach(playlist =>{
                 newState[playlist.id] = playlist;
             })
+            return newState
+
+        case ADD_PLAYLIST:
+            newState = {...state}
+            newState[action.payload.id] = action.payload
             return newState
         default:
             return state
