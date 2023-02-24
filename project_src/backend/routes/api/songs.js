@@ -24,6 +24,13 @@ const validateSong = [
     handleValidationErrors
 ];
 
+const validateEditSong =[
+    check('title')
+    .exists({checkFalsy : true})
+    .notEmpty()
+    .withMessage('Song title is required')
+]
+
 const validateComment = [
     check('body')
     .exists( { checkFalsy : true})
@@ -211,13 +218,21 @@ router.post(
 
 router.put(
     '/:id',
-    [requireAuth, validateSong],
+    [requireAuth, validateEditSong],
     async (req, res, next) =>{
         const { id } = req.params;
         const { user } = req;
-        const { title, description, url, imageUrl } = req.body;
+        const { title, description} = req.body;
 
-        const song = await Song.findByPk(id);
+        const song = await Song.findOne({
+            where:{
+                id: id
+            },
+            include: [
+                {model : Album, attributes:['title', 'id', 'previewImage']},
+                {model : User, attributes:['id', 'username', 'profile_picture']}
+            ]
+        })
 
         if(!song){
             let err = buildError("Song couldn't be found", 'Song not found', 404);
@@ -233,9 +248,7 @@ router.put(
 
         await song.update({
             title,
-            description: description,
-            url,
-            previewImage : imageUrl
+            description: description
         })
         res.statusCode = 200;
 

@@ -1,74 +1,122 @@
-.add-song-button{
+.add-song-container{
+    height: 350px;
+    width: 600px;
+    border-radius: 20px;
+    background-color: #1a1822;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-song-header{
+    font-size: 40px;
+}
+
+.edit-song-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* border: solid 1px; */
+
+}
+
+.edit-song-input-bundle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    width:80%;
+}
+
+.edit-song-input{
+    width: 100%;
+    background-color: #2f2b3b;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 10px;
+    outline: none;
+    border:none;
+}
+
+.edit-song-buttons-background{
+    width:100%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    border: 1px solid black;
-    font-size: 60px;
-    width: 60px;
-    height: 60px;
+    background-color: #100f0f;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.edit-song-buttons-container{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+    /* border: solid 1px green; */
+    height: 100%;
+
+}
+
+.edit-song-button-bundle{
+    display: flex;
+    /* border:solid 1px blue; */
+    align-items: center;
+    width: 50%;
+    justify-content: space-between;
+
+
 }
 
 .edit-song-button{
-    width:100px;
-    height: 50px;
-    margin-left: 20px;
-
+    /* border:1px solid white; */
+    height: 40px;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
 }
 
-.edit-song-button:active{
+.edit-song-save{
+    background-color: #1a035a;
+}
+
+.edit-song-save:hover{
+    background-color: #36168e;
+}
+
+.edit-song-save:active{
+    transform: scale(0.98);
+}
+
+.edit-song-cancel{
     background-color: black;
-    color: white;
-    transform: scale(.8);
 }
 
-
-
-.add-song-container{
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    /* padding: 40px; */
-    /* border: 2px solid black; */
-    border-collapse: collapse;
-    width: 350px;
-
+.edit-song-cancel:hover{
+    background-color: rgb(47, 47, 47);
 }
 
-.add-song-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size:30px;
-
+.edit-song-cancel:active{
+    transform: scale(.98);
 }
 
-.song-form-inputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.edit-song-delete{
+    background-color: rgb(251, 44, 44);
 }
 
-.song-submit-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 2px solid black; */
-    margin-top: 20px;
-    color: white;
-    background-color: orangered;
-    font-size: 40px;
-    /* height: 75px; */
-    /* box-sizing: border-box; */
-    width: 100%;
-    height: 100%;
-
-
-
+.edit-song-delete:hover{
+    background-color: rgb(245, 78, 78);
 }
 
-.song-submit-button:active{
-    background-color: white;
-    color: orange;
+.edit-song-delete:active{
+    transform: scale(0.98);
 }

@@ -17,7 +17,9 @@
     flex-wrap: nowrap;
     width: 500px;
     height: 200px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    background-color: #1a1822;
+    border-radius: 20px;
 }
 
 .delete-prompt{
@@ -41,22 +43,34 @@
 }
 
 .yes{
-    background-color: orangered;
+    background-color: rgb(251, 44, 44);
     color:white;
+    border-radius: 10px;
+    border:none;
+}
+
+.yes:hover{
+    background-color: rgb(252, 85, 85);
 }
 
 .yes:active{
-    background-color: blue;
-    transform: scale(.90);
+    /* background-color: blue; */
+    transform: scale(.98);
 }
 
 .no{
     background-color: black;
+    border-radius: 10px;
+    border:none;
     color: white;
 }
 
+.no:hover{
+    background-color: rgb(28, 28, 28);
+}
+
 .no:active{
-    background-color: white;
-    color: black;
-    transform: scale(.90);
+    /* background-color: white; */
+    /* color: black; */
+    transform: scale(.98);
 }

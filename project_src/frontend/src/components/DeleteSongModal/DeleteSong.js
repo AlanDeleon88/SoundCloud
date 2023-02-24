@@ -1,14 +1,14 @@
 import './DeleteSong.css'
 import { useDispatch } from 'react-redux';
 import { deleteUserSong } from '../../store/songs';
-const DeleteSong = ({song, showModal}) =>{
+const DeleteSong = ({song, setShowDelete}) =>{
     const dispatch = useDispatch();
 
     const handleYes = async (e) =>{
         e.preventDefault();
         return await dispatch(deleteUserSong(song.id))
         .then(() => {
-            showModal(false);
+            setShowDelete(false);
         })
         .catch( async (res)=>{
             const data = await res.json();
@@ -20,7 +20,7 @@ const DeleteSong = ({song, showModal}) =>{
 
     const handleNo = (e) =>{
         e.preventDefault();
-        showModal(false);
+        setShowDelete(false);
     }
 
     return(

@@ -1,34 +1,51 @@
 import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateSong } from '../../store/songs';
-import { getSong } from '../../store/currentSong';
+import { getArtist } from '../../store/artist'
+import { Modal } from '../../context/Modal';
+import DeleteSong from '../DeleteSongModal/DeleteSong';
 import'./EditSong.css'
 
-const EditSongForm = ({showModal, song}) => {
+const EditSongForm = ({setShowEditModal, song}) => {
     const songId = song.id
+    const user = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const [title, setTitle] = useState(song.title);
+    const [inputtedTitle, setInputtedTitle] = useState(false)
+    const [inputtedDesc, setInputtedDesc] = useState(false)
     const [description, setDescription] = useState(song.description);
-    const [songUrl, setSongUrl] = useState(song.url);
-    const [imageUrl, setImageUrl] = useState(song.previewImage);
+    const [showDelete, setShowDelete] = useState(false)
     const [validationErrors, setValidationErrors] = useState([]);
     // const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    const updateTitle = e =>{
+        setTitle(e.target.value)
+        setInputtedTitle(true)
+    }
+
+    const updateDesc = e =>{
+        setDescription(e.target.value)
+        setInputtedDesc(true)
+    }
+
+    const handleDelete = e =>{
+        setShowDelete(true)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const song = {
             title,
             description,
-            imageUrl,
-            songUrl,
             id : songId
         }
 
 
         return await dispatch(updateSong(song))
         .then(() => {
-            showModal(false);
-            dispatch(getSong(songId))
+            dispatch(getArtist(user.id))
+            setShowEditModal(false);
+
 
         })
         .catch(async (res) =>{
@@ -48,7 +65,7 @@ const EditSongForm = ({showModal, song}) => {
             <div className='add-song-container'>
                 {validationErrors.length > 0 &&(
                     <>
-                        <ul className='error-list'>
+                        <ul className='error-list error'>
                             {validationErrors.map((error, i) =>{
                                 return(
                                     <li key={i}>
@@ -59,31 +76,53 @@ const EditSongForm = ({showModal, song}) => {
                         </ul>
                     </>
                 )}
+                <div className='edit-song-header'>
+                    Edit Song
+                </div>
 
-                <form className='add-song-form' onSubmit={handleSubmit}>
+                <div className='edit-song-form-container'>
 
-                    <div className='song-form-inputs'>
-                     <h4>Edit Song:</h4>
-                        <label htmlFor='title'>Title</label>
-                        <input id='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)}/>
-
-                        <label htmlFor='description'>Description</label>
-                        <input id='description' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
-
-                        <label htmlFor='songUrl'>Song-Url</label>
-                        <input id='songUrl' type='text' value={songUrl} onChange={(e) => setSongUrl(e.target.value)}/>
-
-                        <label htmlFor='imageUrl'>Image-Url</label>
-                        <input id='ImageUrl' type='text' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)}/>
-
-
+                    <div className='edit-song-input-bundle'>
+                        <label className='edit-song-label'>
+                            Title
+                        </label>
+                        <input type='text' className='edit-song-input' value={inputtedTitle ? title : song.title} onChange={updateTitle}/>
                     </div>
 
-                    <button  type='submit'className='song-submit-button' onClick={handleSubmit}>
-                            Submit
-                    </button>
+                    <div className='edit-song-input-bundle'>
+                        <label className='edit-song-label'>
+                            Description
+                        </label>
+                        <input type='text' className='edit-song-input' value={inputtedDesc ? description : song.description} onChange={updateDesc}/>
+                    </div>
 
-                </form>
+                </div>
+                <div className='edit-song-buttons-background'>
+
+                    <div className='edit-song-buttons-container'>
+                        <div className='edit-song-button edit-song-delete' onClick={handleDelete}>
+                            Delete
+                        </div>
+                        <div className='edit-song-button-bundle'>
+                            <div className='edit-song-button edit-song-save' onClick={handleSubmit}>
+                                Save
+                            </div>
+                            <div className='edit-song-button edit-song-cancel' onClick={() => setShowEditModal(false)}>
+                                Cancel
+                            </div>
+                        </div>
+
+                </div>
+
+                </div>
+                {
+                    showDelete &&
+                    <Modal onClose={() => setShowDelete(false)}>
+                        <DeleteSong setShowDelete={setShowDelete} song={song}/>
+                    </Modal>
+                }
+
+
             </div>
         </>
     )

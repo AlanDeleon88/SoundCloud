@@ -5,11 +5,16 @@ import { useState, useEffect } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTracks, pausePlayer } from '../../store/musicPlayer'
+import {FiPlusSquare} from 'react-icons/fi'
+import {IoSettingsSharp} from 'react-icons/io5'
+import { Modal } from '../../context/Modal'
+import EditSongForm from '../EditSongModal/EditSongForm'
 
 const TrackComponent = ({song}) =>{
     const [play, setPlay] = useState(false)
     const dispatch = useDispatch();
     const [showButtons, setShowButtons] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
     const currentUser = useSelector(state=>state.session.user)
     const musicPlayer = useSelector(state=>state.musicPlayer)
     const {current_track, is_playing} = musicPlayer
@@ -106,11 +111,8 @@ const TrackComponent = ({song}) =>{
 
                                     {currentUser.id === song.User.id && showButtons &&
                                         <>
-                                            <div className='track-ud track-u'>
-                                                Edit
-                                            </div>
-                                            <div className='track-ud track-d'>
-                                                Delete
+                                            <div className='track-ud track-u' onClick={() => {setShowEditModal(true)}}>
+                                                <IoSettingsSharp />
                                             </div>
                                         </>
 
@@ -118,10 +120,21 @@ const TrackComponent = ({song}) =>{
 
                                 </>
                                     }
+                            { showButtons &&
+                                <div className='track-comp-add-to-playlist'>
+                                    <FiPlusSquare />
+                                </div>
 
-
+                            }
 
                     </div>
+
+                    {showEditModal &&
+                        <Modal onClose={() => {setShowEditModal(false)}}>
+                            <EditSongForm song={song} setShowEditModal={setShowEditModal}/>
+                        </Modal>
+                    }
+
 
             </div>
 

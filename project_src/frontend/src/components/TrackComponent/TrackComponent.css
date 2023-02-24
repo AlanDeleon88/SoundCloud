@@ -85,16 +85,37 @@
     display: flex;
     /* border: solid 1px pink; */
     width:30%;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     margin: 5px;
 }
 
 .track-ud{
-    background-color: #1a035a;
+    /* background-color: #1a035a; */
     height:48px;
-    width: 100px;
+    width: 75px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    color: #6641cd;
+}
+
+.track-ud:hover{
+    color: #947add;
+}
+
+.track-comp-add-to-playlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    color: #6641cd;
+}
+
+.track-comp-add-to-playlist:hover{
+    color: white;
 }

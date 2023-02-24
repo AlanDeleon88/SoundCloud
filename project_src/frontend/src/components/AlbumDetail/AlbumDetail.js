@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
 import DeleteAlbumModal from '../DeleteAlbumModal';
-import EditAlbumFormModal from '../EditAlbumModal';
+import EditAlbumFormModal from '../EditAlbumModal_DEPRECIATED';
 import AlbumSongsList from '../AlbumSongsList';
 
 
