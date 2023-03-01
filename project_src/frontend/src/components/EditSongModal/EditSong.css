@@ -11,6 +11,7 @@
 
 .edit-song-header{
     font-size: 40px;
+    margin-top: 30px;
 }
 
 .edit-song-form-container{
@@ -19,6 +20,7 @@
     align-items: center;
     width: 100%;
     /* border: solid 1px; */
+    margin-bottom: 20px;
 
 }
 

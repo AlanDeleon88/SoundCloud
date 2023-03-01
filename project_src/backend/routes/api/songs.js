@@ -100,6 +100,10 @@ router.get(
 
             // },
             where,
+            include: [
+                {model : Album, attributes:['title', 'id', 'previewImage']},
+                {model : User, attributes:['id', 'username', 'profile_picture']}
+            ],
             offset : offset,
             limit: pagination.size
         });
@@ -213,6 +217,49 @@ router.post(
         res.json({
             comment
         })
+    }
+)
+
+router.post(
+    '/',
+    [requireAuth, validateSong],
+    async (req, res, next) =>{
+        const {user} = req
+        const {title, description, imageUrl, url} = req.body;
+
+        if(!user){
+            const err = buildError("Not logged in", 'Unauthorized, login required', 404)
+            return next(err);
+        }
+        let newSong;
+
+        if(imageUrl){
+            newSong = await Song.create(
+                {
+                    userId : user.id,
+                    title: title,
+                    description: description,
+                    url: url,
+                    previewImage : imageUrl
+                }
+            )
+
+        }
+        else{
+            newSong = await Song.create(
+                {
+                    userId : user.id,
+                    title: title,
+                    description : description,
+                    url: url
+                }
+            )
+        }
+        // user.addSong(newSong)
+        newSong.dataValues['User'] = user;
+        res.statusCode = 201;
+        res.json(newSong)
+
     }
 )
 

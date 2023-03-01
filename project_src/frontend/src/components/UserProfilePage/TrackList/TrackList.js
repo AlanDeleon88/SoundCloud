@@ -3,6 +3,7 @@ import './TrackList.css'
 import { useState, useEffect } from "react"
 import { useSelector,useDispatch } from "react-redux"
 import { getUserSongs } from "../../../store/songs"
+import CreateSongModal from "../../CreateSongModal"
 
 const TrackList = ({userId}) =>{
     const [isLoaded, setIsLoaded] = useState(false)
@@ -20,6 +21,9 @@ const TrackList = ({userId}) =>{
     return(
         <>
             <div className="track-list-container">
+                <div>
+                    <CreateSongModal />
+                </div>
                 {isLoaded &&
                     <>
                         { songs.length > 0 ?

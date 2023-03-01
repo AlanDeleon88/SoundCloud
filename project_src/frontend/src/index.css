@@ -132,3 +132,38 @@ body{
 .error{
     color:red;
 }
+
+.mix-neb-button{
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mix-neb-button:active{
+    transform: scale(0.98);
+}
+.mix-neb-confirm{
+    background-color: #1a035a;
+}
+
+.mix-neb-confirm:hover{
+    background-color: #3b189b;
+}
+
+.mix-neb-delete{
+    background-color: rgb(241, 56, 56);
+}
+
+.mix-neb-delete:hover{
+    background-color:  rgb(252, 75, 75);
+}
+
+.mix-neb-cancel{
+    background-color: black;
+}
+
+.mix-neb-cancel:hover{
+    background-color: rgb(25, 25, 25);
+}

@@ -1,0 +1,185 @@
+.create-song-button{
+    background-color: #1a035a;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    margin-bottom: 10px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.create-song-button:hover{
+    background-color: #3b189b;
+}
+
+.create-song-button:active{
+    transform: scale(0.98);
+}
+
+.song-form-filename{
+    margin-top:5px;
+}
+
+
+.song-form-main-container{
+    height: 450px;
+    width: 750px;
+    border-radius: 20px;
+    background-color:  	#1a1822;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.song-form-header{
+    font-size: 40px;
+    margin-top: 15px;
+}
+
+.song-form{
+    display: flex;
+    width: 90%;
+    height: 70%;
+    margin-top: 25px;
+}
+
+.song-form-img-upload-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:  space-between;
+    /* border: 1px solid red; */
+    width: 40%;
+    height: 89%;
+}
+
+
+.song-form-img-header{
+    font-size: 30px;
+}
+
+.song-form-img-prev-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+    width: 100%;
+    /* border: 1px solid; */
+
+}
+
+.song-form-img-place-holder{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: #ab9fcc;
+}
+
+.song-form-img-upload-button{
+    height: 40px;
+    width: 95%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+
+.song-form-img-delete{
+    font-size: 15px;
+    z-index: 15;
+    margin-top:5px;
+    padding: 5px;
+    width: 90%;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.song-form-img{
+    width: 150px;
+    height: 150px;
+}
+
+.song-form-input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* border:1px solid blue; */
+    height: 87%;
+    width: 60%;
+}
+.song-form-input-bundle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.song-form-label{
+    font-size: 30px;
+}
+
+.song-form-input{
+    height: 40px;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #2f2b3b;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.song-form-upload-song-button{
+    height: 40px;
+    width: 90%;
+    margin-top: 10px;
+
+}
+
+.song-form-button{
+    height: 40px;
+    width: 125px;
+}
+
+.song-form-buttons-container{
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 1px solid; */
+}
+
+.song-form-buttons-bundle{
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+}
+
+.song-form-button-background{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border:solid red 1px; */
+    background-color: 	#100f0f;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 30%;
+}
+
+.song-form-upload-disabled{
+    opacity: 60%;
+    cursor:not-allowed;
+}
