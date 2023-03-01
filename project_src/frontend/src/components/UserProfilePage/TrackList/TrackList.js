@@ -21,9 +21,11 @@ const TrackList = ({userId}) =>{
     return(
         <>
             <div className="track-list-container">
-                <div>
-                    <CreateSongModal />
-                </div>
+                {current_user.id === userId &&
+                    <div>
+                        <CreateSongModal />
+                    </div>
+                }
                 {isLoaded &&
                     <>
                         { songs.length > 0 ?
