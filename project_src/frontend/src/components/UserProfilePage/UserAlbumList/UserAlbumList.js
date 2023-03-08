@@ -12,6 +12,7 @@ const UserAlbumList = ({userId,username}) =>{
     const albums = Object.values(useSelector(state => state.albums))
     const current_user = useSelector(state=>state.session.user)
 
+
     useEffect(() =>{
         dispatch(loadUserAlbums(userId)).then((res) =>{
             setIsLoaded(true)
@@ -24,7 +25,10 @@ const UserAlbumList = ({userId,username}) =>{
         <>
             <div className="album-list-main-container">
                 <div>
-                    <CreateAlbumModal />
+                    {
+                        current_user && current_user.id === userId &&
+                        <CreateAlbumModal />
+                    }
                 </div>
 
                     { isLoaded &&

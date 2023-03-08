@@ -21,7 +21,7 @@ const TrackList = ({userId}) =>{
     return(
         <>
             <div className="track-list-container">
-                {current_user.id === userId &&
+                {current_user && current_user.id === userId &&
                     <div>
                         <CreateSongModal />
                     </div>

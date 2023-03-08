@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSong } from '../../store/songs';
 import { getArtist } from '../../store/artist'
+import { loadUserAlbums } from '../../store/albums';
 import { Modal } from '../../context/Modal';
 import DeleteSong from '../DeleteSongModal/DeleteSong';
 import'./EditSong.css'
@@ -44,6 +45,7 @@ const EditSongForm = ({setShowEditModal, song}) => {
         return await dispatch(updateSong(song))
         .then(() => {
             dispatch(getArtist(user.id))
+            dispatch(loadUserAlbums(user.id))
             setShowEditModal(false);
 
 
@@ -118,7 +120,7 @@ const EditSongForm = ({setShowEditModal, song}) => {
                 {
                     showDelete &&
                     <Modal onClose={() => setShowDelete(false)}>
-                        <DeleteSong setShowDelete={setShowDelete} song={song}/>
+                        <DeleteSong setShowDelete={setShowDelete} song={song} setShowEditModal={setShowEditModal}/>
                     </Modal>
                 }
 

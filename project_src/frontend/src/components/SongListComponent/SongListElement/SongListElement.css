@@ -5,7 +5,15 @@
     padding-top:5px;
     padding-left: 5px;
     cursor: pointer;
-    font-size:25px
+    font-size:25px;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.song-list-el-bundle{
+    display: flex;
+    align-items: center;
+    z-index: 1;
 }
 
 .song-list-el-main-container:hover{
@@ -26,4 +34,10 @@
 .song-list-el-img{
     height: 25px;
     width:25px;
+}
+
+.song-list-settings-button{
+    margin-right: 10px;
+    z-index: 20;
+    /* color: red; */
 }

@@ -50,7 +50,7 @@ router.get(
             include: [
                 {
                     model : Song ,
-                    attributes:['id', 'title', 'description', 'url', 'albumId'],
+                    attributes:['id', 'title', 'description', 'url', 'albumId','userId'],
                     include:
                         [
                             {

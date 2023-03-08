@@ -76,8 +76,8 @@ const LogInFormPage = ({showModal}) =>{
                         </div>
 
                         <div className='login-buttons-container'>
-                            <button type='submit' className='login-button'>Login</button>
-                            <button className='login-button-demo' onClick={async (e) =>{
+                            <button type='submit' className='login-button mix-neb-button mix-neb-confirm'>Login</button>
+                            <button className='login-button-demo mix-neb-button mix-neb-confirm' onClick={async (e) =>{
                                     e.preventDefault();
                                     const user ={
                                         credential:'Demo-lition',

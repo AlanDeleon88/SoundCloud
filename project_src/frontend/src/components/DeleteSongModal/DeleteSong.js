@@ -1,14 +1,18 @@
 import './DeleteSong.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteUserSong } from '../../store/songs';
-const DeleteSong = ({song, setShowDelete}) =>{
+import { loadUserAlbums } from '../../store/albums';
+const DeleteSong = ({song, setShowDelete, setShowEditModal}) =>{
     const dispatch = useDispatch();
+    const user = useSelector(state=>state.session.user)
 
     const handleYes = async (e) =>{
         e.preventDefault();
         return await dispatch(deleteUserSong(song.id))
         .then(() => {
             setShowDelete(false);
+            setShowEditModal(false);
+            dispatch(loadUserAlbums(user.id))
         })
         .catch( async (res)=>{
             const data = await res.json();
@@ -21,6 +25,7 @@ const DeleteSong = ({song, setShowDelete}) =>{
     const handleNo = (e) =>{
         e.preventDefault();
         setShowDelete(false);
+
     }
 
     return(

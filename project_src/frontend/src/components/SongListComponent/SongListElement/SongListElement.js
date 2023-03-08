@@ -1,9 +1,16 @@
 import './SongListElement.css'
+import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { setListTrack, pausePlayer } from '../../../store/musicPlayer'
+import {IoSettingsSharp} from 'react-icons/io5'
+import { Modal } from '../../../context/Modal'
+import EditSongForm from '../../EditSongModal/EditSongForm'
 
 const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist}) =>{
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
+    const [showSettings, setShowSettings] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
+    const current_user = useSelector(state=>state.session.user)
     const dispatch = useDispatch()
 
     const handleSongClick = e =>{
@@ -32,36 +39,50 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
 
     return(
         <>
-            <div className= {(current_track.id === song.id) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'} onClick={handleSongClick}>
+            <div className= {(current_track.id === song.id) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'}  onMouseEnter={() =>{setShowSettings(true)}} onMouseLeave={() =>{setShowSettings(false)}}>
+                <div className='song-list-el-bundle' onClick={handleSongClick}>
+                    <div className='song-list-el-img-container'>
+                        { album ?
+                            (
+                                <>
+                                    <img src={img} className='song-list-el-img'/>
+                                </>
+                            )
+                            :
+                            (
+                                <>
+                                    <img src={song.Album? song.Album.previewImage : song.previewImage} className='song-list-el-img'/>
+                                </>
+                            )
 
-                <div className='song-list-el-img-container'>
-                    { album ?
-                        (
-                            <>
-                                 <img src={img} className='song-list-el-img'/>
-                            </>
-                        )
-                        :
-                        (
-                            <>
-                                <img src={song.Album? song.Album.previewImage : song.previewImage} className='song-list-el-img'/>
-                            </>
-                        )
+                        }
 
-                    }
 
+                    </div>
+                    <div className='song-list-el-num'>
+                        {num}
+                    </div>
+                    <div className='song-list-el-title'>
+                        {song.title}
+                    </div>
 
                 </div>
-                <div className='song-list-el-num'>
-                    {num}
-                </div>
-                <div className='song-list-el-title'>
-                    {song.title}
-                </div>
+                {
+                    (current_user) && (current_user.id === song.userId) && showSettings &&
 
+                    <div className='song-list-settings-button' onClick={() =>{setShowEditModal(true)}}>
+                        <IoSettingsSharp />
+                    </div>
 
+                }
 
             </div>
+            { showEditModal &&
+                <Modal onClose={() =>{setShowEditModal(false)}}>
+                    <EditSongForm setShowEditModal={setShowEditModal} song={song}/>
+                </Modal>
+
+            }
 
         </>
     )

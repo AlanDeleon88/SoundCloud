@@ -78,7 +78,7 @@
 }
 
 .login-button{
-    background-color: #1a035a;
+    /* background-color: #1a035a; */
     height: 40px;
     width: 40%;
     font-size: 30px;
@@ -88,11 +88,11 @@
     cursor: pointer;
 }
 
-.login-button:active{
+/* .login-button:active{
     background-color: black;
     color: white;
 
-}
+} */
 
 .home-log{
     background-color: 	#1a035a;
