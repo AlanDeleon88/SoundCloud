@@ -9,12 +9,14 @@ import {FiPlusSquare} from 'react-icons/fi'
 import {IoSettingsSharp} from 'react-icons/io5'
 import { Modal } from '../../context/Modal'
 import EditSongForm from '../EditSongModal/EditSongForm'
+import AddToPlaylistComponent from '../AddToPlaylistComponent'
 
 const TrackComponent = ({song}) =>{
     const [play, setPlay] = useState(false)
     const dispatch = useDispatch();
     const [showButtons, setShowButtons] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
+    const [showAddPlaylist, setShowAddPlaylist] = useState(false)
     const currentUser = useSelector(state=>state.session.user)
     const musicPlayer = useSelector(state=>state.musicPlayer)
     const {current_track, is_playing} = musicPlayer
@@ -121,7 +123,7 @@ const TrackComponent = ({song}) =>{
                                 </>
                                     }
                             { showButtons && currentUser &&
-                                <div className='track-comp-add-to-playlist'>
+                                <div className='track-comp-add-to-playlist' onClick={() =>{setShowAddPlaylist(true)}}>
                                     <FiPlusSquare />
                                 </div>
 
@@ -134,6 +136,15 @@ const TrackComponent = ({song}) =>{
                             <EditSongForm song={song} setShowEditModal={setShowEditModal}/>
                         </Modal>
                     }
+
+                    { showAddPlaylist &&
+
+                        <Modal onClose={() =>{setShowAddPlaylist(false)}}>
+                            <AddToPlaylistComponent user={currentUser} song={song}/>
+                        </Modal>
+
+
+                  }
 
 
             </div>

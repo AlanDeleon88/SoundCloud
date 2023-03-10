@@ -5,6 +5,7 @@ import { setListTrack, pausePlayer } from '../../../store/musicPlayer'
 import {IoSettingsSharp} from 'react-icons/io5'
 import { Modal } from '../../../context/Modal'
 import EditSongForm from '../../EditSongModal/EditSongForm'
+import {FiPlusSquare} from 'react-icons/fi'
 
 const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist}) =>{
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
@@ -67,14 +68,22 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
                     </div>
 
                 </div>
-                {
-                    (current_user) && (current_user.id === song.userId) && showSettings &&
+                <div className='song-list-hover-buttons'>
+                    {
+                        (current_user) && (current_user.id === song.userId) && showSettings &&
 
-                    <div className='song-list-settings-button' onClick={() =>{setShowEditModal(true)}}>
-                        <IoSettingsSharp />
-                    </div>
+                        <div className='song-list-settings-button' onClick={() =>{setShowEditModal(true)}}>
+                            <IoSettingsSharp />
+                        </div>
 
-                }
+                    }
+                    {showSettings &&
+                        <div className='song-list-add-playlist-button'>
+                            <FiPlusSquare />
+                        </div>
+                    }
+
+                </div>
 
             </div>
             { showEditModal &&

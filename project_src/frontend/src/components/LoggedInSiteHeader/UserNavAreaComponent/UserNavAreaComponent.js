@@ -51,7 +51,7 @@ const UserNavAreaComponent = ({user}) =>{
     return(
         <>
             <div className='logged-profile-upload-container'>
-            <button>
+            <button style={{'opacity' : '0'}}>
                 Upload
             </button>
             <div className='logged-profile-container' onClick={handleProfileClick}>
@@ -77,7 +77,6 @@ const UserNavAreaComponent = ({user}) =>{
                     <RiAlbumFill />
                     <div className='logged-list-text'>
                         Albums
-
                     </div>
 
                 </div>

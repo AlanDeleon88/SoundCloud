@@ -36,8 +36,25 @@
     width:25px;
 }
 
+.song-list-hover-buttons{
+    display: flex;
+}
+
 .song-list-settings-button{
     margin-right: 10px;
     z-index: 20;
     /* color: red; */
+    color:#6641cd;
+}
+
+.song-list-add-playlist-button{
+    color: #6641cd;
+}
+
+.song-list-settings-button:hover{
+    color: #9380c9;
+}
+
+.song-list-add-playlist-button:hover{
+    color: #a58bec;
 }
