@@ -2,6 +2,8 @@ import './AddToPlaylistComponent.css'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadUserPlaylists } from '../../store/userPlaylist'
+import AddToPlaylistElement from './AddToPlaylistElement'
+import {BiPlus} from 'react-icons/bi'
 
 const AddToPlaylistComponent = ({song, user}) =>{
     const [isLoaded, setIsLoaded] = useState(false)
@@ -16,15 +18,16 @@ const AddToPlaylistComponent = ({song, user}) =>{
     return(
         <>
             <div className='add-playlist-main-container'>
-                <div className='add-playlist-el-container'>
+                <div className='add-playlist-header'>
+                    Add Song to playlist
+                </div>
+                <div className='add-playlist-el-list'>
                     { isLoaded &&
                         <>
                             {playlists.map(el =>{
                                 return(
                                     <>
-                                        <div>
-                                            {el.name}
-                                        </div>
+                                        <AddToPlaylistElement playlist={el} song={song} key={el.id}/>
                                     </>
                                 )
                             })}
@@ -32,6 +35,15 @@ const AddToPlaylistComponent = ({song, user}) =>{
 
                     }
 
+                </div>
+
+                <div className='add-play-list-new-playlist-bundle'>
+                    <div>
+                        <BiPlus />
+                    </div>
+                    <div>
+                        Create new playlist
+                    </div>
                 </div>
 
             </div>

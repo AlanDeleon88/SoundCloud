@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './PlaylistImage.css'
 
-const PlaylistImage = ({songs}) =>{
+const PlaylistImage = ({songs, forAddToPlaylist}) =>{
     const [songImgs, setSongImgs] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -20,7 +20,7 @@ const PlaylistImage = ({songs}) =>{
 
     return(
         <>
-            <div className="playlist-img-main-container">
+            <div className={forAddToPlaylist ? "playlist-img-main-container-small" : "playlist-img-main-container"}>
                 { isLoaded &&
                     <>
                         {songImgs.map((img,i) =>{
@@ -28,13 +28,13 @@ const PlaylistImage = ({songs}) =>{
                                 <>{img ?
                                         (
                                             <>
-                                                <img src={img} alt='' className='playlist-img-quad' key={i}/>
+                                                <img src={img} alt='' className={forAddToPlaylist ? 'playlist-img-quad-small':'playlist-img-quad'} key={i}/>
                                             </>
                                         )
                                         :
                                         (
                                             <>
-                                                <div className='playlist-img-placeholder' key={i}>
+                                                <div className={forAddToPlaylist ? 'playlist-img-placeholder-small' : 'playlist-img-placeholder'} key={i}>
 
                                                 </div>
                                             </>

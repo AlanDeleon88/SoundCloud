@@ -43,6 +43,38 @@ export const updateUserPlaylist = (playlist) => async dispatch =>{
     }
 }
 
+export const addSongToPlaylist = (playlist, song) => async dispatch =>{
+    const response = await csrfFetch(`/api/playlists/${playlist.id}`,{
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            songId: song.id
+
+        })
+
+    })
+    if(response.ok){
+        // const data = await response.json()
+        dispatch(loadUserPlaylists(playlist.userId))
+        return null
+    }
+
+}
+
+export const removeSongFromPlaylist = (playlist, song) => async dispatch =>{
+    const response = await csrfFetch(`/api/playlists/${playlist.id}/song`, {
+        method: 'DELETE',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            songId: song.id
+        })
+    })
+    if(response.ok){
+        dispatch(loadUserPlaylists(playlist.userId))
+        return null
+    }
+}
+
 export default function userPlaylistsReducer(state={}, action){
     let newState = {}
     switch(action.type){

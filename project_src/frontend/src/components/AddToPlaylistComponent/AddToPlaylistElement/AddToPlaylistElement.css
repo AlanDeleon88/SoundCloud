@@ -1,0 +1,41 @@
+.playlist-el-container{
+    width:100%;
+    border: solid 1px blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playlist-el-check-img-bundle{
+    display: flex;
+    align-items: center;
+    width: 32%;
+    justify-content: space-between;
+}
+
+.playlist-el-checkbox{
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:25px;
+    cursor: pointer;
+}
+
+.playlist-el-name{
+    border: 1px solid red;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.pl-checked{
+    background-color: green;
+}
+
+.pl-hide-check{
+    opacity: 0;
+}

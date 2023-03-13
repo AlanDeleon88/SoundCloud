@@ -1,0 +1,27 @@
+.add-playlist-main-container{
+    width: 350px;
+    height: 450px;
+    background-color: #1a1822;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.add-playlist-header{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add-playlist-el-list{
+    width: 90%;
+    height: 70%;
+    border:1px solid;
+    overflow: scroll;
+}
+
+.add-play-list-new-playlist-bundle{
+    display: flex;
+}

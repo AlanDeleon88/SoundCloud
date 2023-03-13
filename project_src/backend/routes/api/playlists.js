@@ -191,4 +191,37 @@ router.delete(
         });
     }
 )
+
+router.delete(
+    '/:id/song',
+    [requireAuth],
+    async (req, res, next) =>{
+        // const {user} = req
+        const {id} = req.params
+        const {songId} = req.body
+        const playlistSong = await PlaylistSong.findOne({
+            where:{
+                songId : songId,
+                playlistId : id
+            }
+        })
+        if(!playlistSong){
+            const err = buildError('Could not find playlist to song id match', 'invalid Id', 404);
+            return next(err);
+        }
+        console.log('LONG TEST-----------------------------',playlistSong.dataValues.id);
+        await PlaylistSong.destroy({
+            where:{
+                id: playlistSong.dataValues.id
+            }
+        })
+
+        res.statusCode = 200;
+        res.json({
+            "message" : "Successfully deleted",
+            "statusCode" : 200
+        });
+    }
+
+)
 module.exports = router;

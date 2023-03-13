@@ -7,14 +7,36 @@
     border: none;
 }
 
+.playlist-img-main-container-small{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height:61px;
+    width:65px;
+    border: none;
+}
+
 .playlist-img-quad{
     width:80px;
     height:80px;
     border: none;
 }
+
+.playlist-img-quad-small{
+    width:30px;
+    height:30px;
+    border:none;
+}
 .playlist-img-placeholder{
     height:80px;
     width: 80px;
+    /* border: solid 1px red; */
+    background: linear-gradient(to left top, rgb(26, 3, 90),  #2f2b3b);
+}
+
+.playlist-img-placeholder-small{
+    height:30px;
+    width: 30px;
     /* border: solid 1px red; */
     background: linear-gradient(to left top, rgb(26, 3, 90),  #2f2b3b);
 }
