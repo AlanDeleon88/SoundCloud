@@ -1,31 +1,53 @@
 .playlist-el-container{
     width:100%;
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .playlist-el-check-img-bundle{
     display: flex;
     align-items: center;
-    width: 32%;
+    width: 40%;
     justify-content: space-between;
 }
 
+/* .playlist-el-check-background{
+    height:45px;
+    width:45px;
+    border:solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    opacity: 0;
+    transition: width 0.1s, height 0.1s;
+
+
+} */
+
+
 .playlist-el-checkbox{
-    border: 1px solid;
-    height: 25px;
-    width: 25px;
+    border: 2px solid;
+    height: 20px;
+    width: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size:25px;
     cursor: pointer;
+    opacity: 100% auto;
+}
+
+.playlist-el-checkbox:active .playlist-el-check-background{
+
 }
 
 .playlist-el-name{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 65%;
     display: flex;
     justify-content: center;
@@ -33,7 +55,8 @@
 }
 
 .pl-checked{
-    background-color: green;
+    background-color: #1a035a;
+    opacity: 100%;
 }
 
 .pl-hide-check{

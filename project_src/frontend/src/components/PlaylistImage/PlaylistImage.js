@@ -9,7 +9,12 @@ const PlaylistImage = ({songs, forAddToPlaylist}) =>{
         let songObj = {}
 
         songs.forEach(song =>{
-            songObj[song.Album.previewImage] = song.Album.previewImage
+            if(song.Album){
+                songObj[song.Album.previewImage] = song.Album.previewImage
+            }
+            else{
+                songObj[song.previewImage] = song.previewImage
+            }
         })
         let imgArr = Object.values(songObj)
         setSongImgs([imgArr[0],imgArr[1],imgArr[2],imgArr[3]])
