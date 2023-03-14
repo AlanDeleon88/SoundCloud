@@ -8,6 +8,8 @@ import {BiPlus} from 'react-icons/bi'
 const AddToPlaylistComponent = ({song, user}) =>{
     const [isLoaded, setIsLoaded] = useState(false)
     const [songAdded, setSongAdded] = useState('')
+    //TODO create state to set show modal for creating a new playlist.
+    //? pass in song/user to modal to do then chain to create new play list then add the song to it, then close modal.
     const playlists = Object.values(useSelector(state=>state.userPlaylists))
     const dispatch = useDispatch()
     useEffect(() =>{
@@ -55,6 +57,13 @@ const AddToPlaylistComponent = ({song, user}) =>{
                 </div>
 
             </div>
+
+            {
+            /*
+
+
+            */
+            }
 
         </>
     )

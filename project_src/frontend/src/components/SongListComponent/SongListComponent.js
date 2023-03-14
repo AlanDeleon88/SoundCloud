@@ -27,11 +27,25 @@ const SongListComponent = ({album, playlist, username}) =>{
     const handlePlayClick = e =>{
         if(!playlist) playlist = {}
         if(!album) album = {}
+        // if( (album && !album.Songs.length < 1) || (playlist && playlist.Songs.length < 1)){
+        //     return null
+        //    }
+
+        if(album.Songs){
+            if(album.Songs.length < 1) return null
+        }
+
+        if(playlist.Songs){
+            if(playlist.Songs.length < 1) return null;
+        }
 
        let trackObj = {
             trackIndex : currentSongIndex,
             tracks : Songs
        }
+
+
+
         if(trackObj.trackIndex){
             if(current_track['playlistId'] !== playlist['id'] || (album['id'] !== current_track['albumId']))  {
                 dispatch(pausePlayer()).then(res =>{

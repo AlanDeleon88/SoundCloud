@@ -1,8 +1,6 @@
 import './TrackComponent.css'
 import{FaPlay, FaPause} from 'react-icons/fa'
-import track_img from './temp_data/temp_track_img.png'
 import { useState, useEffect } from 'react'
-import ReactAudioPlayer from 'react-audio-player'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTracks, pausePlayer } from '../../store/musicPlayer'
 import {FiPlusSquare} from 'react-icons/fi'
@@ -139,10 +137,14 @@ const TrackComponent = ({song}) =>{
 
                     { showAddPlaylist &&
 
-                        <Modal onClose={() =>{setShowAddPlaylist(false)}}>
+                        <Modal onClose={() =>
+                            {
+                            setShowAddPlaylist(false)
+                            setShowButtons(false)
+                        }
+                        }>
                             <AddToPlaylistComponent user={currentUser} song={song}/>
                         </Modal>
-
 
                   }
 
