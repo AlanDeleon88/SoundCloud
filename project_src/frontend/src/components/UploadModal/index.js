@@ -5,6 +5,7 @@ import { restoreUser } from '../../store/session';
 import SignUpForm from '../SignupFormModal/SignupForm';
 import LogInFormPage from '../LoginFormModal/LoginForm';
 import { useHistory } from 'react-router-dom';
+import { login } from '../../store/session';
 import './Upload.css'
 
 
@@ -26,7 +27,18 @@ const UploadModal = () =>{
             history.push('/me/albums')
         }
         else{
-            setShowModal(true);
+            // setShowModal(true);
+            const user ={
+                credential:'Demo-lition',
+                password: 'password'
+            }
+            dispatch(login(user)) //! important pattern for error handling calls to the backend!!
+            .then(()=>{
+
+            history.push('/');
+            // showModal(false);
+
+            })
         }
 
     }
@@ -34,7 +46,7 @@ const UploadModal = () =>{
 
     return (
         <>
-            <button onClick={handleOnUpload} className='upload-button'>Upload Songs and Albums</button>
+            <button onClick={handleOnUpload} className='upload-button mix-neb-button'>Demo Login</button>
             {showModal && (
                 <>
                     <Modal onClose={() => setShowModal(false)}>
