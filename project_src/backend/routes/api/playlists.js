@@ -52,13 +52,13 @@ router.post(
     [requireAuth, validatePlaylist],
     async (req, res, next) => {
         const { user } = req;
-        const { name, imageUrl } = req.body;
+        const { name, desc } = req.body;
         const userId = user.id;
 
         let playlist = await Playlist.create({
             userId : userId,
             name,
-            previewImage: imageUrl
+            description: desc
         })
 
         res.statusCode = 201;

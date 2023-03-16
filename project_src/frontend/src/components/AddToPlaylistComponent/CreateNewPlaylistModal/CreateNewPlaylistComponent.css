@@ -1,0 +1,75 @@
+.add-play-list-new-playlist-bundle{
+    display: flex;
+    font-size: 25px;
+    /* border: 1px solid pink; */
+    width: 70%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.add-playlist-font-plus-font{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+
+.create-playlist-container{
+    height: 250px;
+    width: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-playlist-header{
+    font-size:25px;
+    margin-top: 20px;
+}
+
+.create-playlist-form-container{
+    /* border: 1px solid green; */
+    width: 85%;
+    margin-bottom:20px;
+}
+
+.create-playlist-from-bundle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.create-playlist-form-label{
+    font-size: 20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.create-playlist-input{
+    text-align: center;
+    width:100%;
+    height:25px;
+}
+
+.create-playlist-button-background{
+    width:100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create-playlist-button-container{
+    width:90%;
+    display: flex;
+    justify-content: flex-end;
+    border:1px solid red;
+    align-items: center;
+
+}
+
+.create-playlist-button-bundle{
+    display: flex;
+}

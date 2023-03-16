@@ -167,3 +167,28 @@ body{
 .mix-neb-cancel:hover{
     background-color: rgb(25, 25, 25);
 }
+
+.mix-neb-modal{
+    background-color: #1a1822;
+    border-radius: 20px;
+    display: flex;
+}
+
+.mix-neb-input{
+    background-color: #2f2b3b;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.mix-neb-button-background{
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* border:solid red 1px; */
+    background-color: 	#100f0f;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}

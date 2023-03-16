@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf"
+//TODO add thunk to remove user playlist
 
 const SET_PLAYLISTS = 'userPlaylist/SET_PLAYLISTS'
 const ADD_PLAYLIST = 'userPlaylist/ADD_PLAYLIST'
@@ -21,6 +22,24 @@ export const loadUserPlaylists = (id) => async dispatch =>{
         const data = await response.json()
 
         dispatch(setPlaylistsAction(data.playlists))
+        return null
+    }
+}
+
+export const addUserPlaylistWithSong = (playlistObj) => async dispatch =>{
+    const {title, description, userId} = playlistObj
+    const response = await csrfFetch(`/api/playlist`, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            name: title,
+            description: description
+        })
+    })
+
+    if(response.ok){
+        // const data = await response.json()
+        dispatch(loadUserPlaylists(userId))
         return null
     }
 }
@@ -74,6 +93,7 @@ export const removeSongFromPlaylist = (playlist, song) => async dispatch =>{
         return null
     }
 }
+
 
 export default function userPlaylistsReducer(state={}, action){
     let newState = {}
