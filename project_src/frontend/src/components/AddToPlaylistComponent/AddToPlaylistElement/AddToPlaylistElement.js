@@ -17,7 +17,7 @@ const AddToPlaylistElement = ({playlist, song, setSongAdded}) =>{
             }
 
         })
-    },[])
+    },[playlist])
 
     const handleCheck = (e) =>{
         if(!isChecked){

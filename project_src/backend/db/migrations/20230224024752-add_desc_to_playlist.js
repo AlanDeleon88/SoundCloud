@@ -11,7 +11,7 @@ module.exports = {
     await queryInterface.addColumn('Playlists','description',
     {
       type: Sequelize.STRING(150),
-      allowNull: false,
+      allowNull: true,
 
     }
     )

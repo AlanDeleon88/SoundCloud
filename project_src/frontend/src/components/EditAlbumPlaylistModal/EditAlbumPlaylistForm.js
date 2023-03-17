@@ -164,6 +164,9 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
             })
 
         }
+        else{
+            //TODO create thunk for deleting playlist
+        }
 
     }
 

@@ -27,20 +27,21 @@ export const loadUserPlaylists = (id) => async dispatch =>{
 }
 
 export const addUserPlaylistWithSong = (playlistObj) => async dispatch =>{
-    const {title, description, userId} = playlistObj
-    const response = await csrfFetch(`/api/playlist`, {
+    // console.log(playlistObj);
+    const {name, description, userId} = playlistObj
+    const response = await csrfFetch(`/api/playlists`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
         body: JSON.stringify({
-            name: title,
+            name: name,
             description: description
         })
     })
 
     if(response.ok){
-        // const data = await response.json()
+        const data = await response.json()
         dispatch(loadUserPlaylists(userId))
-        return null
+        return data
     }
 }
 
