@@ -8,6 +8,14 @@
     cursor: pointer;
 }
 
+.add-play-list-new-playlist-bundle:hover{
+    color: #947add;
+}
+
+.add-play-list-new-playlist-bundle:active{
+    transform: scale(.98);
+}
+
 .add-playlist-font-plus-font{
     display: flex;
     justify-content: center;

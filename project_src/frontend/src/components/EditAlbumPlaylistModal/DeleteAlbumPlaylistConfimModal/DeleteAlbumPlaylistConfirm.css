@@ -1,0 +1,40 @@
+.delete-album-play-container{
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+    width: 400px;
+    justify-content: space-between;
+}
+
+
+.delete-album-play-header{
+    font-size : 18px;
+    margin-top: 50px;
+}
+
+.delete-album-play-buttons-background{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-album-play-buttons-container{
+    justify-content: flex-end;
+
+    width: 90%;
+    align-items: center;
+}
+
+.delete-album-play-buttons-bundle{
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    /* border:1px solid; */
+}
+
+.delete-album-play-button{
+    height: 30px;
+    width: 75px;
+}

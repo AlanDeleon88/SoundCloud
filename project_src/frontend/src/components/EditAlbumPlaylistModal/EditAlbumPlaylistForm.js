@@ -9,8 +9,9 @@ import { loadUserAlbums } from '../../store/albums'
 import { getArtist } from '../../store/artist'
 import {MdInsertPhoto, MdOutlineAddPhotoAlternate} from 'react-icons/md'
 import { deleteUserAlbum } from '../../store/albums'
-import { updateUserPlaylist } from '../../store/userPlaylist'
-import { loadUserPlaylists } from '../../store/userPlaylist'
+import { updateUserPlaylist, loadUserPlaylists, removeUserPlaylist } from '../../store/userPlaylist'
+import { Modal } from '../../context/Modal'
+import DeleteAlbumPlaylistConfirm from './DeleteAlbumPlaylistConfimModal'
 
 
 const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
@@ -23,6 +24,7 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
     const [showImgButtons, setShowImgButtons] = useState(false)
     const [imgInputted, setImgInputted] = useState(false)
     const [validationErrors, setValidationErrors] = useState([])
+    const [showConfirm, setShowConfirm] = useState(false)
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
 
@@ -145,28 +147,13 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
     }
 
     const handleDelete = e =>{
-        if(album){
-            dispatch(deleteUserAlbum(album.id)).then(res =>{
-                dispatch(loadUserAlbums(user.id))
-                dispatch(getArtist(user.id))
-                setShowModal(false)
-            })
-            .catch(async (res) =>{
-                if(res){
-                    const data = await res.json()
-                    const errors = data.errors
 
-                    if(data.errors && data){
-                        setValidationErrors(errors)
-                    }
 
-                }
-            })
-
-        }
-        else{
             //TODO create thunk for deleting playlist
-        }
+            // dispatch(removeUserPlaylist(playlist))
+            setShowConfirm(true)
+
+
 
     }
 
@@ -317,6 +304,12 @@ const EditAlbumPlaylistForm = ({album, playlist, setShowModal}) =>{
 
 
             </div>
+            { showConfirm &&
+                <Modal onClose={() =>{setShowConfirm(false)}}>
+                    <DeleteAlbumPlaylistConfirm playlist={playlist} album={album} setShowConfirm={setShowConfirm}/>
+                </Modal>
+
+            }
 
 
         </>

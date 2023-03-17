@@ -192,3 +192,8 @@ body{
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 }
+
+.mix-neb-button-container{
+    display: flex;
+    justify-content: space-between;
+}

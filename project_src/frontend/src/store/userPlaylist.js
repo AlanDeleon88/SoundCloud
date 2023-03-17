@@ -63,6 +63,18 @@ export const updateUserPlaylist = (playlist) => async dispatch =>{
     }
 }
 
+export const removeUserPlaylist = (playlist) => async dispatch =>{
+    const {id, userId} = playlist
+    const response = await csrfFetch(`/api/playlists/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type' : 'application/json'},
+    })
+    if(response.ok){
+        dispatch(loadUserPlaylists(userId))
+        return null
+    }
+}
+
 export const addSongToPlaylist = (playlist, song) => async dispatch =>{
     const response = await csrfFetch(`/api/playlists/${playlist.id}`,{
         method: 'POST',
