@@ -47,7 +47,7 @@ const SongCard = ({song}) => {
                                 { (musicPlayer.current_track.id === song.id) && musicPlayer.is_playing ?
                                     (
                                         <>
-                                            <div className='song-card-pause-background' onClick={handlePauseClick}>
+                                            <div className='song-card-pause-background song-card-control' onClick={handlePauseClick}>
                                                 <div className='song-card-pause'>
                                                     <FaPause />
                                                 </div>
@@ -58,7 +58,7 @@ const SongCard = ({song}) => {
                                     :
                                     (
                                         <>
-                                        <div className='song-card-play-background' onClick={handlePlayClick}>
+                                        <div className='song-card-play-background song-card-control' onClick={handlePlayClick}>
                                             <div className='song-card-play'>
                                                 <FaPlay />
                                             </div>

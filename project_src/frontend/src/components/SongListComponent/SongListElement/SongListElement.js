@@ -40,7 +40,7 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
 
     return(
         <>
-            <div className= {(current_track.id === song.id) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'}  onMouseEnter={() =>{setShowSettings(true)}} onMouseLeave={() =>{setShowSettings(false)}}>
+            <div className= {(current_track.id === song.id) ?'song-list-el-main-container song-active' : 'song-list-el-main-container'}  onMouseEnter={() =>{setShowSettings(true)}} onMouseLeave={() =>{setShowSettings(false)}} >
                 <div className='song-list-el-bundle' onClick={handleSongClick}>
                     <div className='song-list-el-img-container'>
                         { album ?
