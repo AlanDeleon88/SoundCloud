@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './PlaylistImage.css'
 
-const PlaylistImage = ({songs, forAddToPlaylist}) =>{
+const PlaylistImage = ({songs, forAddToPlaylist, forPlaylistCard}) =>{
     const [songImgs, setSongImgs] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 

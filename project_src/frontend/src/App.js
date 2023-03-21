@@ -15,6 +15,7 @@ import LoggedHome from "./components/LoggedHome";
 import UserProfilePage from "./components/UserProfilePage";
 import './index.css'
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+import MultiUploadUtil from "./components/MultiFileUploadUtil";
 
 
 function App() {
@@ -113,6 +114,11 @@ function App() {
 
         </Route>
 
+
+        <Route path={'/utils/upload'}>
+          <MultiUploadUtil />
+        </Route>
+
         <Route path = '/albums/:albumId/songs/:songId'>
            { !user &&
             <LoggedInSiteHeader />
@@ -157,6 +163,7 @@ function App() {
         <Route path={'/:userId/albums'}>
           <UserAlbums />
         </Route>
+
 
         <Route path={'/'}>
           <p>Page not found</p>

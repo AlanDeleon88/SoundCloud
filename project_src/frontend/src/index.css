@@ -197,3 +197,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
+.mix-neb-option-button:hover{
+    color: #9380c9;
+}

@@ -1,11 +1,23 @@
+.splash-outer-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right:20px;
+    height:250px;
+    /* border:1px solid red; */
+    width:90%;
+}
+
 .splash-container{
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0px;
-    /* position: absolute; */
+    /* flex-wrap: wrap; */
+    /* border: solid 1px blue; */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    height: 250px;
+    width:100%;
 }
 
 .featured-songs{
@@ -13,4 +25,24 @@
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    margin-top:20px;
+}
+
+.splash-arrow-container{
+    font-size:40px;
+    /* border: 1px solid; */
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splash-arrow{
+    position: relative;
+    /* border:solid 1px red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 10px;
+    cursor: pointer;
 }

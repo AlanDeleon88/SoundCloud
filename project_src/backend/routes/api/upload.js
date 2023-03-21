@@ -1,5 +1,5 @@
 
-const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3.js')
+const {singlePublicFileUpload, singleMulterUpload, multiplePublicFileUpload, multipleMulterUpload} = require('../../awsS3.js')
 
 const express = require('express');
 
@@ -31,6 +31,19 @@ router.post(
         const songUrl = await singlePublicFileUpload(req.file)
         return res.json({
             url: songUrl,
+        })
+    }
+)
+
+router.post(
+    '/multi-song',
+    multipleMulterUpload('songs'),
+    requireAuth,
+    async (req, res) =>{
+        console.log('TEST-----------------------------------', req.files)
+        const songUrls = await multiplePublicFileUpload(req.files)
+        return res.json({
+            urls: songUrls
         })
     }
 )

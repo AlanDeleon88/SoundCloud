@@ -9,8 +9,9 @@
     width: fit-content;
     height: 200px;
     width: 200px;
-    margin: 0px;
-    margin-bottom:20px;
+    /* margin: 0px; */
+    /* margin-bottom:20px; */
+    margin-top: 40px;
 
 }
 
@@ -24,6 +25,7 @@
     /* border: 1px solid black; */
     border-radius: 20px;
     cursor: pointer;
+    /* border:solid 1px red; */
 }
 
 .song-title-card{
@@ -49,6 +51,7 @@
     opacity: 75%;
     z-index: 5;
     cursor: pointer;
+    /* border: 1px solid red; */
 
 }
 
