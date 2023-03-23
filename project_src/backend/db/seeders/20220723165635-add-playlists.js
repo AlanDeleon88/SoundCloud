@@ -67,7 +67,7 @@ module.exports = {
       for(let j = 0; j < getRandomIntInclusive(2,4); j++){
         await Playlist.create({
           userId,
-          name: faker.random.words(getRandomIntInclusive(1,3)),
+          name: faker.random.words(getRandomIntInclusive(1,2)),
           description: faker.random.words(getRandomIntInclusive(3,6))
         })
       }
