@@ -1,6 +1,7 @@
 'use strict';
 const { User, Album, Song } = require('../models');
 const {faker} = require('@faker-js/faker')
+const {getRandomIntInclusive} = require('../../utils/getRandomInt')
 
 
 const songs = [
@@ -165,6 +166,94 @@ const songs = [
   }
 
 ]
+
+let songUrls = [
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553559105.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553592820.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553605045.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553653201.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553670564.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553722074.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553736341.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553755540.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553770439.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553784879.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553796834.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553813715.mp3',
+
+  'https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1675553831089.mp3',
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576095.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576099.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576102.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576109.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576120.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576130.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576133.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576139.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576143.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576147.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679396576158.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819852.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819858.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819863.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819873.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819877.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819887.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397819896.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990259.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990266.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990274.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990280.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990283.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990290.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679397990300.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679398072422.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679398072429.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679398072432.mp3",
+
+  "https://aa-sound-cloud.s3.us-west-1.amazonaws.com/1679398072435.mp3",
+]
+
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -176,6 +265,44 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   /*
+    !!  when creating songs
+    !!  do a for loop of total users
+    !!  for each iteration get all albums by user id of index in for loop
+    !!  nest another for loop for a random range to add a randomized song. randomize an index from 0 to songUrls.length
+  */
+    for(let i = 1; i < 51; i++){
+      let user = await User.findByPk(i,{
+        include: [
+          {
+            model: Album
+          }
+        ]
+
+      })
+      // console.log(user);
+      for(let j = 0; j < user.dataValues.Albums.length; j++){
+        let album = user.dataValues.Albums[j]
+        for(let k = 0; k < getRandomIntInclusive(4,7); k++){
+          // console.log(getRandomIntInclusive(0, songUrls.length));
+          let titles = [
+            faker.hacker.adjective(),
+            faker.random.word(),
+            faker.lorem.word()
+
+          ]
+          // console.log(titles);
+          await Song.create({
+            userId: i,
+            albumId: album.id,
+            title: titles[getRandomIntInclusive(0, titles.length-1)],
+            description: faker.random.words(),
+            url: songUrls[getRandomIntInclusive(0, songUrls.length-1)]
+
+          })
+        }
+      }
+    }
 
     for(let song of songs) {
       const {userId, albumId, title, description, url, previewImage} = song;

@@ -1,5 +1,7 @@
 'use strict';
 const { Playlist } = require('../models');
+const {getRandomIntInclusive} = require('../../utils/getRandomInt');
+const { faker } = require('@faker-js/faker');
 let playlistData = [
   {
     userId : 1,
@@ -53,15 +55,34 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     for (let playlist of playlistData){
-      const {userId, name, previewImage, description} = playlist;
-      await Playlist.create({
-        userId,
-        name,
-        previewImage,
-        description
-      });
-   }
+    /*
+      !!get all users from 1 to 50
+      !! do a for loop for each userId
+      !! for every outer loop iteration have an iteration for a random range between 2 - 4
+      !! every inner loop create a new playlist with the outerloop index, and a random name / description.
+
+    */
+    for(let i = 1; i < 51; i++){
+      let userId = i
+      for(let j = 0; j < getRandomIntInclusive(2,4); j++){
+        await Playlist.create({
+          userId,
+          name: faker.random.words(getRandomIntInclusive(1,3)),
+          description: faker.random.words(getRandomIntInclusive(3,6))
+        })
+      }
+    }
+
+
+  //    for (let playlist of playlistData){
+  //     const {userId, name, previewImage, description} = playlist;
+  //     await Playlist.create({
+  //       userId,
+  //       name,
+  //       previewImage,
+  //       description
+  //     });
+  //  }
   },
 
   async down (queryInterface, Sequelize) {

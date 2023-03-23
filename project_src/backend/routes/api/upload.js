@@ -48,4 +48,19 @@ router.post(
     }
 )
 
+router.post(
+    '/multi-image',
+    multipleMulterUpload('images'),
+    requireAuth,
+    async (req, res) =>{
+        console.log('TEST-----------------------------------', req.files)
+        const imageUrls = await multiplePublicFileUpload(req.files)
+        return res.json({
+            urls: imageUrls
+        })
+    }
+)
+
+
+
 module.exports = router;

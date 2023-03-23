@@ -3,12 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album, Song, Comment } = require('../../db/models');
+const { User, Album, Song, Comment, sequelize } = require('../../db/models');
 
 const { buildError } = require('../../utils/errorBuild.js');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+
 
 const validator = require('validator');
 
@@ -62,6 +63,7 @@ router.get(
     '/',
     async (req, res, next) =>{
         const {Op} = require('sequelize');
+        const sequelize = require('sequelize')
         const { page, size, title, createdAt } = req.query;
 
         // console.log('TEST --------------->', page, size, title, createdAt);
@@ -100,6 +102,7 @@ router.get(
 
             // },
             where,
+            order: [[sequelize.fn('RANDOM')]],
             include: [
                 {model : Album, attributes:['title', 'id', 'previewImage']},
                 {model : User, attributes:['id', 'username', 'profile_picture']}

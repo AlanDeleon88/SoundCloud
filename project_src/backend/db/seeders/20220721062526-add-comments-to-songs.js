@@ -4,6 +4,9 @@ const { User, Song, Comment } = require('../models');
 
 const {Op} = require('sequelize');
 
+const {getRandomIntInclusive} = require('../../utils/getRandomInt');
+const { faker } = require('@faker-js/faker');
+
 const comments =
 [
   {
@@ -96,6 +99,26 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   /*
+      !! query all songs and get length
+      !! do a for loop starting from 1 to songs.length
+      !! get a random userId from 1 to 50
+      !! generate a random body of from 5 to 10 words.
+
+   */
+   let songs = await Song.findAll() // [{dataValues:{...}},{...}]
+   for(let i = 1; i < songs.length; i++){
+     let songId = i
+     for(let j = 0; j < getRandomIntInclusive(2, 6); j++){
+      let userId = getRandomIntInclusive(1,50);
+      await Comment.create({
+        userId: userId,
+        songId: songId,
+        body: faker.random.words(getRandomIntInclusive(4, 10))
+      })
+     }
+
+   }
    for (let comment of comments){
       const {userId, songId, body} = comment;
       await Comment.create({

@@ -8,6 +8,7 @@ const { User, Album, Song, Playlist } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { buildError } = require('../../utils/errorBuild.js');
+const {getRandomIntInclusive} = require('../../utils/getRandomInt');
 
 // query for songs and albums related to artist id
 // then take object ie artist --> artist.datavalues.sonngs.length, can use delete.obj method to get rid of key : value pairs.
@@ -17,7 +18,7 @@ const { buildError } = require('../../utils/errorBuild.js');
 router.get(
     '/',
     async (req, res, next) =>{
-        let offset = Math.floor(Math.random() * 10)
+        let offset = getRandomIntInclusive(1,10)
         const users = await User.findAll({
             include:[
                 {model: Song, attributes : ['id']}, {model: Album, attributes: ['id']}

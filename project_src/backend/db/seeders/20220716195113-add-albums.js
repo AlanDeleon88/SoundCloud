@@ -2,6 +2,7 @@
 
 const { User, Album } = require('../models');
 const {faker} = require('@faker-js/faker')
+const {getRandomIntInclusive} = require('../../utils/getRandomInt')
 
 
 const sampleAlbums =
@@ -50,6 +51,24 @@ const sampleAlbums =
     previewImage: 'https://i.imgur.com/4RpJBPw.png'
   },
 ]
+
+const moreSeedAlbums = []
+for(let i = 1; i < 51; i++){
+  let userId = i
+  for(let j = 0; j < getRandomIntInclusive(2, 4); j++){
+    moreSeedAlbums.push({
+      userId : userId,
+      title : faker.random.word(),
+      description: faker.hacker.phrase(),
+      previewImage : faker.image.image()
+
+    })
+  }
+
+}
+let newSeedAlbum = [...sampleAlbums, ...moreSeedAlbums]
+
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -61,13 +80,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   for (let albumInfo of sampleAlbums){
+   for (let albumInfo of newSeedAlbum){
     const {userId, title, description, previewImage} = albumInfo;
-    console.log(title);
-    const user = await User.findByPk(userId);
+    // console.log(title);
+    // const user = await User.findByPk(userId);
 
     await Album.create({
-      userId : user.id,
+      userId : userId,
       title,
       description,
       previewImage
