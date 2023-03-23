@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album, Song, Playlist } = require('../../db/models');
+const { User, Album, Song, Playlist, sequelize } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -18,12 +18,12 @@ const {getRandomIntInclusive} = require('../../utils/getRandomInt');
 router.get(
     '/',
     async (req, res, next) =>{
-        let offset = getRandomIntInclusive(1,10)
+        // let offset = getRandomIntInclusive(1,10)
         const users = await User.findAll({
             include:[
                 {model: Song, attributes : ['id']}, {model: Album, attributes: ['id']}
                 ],
-            offset: offset,
+            order: [[sequelize.fn('RANDOM')]],
             limit: 5
         })
 
