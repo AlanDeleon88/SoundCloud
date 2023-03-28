@@ -1,4 +1,3 @@
-import Navigation from "./components/Navigation";
 import { Route, Switch, NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from './store/session';
@@ -7,7 +6,6 @@ import UserAlbums from "./components/UserAlbums";
 import SplashSongs from "./components/SplashSongs";
 import SiteHeader from "./components/SiteHeader";
 import UploadModal from "./components/UploadModal";
-import AlbumSongsList from "./components/AlbumSongsList/AlbumSongsList";
 import SongAlbumList from "./components/SongAlbumList";
 import splash_header from './img_src/splash_3.png'
 import LoggedInSiteHeader from "./components/LoggedInSiteHeader";

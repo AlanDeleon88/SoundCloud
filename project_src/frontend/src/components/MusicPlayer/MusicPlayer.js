@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './MusicPlayer.css'
 import MusicControls from './MusicControls';
 import { prevTrack, nextTrack, pausePlayer, playPlayer } from '../../store/musicPlayer';
@@ -24,6 +25,7 @@ const MusicPlayer = () =>{
     const trackStyling = `
   -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #1a035a), color-stop(${currentPercentage}, #777))`;
     const volumeStyle = `-webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentVolumePercentage}, #1a035a), color-stop(${currentVolumePercentage}, #777))`;
+    const history = useHistory();
     // console.log(isPlaying);
     // console.log(duration);
     // console.log(volume);
@@ -163,6 +165,14 @@ const MusicPlayer = () =>{
         })
     }
 
+    const handleArtist = (e) =>{
+        if(current_track.User){
+            history.push((`/${current_track.User.username}/${current_track.User.id}`))
+
+        }
+
+    }
+
     return(
     <>
         <div className='music-player-main-container' onMouseLeave={() =>{setShowVolume(false)}}>
@@ -263,7 +273,7 @@ const MusicPlayer = () =>{
                 </div>
                 <div className='music-player-text-container'>
                     <div className='music-player-artist-album'>
-                        <div className='music-player-artist'>
+                        <div className='music-player-artist' onClick={handleArtist}>
                             {current_track.User &&
                             <>
                                 {current_track.User.username}

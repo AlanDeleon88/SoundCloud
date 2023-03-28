@@ -46,7 +46,7 @@ const UploadModal = () =>{
 
     return (
         <>
-            <button onClick={handleOnUpload} className='upload-button mix-neb-button'>Demo Login</button>
+            <button onClick={handleOnUpload} className='upload-button mix-neb-button mix-neb-confirm'>Demo Login</button>
             {showModal && (
                 <>
                     <Modal onClose={() => setShowModal(false)}>

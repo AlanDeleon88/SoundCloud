@@ -42,6 +42,7 @@
     display: flex;
     /* align-items: center; */
     /* border: solid 1px green; */
+
 }
 
 .music-player-song-art-container{
@@ -64,6 +65,8 @@
     align-items: center;
     justify-content: center;
     /* flex-direction: column-reverse; */
+    /* border: solid 1px; */
+    margin-top: 3px;
     width: 55%;
 }
 
@@ -109,6 +112,7 @@ input[type="range"] {
     align-items: center;
     /* font-size: 30px; */
     /* border: solid 1px white; */
+    margin-top: 3px;
 
 
 }
@@ -144,4 +148,9 @@ input[type="range"] {
 
 .music-player-artist{
     color: grey;
+    cursor: pointer;
+}
+
+.music-player-artist:hover{
+    color: white;
 }

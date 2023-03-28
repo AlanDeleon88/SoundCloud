@@ -94,7 +94,7 @@
     display: flex;
     /* border:solid 1px; */
     width: 52%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     color: grey;
 }
 
