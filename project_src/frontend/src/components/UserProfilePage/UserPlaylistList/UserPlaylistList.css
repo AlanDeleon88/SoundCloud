@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100%;
     /* border: solid 1px; */
+    overflow: scroll;
 }
 
 .playlist-list-list-placeholder{

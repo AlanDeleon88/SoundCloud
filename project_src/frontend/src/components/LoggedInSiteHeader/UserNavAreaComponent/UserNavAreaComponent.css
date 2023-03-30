@@ -3,6 +3,8 @@
     height: 30px;
     border-radius: 100%;
     cursor: pointer;
+    position: relative;
+    right:10px;
 }
 
 .logged-user-area-container{
@@ -26,7 +28,7 @@
 }
 
 .logged-profile-username{
-    padding-left: 10px;
+    /* padding-left: 10px; */
     cursor: pointer;
 }
 
@@ -36,10 +38,10 @@
     background-color: #2f2b3b;
     display: flex;
     flex-direction: column;
-    width:50%;
+    width:80%;
     font-size: 17px;
     position: relative;
-    left:132px;
+    left:50px;
     z-Index: 20;
 }
 

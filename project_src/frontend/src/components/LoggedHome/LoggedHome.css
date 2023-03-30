@@ -1,6 +1,6 @@
 .logged-home-main-container{
-    border:solid 1px green;
-    width: 100%;
+    /* border:solid 1px green; */
+    width: 75%;
     height:91%;
     display: flex;
     overflow: scroll;

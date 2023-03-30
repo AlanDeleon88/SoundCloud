@@ -4,6 +4,7 @@
     justify-content: flex-start;
     /* border:solid 1px; */
     height: 100%;
+    overflow: scroll;
 }
 
 .album-list-placeholder{

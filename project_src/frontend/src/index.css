@@ -116,6 +116,8 @@ body{
     width: 80%;
     height: 100%;
     /* border:solid 1px; */
+    display: flex;
+    justify-content: center;
 }
 
 .music-player-placeholder{
