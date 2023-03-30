@@ -1,0 +1,9 @@
+.featured-albums-container{
+    /* border: solid 1px red; */
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}

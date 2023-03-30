@@ -8,6 +8,7 @@ const { User, Album, Song, Playlist, PlaylistSong } = require('../../db/models')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { buildError } = require('../../utils/errorBuild.js');
+const { checkQuery } = require('../../utils/checkQuery.js')
 
 const validatePlaylist =
 [
@@ -17,6 +18,57 @@ const validatePlaylist =
     .withMessage('Playlist name is required'),
     handleValidationErrors
 ]
+
+router.get(
+    '/',
+    async(req, res, next) =>{
+        const {Op} = require('sequelize');
+        const sequelize = require('sequelize');
+        const {page, size, title} = req.query;
+
+        let pagination = checkQuery(page, size)
+        if(pagination instanceof Error){
+            return next(pagination)
+        }
+        const where = {}
+        if(title){
+            where.title = {[Op.like] : `%${title}%`};
+        }
+        let offset = pagination.size * (pagination.page - 1);
+
+        const playlists = await Playlist.findAll({
+            where,
+            order:[[sequelize.fn('RANDOM')]],
+            include:[
+                {model:Song,
+                    include:
+                    [
+                        {
+                            model: Album,
+                            attributes: ['previewImage']
+                        },
+                        {
+                            model: User,
+                            attributes:['username']
+                        }
+                    ]
+                }
+            ],
+            offset: offset,
+            limit: pagination.size
+
+        })
+        if(!playlists){
+            const err = buildError('No playlist returned. query must be off', 'No playlists returned')
+            return next(err)
+        }
+        res.statusCode = 200;
+        res.json({
+            'playlists' : playlists
+        })
+
+    }
+)
 
 router.get(
     '/:id',

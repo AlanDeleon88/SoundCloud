@@ -1,13 +1,16 @@
 .logged-home-main-container{
-    /* border:solid 1px green; */
+    border:solid 1px green;
     width: 100%;
-    height:100%;
+    height:91%;
     display: flex;
     overflow: scroll;
 }
 
-.logged-splash-songs-container{
+.logged-splash-featured-container{
     /* border: 1px solid pink; */
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* height: 50%; */
 }

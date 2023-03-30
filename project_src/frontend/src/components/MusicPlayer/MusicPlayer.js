@@ -50,6 +50,8 @@ const MusicPlayer = () =>{
             else
             {
                 setTrackProgress(audioRef.current.currentTime)
+                //!could dispatch this to a current time redux if i want to try the audio wave on the componenents.
+                //! maybe use a second value to send back from the remote components to manipulate the track slider here?
             }
         },[1000]);
     }

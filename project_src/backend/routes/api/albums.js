@@ -8,6 +8,7 @@ const { User, Album, Song } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { buildError } = require('../../utils/errorBuild.js');
+const {checkQuery} = require('../../utils/checkQuery.js')
 
 const validateAlbum = [
     check('title') //!maybe add length restrictions later?
@@ -34,13 +35,51 @@ router.get( //? get all albums endpoint
     '/',
     async (req, res, next) =>{
         const albums = await Album.findAll();
+        const {page, size, title} = req.query
+        const {Op} =require('sequelize')
+        const sequelize = require('sequelize')
         // console.log('whatt');
-        if(!albums){
+        let pagination = checkQuery(page, size)
+
+        const where = {};
+        if(pagination instanceof Error){
+            return next(pagination);
+        }
+        let offset = pagination.size * (pagination.page - 1);
+
+        if(title){
+            where.title = {[Op.like] : `%${title}%`}
+        }
+
+        const queriedAlbums = await Album.findAll({
+            where,
+            order:[[sequelize.fn('RANDOM')]],
+            include:[
+                {model: Song,
+                    include:
+                    [
+                        {
+                            model: Album,
+                            attributes: ['previewImage']
+                        },
+                        {
+                            model: User,
+                            attributes:['username']
+                        }
+
+                    ]
+                },
+            ],
+            offset: offset,
+            limit: pagination.size
+
+        })
+        if(!queriedAlbums){
             const err = buildError('No albums could be found', 'No albums', 404)
             return next(err);
         }
         res.statusCode = 200;
-        res.json({"Albums" : albums});
+        res.json({"albums" : queriedAlbums});
     }
 );
 
