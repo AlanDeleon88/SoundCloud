@@ -12,10 +12,11 @@
     justify-content:baseline;
     /* position: relative; */
     width: 90%;
-    height: 720px;
+    height: 42%;
     /* margin-top:100px; */
     margin-bottom: 20px;
     overflow: scroll;
+    /* border:solid 1px green; */
 }
 
 .test{
