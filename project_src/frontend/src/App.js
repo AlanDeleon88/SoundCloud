@@ -83,22 +83,25 @@ function App() {
           :
           (
             <>
-            <SiteHeader isLoaded={isLoaded}/>
-            <div className='splash-pic'>
-              <img src={splash_header} className='img-el'/>
-            {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
+            <div className='home-header'>
+              <SiteHeader isLoaded={isLoaded}/>
 
-              <div className="upload-song-button">
+            </div>
+              <div className='splash-pic'>
+                <img src={splash_header} className='img-el'/>
+              {/* make component. if session user go to /meAlbums to add album, else open signup module*/}
 
-                <div className="splash-caption">
-                  Discover your sound.
+                <div className="upload-song-button">
+
+                  <div className="splash-caption">
+                    Discover your sound.
+                  </div>
+
+                  <UploadModal />
+
                 </div>
 
-                <UploadModal />
-
-              </div>
-
-          </div>
+            </div>
 
           <div className="splash">
 
