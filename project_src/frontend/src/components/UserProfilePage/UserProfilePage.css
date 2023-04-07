@@ -1,10 +1,10 @@
 .user-page-main-container{
     /* border: solid 1px green; */
-    width: 60%;
-    height: 91%;
+    width: 70%;
+    height: 87vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     z-index: 1;
 }
@@ -16,13 +16,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 20px;
     /* background-color: #330aa4; */
 }
 
 .user-page-content-container{
     /* border: solid 1px red; */
     display: flex;
-    width:100%;
+    width:86%;
     height: 65%;
     overflow: hidden;
     z-index: 1;

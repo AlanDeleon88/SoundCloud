@@ -3,14 +3,15 @@
     width: 75%;
     height:88.5%;
     display: flex;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .logged-splash-featured-container{
     /* border: 1px solid pink; */
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     /* height: 50%; */
+    overflow: scroll;
 }

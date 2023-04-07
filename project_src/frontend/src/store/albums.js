@@ -35,7 +35,7 @@ const addAlbum = (album) => {
 }
 
 export const loadFeaturedAlbums = () => async (dispatch) =>{
-    const response = await csrfFetch(`/api/albums?page=1&size=3`);
+    const response = await csrfFetch(`/api/albums?page=1&size=2`);
 
     if(response.ok){
         const data = await response.json()

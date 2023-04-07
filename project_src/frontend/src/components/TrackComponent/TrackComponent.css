@@ -2,6 +2,7 @@
     /* border:solid 1px red; */
     height: 250;
     /* width: 300px; */
+    width: 95%;
     display: flex;
     /* flex-direction: column; */
     align-items: center;
