@@ -52,6 +52,10 @@ router.get(
                             attributes:['username']
                         }
                     ]
+                },
+                {
+                    model:User,
+                    attributes: ['username', 'profile_picture']
                 }
             ],
             offset: offset,

@@ -38,7 +38,13 @@ const SongCard = ({song}) => {
 
                 <div className="song-card" onMouseEnter={() =>{setShowControls(true)}} onMouseLeave={() =>{setShowControls(false)}}>
                     <div className="image-container">
-                        <img className='song-img'src={song.Album.previewImage}/>
+                        { song.Album ?
+                            <img className='song-img'src={song.Album.previewImage}/>
+
+                            :
+                            <img className='song-img'src={song.previewImage}/>
+                        }
+
                     </div>
                     <div className='song-card-pause-play'>
                         { showControls &&

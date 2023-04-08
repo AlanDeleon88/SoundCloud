@@ -53,10 +53,23 @@
     width: 65%;
 }
 
+.featured-list-user{
+    display: flex;
+    align-items: center;
+}
+.featured-list-user-picture{
+    height:40px;
+    width:40px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
 
 .featured-list-link{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .featured-list-link-button{
@@ -64,4 +77,31 @@
     width: 100px;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+.featured-list-title-bundle{
+    display:flex;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.featured-list-title{
+    margin-right: 5px;
+    font-size: 1.3vw;
+}
+
+.featured-list-username{
+    color:grey;
+}
+
+
+
+.featured-list-user-pic-bundle{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.featured-list-user-pic-bundle:hover > div{
+    color:white;
 }

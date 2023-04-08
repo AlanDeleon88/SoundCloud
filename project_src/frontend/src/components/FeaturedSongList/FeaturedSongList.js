@@ -1,6 +1,7 @@
 import './FeaturedSongList.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import CardPlayControls from '../CardPlayControls'
 import FeaturedSongElement from './FeaturedSongElement'
@@ -8,7 +9,8 @@ import FeaturedSongElement from './FeaturedSongElement'
 
 const FeaturedSonglist = ({album, playlist}) =>{
 
-    const musicPlayer = useSelector(state=>state.musicPlayer)
+    // const musicPlayer = useSelector(state=>state.musicPlayer)
+    const history = useHistory();
 
     const handlePauseClick = e =>{
 
@@ -56,8 +58,37 @@ const FeaturedSonglist = ({album, playlist}) =>{
 
                 </div>
                 <div className='featured-list-link'>
+                    <div className='featured-list-user'>
+
+                        <div className='featured-list-title-bundle'>
+                            <div className='featured-list-title'>
+                                {album.title}
+                            </div>
+                            <div style={{fontSize : '1.3vw'}}>
+                                by:
+                            </div>
+                        </div>
+
+                        <div className='featured-list-user-pic-bundle' onClick={() => history.push(`/${album ? album.Songs[0].User.username : playlist.User.username}/${album ? album.userId : playlist.userId}`)}>
+
+                        <img  className='featured-list-user-picture' src={album ? album.Songs[0].User.profile_picture : playlist.User.profile_picture}/>
+                            <div className='featured-list-username'>
+                                {album ? album.Songs[0].User.username : playlist.User.username}
+                            </div>
+                        </div>
+
+                    </div>
                     <div className='featured-list-link-button mix-neb-button mix-neb-confirm'>
-                        go to playlist
+                        {album ?
+                        <>
+                            Go to album
+                        </>
+                        :
+                        <>
+                            Go to playlist
+                        </>
+                        }
+
                     </div>
                 </div>
             </div>

@@ -44,12 +44,15 @@
 
 .track-artist{
     color: gray;
-    font-size: 15px;
+    font-size: .85vw;
     display: flex;
+    /* border: solid 1px; */
+    justify-content: space-between;
+    width: 100%;
 }
 
 .track-title{
-    font-size:25px;
+    font-size:1.5vw;
 }
 
 .track-button{

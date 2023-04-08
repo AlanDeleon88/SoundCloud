@@ -64,7 +64,7 @@ router.get( //? get all albums endpoint
                         },
                         {
                             model: User,
-                            attributes:['username']
+                            attributes:['username', 'profile_picture']
                         }
 
                     ]

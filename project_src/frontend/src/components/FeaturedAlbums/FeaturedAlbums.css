@@ -7,3 +7,7 @@
     flex-direction: column;
     margin-top: 20px;
 }
+
+.featured-albums-header{
+    font-size: 1.4vw;
+}
