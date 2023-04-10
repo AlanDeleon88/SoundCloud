@@ -15,10 +15,26 @@
     background: linear-gradient(to left top, rgb(227, 44, 169), 	#211054);
 }
 
+.featured-playlist-container{
+    display: flex;
+    flex-direction: column;
+    /* border:1px solid; */
+    width: 600px;
+    height: 175px;
+    justify-content: center;
+    /* margin-left: 80px; */
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background: linear-gradient(to left top, rgb(27, 20, 230), 	#6b52b5ac);
+}
+
 .featured-list-img-bundle{
     display: flex;
     flex-direction: column;
     margin-right: 10px;
+}
+.featured-playlist-img{
+    margin-left:20px;
 }
 
 .featured-list-img{

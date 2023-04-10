@@ -28,3 +28,8 @@
 .music-controls-prev-track{
     cursor: pointer;
 }
+
+.music-controls-active:active{
+    transform: scale(.95);
+    color:#1a035a;
+}

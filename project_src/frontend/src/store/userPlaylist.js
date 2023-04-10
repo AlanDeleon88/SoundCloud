@@ -15,6 +15,16 @@ const addPlayListAction = (playlist) =>({
 })
 
 
+export const loadFeaturedPlaylists = (id) => async dispatch =>{
+    const response = await csrfFetch(`/api/playlists?page=1&size=2`)
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(setPlaylistsAction(data.playlists))
+        return null
+    }
+}
+
 export const loadUserPlaylists = (id) => async dispatch =>{
     const response = await csrfFetch(`/api/artists/${id}/playlists`)
 

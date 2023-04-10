@@ -17,6 +17,7 @@ const FeaturedSonglist = ({album, playlist}) =>{
     const history = useHistory();
     const dispatch = useDispatch()
     const {current_track} = useSelector(state => state.musicPlayer)
+    // console.log(playlist.Songs);
 
     const handlePauseClick = e =>{
 
@@ -31,15 +32,18 @@ const FeaturedSonglist = ({album, playlist}) =>{
     return(
         <>
             <div className='featured-list-main-container'>
-                <div className='featured-list-container'>
+                <div className={album ? 'featured-list-container' : 'featured-playlist-container'}>
                     <div className='featured-list-img-song-list-container'>
                         <div className='featured-list-img-bundle'>
                             {album ?
                                 <img src={album.previewImage} className='featured-list-img'/>
                             :
-                                <PlaylistImage playlist={playlist.Songs} forFeaturedList={true}/>
+                                <div className='featured-playlist-img'>
+                                    <PlaylistImage songs={playlist.Songs} forFeaturedList={true}/>
+
+                                </div>
                             }
-                            <CardPlayControls album={album} handlePauseClick={handlePauseClick} handlePlayClick={handlePlayClick}/>
+                            <CardPlayControls album={album} playlist={playlist} handlePauseClick={handlePauseClick} handlePlayClick={handlePlayClick}/>
                         </div>
                         <div className='featured-list-song-list'>
                             {
@@ -74,7 +78,19 @@ const FeaturedSonglist = ({album, playlist}) =>{
 
                         <div className='featured-list-title-bundle'>
                             <div className='featured-list-title'>
-                                {album.title}
+                                { album ?
+                                    <>
+                                        {album.title}
+
+                                    </>
+
+                                    :
+                                    <>
+                                        {playlist.name}
+
+                                    </>
+
+                                }
                             </div>
                             <div style={{fontSize : '1.3vw'}}>
                                 by:

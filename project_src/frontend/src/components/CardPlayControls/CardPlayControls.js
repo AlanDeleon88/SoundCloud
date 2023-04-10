@@ -10,7 +10,7 @@ const CardPlayControls = ({album, playlist, handlePauseClick, handlePlayClick}) 
         <>
             <div className='card-controls-pause-play'>
 
-                { (album ? musicPlayer.current_track.albumId === album.id : musicPlayer.current_track.PlaylistSong.playlistId === playlist.id) && musicPlayer.is_playing ?
+                { (album ? musicPlayer.current_track.albumId === album.id : musicPlayer.current_track.PlaylistSong ? musicPlayer.current_track.PlaylistSong.playlistId === playlist.id : false) && musicPlayer.is_playing ?
                     (
                         <>
                             <div className='card-controls-pause-background card-controls-control' onClick={handlePauseClick}>

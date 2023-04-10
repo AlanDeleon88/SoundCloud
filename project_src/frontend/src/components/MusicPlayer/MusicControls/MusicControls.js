@@ -8,13 +8,13 @@ const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) 
     return(
         <>
             <div className='music-controls-main-container'>
-                <div className='music-controls-prev-track' onClick={onPrevClick}>
+                <div className='music-controls-prev-track music-controls-active' onClick={onPrevClick}>
                     <FaStepBackward />
                 </div>
                 <div className='music-controls-play-pause'>
                     {isPlaying ?
                         (
-                            <div className='music-controls-pause' onClick={() => {
+                            <div className='music-controls-pause music-controls-active' onClick={() => {
                                 onPlayPauseClick(false)
                                 dispatch(pausePlayer())
 
@@ -26,7 +26,7 @@ const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) 
                         )
                         :
                         (
-                            <div className='music-controls-play' onClick={() => {
+                            <div className='music-controls-play music-controls-active' onClick={() => {
                                 onPlayPauseClick(true)
                                 dispatch(playPlayer())
                                 }}>
@@ -38,7 +38,7 @@ const MusicControls = ({isPlaying, onPlayPauseClick, onPrevClick, onNextClick}) 
                         )
                     }
                 </div>
-                <div className='music-controls-next-track' onClick={onNextClick}>
+                <div className='music-controls-next-track music-controls-active' onClick={onNextClick}>
                     <FaStepForward />
                 </div>
             </div>

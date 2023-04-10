@@ -1,7 +1,7 @@
 import './LoggedHome.css'
 import SplashSongs from '../SplashSongs'
 import ExploreUserComponent from './ExploreUserComponent'
-import FeaturedAlbums from '../FeaturedAlbums/FeaturedAlbums'
+import FeaturedLists from '../FeaturedLists'
 
 
 const LoggedHome = () =>{
@@ -13,7 +13,9 @@ const LoggedHome = () =>{
                 <div className='logged-splash-featured-container'>
                     <SplashSongs />
 
-                    <FeaturedAlbums />
+                    <FeaturedLists album={true}/>
+
+                    <FeaturedLists playlist={true} />
 
                 </div>
 
