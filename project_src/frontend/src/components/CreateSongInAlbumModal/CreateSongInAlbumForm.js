@@ -165,7 +165,7 @@ const CreateSongInAlbumForm = ({album, setShowModal}) =>{
                     }
                 { album &&
                     <div className='create-song-album-choice-container'>
-                        <div className={newSong? 'create-song-album-new-song create-song-album-tab' : 'create-song-album-tab'} onClick={handleNewTab}>
+                        <div className={newSong ? 'create-song-album-new-song create-song-album-tab' : 'create-song-album-tab'} onClick={handleNewTab}>
                             Add a new song
                         </div>
 

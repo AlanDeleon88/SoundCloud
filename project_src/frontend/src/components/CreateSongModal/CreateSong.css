@@ -35,7 +35,7 @@
 }
 
 .song-form-header{
-    font-size: 40px;
+    font-size: 2vw;
     margin-top: 15px;
 }
 
@@ -58,7 +58,7 @@
 
 
 .song-form-img-header{
-    font-size: 30px;
+    font-size: 2vw;
 }
 
 .song-form-img-prev-container{
@@ -85,7 +85,7 @@
 .song-form-img-upload-button{
     height: 40px;
     width: 95%;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 10px;
 }
 
@@ -126,11 +126,11 @@
 }
 
 .song-form-label{
-    font-size: 30px;
+    font-size: 1.5vw;
 }
 
 .song-form-input{
-    height: 40px;
+    height: 4vh;
     width: 90%;
     border-radius: 10px;
     border: none;
@@ -176,7 +176,7 @@
     background-color: 	#100f0f;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    height: 30%;
+    height: 15%;
 }
 
 .song-form-upload-disabled{
