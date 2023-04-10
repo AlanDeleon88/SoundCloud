@@ -34,6 +34,7 @@
     width: 85%;
     height: 100%;
     z-index: 1;
+    /* margin-right:5px; */
 
 }
 
@@ -44,6 +45,7 @@
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
+    margin-left:15px;
 }
 
 .user-page-nav-link{

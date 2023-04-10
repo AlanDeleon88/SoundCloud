@@ -1,14 +1,16 @@
 import { FaPlay } from "react-icons/fa"
 // import { pausePlayer, playPlayer, setListTrack } from '../../../store/musicPlayer'
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
 import './FeaturedSongElement.css'
 import { handleElementListClick } from "../../../utils/handleSongList"
 
 
-const FeaturedSongElement = ({song, num}) =>{
+const FeaturedSongElement = ({song, num, setCurrentSongIndex, album, playlist}) =>{
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
+    const dispatch = useDispatch()
 
     const handleElementClick = (e) =>{
+        handleElementListClick(setCurrentSongIndex, num, dispatch, album, playlist)
 
     }
 

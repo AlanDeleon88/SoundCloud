@@ -47,7 +47,8 @@
 }
 
 .featured-list-song-list{
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x:hidden;
     /* border: solid 1px pink; */
     height: 150px;
     width: 65%;

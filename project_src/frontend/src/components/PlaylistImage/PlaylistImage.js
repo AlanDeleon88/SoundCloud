@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './PlaylistImage.css'
 
-const PlaylistImage = ({songs, forAddToPlaylist, forPlaylistCard}) =>{
+const PlaylistImage = ({songs, forAddToPlaylist, forFeaturedList}) =>{
     const [songImgs, setSongImgs] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -25,7 +25,7 @@ const PlaylistImage = ({songs, forAddToPlaylist, forPlaylistCard}) =>{
 
     return(
         <>
-            <div className={forAddToPlaylist ? "playlist-img-main-container-small" : "playlist-img-main-container"}>
+            <div className={forAddToPlaylist ? "playlist-img-main-container-small" : forFeaturedList ? "playlist-img-featured-main-container" : "playlist-img-main-container"}>
                 { isLoaded &&
                     <>
                         {songImgs.map((img,i) =>{
@@ -33,13 +33,13 @@ const PlaylistImage = ({songs, forAddToPlaylist, forPlaylistCard}) =>{
                                 <>{img ?
                                         (
                                             <>
-                                                <img src={img} alt='' className={forAddToPlaylist ? 'playlist-img-quad-small':'playlist-img-quad'} key={i}/>
+                                                <img src={img} alt='' className={forAddToPlaylist ? 'playlist-img-quad-small': forFeaturedList ? "playlist-img-quad-featured" : 'playlist-img-quad'} key={i}/>
                                             </>
                                         )
                                         :
                                         (
                                             <>
-                                                <div className={forAddToPlaylist ? 'playlist-img-placeholder-small' : 'playlist-img-placeholder'} key={i}>
+                                                <div className={forAddToPlaylist ? 'playlist-img-placeholder-small' :  forFeaturedList ? "playlist-img-placeholder-featured" : 'playlist-img-placeholder'} key={i}>
 
                                                 </div>
                                             </>

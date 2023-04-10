@@ -29,7 +29,7 @@
 .featured-song-text-bundle{
     display: flex;
     /* border: solid 1px; */
-    width:30%;
+    width:50%;
     justify-content: space-between;
 }
 
@@ -43,4 +43,10 @@
     width: 100px;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+.featured-song-title{
+    /* border: 1px solid; */
+    width: 100%;
+    margin-left: 20px;
 }

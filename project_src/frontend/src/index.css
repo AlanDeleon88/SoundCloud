@@ -15,7 +15,8 @@
     height: 40%;
     /* margin-top:100px; */
     margin-bottom: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
     bottom: 50px;
     /* border:solid 1px green; */
@@ -90,16 +91,28 @@
     /* border: solid 1px pink; */
     /* overflow: scroll; */
     /* z-index: 1; */
+    /* background-color: green; */
+
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 5px;
+  }
+
+::-webkit-scrollbar-track {
+    background: #6a6a6a4d;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a035abe;
+    border-radius: 20px;
   }
 
 a{
     text-decoration: none;
     color: white;
 }
+
 
 .about-link{
     border: 1px solid black;

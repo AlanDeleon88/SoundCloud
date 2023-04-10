@@ -22,7 +22,8 @@
     width: 90%;
     height: 70%;
     /* border:1px solid; */
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     /* border: solid 1px blue; */
 }
 

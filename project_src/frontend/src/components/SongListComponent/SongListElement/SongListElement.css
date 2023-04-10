@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     /* border: solid 1px skyblue; */
+    width: 100%;
     padding-top:5px;
     padding-left: 5px;
     cursor: pointer;

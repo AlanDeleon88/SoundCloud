@@ -3,8 +3,15 @@
     width: 83%;
     height:88.5%;
     display: flex;
-    /* overflow: scroll; */
+    /* overflow-y: scroll; */
 }
+
+@media screen and (max-height: 800px) {
+    .logged-home-main-container {
+        height:85%;
+        /* border:solid 1px green; */
+    }
+  }
 
 .logged-splash-featured-container{
     /* border: 1px solid pink; */
@@ -13,5 +20,11 @@
     flex-direction: column;
     align-items: center;
     /* height: 50%; */
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+/* This is to select a specific container to edit its scroll bar */
+div.logged-splash-featured-container::-webkit-scrollbar{
+    width: 0px;
 }

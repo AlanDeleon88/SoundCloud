@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { pausePlayer, playPlayer, setListTrack } from '../../store/musicPlayer'
 import { useHistory } from 'react-router-dom'
-import { FaPlay, FaPause } from 'react-icons/fa'
+// import { FaPlay, FaPause } from 'react-icons/fa'
+import PlaylistImage from '../PlaylistImage'
 import CardPlayControls from '../CardPlayControls'
 import FeaturedSongElement from './FeaturedSongElement'
 import { handleBigPlayClick } from '../../utils/handleSongList'
@@ -33,7 +34,11 @@ const FeaturedSonglist = ({album, playlist}) =>{
                 <div className='featured-list-container'>
                     <div className='featured-list-img-song-list-container'>
                         <div className='featured-list-img-bundle'>
-                            <img src={album.previewImage} className='featured-list-img'/>
+                            {album ?
+                                <img src={album.previewImage} className='featured-list-img'/>
+                            :
+                                <PlaylistImage playlist={playlist.Songs} forFeaturedList={true}/>
+                            }
                             <CardPlayControls album={album} handlePauseClick={handlePauseClick} handlePlayClick={handlePlayClick}/>
                         </div>
                         <div className='featured-list-song-list'>
@@ -42,7 +47,7 @@ const FeaturedSonglist = ({album, playlist}) =>{
                                     album ? album.Songs.map((song, i) =>{
                                         return(
                                             <>
-                                                <FeaturedSongElement song={song} num={i + 1} />
+                                                <FeaturedSongElement song={song} num={i + 1} key={song.id} setCurrentSongIndex={setCurrentSongIndex} album={album}/>
                                             </>
                                         )
                                     })
@@ -50,7 +55,7 @@ const FeaturedSonglist = ({album, playlist}) =>{
                                     playlist.Songs.map((song, i) =>{
                                         return(
                                             <>
-                                                <FeaturedSongElement song={song} num ={i + 1} />
+                                                <FeaturedSongElement song={song} num ={i + 1} key={song.id} setCurrentSongIndex={setCurrentSongIndex} playlist={playlist}/>
                                             </>
                                         )
                                     })
