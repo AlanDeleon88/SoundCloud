@@ -6,6 +6,7 @@ import {IoSettingsSharp} from 'react-icons/io5'
 import { Modal } from '../../../context/Modal'
 import EditSongForm from '../../EditSongModal/EditSongForm'
 import {FiPlusSquare} from 'react-icons/fi'
+import { handleElementListClick } from '../../../utils/handleSongList'
 
 const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist}) =>{
     const {is_playing, current_track} = useSelector(state => state.musicPlayer)
@@ -15,26 +16,27 @@ const SongListElement = ({song, num, setCurrentSongIndex, img, album, playlist})
     const dispatch = useDispatch()
 
     const handleSongClick = e =>{
-        let trackObj ={
-            trackIndex : num -1
-        }
-        if(album){
+        handleElementListClick(setCurrentSongIndex, num, dispatch, album, playlist)
+        // let trackObj ={
+        //     trackIndex : num -1
+        // }
+        // if(album){
 
-            trackObj['tracks'] = album.Songs;
+        //     trackObj['tracks'] = album.Songs;
 
-            dispatch(pausePlayer()).then(res =>{
-                setCurrentSongIndex(trackObj.trackIndex)
-                dispatch(setListTrack(trackObj))
-            })
+        //     dispatch(pausePlayer()).then(res =>{
+        //         setCurrentSongIndex(trackObj.trackIndex)
+        //         dispatch(setListTrack(trackObj))
+        //     })
 
-        }
-        else{
-            trackObj['tracks'] = playlist.Songs
-            dispatch(pausePlayer()).then(res =>{
-                setCurrentSongIndex(trackObj.trackIndex)
-                dispatch(setListTrack(trackObj))
-            })
-        }
+        // }
+        // else{
+        //     trackObj['tracks'] = playlist.Songs
+        //     dispatch(pausePlayer()).then(res =>{
+        //         setCurrentSongIndex(trackObj.trackIndex)
+        //         dispatch(setListTrack(trackObj))
+        //     })
+        // }
 
     }
 

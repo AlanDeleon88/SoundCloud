@@ -14,6 +14,18 @@
     /* opacity: 20%; */
 }
 
+.featured-song-song-active{
+    display: flex;
+    padding: 6px;
+    /* border: 1px solid; */
+    border-bottom: solid 1px rgba(255, 255, 255, 0.382);
+    justify-content: space-between;
+    align-items: center;
+    /* width: 140%; */
+    cursor:pointer;
+    background: linear-gradient(to left bottom, rgba(125, 102, 243, 0.584), 	#21105498);
+}
+
 .featured-song-text-bundle{
     display: flex;
     /* border: solid 1px; */

@@ -178,129 +178,133 @@ const MusicPlayer = () =>{
     return(
     <>
         <div className='music-player-main-container' onMouseLeave={() =>{setShowVolume(false)}}>
-            <div className='music-player-controls-container'>
-                <MusicControls
-                    isPlaying={isPlaying}
-                    onPrevClick={toPrevTrack}
-                    onNextClick={toNextTrack}
-                    onPlayPauseClick ={setIsPlaying}
-                />
-                <div className='volume-slide-container'>
-                    {showVolume ?
-                        (
-                            <input type='range' className='volume-slider'
-                                value={volume}
-                                step='.05'
-                                min='0'
-                                max='1'
-                                onChange={handleVolume}
-                                onMouseLeave={() =>{setShowVolume(false)}}
-                                style={{background: volumeStyle, 'borderRadius' : '10px'}}
-                            />
+            <div className='music-player-main-controls-container'>
+                <div className='music-player-controls-container'>
+                    <MusicControls
+                        isPlaying={isPlaying}
+                        onPrevClick={toPrevTrack}
+                        onNextClick={toNextTrack}
+                        onPlayPauseClick ={setIsPlaying}
+                    />
+                    <div className='volume-slide-container'>
+                        {showVolume ?
+                            (
+                                <input type='range' className='volume-slider'
+                                    value={volume}
+                                    step='.05'
+                                    min='0'
+                                    max='1'
+                                    onChange={handleVolume}
+                                    onMouseLeave={() =>{setShowVolume(false)}}
+                                    style={{background: volumeStyle, 'borderRadius' : '10px'}}
+                                />
 
-                        )
-                        :
-                        (
-                            <input type='range' className='volume-place-holder'
-                                disabled={true}
-                                value={volume}
-                                step='.01'
-                                min='0'
-                                max='1'
-                                onChange={handleVolume}
-                                onMouseLeave={() =>{setShowVolume(false)}}
-                                style={{background: volumeStyle, 'borderRadius' : '10px'}}
-                            />
-                        )
+                            )
+                            :
+                            (
+                                <input type='range' className='volume-place-holder'
+                                    disabled={true}
+                                    value={volume}
+                                    step='.01'
+                                    min='0'
+                                    max='1'
+                                    onChange={handleVolume}
+                                    onMouseLeave={() =>{setShowVolume(false)}}
+                                    style={{background: volumeStyle, 'borderRadius' : '10px'}}
+                                />
+                            )
 
-                    }
+                        }
 
-                    <div className='volume-button' onMouseEnter={() =>{setShowVolume(true)}}>
-                        <BsVolumeDownFill />
+                        <div className='volume-button' onMouseEnter={() =>{setShowVolume(true)}}>
+                            <BsVolumeDownFill style={{fontSize:'1.7vw'}}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className='music-player-seeker-container'>
-                <div className='current-prog' style={{'marginRight' : '10px'}}>
-                    { trackProgress ?
-                        (
-                            <>
-                                 {timeConvert(trackProgress)}
-                            </>
-                        )
-                        :
-                        (
-                            <>
-                                - : -
-                            </>
-                        )
-
-                    }
-
-                </div>
-                <input
-                    type='range'
-                    value={trackProgress}
-                    step='1'
-                    min='0'
-                    max ={duration ? duration  : `${duration}`}
-                    className='progress'
-                    onChange={(e) => onScrub(e.target.value)}
-                    onMouseUp={onScrubEnd}
-                    onKeyUp={onScrubEnd}
-                    style={{ background: trackStyling, 'borderRadius' : '10px' }}
-                />
-                <div className='max-prog' style={{'margin-left' : '10px'}}>
-                    { duration ?
-                        (
-                            <>
-                                {timeConvert(duration)}
-                            </>
-                        )
-                        :
-                        (
-                            <>
-                                --:--
-                            </>
-                        )
-
-                    }
-                </div>
-            </div>
-
-            <div className='music-player-song-info-container'>
-                 <div className='music-player-song-art-container'>
-
-                    <img className='music-player-art' src={current_track.Album ? current_track.Album.previewImage : current_track.previewImage}/>
-                </div>
-                <div className='music-player-text-container'>
-                    <div className='music-player-artist-album'>
-                        <div className='music-player-artist' onClick={handleArtist}>
-                            {current_track.User &&
-                            <>
-                                {current_track.User.username}
-
-                            </>
-                            }
-
-                        </div>
-                        <div className='music-player-album'>
-                            {current_track.Album &&
+                <div className='music-player-seeker-container'>
+                    <div className='current-prog' style={{'marginRight' : '10px'}}>
+                        { trackProgress ?
+                            (
                                 <>
-                                    {/* {current_track.Album.title} */}
+                                    {timeConvert(trackProgress)}
                                 </>
+                            )
+                            :
+                            (
+                                <>
+                                    -:-
+                                </>
+                            )
 
-                            }
-                        </div>
+                        }
+
                     </div>
-                    <div className='music-player-song-title'>
+                    <input
+                        type='range'
+                        value={trackProgress}
+                        step='1'
+                        min='0'
+                        max ={duration ? duration  : `${duration}`}
+                        className='progress'
+                        onChange={(e) => onScrub(e.target.value)}
+                        onMouseUp={onScrubEnd}
+                        onKeyUp={onScrubEnd}
+                        style={{ background: trackStyling, 'borderRadius' : '10px' }}
+                    />
+                    <div className='max-prog' style={{'margin-left' : '10px'}}>
+                        { duration ?
+                            (
+                                <>
+                                    {timeConvert(duration)}
+                                </>
+                            )
+                            :
+                            (
+                                <>
+                                    -:-
+                                </>
+                            )
 
-                        {current_track.title}
-
+                        }
                     </div>
                 </div>
 
+                <div className='music-player-song-info-container'>
+                    <div className='music-player-song-art-container'>
+
+                        <img className='music-player-art' src={current_track.Album ? current_track.Album.previewImage : current_track.previewImage}/>
+                    </div>
+                    <div className='music-player-text-container'>
+                        <div className='music-player-artist-album'>
+                            <div className='music-player-artist' onClick={handleArtist}>
+                                {current_track.User &&
+                                <>
+                                    {current_track.User.username}
+
+                                </>
+                                }
+
+                            </div>
+                            <div className='music-player-album'>
+                                {current_track.Album &&
+                                    <>
+                                        {/* {current_track.Album.title} */}
+                                    </>
+
+                                }
+                            </div>
+                        </div>
+                        <div className='music-player-song-title'>
+
+                            {current_track.title}
+
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
     </>

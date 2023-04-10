@@ -1,23 +1,30 @@
 import './FeaturedSongList.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { pausePlayer, playPlayer, setListTrack } from '../../store/musicPlayer'
 import { useHistory } from 'react-router-dom'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import CardPlayControls from '../CardPlayControls'
 import FeaturedSongElement from './FeaturedSongElement'
+import { handleBigPlayClick } from '../../utils/handleSongList'
 
 
 const FeaturedSonglist = ({album, playlist}) =>{
 
     // const musicPlayer = useSelector(state=>state.musicPlayer)
+    const [currentSongIndex, setCurrentSongIndex] = useState(0)
     const history = useHistory();
+    const dispatch = useDispatch()
+    const {current_track} = useSelector(state => state.musicPlayer)
 
     const handlePauseClick = e =>{
+
+        dispatch(pausePlayer())
 
     }
 
     const handlePlayClick = e =>{
-
+        handleBigPlayClick(currentSongIndex, setCurrentSongIndex, current_track, dispatch, album, playlist)
     }
 
     return(
@@ -35,15 +42,15 @@ const FeaturedSonglist = ({album, playlist}) =>{
                                     album ? album.Songs.map((song, i) =>{
                                         return(
                                             <>
-                                                <FeaturedSongElement song={song} i={i} />
+                                                <FeaturedSongElement song={song} num={i + 1} />
                                             </>
                                         )
                                     })
                                     :
-                                    playlist.Songs.map(song =>{
+                                    playlist.Songs.map((song, i) =>{
                                         return(
                                             <>
-
+                                                <FeaturedSongElement song={song} num ={i + 1} />
                                             </>
                                         )
                                     })

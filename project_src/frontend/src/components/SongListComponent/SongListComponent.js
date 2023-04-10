@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import{FaPlay, FaPause} from 'react-icons/fa'
 import SongListElement from './SongListElement'
 import PlaylistImage from '../PlaylistImage'
-import { pausePlayer, playPlayer } from '../../store/musicPlayer'
-import { setListTrack } from '../../store/musicPlayer'
+import { pausePlayer, playPlayer, setListTrack } from '../../store/musicPlayer'
 import {FiPlusSquare} from 'react-icons/fi'
 import CreateSongInAlbumModal from '../CreateSongInAlbumModal'
 import { Modal } from '../../context/Modal'
@@ -13,6 +12,7 @@ import CreateSongInAlbumForm from '../CreateSongInAlbumModal/CreateSongInAlbumFo
 import {BiEdit} from 'react-icons/bi'
 import {IoSettingsSharp} from 'react-icons/io5'
 import EditAlbumPlaylistForm from '../EditAlbumPlaylistModal'
+import { handleBigPlayClick } from '../../utils/handleSongList'
 
 const SongListComponent = ({album, playlist, username}) =>{
     const [currentSongIndex, setCurrentSongIndex] = useState(0) // set initial song index
@@ -25,47 +25,48 @@ const SongListComponent = ({album, playlist, username}) =>{
     const current_user = useSelector(state=>state.session.user)
 
     const handlePlayClick = e =>{
-        if(!playlist) playlist = {}
-        if(!album) album = {}
-        // if( (album && !album.Songs.length < 1) || (playlist && playlist.Songs.length < 1)){
-        //     return null
-        //    }
+        handleBigPlayClick(currentSongIndex, setCurrentSongIndex, current_track, dispatch, album, playlist)
+    //     if(!playlist) playlist = {}
+    //     if(!album) album = {}
+    //     // if( (album && !album.Songs.length < 1) || (playlist && playlist.Songs.length < 1)){
+    //     //     return null
+    //     //    }
 
-        if(album.Songs){
-            if(album.Songs.length < 1) return null
-        }
+    //     if(album.Songs){
+    //         if(album.Songs.length < 1) return null
+    //     }
 
-        if(playlist.Songs){
-            if(playlist.Songs.length < 1) return null;
-        }
+    //     if(playlist.Songs){
+    //         if(playlist.Songs.length < 1) return null;
+    //     }
 
-       let trackObj = {
-            trackIndex : currentSongIndex,
-            tracks : Songs
-       }
+    //    let trackObj = {
+    //         trackIndex : currentSongIndex,
+    //         tracks : Songs
+    //    }
 
 
 
-        if(trackObj.trackIndex){
-            if(current_track['playlistId'] !== playlist['id'] || (album['id'] !== current_track['albumId']))  {
-                dispatch(pausePlayer()).then(res =>{
-                    trackObj.trackIndex = 0;
-                    dispatch(setListTrack(trackObj))
-                    setCurrentSongIndex(0)
-                })
-            }
-            else{
-                dispatch(playPlayer())
+    //     if(trackObj.trackIndex){
+    //         if(current_track['playlistId'] !== playlist['id'] || (album['id'] !== current_track['albumId']))  {
+    //             dispatch(pausePlayer()).then(res =>{
+    //                 trackObj.trackIndex = 0;
+    //                 dispatch(setListTrack(trackObj))
+    //                 setCurrentSongIndex(0)
+    //             })
+    //         }
+    //         else{
+    //             dispatch(playPlayer())
 
-            }
+    //         }
 
-        }
-        else{
-            dispatch(pausePlayer()).then(res =>{
-                dispatch(setListTrack(trackObj))
-            })
+    //     }
+    //     else{
+    //         dispatch(pausePlayer()).then(res =>{
+    //             dispatch(setListTrack(trackObj))
+    //         })
 
-        }
+    //     }
 
     }
 
