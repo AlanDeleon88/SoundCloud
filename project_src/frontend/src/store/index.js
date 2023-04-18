@@ -10,6 +10,7 @@ import currentSongReducer from './currentSong';
 import exploreArtistsReducer from './exploreArtists';
 import musicPlayerReducer from './musicPlayer';
 import userPlaylistsReducer from './userPlaylist';
+import currentPlaylistReducer from './currentPlaylist';
 
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     artist: artistReducer,
     songUrl: songUrlReducer,
     currentAlbum: currentAlbumReducer,
+    currentPlaylist: currentPlaylistReducer,
     currentSong: currentSongReducer,
     exploreArtists: exploreArtistsReducer,
     musicPlayer : musicPlayerReducer,

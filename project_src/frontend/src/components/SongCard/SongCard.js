@@ -32,6 +32,11 @@ const SongCard = ({song}) => {
         dispatch(pausePlayer())
     }
     // console.log(match.url);
+    const handleSongTitle = (e) =>{
+
+
+        history.push(`/song/${song.id}`)
+    }
     return (
         <>
 
@@ -79,7 +84,7 @@ const SongCard = ({song}) => {
                         }
 
                     </div>
-                    <div className='song-title-card'>
+                    <div className='song-title-card' onClick={handleSongTitle}>
                         {title}
                     </div>
                     <div className='song-card-artist-bundle'>

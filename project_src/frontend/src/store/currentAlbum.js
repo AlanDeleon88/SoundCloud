@@ -27,11 +27,11 @@ const currentAlbumReducer = (state = {}, action) =>{
     switch(action.type){
         case SET_ALBUM:
             newState = action.payload;
-            newState.songs = {}
-            action.payload.Songs.forEach(el => {
-                newState.songs[el.id] = el;
-            })
-            delete action.payload.Songs;
+            // newState.songs = {}
+            // action.payload.Songs.forEach(el => {
+            //     newState.songs[el.id] = el;
+            // })
+            // delete action.payload.Songs;
 
 
             return newState;

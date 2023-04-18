@@ -138,33 +138,37 @@ router.get(
     '/:id',
     async (req, res, next) =>{
         const { id } = req.params;
-        const song = await Song.findByPk(id);
+        const song = await Song.findByPk(id,{
+            include: [
+                {model : Album, attributes:['title', 'id', 'previewImage']},
+                {model : User, attributes:['id', 'username', 'profile_picture']}
+            ]
+
+        });
         if(!song){
             const err = buildError("Song couldn't be found", 'Song not found', 404)
 
             return next(err);
         }
-        //!lazy loading?
+        // //!lazy loading?
 
-        const artist = await User.findOne({ //! refactor later! try using a better query, look at comments route!
-            where: {
-                id : song.userId
-            },
-            attributes: ['id', 'username', 'profile_picture']
+        // const artist = await User.findOne({ //! refactor later! try using a better query, look at comments route!
+        //     where: {
+        //         id : song.userId
+        //     },
+        //     attributes: ['id', 'username', 'profile_picture']
 
-        });
-        const album = await Album.findOne({
-            where:{
-                id: song.albumId
-            },
-            attributes: ['id', 'title', 'previewImage']
-        })
-        song.dataValues.artist = artist
+        // });
+        // const album = await Album.findOne({
+        //     where:{
+        //         id: song.albumId
+        //     },
+        //     attributes: ['id', 'title', 'previewImage']
+        // })
+        // song.dataValues.artist = artist
         res.statusCode = 200;
         res.json({
-            song,
-            album
-
+            song
         });
     }
 );

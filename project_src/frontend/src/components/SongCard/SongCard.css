@@ -34,8 +34,13 @@
     padding: 10px;
     font-size: 17px;
     overflow: hidden;
+    cursor: pointer;
 }
 
+.song-title-card:hover{
+    color: #ef26b2;
+    font-weight: bold;
+}
 .song-img{
     height: 150px;
     width: 150px;

@@ -79,14 +79,33 @@ router.get(
     async (req, res, next) =>{
         const { id } = req.params;
         const playlist = await Playlist.findByPk(id, {
-            include : {
-                model : Song,
-                through: {
-                    // model: PlaylistSong,
-                    attributes : []
+            include : [
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId', 'previewImage'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ],
+                    through:{
+                        attributes:['playlistId']
+                    }
+
+                },
+                {
+                    model:User,
+                    attributes: ['username', 'profile_picture']
                 }
 
-            },
+            ]
 
         })
 
@@ -97,9 +116,9 @@ router.get(
 
         res.statusCode = 200;
 
-        res.json({
+        res.json(
             playlist
-        })
+        )
     }
 );
 

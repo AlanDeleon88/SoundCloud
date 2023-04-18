@@ -29,6 +29,12 @@ const FeaturedSonglist = ({album, playlist}) =>{
         handleBigPlayClick(currentSongIndex, setCurrentSongIndex, current_track, dispatch, album, playlist)
     }
 
+    const handleButton = e =>{
+        let link = album ? 'album' : 'playlist'
+        let id = album ? album.id : playlist.id
+        history.push(`/media/${link}/${id}`)
+    }
+
     return(
         <>
             <div className='featured-list-main-container'>
@@ -106,7 +112,7 @@ const FeaturedSonglist = ({album, playlist}) =>{
                         </div>
 
                     </div>
-                    <div className='featured-list-link-button mix-neb-button mix-neb-confirm'>
+                    <div className='featured-list-link-button mix-neb-button mix-neb-confirm' onClick={handleButton}>
                         {album ?
                         <>
                             Go to album

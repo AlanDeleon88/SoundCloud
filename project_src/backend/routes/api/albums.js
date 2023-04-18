@@ -87,28 +87,46 @@ router.get( //? get albums by id endpoint
     '/:id',
     async (req, res, next) =>{
         let albumId = req.params.id;
-        let album = await Album.findByPk(albumId);
+        let album = await Album.findByPk(albumId, {
+            include: [
+                {
+                    model : Song ,
+                    attributes:['id', 'title', 'description', 'url', 'albumId','userId'],
+                    include:
+                        [
+                            {
+                                model: Album,
+                                attributes: ['previewImage']
+                            },
+                            {
+                                model: User,
+                                attributes:['username']
+                            }
+
+                        ]
+
+                }
+
+            ]
+        });
         // console.log(album);
 
         if(!album){
             const err = buildError("Couldn't find an Album with the specified id", 'Album not found', 404);
             next(err);
         }
-        //!find album's songs here.
-        let songs = await album.getSongs() //! could refactor this to get all songs and artist in one query.
-        let artist = await User.findOne({ //! check comments route for an example.
-            where : {id : album.userId},
-            attributes: ['id','username','profile_picture']
-        })
+        // //!find album's songs here.
+        // let songs = await album.getSongs() //! could refactor this to get all songs and artist in one query.
+        // let artist = await User.findOne({ //! check comments route for an example.
+        //     where : {id : album.userId},
+        //     attributes: ['id','username','profile_picture']
+        // })
         // let songs = [];
-        album.dataValues.artist = artist;
+        // album.dataValues.artist = artist;
         res.statusCode = 200;
         res.json(
-        {
-            album,
-            "Songs" : songs
-
-        })
+            album
+        )
     }
 );
 

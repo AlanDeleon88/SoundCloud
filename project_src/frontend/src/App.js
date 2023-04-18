@@ -15,6 +15,7 @@ import UserProfilePage from "./components/UserProfilePage";
 import './index.css'
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import MultiUploadUtil from "./components/MultiFileUploadUtil";
+import MediaFocusPage from './components/MediaFocusPage';
 
 
 function App() {
@@ -131,6 +132,10 @@ function App() {
 
         </Route>
 
+        <Route path = {`/media/:link/:id`} exact={true}>
+            <MediaFocusPage />
+        </Route>
+
         <Route path = '/:username/:userId'>
           {/* might have to make another edit to site nav whether user
             is logged in or not. will either show login or sign up options, or show profile drop down..
@@ -151,15 +156,6 @@ function App() {
 
 
 
-        <Route path={`/me/albums`}>
-          <div className='album-comp-container'>
-
-            <div className="test">
-                {/* HelloTestWtf */}
-            </div>
-            {/* <UserAlbums id={userId}/> */}
-          </div>
-        </Route>
 
 
         <Route path={'/:userId/albums'}>
