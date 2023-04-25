@@ -13,25 +13,19 @@ const HeaderList = ({album, playlist}) =>{
                         <MediaFocusHeaderControls album = {album} playlist={playlist}/>
                     <div className='header-list-track-num-container'>
                         <div className='header-list-track-num'>
-                            {/* { album   ?
-                                <>
-                                    <div>
-                                        {media.Songs.length}
-                                    </div>
 
-                                </>
-
-                                :
-                                <>
-                                    {playlist.Songs.length}
-                                </>
-                            } */}
-                            {media.Songs.length}
+                            <div className='list-track-num'>
+                                {media.Songs.length}
+                            </div>
+                            <div style={{fontSize:'.65vw'}}>
+                                Tracks
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div className='header-list-img-container'>
-                    <img  className='header-list-img'/>
+                    <img  src={album? album.previewImage : playlist.Songs[0].Album.previewImage} className='header-list-img'/>
 
                 </div>
 

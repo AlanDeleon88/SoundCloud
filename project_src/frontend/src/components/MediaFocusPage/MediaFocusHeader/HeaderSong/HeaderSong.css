@@ -1,0 +1,31 @@
+.header-song-main-container{
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    /* border:1px solid pink; */
+    align-items: center;
+    /* border: 1px solid; */
+    height: 100%;
+    /* overflow-y: scroll; */
+    width: 85%;
+    background: linear-gradient(to left bottom, rgb(46, 27, 92), 	#4a4a4a);
+
+
+}
+
+.header-song-bundle{
+    width: 70%;
+}
+
+.header-song-img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+}
+
+.header-song-img{
+    height:80%;
+    width:80%;
+
+}

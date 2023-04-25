@@ -35,7 +35,10 @@ const SongCard = ({song}) => {
     const handleSongTitle = (e) =>{
 
 
-        history.push(`/song/${song.id}`)
+        let link = 'song'
+        let id = song.id
+        history.push(`/media/${link}/${id}`)
+
     }
     return (
         <>

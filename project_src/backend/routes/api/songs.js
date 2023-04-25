@@ -167,9 +167,9 @@ router.get(
         // })
         // song.dataValues.artist = artist
         res.statusCode = 200;
-        res.json({
+        res.json(
             song
-        });
+        );
     }
 );
 
