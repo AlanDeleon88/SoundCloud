@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { getAlbum } from '../../store/currentAlbum'
 import { getSong } from '../../store/currentSong'
 import { getPlaylistById } from '../../store/currentPlaylist'
+import MediaFocusContent from './MediaFocusHeader/MediaFocusContent'
 
 const MediaFocusPage = () =>{
     const dispatch = useDispatch()
@@ -71,7 +72,7 @@ const MediaFocusPage = () =>{
 
                 }
                 <div className='media-focus-content-container'>
-                    test
+                    <MediaFocusContent song={song} album={album} playlist={playlist}/>
                 </div>
 
             </div>

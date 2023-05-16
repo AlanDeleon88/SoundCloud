@@ -1,0 +1,22 @@
+
+.media-focus-content-main{
+    display: flex;
+    border: 1px solid green;
+    height:100%;
+    width:100%;
+    justify-content: space-between;
+}
+
+.media-focus-user-section{
+    border: 1px solid lightblue;
+    width: 20%
+}
+
+.media-focus-content{
+    border: 1px solid pink;
+    width: 65%;
+}
+
+.media-focus-side-bar-container{
+    border: 1px solid lightgreen;
+}
